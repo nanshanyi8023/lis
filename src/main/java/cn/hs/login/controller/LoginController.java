@@ -19,4 +19,5 @@ public class LoginController {
 
         return new ModelAndView("login/login.jsp", modelMap);
     }
+
 }
