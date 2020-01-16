@@ -16,7 +16,6 @@ public class LoginController {
 
     @RequestMapping(value = "/getView.htm", method = RequestMethod.GET)
     public ModelAndView getView(ModelMap modelMap) {  //Bas_hospitals hospital,
-
         return new ModelAndView("login/login.jsp", modelMap);
     }
 
