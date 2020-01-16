@@ -1,6 +1,7 @@
+
 !(function (global) {
         'use strict'
-        var COMMON_ERROR = 'ajax调用错误';
+        var COMMON_ERROR = '服务器内部错误';
         var AJAX_SUCCESS_CODE = 10000;
         /**
          * ajax 默认方法
@@ -65,6 +66,17 @@
         ajaxUtils.postBody = function (url, data, options) {
             return ajaxPromise(url, JSON.stringify(data), options, 'POST', 'application/json');
         };
+
+        /**
+         * 校验数据格式
+         * @param val
+         */
+        ajaxUtils.getValidValue = function (val) {
+            if (typeof val === 'number' && !isNaN(val)) {
+                val = val.toString();
+            }
+            return !!val ? val : '-';
+        }
 
         global.ajaxUtils = ajaxUtils;
     }
