@@ -10,5 +10,5 @@ public interface LoginMapper {
     //判断登录是否成功
     // 查询所有账户
     @Select(" select * from user_info where login_name = #{loginName} and login_password = #{loginPassword}")
-    public User_Info doLogin(@Param("loginName") String loginName, @Param("loginPassword") String loginPassword);
+    User_Info doLogin(@Param("loginName") String loginName, @Param("loginPassword") String loginPassword);
 }

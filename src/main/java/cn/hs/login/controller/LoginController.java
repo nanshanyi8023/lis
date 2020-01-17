@@ -15,7 +15,7 @@ public class LoginController {
     @Autowired
     LoginService loginService = null;
 
-    @RequestMapping(value = "/getView.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "/getView", method = RequestMethod.GET)
     public ModelAndView getView(ModelMap modelMap) {  //Bas_hospitals hospital,
         return new ModelAndView("login/login.jsp", modelMap);
     }
@@ -24,8 +24,7 @@ public class LoginController {
     @RequestMapping(value = "/doLogin.json", method = RequestMethod.GET)
     public String doLogin(@RequestParam(required = true) String loginName ,@RequestParam(required = true) String loginPassword){
         try {
-            String s = loginService.doLogin(loginName, loginPassword);
-            return s;
+            return loginService.doLogin(loginName, loginPassword);
         } catch (Exception e){
             return e.getMessage();
         }

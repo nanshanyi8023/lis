@@ -3,6 +3,13 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
+  <!--项目启动时默认访问的路径  与下面<servlet-mapping>中/login/getView同时使用才能生效-->
+  <welcome-file-list>
+    <welcome-file>login/getView</welcome-file>
+  </welcome-file-list>
+
+
   <display-name>Archetype Created Web Application</display-name>
 
   <!--配置Spring的监听器，默认只加载WEB-INF目录下的applicationContext.xml配置文件-->
@@ -34,6 +41,10 @@
   <servlet-mapping>
     <servlet-name>dispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <url-pattern>/login/getView</url-pattern>
   </servlet-mapping>
 
   <!--解决中文乱码的过滤器-->
