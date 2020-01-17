@@ -25,17 +25,18 @@
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="jdbcUrl" value="jdbc:mysql:///lis"/>
         <property name="user" value="root"/>
-        <property name="password" value="root"/>
+        <property name="password" value="123"/>
     </bean>
 
     <!--配置SqlSessionFactory工厂-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
+        <!--<property name="mapperLocations" value="classpath*:cn/hs/mapperxml/*.xml" />-->
     </bean>
 
-    <!--配置AccountDao接口所在包-->
+    <!--配置Mapper.java接口所在包-->
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.hs.dao"/>
+        <property name="basePackage" value="cn.hs"/>
     </bean>
 
     <!--配置Spring框架声明式事务管理-->
@@ -54,7 +55,7 @@
 
     <!--配置AOP增强-->
     <aop:config>
-        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.hs.service.impl.*ServiceImpl.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.hs.*Service.*(..))"/>
     </aop:config>
 
 </beans>
