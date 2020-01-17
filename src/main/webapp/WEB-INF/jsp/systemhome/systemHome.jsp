@@ -23,11 +23,23 @@
             overflow: hidden;
             margin: 0px;
         }
-        .inspectManagement {
-            background-image: url(inspectManagement.png);
-        }
         .sampleAccept{
-            background-image: url(sampleAccept.png);
+            background-image: url(images/systemhome/sampleAccept.png);
+        }
+        .sampleReturn{
+            background-image: url(images/systemhome/sampleReturn.png);
+        }
+        .inspectionOperation{
+            background-image: url(images/systemhome/inspectionOperation.png);
+        }
+        .reportQuery{
+            background-image: url(images/systemhome/reportQuery.png);
+        }
+        .barCodePrint{
+            background-image: url(images/systemhome/barCodePrint.png);
+        }
+        .userinfoSetting{
+            background-image: url(images/systemhome/userInfoSetting.png);
         }
     </style>
 </head>
