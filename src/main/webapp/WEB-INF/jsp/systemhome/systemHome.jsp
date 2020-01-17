@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <base href="<%=basePath%>"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>云LIS检验系统主界面</title>
+    <link type="text/css" rel="stylesheet" href="toolfile/dhtmlxstand/codebase/dhtmlx.css" />
+
+    <script type="text/javascript" src="toolfile/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="toolfile/dhtmlxstand/codebase/dhtmlx.js"></script>
+
+    <script type="text/javascript" src="js/systemhome/systemHome.js"></script>
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0px;
+        }
+        .inspectManagement {
+            background-image: url(inspectManagement.png);
+        }
+        .sampleAccept{
+            background-image: url(sampleAccept.png);
+        }
+    </style>
+</head>
+<body>
+<div id="layoutObj" style="width: 100%;height: 100%;"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //初始化页面
+        SystemHome.init();
+    });
+</script>
+
+</body>
+</html>

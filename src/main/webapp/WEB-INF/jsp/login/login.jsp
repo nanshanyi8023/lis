@@ -19,9 +19,21 @@
 <script src="js/html5.js"></script>
 <![endif]-->
 
-	<script  type="text/javascript" src="toolfile/ajaxUtils.js"></script>
 	<script type="text/javascript" src="toolfile/jquery-3.4.1.js"></script>
 	<script  type="text/javascript" src="js/login/login.js"></script>
+
+    <style>   /*解决浏览器记住密码默认填充后改变输入框背景颜色的问题*/
+        input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
+            -webkit-text-fill-color: #ededed !important;
+            -webkit-box-shadow: 0 0 0px 1000px transparent  inset !important;
+            background-color:transparent;
+            background-image: none;
+            transition: background-color 50000s ease-in-out 0s; /*背景色透明  生效时长  过渡效果  启用时延迟的时间*/
+        }
+        input {
+            background-color:transparent;
+        }
+    </style>
 </head>
 <body>
 		<div class="container demo-1">
@@ -29,7 +41,7 @@
 				<div id="large-header" class="large-header">
 					<canvas id="demo-canvas"></canvas>
 					<div class="logo_box">
-						<h3>云lis检验系统</h3>
+						<h3>云LIS检验系统</h3>
 						<form action="#" name="f" method="post">
 							<div class="input_outer">
 								<span class="u_user"></span>
