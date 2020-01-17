@@ -63,7 +63,7 @@ var Tree = {
 
 var init = function () {
     Layout.initObj();
-    Tree.initobj();
+    Tree.initobj();  
 };
 
     var SystemHome = function () {
