@@ -17,8 +17,6 @@
                     id: "a",
                     text: "&nbsp&nbsp&nbsp&nbsp功能列表",
                     collapsed_text: "单击展开功能列表",   // 折叠栏标题
-                    width: 200,
-                    height:600,
                     collapse: false,       // 初始是否折叠
                     fix_size: [true, true]
                 }
@@ -70,11 +68,28 @@
                 {
                     id: "inspectSettings",
                     text: "检验设置",
-                    open: 1,
+                    open: 0,
                     items: [
                         {
                             id: "inspectionItemSettings",
                             text: "检验项目设置",
+                            icons:{file:""}
+                        }
+                    ]
+                },
+                {
+                    id: "inspectionOrder",
+                    text: "检验医嘱",
+                    open: 0,
+                    items: [
+                        {
+                            id: "issueInspectionOrder",
+                            text: "开具检验医嘱",
+                            icons:{file:""}
+                        },
+                        {
+                            id: "inspectionItemGroup",
+                            text: "检验医嘱项目分组",
                             icons:{file:""}
                         }
                     ]

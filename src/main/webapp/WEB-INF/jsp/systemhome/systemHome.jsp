@@ -15,7 +15,8 @@
     <script type="text/javascript" src="toolfile/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxstand/codebase/dhtmlx.js"></script>
 
-    <script type="text/javascript" src="js/systemhome/leftMenu.js"></script>
+    <script type="text/javascript" src="js/topwelcomebar/topWelcomeBar.js"></script>
+    <script type="text/javascript" src="js/leftmenu/leftMenu.js"></script>
     <style type="text/css">
         html, body {
             width: 100%;
@@ -57,6 +58,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         //初始化页面
+        TopWelcomeBar.init();
         LeftMenu.init();
     });
 </script>
