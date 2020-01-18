@@ -4,13 +4,13 @@
         obj: null,
 
         config: {
-            parent: "layoutObj",
-            pattern: "2U",
+            parent: "LeftLayoutObj",
+            pattern: "1C",
             offsets: {
-                top: 5,
-                right: 5,
-                bottom: 5,
-                left: 5
+                top: 2,
+                right: 2,
+                bottom: 2,
+                left: 2
             },
             cells: [
                 {
@@ -18,15 +18,8 @@
                     text: "&nbsp&nbsp&nbsp&nbsp功能列表",
                     collapsed_text: "单击展开功能列表",   // 折叠栏标题
                     width: 200,
+                    height:600,
                     collapse: false,       // 初始是否折叠
-                    fix_size: [true, true]
-                },
-                {
-                    id: "b",
-                    text: "Text B",
-                    collapsed_text: "Text b",
-                    header: false,
-                    collapse: false,
                     fix_size: [true, true]
                 }
             ]
@@ -35,7 +28,8 @@
             Layout.obj = new dhtmlXLayoutObject(Layout.config);
         }
     };
-    var Tree = {
+
+    var MenuTree = {
         obj: null,
         config: {
             skin: "toolfile/dhtmlxstand/skins/skyblue/imgs/dhxtreeview_skyblue/",
@@ -94,19 +88,25 @@
             ]
         },
         initobj: function () {
-            Tree.obj = Layout.obj.cells("a").attachTreeView(Tree.config);
-            Tree.obj.setSizes();
+            MenuTree.obj = Layout.obj.cells("a").attachTreeView(MenuTree.config);
+            MenuTree.obj.setSizes();
+        },
+        initEvent: function () {
+            MenuTree.obj.attachEvent("onClick", function(id){
+
+            });
         }
-    }
+    };
 
     var init = function () {
         Layout.initObj();
-        Tree.initobj();
+        MenuTree.initobj();
+        MenuTree.initEvent();
     };
 
-    var SystemHome = function () {
+    var LeftMenu = function () {
     };
-    SystemHome.init = init;
-    global.SystemHome = SystemHome || {};
+    LeftMenu.init = init;
+    global.LeftMenu = LeftMenu || {};
 
 }(this);

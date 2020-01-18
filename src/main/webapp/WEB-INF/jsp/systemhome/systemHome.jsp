@@ -15,7 +15,7 @@
     <script type="text/javascript" src="toolfile/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxstand/codebase/dhtmlx.js"></script>
 
-    <script type="text/javascript" src="js/systemhome/systemHome.js"></script>
+    <script type="text/javascript" src="js/systemhome/leftMenu.js"></script>
     <style type="text/css">
         html, body {
             width: 100%;
@@ -44,11 +44,20 @@
     </style>
 </head>
 <body>
-<div id="layoutObj" style="width: 100%;height: 100%;"></div>
+<div style="width:1600px;height: 755px">
+    <%--顶部欢迎条--%>
+    <div id="TopLayoutObj" style="width: 100%;height: 10%"></div>
+    <div style="width: 100%; height:90%">
+        <%--左边菜单栏--%>
+        <div id="LeftLayoutObj" style="float:left; width: 15%;height:100%"></div>
+        <%--右边内容详情--%>
+        <div id="RightLayoutObj" style = "float:left; width: 85%;height:100%"></div>
+    </div>
+</div>
 <script type="text/javascript">
     $(document).ready(function () {
         //初始化页面
-        SystemHome.init();
+        LeftMenu.init();
     });
 </script>
 
