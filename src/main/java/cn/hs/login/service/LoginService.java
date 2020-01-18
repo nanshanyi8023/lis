@@ -5,7 +5,7 @@ import cn.hs.login.mapper.LoginMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("loginService")
+@Service
 public class LoginService {
 
     @Autowired

@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/login")
 public class LoginController {
     @Autowired
-    LoginService loginService = null;
+    private LoginService loginService;
 
     @RequestMapping(value = "/getView", method = RequestMethod.GET)
     public ModelAndView getView(ModelMap modelMap) {  //Bas_hospitals hospital,
