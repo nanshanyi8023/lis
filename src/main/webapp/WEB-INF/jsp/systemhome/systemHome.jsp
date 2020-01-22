@@ -43,8 +43,12 @@
             background-image: url(images/systemhome/userInfoSetting.png);
         }
     </style>
+
 </head>
 <body>
+<script>
+    var width
+</script>
 <div style="width:1600px;height: 755px">
     <%--顶部欢迎条--%>
     <div id="TopLayoutObj" style="width: 100%;height: 10%"></div>

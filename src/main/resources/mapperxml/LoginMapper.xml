@@ -3,9 +3,9 @@
 <mapper namespace="cn.hs.login.mapper.LoginMapper">
 
 
-    <!--<select id="doLogin" resultType="cn.hs.login.dto.User_Info">
+    <select id="doLogin" resultType="cn.hs.login.dto.User_Info">
         select *
         from user_info
         where login_name = #{loginName} and login_password = #{loginPassword}
-    </select>-->
+    </select>
 </mapper>
