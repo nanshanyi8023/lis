@@ -14,8 +14,13 @@
 
     <script type="text/javascript" src="toolfile/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxstand/codebase/dhtmlx.js"></script>
+    <script type="text/javascript" src="toolfile/ajaxUtils.js"></script>
+    <script type="text/javascript" src="toolfile/dhtmlxAlert.js"></script>
 
-    <script type="text/javascript" src="js/systemhome/leftMenu.js"></script>
+    <script type="text/javascript" src="js/topwelcomebar/topWelcomeBar.js"></script>
+    <script type="text/javascript" src="js/leftmenu/leftMenu.js"></script>
+    <script type="text/javascript" src="js/userinfo/userInfo.js"></script>
+
     <style type="text/css">
         html, body {
             width: 100%;
@@ -42,11 +47,15 @@
             background-image: url(images/systemhome/userInfoSetting.png);
         }
     </style>
+
 </head>
 <body>
+<script>
+    var width
+</script>
 <div style="width:1600px;height: 755px">
     <%--顶部欢迎条--%>
-    <div id="TopLayoutObj" style="width: 100%;height: 10%"></div>
+    <div id="TopLayoutObj" style="width: 100%;height: 10%;"></div>
     <div style="width: 100%; height:90%">
         <%--左边菜单栏--%>
         <div id="LeftLayoutObj" style="float:left; width: 15%;height:100%"></div>
@@ -57,6 +66,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         //初始化页面
+        TopWelcomeBar.init();
         LeftMenu.init();
     });
 </script>

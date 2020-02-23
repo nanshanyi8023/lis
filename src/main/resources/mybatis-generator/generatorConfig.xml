@@ -2,29 +2,36 @@
 <!DOCTYPE generatorConfiguration
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
 <generatorConfiguration>
-    <context id="DB2Tables" targetRuntime="MyBatis3">
-        <!--<plugin type="com.itfsw.mybatis.generator.plugins.ExampleTargetPlugin">-->
-        <!--&lt;!&ndash; 修改Example类生成到目标包下 &ndash;&gt;-->
-        <!--<property name="targetPackage" value="com.kyee.his.base.dictionary.centralizedPurchasing.pojo"/>-->
-        <!--</plugin>-->
+    <context id="default" targetRuntime="MyBatis3">
+
+        <!-- optional，旨在创建class时，对注释进行控制 -->
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
-        <!--数据库链接地址账号密码-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1/lis" userId="root" password="root">
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/lis"
+                userId="root"
+                password="123">
         </jdbcConnection>
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
+
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="com.kyee.his.examine.pojo" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="cn.hs.userinfo.pojo" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
-        <!--生成映射文件存放位置-->
-        <sqlMapGenerator targetPackage="com.kyee.his.mapper.examine" targetProject="src/main/resources">
+        <!--生成映射文件.xml存放位置-->
+        <sqlMapGenerator targetPackage="mapperxml.userinfo" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
@@ -33,12 +40,13 @@
                 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kyee.his.examine.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.hs.userinfo.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
+
         <!--生成对应表及类名-->
+        <table tableName="USER_INFO_12344555"></table>
 
-        <table tableName="EXAM_METHOD_TYPE_RELATION_aaabbb"></table>
-
+        <!-- mybatis插件的搭建 -->
     </context>
 </generatorConfiguration>

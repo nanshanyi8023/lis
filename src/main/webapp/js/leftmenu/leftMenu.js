@@ -17,8 +17,6 @@
                     id: "a",
                     text: "&nbsp&nbsp&nbsp&nbsp功能列表",
                     collapsed_text: "单击展开功能列表",   // 折叠栏标题
-                    width: 200,
-                    height:600,
                     collapse: false,       // 初始是否折叠
                     fix_size: [true, true]
                 }
@@ -70,7 +68,7 @@
                 {
                     id: "inspectSettings",
                     text: "检验设置",
-                    open: 1,
+                    open: 0,
                     items: [
                         {
                             id: "inspectionItemSettings",
@@ -80,10 +78,26 @@
                     ]
                 },
                 {
+                    id: "inspectionOrder",
+                    text: "检验医嘱",
+                    open: 0,
+                    items: [
+                        {
+                            id: "issueInspectionOrder",
+                            text: "开具检验医嘱",
+                            icons:{file:""}
+                        },
+                        {
+                            id: "inspectionItemGroup",
+                            text: "检验医嘱项目分组",
+                            icons:{file:""}
+                        }
+                    ]
+                },
+                {
                     id: "userinfoSetting",
                     text: "个人信息设置",
                     icons:{file:"userinfoSetting"}
-                    // icons: {folder_opened: "userinfoSetting", folder_closed: "userinfoSetting"}
                 }
             ]
         },
@@ -92,8 +106,14 @@
             MenuTree.obj.setSizes();
         },
         initEvent: function () {
-            MenuTree.obj.attachEvent("onClick", function(id){
+            MenuTree.obj.attachEvent("onSelect", function(id){
+                //$("#RightLayoutObj").html("");    //清空右边内容----如果不是当前才需要清空----如果有未保存内容也需要提示
 
+                switch (id) {
+                    case "userinfoSetting":
+                        UserInfo.init();
+                        break;
+                }
             });
         }
     };

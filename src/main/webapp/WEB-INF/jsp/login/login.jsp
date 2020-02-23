@@ -20,6 +20,7 @@
 <![endif]-->
 
 	<script type="text/javascript" src="toolfile/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="toolfile/ajaxUtils.js"></script>
 	<script  type="text/javascript" src="js/login/login.js"></script>
 
     <style>   /*解决浏览器记住密码默认填充后改变输入框背景颜色的问题*/
