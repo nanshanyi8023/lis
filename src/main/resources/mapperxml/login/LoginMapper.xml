@@ -4,9 +4,8 @@
     <resultMap id="BaseResultMap" type="cn.hs.userinfo.pojo.UserInfo">
         <id column="hosnum" jdbcType="VARCHAR" property="hosnum" />
         <id column="login_name" jdbcType="VARCHAR" property="loginName" />
-        <result column="login_password" jdbcType="VARCHAR" property="loginPassword" />
         <result column="name" jdbcType="VARCHAR" property="name" />
-        <result column="jobNumber" jdbcType="VARCHAR" property="jobnumber" />
+        <result column="job_number" jdbcType="VARCHAR" property="jobNumber" />
         <result column="sex" jdbcType="VARCHAR" property="sex" />
         <result column="age" jdbcType="INTEGER" property="age" />
         <result column="phone" jdbcType="VARCHAR" property="phone" />

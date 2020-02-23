@@ -2,7 +2,6 @@ package cn.hs.login.mapper;
 
 import cn.hs.userinfo.pojo.UserInfo;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 @Repository

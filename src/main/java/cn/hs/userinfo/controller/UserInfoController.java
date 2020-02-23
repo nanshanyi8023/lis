@@ -1,12 +1,13 @@
 package cn.hs.userinfo.controller;
 
+import cn.hs.ApiResult;
 import cn.hs.userinfo.pojo.UserInfo;
 import cn.hs.userinfo.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/userInfo")
@@ -15,12 +16,33 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
-    @RequestMapping(value = "/saveBasicSettings", method = RequestMethod.POST)
-    public String saveBasicSettings(@RequestBody UserInfo userInfo){
+    private String loginName = "";
+
+    //根据cookie中的用户名和医院编码 查找用户个人信息
+    @RequestMapping(value = "/getUserInfo.json", method = RequestMethod.GET)
+    public ApiResult getUserInfo(HttpServletRequest request){
         try {
-            return userInfoService.saveBasicSettings(userInfo);
+            Cookie[] cookies = request.getCookies();
+            for(Cookie cookie : cookies){
+                if (cookie.getName().equals("loginName")){
+                    loginName = cookie.getValue();
+                }
+            }
+            return ApiResult.success(userInfoService.getUserInfo(loginName));
         } catch (Exception e){
-            return e.getMessage();
+            return ApiResult.failed(e.getMessage());
         }
     }
+
+    //保存用户修改后的信息
+    @RequestMapping(value = "/saveBasicSettings", method = RequestMethod.POST)
+    public ApiResult saveBasicSettings(@RequestBody UserInfo userInfo){
+        try {
+            userInfo.setLoginName(loginName);
+            return ApiResult.success(userInfoService.saveBasicSettings(userInfo));
+        } catch (Exception e){
+            return ApiResult.failed(e.getMessage());
+        }
+    }
+
 }

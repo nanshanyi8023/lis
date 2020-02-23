@@ -2,11 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.hs.userinfo.mapper.UserInfoMapper">
   <resultMap id="BaseResultMap" type="cn.hs.userinfo.pojo.UserInfo">
-    <id column="hosnum" jdbcType="VARCHAR" property="hosnum" />
     <id column="login_name" jdbcType="VARCHAR" property="loginName" />
-    <result column="login_password" jdbcType="VARCHAR" property="loginPassword" />
+    <result column="hosnum" jdbcType="VARCHAR" property="hosnum" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="jobNumber" jdbcType="VARCHAR" property="jobnumber" />
+    <result column="job_number" jdbcType="VARCHAR" property="jobNumber" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
     <result column="age" jdbcType="INTEGER" property="age" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
@@ -72,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    hosnum, login_name, login_password, name, jobNumber, sex, age, phone, email, note
+    login_name, hosnum, login_password, name, job_number, sex, age, phone, email, note
   </sql>
   <select id="selectByExample" parameterType="cn.hs.userinfo.pojo.UserInfoExample" resultMap="BaseResultMap">
     select
@@ -88,17 +87,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="cn.hs.userinfo.pojo.UserInfoKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user_info
-    where hosnum = #{hosnum,jdbcType=VARCHAR}
-      and login_name = #{loginName,jdbcType=VARCHAR}
+    where login_name = #{loginName,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="cn.hs.userinfo.pojo.UserInfoKey">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user_info
-    where hosnum = #{hosnum,jdbcType=VARCHAR}
-      and login_name = #{loginName,jdbcType=VARCHAR}
+    where login_name = #{loginName,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.hs.userinfo.pojo.UserInfoExample">
     delete from user_info
@@ -107,23 +104,23 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.hs.userinfo.pojo.UserInfo">
-    insert into user_info (hosnum, login_name, login_password, 
-      name, jobNumber, sex, 
+    insert into user_info (login_name, hosnum, login_password, 
+      name, job_number, sex, 
       age, phone, email, 
       note)
-    values (#{hosnum,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{jobnumber,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+    values (#{loginName,jdbcType=VARCHAR}, #{hosnum,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{jobNumber,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{note,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.hs.userinfo.pojo.UserInfo">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="hosnum != null">
-        hosnum,
-      </if>
       <if test="loginName != null">
         login_name,
+      </if>
+      <if test="hosnum != null">
+        hosnum,
       </if>
       <if test="loginPassword != null">
         login_password,
@@ -131,8 +128,8 @@
       <if test="name != null">
         name,
       </if>
-      <if test="jobnumber != null">
-        jobNumber,
+      <if test="jobNumber != null">
+        job_number,
       </if>
       <if test="sex != null">
         sex,
@@ -151,11 +148,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="hosnum != null">
-        #{hosnum,jdbcType=VARCHAR},
-      </if>
       <if test="loginName != null">
         #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="hosnum != null">
+        #{hosnum,jdbcType=VARCHAR},
       </if>
       <if test="loginPassword != null">
         #{loginPassword,jdbcType=VARCHAR},
@@ -163,8 +160,8 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="jobnumber != null">
-        #{jobnumber,jdbcType=VARCHAR},
+      <if test="jobNumber != null">
+        #{jobNumber,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
         #{sex,jdbcType=VARCHAR},
@@ -192,11 +189,11 @@
   <update id="updateByExampleSelective" parameterType="map">
     update user_info
     <set>
-      <if test="record.hosnum != null">
-        hosnum = #{record.hosnum,jdbcType=VARCHAR},
-      </if>
       <if test="record.loginName != null">
         login_name = #{record.loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hosnum != null">
+        hosnum = #{record.hosnum,jdbcType=VARCHAR},
       </if>
       <if test="record.loginPassword != null">
         login_password = #{record.loginPassword,jdbcType=VARCHAR},
@@ -204,8 +201,8 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.jobnumber != null">
-        jobNumber = #{record.jobnumber,jdbcType=VARCHAR},
+      <if test="record.jobNumber != null">
+        job_number = #{record.jobNumber,jdbcType=VARCHAR},
       </if>
       <if test="record.sex != null">
         sex = #{record.sex,jdbcType=VARCHAR},
@@ -229,11 +226,11 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update user_info
-    set hosnum = #{record.hosnum,jdbcType=VARCHAR},
-      login_name = #{record.loginName,jdbcType=VARCHAR},
+    set login_name = #{record.loginName,jdbcType=VARCHAR},
+      hosnum = #{record.hosnum,jdbcType=VARCHAR},
       login_password = #{record.loginPassword,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
-      jobNumber = #{record.jobnumber,jdbcType=VARCHAR},
+      job_number = #{record.jobNumber,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
       age = #{record.age,jdbcType=INTEGER},
       phone = #{record.phone,jdbcType=VARCHAR},
@@ -246,14 +243,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.hs.userinfo.pojo.UserInfo">
     update user_info
     <set>
+      <if test="hosnum != null">
+        hosnum = #{hosnum,jdbcType=VARCHAR},
+      </if>
       <if test="loginPassword != null">
         login_password = #{loginPassword,jdbcType=VARCHAR},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="jobnumber != null">
-        jobNumber = #{jobnumber,jdbcType=VARCHAR},
+      <if test="jobNumber != null">
+        job_number = #{jobNumber,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
         sex = #{sex,jdbcType=VARCHAR},
@@ -271,20 +271,20 @@
         note = #{note,jdbcType=VARCHAR},
       </if>
     </set>
-    where hosnum = #{hosnum,jdbcType=VARCHAR}
-      and login_name = #{loginName,jdbcType=VARCHAR}
+    where login_name = #{loginName,jdbcType=VARCHAR}
   </update>
+
+  <!--删除了loginPassword-->
   <update id="updateByPrimaryKey" parameterType="cn.hs.userinfo.pojo.UserInfo">
     update user_info
-    set login_password = #{loginPassword,jdbcType=VARCHAR},
+    set hosnum = #{hosnum,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
-      jobNumber = #{jobnumber,jdbcType=VARCHAR},
+      job_number = #{jobNumber,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       note = #{note,jdbcType=VARCHAR}
-    where hosnum = #{hosnum,jdbcType=VARCHAR}
-      and login_name = #{loginName,jdbcType=VARCHAR}
+    where login_name = #{loginName,jdbcType=VARCHAR}
   </update>
 </mapper>

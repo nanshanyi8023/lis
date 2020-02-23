@@ -1,11 +1,14 @@
 package cn.hs.userinfo.pojo;
 
-public class UserInfo extends UserInfoKey {
-    private String loginPassword;
+//没有登录密码,防止传给前端数据时密码泄露
+public class UserInfo {
+    private String loginName;
+
+    private String hosnum;
 
     private String name;
 
-    private String jobnumber;
+    private String jobNumber;
 
     private String sex;
 
@@ -17,12 +20,20 @@ public class UserInfo extends UserInfoKey {
 
     private String note;
 
-    public String getLoginPassword() {
-        return loginPassword;
+    public String getLoginName() {
+        return loginName;
     }
 
-    public void setLoginPassword(String loginPassword) {
-        this.loginPassword = loginPassword == null ? null : loginPassword.trim();
+    public void setLoginName(String loginName) {
+        this.loginName = loginName == null ? null : loginName.trim();
+    }
+
+    public String getHosnum() {
+        return hosnum;
+    }
+
+    public void setHosnum(String hosnum) {
+        this.hosnum = hosnum == null ? null : hosnum.trim();
     }
 
     public String getName() {
@@ -33,12 +44,12 @@ public class UserInfo extends UserInfoKey {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getJobnumber() {
-        return jobnumber;
+    public String getJobNumber() {
+        return jobNumber;
     }
 
-    public void setJobnumber(String jobnumber) {
-        this.jobnumber = jobnumber == null ? null : jobnumber.trim();
+    public void setJobNumber(String jobNumber) {
+        this.jobNumber = jobNumber == null ? null : jobNumber.trim();
     }
 
     public String getSex() {

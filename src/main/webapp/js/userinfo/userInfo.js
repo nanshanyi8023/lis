@@ -87,6 +87,7 @@
         ],
         initobj:function () {
             BasicSettingsForm.obj = Layout.obj.cells("a").attachForm(BasicSettingsForm.config);
+            BasicSettingsForm.writeBackForm();     //初始化时填写表单
         },
         initEvent:function () {
             BasicSettingsForm.obj.attachEvent("onButtonClick",function (name) {
@@ -95,18 +96,27 @@
                         BasicSettingsForm.saveBasicSettings();
                         break;
                     case "resetButton":
-                        BasicSettingsForm.resetBasicSettings();
+                        BasicSettingsForm. writeBackForm();
                         break;
                     default:
                 }
             });
         },
+        writeBackForm:function(){
+            ajaxUtils.get('userInfo/getUserInfo.json'
+            ).then(function (userInfo) {
+                BasicSettingsForm.obj.setFormData(userInfo);
+            }).catch(function (reason) {
+                alertErrorMsg(reason);
+            }).finally(function () {
+            });
+        },
         saveBasicSettings:function () {
-            var basicFormData = BasicSettingsForm.obj.getFormData();
+            var userInfo = BasicSettingsForm.obj.getFormData();
             ajaxUtils.postBody('userInfo/saveBasicSettings.json',
-                basicFormData
+                userInfo
             ).then(function (data) {
-
+                dhtmlx.alert("保存成功");
             }).catch(function (reason) {
                 alertErrorMsg(reason);
             }).finally(function () {
@@ -118,6 +128,7 @@
     var init = function () {
         Layout.initObj();
         BasicSettingsForm.initobj();
+        BasicSettingsForm.initEvent();
     };
 
     var UserInfo = function () {

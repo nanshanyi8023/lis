@@ -45,7 +45,7 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="USER_INFO___testslfjo"></table>
+        <table tableName="USER_INFO_12344555"></table>
 
         <!-- mybatis插件的搭建 -->
     </context>

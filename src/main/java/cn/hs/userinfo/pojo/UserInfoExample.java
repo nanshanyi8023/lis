@@ -104,76 +104,6 @@ public class UserInfoExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andHosnumIsNull() {
-            addCriterion("hosnum is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumIsNotNull() {
-            addCriterion("hosnum is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumEqualTo(String value) {
-            addCriterion("hosnum =", value, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumNotEqualTo(String value) {
-            addCriterion("hosnum <>", value, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumGreaterThan(String value) {
-            addCriterion("hosnum >", value, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumGreaterThanOrEqualTo(String value) {
-            addCriterion("hosnum >=", value, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumLessThan(String value) {
-            addCriterion("hosnum <", value, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumLessThanOrEqualTo(String value) {
-            addCriterion("hosnum <=", value, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumLike(String value) {
-            addCriterion("hosnum like", value, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumNotLike(String value) {
-            addCriterion("hosnum not like", value, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumIn(List<String> values) {
-            addCriterion("hosnum in", values, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumNotIn(List<String> values) {
-            addCriterion("hosnum not in", values, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumBetween(String value1, String value2) {
-            addCriterion("hosnum between", value1, value2, "hosnum");
-            return (Criteria) this;
-        }
-
-        public Criteria andHosnumNotBetween(String value1, String value2) {
-            addCriterion("hosnum not between", value1, value2, "hosnum");
-            return (Criteria) this;
-        }
-
         public Criteria andLoginNameIsNull() {
             addCriterion("login_name is null");
             return (Criteria) this;
@@ -241,6 +171,76 @@ public class UserInfoExample {
 
         public Criteria andLoginNameNotBetween(String value1, String value2) {
             addCriterion("login_name not between", value1, value2, "loginName");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumIsNull() {
+            addCriterion("hosnum is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumIsNotNull() {
+            addCriterion("hosnum is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumEqualTo(String value) {
+            addCriterion("hosnum =", value, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumNotEqualTo(String value) {
+            addCriterion("hosnum <>", value, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumGreaterThan(String value) {
+            addCriterion("hosnum >", value, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumGreaterThanOrEqualTo(String value) {
+            addCriterion("hosnum >=", value, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumLessThan(String value) {
+            addCriterion("hosnum <", value, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumLessThanOrEqualTo(String value) {
+            addCriterion("hosnum <=", value, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumLike(String value) {
+            addCriterion("hosnum like", value, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumNotLike(String value) {
+            addCriterion("hosnum not like", value, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumIn(List<String> values) {
+            addCriterion("hosnum in", values, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumNotIn(List<String> values) {
+            addCriterion("hosnum not in", values, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumBetween(String value1, String value2) {
+            addCriterion("hosnum between", value1, value2, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andHosnumNotBetween(String value1, String value2) {
+            addCriterion("hosnum not between", value1, value2, "hosnum");
             return (Criteria) this;
         }
 
@@ -384,73 +384,73 @@ public class UserInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberIsNull() {
-            addCriterion("jobNumber is null");
+        public Criteria andJobNumberIsNull() {
+            addCriterion("job_number is null");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberIsNotNull() {
-            addCriterion("jobNumber is not null");
+        public Criteria andJobNumberIsNotNull() {
+            addCriterion("job_number is not null");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberEqualTo(String value) {
-            addCriterion("jobNumber =", value, "jobnumber");
+        public Criteria andJobNumberEqualTo(String value) {
+            addCriterion("job_number =", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberNotEqualTo(String value) {
-            addCriterion("jobNumber <>", value, "jobnumber");
+        public Criteria andJobNumberNotEqualTo(String value) {
+            addCriterion("job_number <>", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberGreaterThan(String value) {
-            addCriterion("jobNumber >", value, "jobnumber");
+        public Criteria andJobNumberGreaterThan(String value) {
+            addCriterion("job_number >", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberGreaterThanOrEqualTo(String value) {
-            addCriterion("jobNumber >=", value, "jobnumber");
+        public Criteria andJobNumberGreaterThanOrEqualTo(String value) {
+            addCriterion("job_number >=", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberLessThan(String value) {
-            addCriterion("jobNumber <", value, "jobnumber");
+        public Criteria andJobNumberLessThan(String value) {
+            addCriterion("job_number <", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberLessThanOrEqualTo(String value) {
-            addCriterion("jobNumber <=", value, "jobnumber");
+        public Criteria andJobNumberLessThanOrEqualTo(String value) {
+            addCriterion("job_number <=", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberLike(String value) {
-            addCriterion("jobNumber like", value, "jobnumber");
+        public Criteria andJobNumberLike(String value) {
+            addCriterion("job_number like", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberNotLike(String value) {
-            addCriterion("jobNumber not like", value, "jobnumber");
+        public Criteria andJobNumberNotLike(String value) {
+            addCriterion("job_number not like", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberIn(List<String> values) {
-            addCriterion("jobNumber in", values, "jobnumber");
+        public Criteria andJobNumberIn(List<String> values) {
+            addCriterion("job_number in", values, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberNotIn(List<String> values) {
-            addCriterion("jobNumber not in", values, "jobnumber");
+        public Criteria andJobNumberNotIn(List<String> values) {
+            addCriterion("job_number not in", values, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberBetween(String value1, String value2) {
-            addCriterion("jobNumber between", value1, value2, "jobnumber");
+        public Criteria andJobNumberBetween(String value1, String value2) {
+            addCriterion("job_number between", value1, value2, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobnumberNotBetween(String value1, String value2) {
-            addCriterion("jobNumber not between", value1, value2, "jobnumber");
+        public Criteria andJobNumberNotBetween(String value1, String value2) {
+            addCriterion("job_number not between", value1, value2, "jobNumber");
             return (Criteria) this;
         }
 
