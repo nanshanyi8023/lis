@@ -17,6 +17,8 @@
 
     <script type="text/javascript" src="js/topwelcomebar/topWelcomeBar.js"></script>
     <script type="text/javascript" src="js/leftmenu/leftMenu.js"></script>
+    <script type="text/javascript" src="js/userinfo/userInfo.js"></script>
+
     <style type="text/css">
         html, body {
             width: 100%;
@@ -51,7 +53,7 @@
 </script>
 <div style="width:1600px;height: 755px">
     <%--顶部欢迎条--%>
-    <div id="TopLayoutObj" style="width: 100%;height: 10%"></div>
+    <div id="TopLayoutObj" style="width: 100%;height: 10%;"></div>
     <div style="width: 100%; height:90%">
         <%--左边菜单栏--%>
         <div id="LeftLayoutObj" style="float:left; width: 15%;height:100%"></div>

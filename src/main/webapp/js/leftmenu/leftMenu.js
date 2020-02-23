@@ -98,7 +98,6 @@
                     id: "userinfoSetting",
                     text: "个人信息设置",
                     icons:{file:"userinfoSetting"}
-                    // icons: {folder_opened: "userinfoSetting", folder_closed: "userinfoSetting"}
                 }
             ]
         },
@@ -107,8 +106,14 @@
             MenuTree.obj.setSizes();
         },
         initEvent: function () {
-            MenuTree.obj.attachEvent("onClick", function(id){
+            MenuTree.obj.attachEvent("onSelect", function(id){
+                //$("#RightLayoutObj").html("");    //清空右边内容----如果不是当前才需要清空----如果有未保存内容也需要提示
 
+                switch (id) {
+                    case "userinfoSetting":
+                        UserInfo.init();
+                        break;
+                }
             });
         }
     };

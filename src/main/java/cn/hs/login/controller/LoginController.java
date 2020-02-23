@@ -1,6 +1,8 @@
 package cn.hs.login.controller;
 
+import cn.hs.ApiResult;
 import cn.hs.login.service.LoginService;
+import cn.hs.userinfo.pojo.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +24,12 @@ public class LoginController {
 
     //执行登录操作
     @RequestMapping(value = "/doLogin.json", method = RequestMethod.GET)
-    public String doLogin(@RequestParam(required = true) String loginName ,@RequestParam(required = true) String loginPassword){
+    public ApiResult doLogin(@RequestParam(required = true) String loginName , @RequestParam(required = true) String loginPassword){
         try {
-            return loginService.doLogin(loginName, loginPassword);
+            UserInfo userInfo = loginService.doLogin(loginName, loginPassword);
+            return ApiResult.success(userInfo);
         } catch (Exception e){
-            return e.getMessage();
+            return ApiResult.failed(e.getMessage());
         }
     }
 
