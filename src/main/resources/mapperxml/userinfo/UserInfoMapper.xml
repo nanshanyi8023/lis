@@ -287,4 +287,15 @@
       note = #{note,jdbcType=VARCHAR}
     where login_name = #{loginName,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByLogin" resultType="cn.hs.userinfo.pojo.UserInfo">
+    select *
+    from user_info
+    where login_name = #{loginName} and login_password = #{oldPassword}
+  </select>
+  <update id="updateLoginPassword">
+    update user_info
+    set login_Password = #{newPassword}
+    where login_name = #{loginName}
+  </update>
 </mapper>

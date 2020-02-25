@@ -15,8 +15,8 @@
             cells:[
                 {
                     id:"a",
-                    text:"基础设置",
-                    collapsed_text: "单击展开基础设置",   // 折叠栏标题
+                    text:"基础信息设置",
+                    collapsed_text: "单击展开基础信息设置",   // 折叠栏标题
                     collapse: false,       // 初始是否折叠
                     height:420,
                     width:900,
@@ -116,7 +116,7 @@
             ajaxUtils.postBody('userInfo/saveBasicSettings.json',
                 userInfo
             ).then(function (data) {
-                alertMsg("保存成功");
+                alertMsg("修改基础信息成功");
             }).catch(function (reason) {
                 alertErrorMsg(reason);
             }).finally(function () {
@@ -146,6 +146,65 @@
         ],
         initobj:function () {
             PasswordSettingsForm.obj = Layout.obj.cells("b").attachForm(PasswordSettingsForm.config);
+            PasswordSettingsForm.obj.setItemValue("name",$.cookie("loginName"));
+        },
+        initEvent:function () {
+            PasswordSettingsForm.obj.attachEvent("onButtonClick",function (name) {
+                switch (name) {
+                    case "saveButton":
+                        PasswordSettingsForm.savePasswordSettings();
+                        break;
+                    case "cancelButton":
+                        PasswordSettingsForm. cancelPasswordSettings();
+                        break;
+                    default:
+                }
+            });
+        },
+        //保存修改后的密码
+        savePasswordSettings:function(){
+            var oldPassword = PasswordSettingsForm.obj.getItemValue("oldPassword");
+            var newPassword = PasswordSettingsForm.obj.getItemValue("newPassword");
+            var confirmNewPassword = PasswordSettingsForm.obj.getItemValue("confirmNewPassword");
+            if (isEmpty(oldPassword)) {
+                alertMsg("请输入原密码！");
+                return;
+            }
+            if (isEmpty(newPassword)) {
+                alertMsg("请输入新密码！");
+                return;
+            }
+            if (isEmpty(confirmNewPassword)) {
+                alertMsg("请输入确认新密码！");
+                return;
+            }
+            if (newPassword != confirmNewPassword) {
+                alertMsg("两次输入的新密码不一致，请重新输入！");
+                PasswordSettingsForm.obj.setItemValue("newPassword","");
+                PasswordSettingsForm.obj.setItemValue("confirmNewPassword","");
+            }else {
+                ajaxUtils.postBody('userInfo/savePasswordSettings.json', {
+                    "oldPassword":oldPassword,
+                    "newPassword":newPassword
+                }).then(function (flag) {
+                    if (flag == "true"){
+                        alertMsg("修改密码成功");
+                        PasswordSettingsForm. cancelPasswordSettings();
+                    } else if (flag == "false") {
+                        alertMsg("用户名或密码错误！");
+                    }
+                }).catch(function (reason) {
+                    alertErrorMsg(reason);
+                }).finally(function () {
+                });
+            }
+        },
+
+        //清空密码栏
+        cancelPasswordSettings:function () {
+            PasswordSettingsForm.obj.setItemValue("oldPassword","");
+            PasswordSettingsForm.obj.setItemValue("newPassword","");
+            PasswordSettingsForm.obj.setItemValue("confirmNewPassword","");
         }
     }
 
@@ -155,6 +214,7 @@
         BasicSettingsForm.initobj();
         BasicSettingsForm.initEvent();
         PasswordSettingsForm.initobj();
+        PasswordSettingsForm.initEvent();
     };
 
     var UserInfo = function () {

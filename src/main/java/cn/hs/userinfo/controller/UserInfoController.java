@@ -1,6 +1,7 @@
 package cn.hs.userinfo.controller;
 
 import cn.hs.ApiResult;
+import cn.hs.userinfo.dto.Password;
 import cn.hs.userinfo.pojo.UserInfo;
 import cn.hs.userinfo.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,16 @@ public class UserInfoController {
         try {
             userInfo.setLoginName(loginName);
             return ApiResult.success(userInfoService.saveBasicSettings(userInfo));
+        } catch (Exception e){
+            return ApiResult.failed(e.getMessage());
+        }
+    }
+
+    //保存用户修改后的密码
+    @RequestMapping(value = "/savePasswordSettings", method = RequestMethod.POST)
+    public ApiResult savePasswordSettings(@RequestBody Password password){
+        try {
+            return ApiResult.success(userInfoService.savePasswordSettings(loginName,password));
         } catch (Exception e){
             return ApiResult.failed(e.getMessage());
         }

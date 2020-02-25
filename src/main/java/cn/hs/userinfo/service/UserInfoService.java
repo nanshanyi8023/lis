@@ -1,5 +1,6 @@
 package cn.hs.userinfo.service;
 
+import cn.hs.userinfo.dto.Password;
 import cn.hs.userinfo.mapper.UserInfoMapper;
 import cn.hs.userinfo.pojo.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,16 @@ public class UserInfoService {
     //保存用户修改后的信息
     public int saveBasicSettings(UserInfo userInfo) {
         return userInfoMapper.updateByPrimaryKey(userInfo);
+    }
+
+    //保存用户修改后的密码
+    public String savePasswordSettings(String loginName, Password password) {
+        UserInfo userInfo = userInfoMapper.selectByLogin(loginName, password.getOldPassword());
+        if (userInfo != null){
+            userInfoMapper.updateLoginPassword(loginName,password.getNewPassword());
+            return "true";
+        }else {
+            return "false";
+        }
     }
 }

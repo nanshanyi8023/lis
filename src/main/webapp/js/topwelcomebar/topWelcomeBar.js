@@ -53,7 +53,7 @@
 
     var init = function () {
         Layout.initObj();
-        TopForm.initobj();
+        //TopForm.initobj();
     };
 
     var TopWelcomeBar = function () {

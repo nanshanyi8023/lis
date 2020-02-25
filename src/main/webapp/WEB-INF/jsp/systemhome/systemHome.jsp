@@ -13,9 +13,11 @@
     <link type="text/css" rel="stylesheet" href="toolfile/dhtmlxstand/codebase/dhtmlx.css" />
 
     <script type="text/javascript" src="toolfile/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="toolfile/jquery.cookie.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxstand/codebase/dhtmlx.js"></script>
     <script type="text/javascript" src="toolfile/ajaxUtils.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxAlert.js"></script>
+    <script type="text/javascript" src="toolfile/isEmpyt.js"></script>
 
     <script type="text/javascript" src="js/topwelcomebar/topWelcomeBar.js"></script>
     <script type="text/javascript" src="js/leftmenu/leftMenu.js"></script>
