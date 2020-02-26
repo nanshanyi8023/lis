@@ -43,6 +43,7 @@
         }
     };
 
+    //基础信息设置表单
     var BasicSettingsForm = {
         obj:null,
         config:[
@@ -124,6 +125,7 @@
         }
     };
 
+    //密码修改表单
     var PasswordSettingsForm = {
         obj:null,
         config:[
@@ -155,7 +157,7 @@
                         PasswordSettingsForm.savePasswordSettings();
                         break;
                     case "cancelButton":
-                        PasswordSettingsForm. cancelPasswordSettings();
+                        PasswordSettingsForm.cancelPasswordSettings();
                         break;
                     default:
                 }
@@ -182,22 +184,22 @@
                 alertMsg("两次输入的新密码不一致，请重新输入！");
                 PasswordSettingsForm.obj.setItemValue("newPassword","");
                 PasswordSettingsForm.obj.setItemValue("confirmNewPassword","");
-            }else {
-                ajaxUtils.postBody('userInfo/savePasswordSettings.json', {
-                    "oldPassword":oldPassword,
-                    "newPassword":newPassword
-                }).then(function (flag) {
-                    if (flag == "true"){
-                        alertMsg("修改密码成功");
-                        PasswordSettingsForm. cancelPasswordSettings();
-                    } else if (flag == "false") {
-                        alertMsg("用户名或密码错误！");
-                    }
-                }).catch(function (reason) {
-                    alertErrorMsg(reason);
-                }).finally(function () {
-                });
+                return;
             }
+            ajaxUtils.postBody('userInfo/savePasswordSettings.json', {
+                "oldPassword":oldPassword,
+                "newPassword":newPassword
+            }).then(function (flag) {
+                if (flag == "true"){
+                    alertMsg("修改密码成功");
+                    PasswordSettingsForm.cancelPasswordSettings();
+                } else if (flag == "false") {
+                    alertMsg("原密码错误！");
+                }
+            }).catch(function (reason) {
+                alertErrorMsg(reason);
+            }).finally(function () {
+            });
         },
 
         //清空密码栏
@@ -206,8 +208,7 @@
             PasswordSettingsForm.obj.setItemValue("newPassword","");
             PasswordSettingsForm.obj.setItemValue("confirmNewPassword","");
         }
-    }
-
+    };
 
     var init = function () {
         Layout.initObj();

@@ -107,11 +107,14 @@
         },
         initEvent: function () {
             MenuTree.obj.attachEvent("onSelect", function(id){
-                //$("#RightLayoutObj").html("");    //清空右边内容----如果不是当前才需要清空----如果有未保存内容也需要提示
+                $("#RightLayoutObj").html("");    //清空右边内容----如果不是当前才需要清空----如果有未保存内容也需要提示
 
                 switch (id) {
                     case "userinfoSetting":
                         UserInfo.init();
+                        break;
+                    case "inspectionItemSettings":
+                        inspectionItemSettings.init();
                         break;
                 }
             });
