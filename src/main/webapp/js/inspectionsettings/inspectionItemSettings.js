@@ -140,9 +140,121 @@
         }
     };
 
+    //新增以及查看详细信息窗口
+    var ItemDetailWindow = {
+        obj: null,
+        createObj: function (data) {
+            var windowFactory = new dhtmlXWindows();
+            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 580, 320);   //(id, left, top, width, height)
+            ItemDetailWindow.obj.setText("项目详情");  //标题
+            ItemDetailWindow.obj.denyResize();  //拒绝调整大小
+            ItemDetailWindow.obj.denyMove();    //拒绝窗口移动
+            ItemDetailWindow.obj.denyPark();
+            ItemDetailWindow.obj.setModal(true);
+            ItemDetailWindow.obj.centerOnScreen(); //窗口居中显示在屏幕中
+            ItemDetailWindow.initWindow(data);
+        },
+        initWindow: function (data) {
+            ItemDetailWindow.Layout.initObj();
+            ItemDetailWindow.Form.initEvent();
+            ItemDetailWindow.Form.loadData(data);
+        }
+    };
 
+    //详细信息窗口布局设置
+    ItemDetailWindow.Layout = {
+        obj: null,
 
-    var init = function () {
+        config: {
+            pattern: "1C",
+            offsets: {          // optional, offsets for fullscreen init
+                top: 5,     // you can specify all four sides
+                right: 5,     // or only the side where you want to have an offset
+                bottom: 5,
+                left: 5
+            },
+            cells: [
+                {
+                    id: "a",        // id of the cell you want to configure
+                    text: "Text a",     // header text
+                    collapsed_text: "Text a",   // header text for a collapsed cell
+                    header: false,      // hide header on init
+                    collapse: false,       // hide collapse on init
+                    fix_size: [true, true] // fix cell's size, [width,height]
+                }
+            ]
+        },
+
+        initObj: function () {
+            ItemDetailWindow.Layout.obj = ItemDetailWindow.obj.attachLayout(ItemDetailWindow.Layout.config);
+        }
+    };
+
+    //详细信息窗口表单设置
+    ItemDetailWindow.Form = {
+        obj: null,
+        config: [
+            {type: "settings", position: "label-left", blockOffset: 0, offsetLeft: 15, offsetTop: 5}
+            {
+                type: "block", list: [
+                    {type: "button", name: "itemDetailSaveBtn", value: "保存", offsetLeft: 300, offsetTop: 90},
+                    {type: "newcolumn"},
+                    {type: "button", name: "itemDetailCancelBtn", value: "取消", offsetLeft: 20, offsetTop: 90}
+                ]
+            }
+        ],
+        initObj: function () {
+            ItemDetailWindow.Form.obj = ItemDetailWindow.Layout.obj.cells("a").attachForm(ItemDetailWindow.Form.config);
+        },
+        initEvent: function () {
+            ItemDetailWindow.Form.obj.attachEvent("onButtonClick", function (name) {
+                switch (name) {
+                    case "itemDetailSaveBtn":
+                        ItemDetailWindow.Form.itemDetailSaveBtnEvent();
+                        break;
+                    case "itemDetailCancelBtn":
+                        ItemDetailWindow.Form.itemDetailCancelBtnEvent();
+                        break;
+                    default:
+                }
+            });
+        },
+        //保存按钮
+        itemDetailSaveBtnEvent: function () {
+            var formData = ItemDetailWindow.Form.obj.getFormData();
+            ajaxUtils.postBody(' .json',
+                formData
+            ).then(function (data) {
+                ItemDetailWindow.obj.close();
+
+            }).catch(function (reason) {
+                dhtmlxAlert.alertErrorMsg(reason);
+            }).finally(function () {
+            });
+        },
+        //取消按钮
+        itemDetailCancelBtnEvent: function () {
+            ItemDetailWindow.obj.close();
+        },
+        //双击查看项目后回写表单
+        loadData: function (data) {
+            if (!data){
+                return;
+            }
+            var formData = {
+                itemId: data.itemId,
+                itemName: data.itemName,
+                englishAbbreviations: data.englishAbbreviations,
+                unit:data.unit,
+                itemType:data.itemType,
+                pySpell: data.pySpell.toLowerCase(),
+                wbSpell: data.wbSpell.toLowerCase()
+            };
+            ItemDetailWindow.Form.obj.setFormData(formData);
+        }
+    };
+
+        var init = function () {
         Layout.initObj();
         ItemOperationForm.initObj();
         ItemOperationForm.initEvent();
