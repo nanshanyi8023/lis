@@ -158,7 +158,7 @@
             ItemDetailWindow.Layout.initObj();
             ItemDetailWindow.Form.initEvent();
             ItemDetailWindow.Form.loadData(data);
-        }
+        }    
     };
 
     //详细信息窗口布局设置
