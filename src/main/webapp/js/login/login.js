@@ -1,20 +1,4 @@
 function doLogin() {
-   /* $.ajax({
-        url:"login/doLogin.json",
-        type:"get",
-        data:{
-            loginName : $("#loginName").val(),
-            loginPassword : $("#loginPassword").val()
-        },
-        //dataType:"text",
-        success:function(data){
-            window.location.href="systemHome/getView.htm";   //跳转到系统主页面
-        },
-        error:function(e){
-            alert(e);
-        }
-    });*/
-
     ajaxUtils.get('login/doLogin.json', {
         loginName : $("#loginName").val(),
         loginPassword : $("#loginPassword").val()

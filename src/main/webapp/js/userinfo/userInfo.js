@@ -108,7 +108,7 @@
             ).then(function (userInfo) {
                 BasicSettingsForm.obj.setFormData(userInfo);
             }).catch(function (reason) {
-                alertErrorMsg(reason);
+                dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
             });
         },
@@ -117,9 +117,9 @@
             ajaxUtils.postBody('userInfo/saveBasicSettings.json',
                 userInfo
             ).then(function (data) {
-                alertMsg("修改基础信息成功");
+                dhtmlxAlert.alertMsg("修改基础信息成功");
             }).catch(function (reason) {
-                alertErrorMsg(reason);
+                dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
             });
         }
@@ -169,19 +169,19 @@
             var newPassword = PasswordSettingsForm.obj.getItemValue("newPassword");
             var confirmNewPassword = PasswordSettingsForm.obj.getItemValue("confirmNewPassword");
             if (isEmpty(oldPassword)) {
-                alertMsg("请输入原密码！");
+                dhtmlxAlert.alertWarningMsg("请输入原密码！");
                 return;
             }
             if (isEmpty(newPassword)) {
-                alertMsg("请输入新密码！");
+                dhtmlxAlert.alertWarningMsg("请输入新密码！");
                 return;
             }
             if (isEmpty(confirmNewPassword)) {
-                alertMsg("请输入确认新密码！");
+                dhtmlxAlert.alertWarningMsg("请输入确认新密码！");
                 return;
             }
             if (newPassword != confirmNewPassword) {
-                alertMsg("两次输入的新密码不一致，请重新输入！");
+                dhtmlxAlert.alertWarningMsg("两次输入的新密码不一致，请重新输入！");
                 PasswordSettingsForm.obj.setItemValue("newPassword","");
                 PasswordSettingsForm.obj.setItemValue("confirmNewPassword","");
                 return;
@@ -191,13 +191,13 @@
                 "newPassword":newPassword
             }).then(function (flag) {
                 if (flag == "true"){
-                    alertMsg("修改密码成功");
+                    dhtmlxAlert.alertMsg("修改密码成功");
                     PasswordSettingsForm.cancelPasswordSettings();
                 } else if (flag == "false") {
-                    alertMsg("原密码错误！");
+                    dhtmlxAlert.alertWarningMsg("原密码错误！");
                 }
             }).catch(function (reason) {
-                alertErrorMsg(reason);
+                dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
             });
         },

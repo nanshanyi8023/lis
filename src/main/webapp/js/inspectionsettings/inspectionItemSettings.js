@@ -1,3 +1,4 @@
+// 检验项目设置页面
 !function (global) {
     'use strict';
     var Layout = {
@@ -67,12 +68,12 @@
                         ItemOperationForm.itemAddBtnEvent();
                         break;
                     case "itemDeleteBtn":
-                        var itemIdList = dhxUtil.xGrid.getCheckedRowIds(ItemGrid.obj);   //获取ItemGrid中checkbox所有被勾选上行的rowId
+                        var itemIdList = dhtmlxUtils.getCheckedRowIds(ItemGrid.obj);   //获取ItemGrid中checkbox所有被勾选上行的rowId
                         if (itemIdList.length === 0){
-                            alertMsg("需至少选中一个要删除的项目");
+                            dhtmlxAlert.alertMsg("需至少选中一个要删除的项目");
                             return;
                         }
-                        modalMessageTools.showConfirm("是否确认删除?",null,null,null,function () {
+                        dhtmlxUtils.confirmWarningMsg("是否确认删除?", function () {
                             ItemOperationForm.itemDeleteBtnEvent(itemIdList);
                             //重新加载表格
 
@@ -82,7 +83,7 @@
                 }
             });
         },
-        //查询功能
+        //查询功能(支持项目编号，项目名称，英文缩写查询)
         itemSearchBtnEvent: function () {
             ItemGrid.loadData(ItemOperationForm.obj.getItemValue("iteminput"));
         },
@@ -97,43 +98,43 @@
             ).then(function (data) {
 
             }).catch(function (reason) {
-                alertErrorMsg(reason);
+                dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
             });
         }
     };
 
-    //检查方法列表
+    //检验项目列表
     var ItemGrid = {
         obj: null,
 
         initObj: function () {
             ItemGrid.obj = Layout.obj.cells("b").attachGrid();
-            ItemGrid.obj.setImagePath("kyee/static/dhtmlxSuitev508proeval/skins/skyblue/imgs/");     //选择框图片
-            ItemGrid.obj.setHeader("选择,编号,检查方法,检查类型,排序号",null,
-                ["text-align:center;","text-align:center;","text-align:center","text-align:center","text-align:center"]);  //设置标题内容居中
-            ItemGrid.obj.setColumnIds("ch,itemid,itemname,examtypebyid,ordernumber");
-            ItemGrid.obj.setColAlign("center,center,center,center,center");   //设置列中数据居中
-            ItemGrid.obj.setInitWidths("50,150,350,*,150");          //列宽
-            ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro");   //ch:checkbox,ro:Column with standard read-only cells
+            ItemGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
+            ItemGrid.obj.setHeader("选择,编号,项目名称,英文缩写,计量单位,项目类型,拼音助记码,五笔助记码",null,
+                ["text-align:center;","text-align:center;","text-align:center","text-align:center","text-align:center","text-align:center"]);  //设置标题内容居中
+            ItemGrid.obj.setColumnIds("ch,itemId,itemName,englishAbbreviations,unit,itemType,pySpell,wbSpell");
+            ItemGrid.obj.setColAlign("center,center,center,center,center,center");   //设置列中数据居中
+            ItemGrid.obj.setInitWidths("50,150,250,*,150,100");          //列宽
+            ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro");
+            ItemGrid.obj.setColHidden(6,true);
+            ItemGrid.obj.setColHidden(7,true);
             ItemGrid.obj.init();
         },
         initEvent: function () {
-            ItemGrid.obj.attachEvent("onRowDblClicked", ItemGrid.onRowDblClickedEvent);
+            ItemGrid.obj.attachEvent("onRowDblClicked",function () {
+                var rowData = dhtmlxUtils.getSelectedRowBindingData(ItemGrid.obj);
+                ItemDetailWindow.createObj(rowData);
+            });
         },
-        onRowDblClickedEvent: function () {
-            var rowData = dhxUtil.xGrid.getSelectedRowBindingData(ItemGrid.obj);
-            ItemDetailWindow.createObj(rowData);
-        },
-        loadData: function (inputValue,comboValue) {
-            ajaxUtils.get('kyee/examine/method/getExamMethodItem.json', {
-                inputValue: encodeURI(inputValue,"utf-8"),
-                comboValue:encodeURI(comboValue,"utf-8")
+        loadData: function (inputValue) {
+            ajaxUtils.get('  .json', {
+                inputValue:inputValue
             }).then(function (data) {
-                dhxUtil.xGrid.clearAndLoadJsonListData(ItemGrid.obj, data, "itemid");  //删除所有行，加载数据
-                ItemGrid.obj.sortRows(4,"int","asc");     //根据排序号升序排序
+                dhtmlxUtils.clearAndLoadJsonListData(ItemGrid.obj, data, "itemid");  //删除所有行，加载数据
+                ItemGrid.obj.sortRows(1,"int","asc");
             }).catch(function (reason) {
-                alertErrorMsg(reason);
+                dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
             });
         }
