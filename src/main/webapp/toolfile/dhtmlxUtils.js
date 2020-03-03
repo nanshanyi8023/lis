@@ -8,8 +8,23 @@
         if (!rowId) {
             return null;
         }
-        return this.getRowBindingData(dhtmlxGridObj, rowId);
-    }
+        return getRowBindingData(dhtmlxGridObj, rowId);
+    };
+
+    /**
+     * 获取 dhtmlxGrid 中指定行附带的 json对象
+     * （同时会把用户在表格中修改的数据，更新到当前行的UserData）
+     */
+    var getRowBindingData = function (dhtmlxGridObj, rowId) {
+        var _rowUserData = dhtmlxGridObj.getUserData(rowId, "_rowData");
+        if (_rowUserData === "") {
+            _rowUserData = {};
+            dhtmlxGridObj.setUserData(rowId, "_rowData", _rowUserData);
+        }
+        var _rowData = dhtmlxGridObj.getRowData(rowId);
+        $.extend(true, _rowUserData, _rowData); //传递的是对象的引用，所以在合并对象的同时，也修改了原_rowUserData对象
+        return $.extend(true, {}, _rowUserData); //返回对象的拷贝而非引用，防止引用泄漏可能引起的隐患
+    };
 
     /**
      * 获取 dhtmlxGrid 中 checkbox 所有被勾选上行的 rowId

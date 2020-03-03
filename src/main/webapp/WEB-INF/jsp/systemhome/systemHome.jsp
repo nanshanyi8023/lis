@@ -17,12 +17,13 @@
     <script type="text/javascript" src="toolfile/dhtmlxstand/codebase/dhtmlx.js"></script>
     <script type="text/javascript" src="toolfile/ajaxUtils.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxAlert.js"></script>
+    <script type="text/javascript" src="toolfile/dhtmlxUtils.js"></script>
     <script type="text/javascript" src="toolfile/isEmpyt.js"></script>
 
     <script type="text/javascript" src="js/topwelcomebar/topWelcomeBar.js"></script>
     <script type="text/javascript" src="js/leftmenu/leftMenu.js"></script>
     <script type="text/javascript" src="js/userinfo/userInfo.js"></script>
-    <script type="text/javascript" src="js/inspectionsettings/inspectionItemSettings.js"></script>
+    <script type="text/javascript" src="js/checksettings/checkItemSettings.js"></script>
 
     <style type="text/css">
         html, body {

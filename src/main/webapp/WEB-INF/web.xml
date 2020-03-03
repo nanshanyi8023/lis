@@ -21,9 +21,11 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
+
+  <!--配置log4j-->
   <context-param>
-    <param-name/>
-    <param-value/>
+    <param-name>log4jConfigLocation</param-name>
+    <param-value>classpath:log4j.properties</param-value>
   </context-param>
 
   <!--配置前端控制器-->

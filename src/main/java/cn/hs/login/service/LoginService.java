@@ -27,7 +27,7 @@ public class LoginService {
         Cookie loginNameCookie = new Cookie("loginName",userInfo.getLoginName());
         loginNameCookie.setPath("/");
         response.addCookie(loginNameCookie);
-        Cookie hosnumCookie = new Cookie("hosnum",userInfo.getHosnum());
+        Cookie hosnumCookie = new Cookie("hosNum",userInfo.getHosnum());
         hosnumCookie.setPath("/");
         response.addCookie(hosnumCookie);
     }

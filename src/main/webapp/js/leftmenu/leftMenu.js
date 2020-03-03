@@ -114,7 +114,7 @@
                         UserInfo.init();
                         break;
                     case "inspectionItemSettings":
-                        inspectionItemSettings.init();
+                        checkItemSettings.init();
                         break;
                 }
             });

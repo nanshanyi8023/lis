@@ -23,7 +23,7 @@
     <!--配置连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://cd-cdb-idgh2wp2.sql.tencentcdb.com:62573/lis"/>        <!-- jdbc:mysql:///lis (本地) -->
+        <property name="jdbcUrl" value="jdbc:mysql://cdb-dorxc5wq.cd.tencentcdb.com:10114/lis"/>        <!-- jdbc:mysql:///lis (本地) -->
         <property name="user" value="root"/>
         <property name="password" value="hs1558270476"/>     <!-- 123 (本地) -->
     </bean>
