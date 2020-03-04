@@ -45,7 +45,7 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="CHECK_ITEM"></table>
+        <table tableName="CHECK_ITEM_08fasd"></table>
 
         <!-- mybatis插件的搭建 -->
     </context>
