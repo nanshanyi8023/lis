@@ -2,11 +2,7 @@ package cn.hs.checkitemsettings.pojo;
 
 import java.util.Date;
 
-public class CheckItem {
-    private String itemId;
-
-    private String hosnum;
-
+public class CheckItem extends CheckItemKey {
     private String itemName;
 
     private String englishAbbreviations;
@@ -22,22 +18,6 @@ public class CheckItem {
     private Date tracelog;
 
     private Integer orderNumber;
-
-    public String getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId == null ? null : itemId.trim();
-    }
-
-    public String getHosnum() {
-        return hosnum;
-    }
-
-    public void setHosnum(String hosnum) {
-        this.hosnum = hosnum == null ? null : hosnum.trim();
-    }
 
     public String getItemName() {
         return itemName;

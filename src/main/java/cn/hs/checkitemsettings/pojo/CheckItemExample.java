@@ -105,76 +105,6 @@ public class CheckItemExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andItemIdIsNull() {
-            addCriterion("ITEM_ID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdIsNotNull() {
-            addCriterion("ITEM_ID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdEqualTo(String value) {
-            addCriterion("ITEM_ID =", value, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdNotEqualTo(String value) {
-            addCriterion("ITEM_ID <>", value, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdGreaterThan(String value) {
-            addCriterion("ITEM_ID >", value, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdGreaterThanOrEqualTo(String value) {
-            addCriterion("ITEM_ID >=", value, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdLessThan(String value) {
-            addCriterion("ITEM_ID <", value, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdLessThanOrEqualTo(String value) {
-            addCriterion("ITEM_ID <=", value, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdLike(String value) {
-            addCriterion("ITEM_ID like", value, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdNotLike(String value) {
-            addCriterion("ITEM_ID not like", value, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdIn(List<String> values) {
-            addCriterion("ITEM_ID in", values, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdNotIn(List<String> values) {
-            addCriterion("ITEM_ID not in", values, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdBetween(String value1, String value2) {
-            addCriterion("ITEM_ID between", value1, value2, "itemId");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemIdNotBetween(String value1, String value2) {
-            addCriterion("ITEM_ID not between", value1, value2, "itemId");
-            return (Criteria) this;
-        }
-
         public Criteria andHosnumIsNull() {
             addCriterion("HOSNUM is null");
             return (Criteria) this;
@@ -242,6 +172,76 @@ public class CheckItemExample {
 
         public Criteria andHosnumNotBetween(String value1, String value2) {
             addCriterion("HOSNUM not between", value1, value2, "hosnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdIsNull() {
+            addCriterion("ITEM_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdIsNotNull() {
+            addCriterion("ITEM_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdEqualTo(String value) {
+            addCriterion("ITEM_ID =", value, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdNotEqualTo(String value) {
+            addCriterion("ITEM_ID <>", value, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdGreaterThan(String value) {
+            addCriterion("ITEM_ID >", value, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdGreaterThanOrEqualTo(String value) {
+            addCriterion("ITEM_ID >=", value, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdLessThan(String value) {
+            addCriterion("ITEM_ID <", value, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdLessThanOrEqualTo(String value) {
+            addCriterion("ITEM_ID <=", value, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdLike(String value) {
+            addCriterion("ITEM_ID like", value, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdNotLike(String value) {
+            addCriterion("ITEM_ID not like", value, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdIn(List<String> values) {
+            addCriterion("ITEM_ID in", values, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdNotIn(List<String> values) {
+            addCriterion("ITEM_ID not in", values, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdBetween(String value1, String value2) {
+            addCriterion("ITEM_ID between", value1, value2, "itemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andItemIdNotBetween(String value1, String value2) {
+            addCriterion("ITEM_ID not between", value1, value2, "itemId");
             return (Criteria) this;
         }
 

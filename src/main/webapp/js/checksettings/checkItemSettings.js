@@ -265,11 +265,19 @@
         //保存按钮
         itemDetailSaveBtnEvent: function () {
             var formData = ItemDetailWindow.Form.obj.getFormData();
-            ajaxUtils.postBody(' .json',
+            if (!formData.itemName) {
+                dhtmlxAlert.alertWarningMsg("检验项目名称不可为空");
+                return;
+            }
+            if (!formData.itemType) {
+                dhtmlxAlert.alertWarningMsg("项目类型不可为空");
+                return;
+            }
+            ajaxUtils.postBody('checkItemSettings/saveCheckItem.json',
                 formData
             ).then(function (data) {
-                dhtmlxAlert.alertMsg("保存成功");
                 ItemDetailWindow.obj.close();
+                ItemGrid.loadData(ItemOperationForm.obj.getItemValue("iteminput"));
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {

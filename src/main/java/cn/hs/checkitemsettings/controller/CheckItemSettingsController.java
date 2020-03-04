@@ -1,6 +1,7 @@
 package cn.hs.checkitemsettings.controller;
 
-import cn.hs.ApiResult;
+import cn.hs.publicmethod.ApiResult;
+import cn.hs.checkitemsettings.pojo.CheckItem;
 import cn.hs.checkitemsettings.service.CheckItemSettingsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,4 +37,13 @@ public class CheckItemSettingsController {
         }
     }
 
+    //保存检验项目
+    @RequestMapping(value = "/saveCheckItem.json", method = RequestMethod.POST)
+    public ApiResult saveCheckItem(@RequestBody CheckItem checkItem){
+        try {
+            return ApiResult.success(checkItemSettingsService.saveCheckItem(hosNum, checkItem));
+        } catch (Exception e){
+            return ApiResult.failed(e.getMessage());
+        }
+    }
 }
