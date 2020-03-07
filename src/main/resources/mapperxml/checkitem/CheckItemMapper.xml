@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hs.checkitemsettings.mapper.CheckItemMapper">
-  <resultMap id="BaseResultMap" type="cn.hs.checkitemsettings.pojo.CheckItem">
-    <id column="HOSNUM" jdbcType="VARCHAR" property="hosnum" />
-    <id column="ITEM_ID" jdbcType="VARCHAR" property="itemId" />
-    <result column="ITEM_NAME" jdbcType="VARCHAR" property="itemName" />
-    <result column="ENGLISH_ABBREVIATIONS" jdbcType="VARCHAR" property="englishAbbreviations" />
-    <result column="UNIT" jdbcType="VARCHAR" property="unit" />
-    <result column="ITEM_TYPE" jdbcType="VARCHAR" property="itemType" />
-    <result column="PY_SPELL" jdbcType="VARCHAR" property="pySpell" />
-    <result column="WB_SPELL" jdbcType="VARCHAR" property="wbSpell" />
-    <result column="TRACELOG" jdbcType="TIMESTAMP" property="tracelog" />
-    <result column="ORDER_NUMBER" jdbcType="INTEGER" property="orderNumber" />
+<mapper namespace="cn.hs.checkitem.mapper.CheckItemMapper">
+  <resultMap id="BaseResultMap" type="cn.hs.checkitem.pojo.CheckItem">
+    <id column="hosnum" jdbcType="VARCHAR" property="hosnum" />
+    <id column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="english_abbreviation" jdbcType="VARCHAR" property="englishAbbreviation" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="item_type" jdbcType="VARCHAR" property="itemType" />
+    <result column="upper_reference_value" jdbcType="INTEGER" property="upperReferenceValue" />
+    <result column="lower_reference_value" jdbcType="INTEGER" property="lowerReferenceValue" />
+    <result column="reference_value" jdbcType="VARCHAR" property="referenceValue" />
+    <result column="default_value" jdbcType="VARCHAR" property="defaultValue" />
+    <result column="py_spell" jdbcType="VARCHAR" property="pySpell" />
+    <result column="wb_spell" jdbcType="VARCHAR" property="wbSpell" />
+    <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
+    <result column="trace_log" jdbcType="TIMESTAMP" property="traceLog" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,10 +76,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    HOSNUM, ITEM_ID, ITEM_NAME, ENGLISH_ABBREVIATIONS, UNIT, ITEM_TYPE, PY_SPELL, WB_SPELL, 
-    TRACELOG, ORDER_NUMBER
+    hosnum, item_id, item_name, english_abbreviation, unit, item_type, upper_reference_value, 
+    lower_reference_value, reference_value, default_value, py_spell, wb_spell, order_number, 
+    trace_log
   </sql>
-  <select id="selectByExample" parameterType="cn.hs.checkitemsettings.pojo.CheckItemExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.hs.checkitem.pojo.CheckItemExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -89,66 +94,82 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="cn.hs.checkitemsettings.pojo.CheckItemKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="cn.hs.checkitem.pojo.CheckItemKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from check_item
-    where HOSNUM = #{hosnum,jdbcType=VARCHAR}
-      and ITEM_ID = #{itemId,jdbcType=VARCHAR}
+    where hosnum = #{hosnum,jdbcType=VARCHAR}
+      and item_id = #{itemId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="cn.hs.checkitemsettings.pojo.CheckItemKey">
+  <delete id="deleteByPrimaryKey" parameterType="cn.hs.checkitem.pojo.CheckItemKey">
     delete from check_item
-    where HOSNUM = #{hosnum,jdbcType=VARCHAR}
-      and ITEM_ID = #{itemId,jdbcType=VARCHAR}
+    where hosnum = #{hosnum,jdbcType=VARCHAR}
+      and item_id = #{itemId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.hs.checkitemsettings.pojo.CheckItemExample">
+  <delete id="deleteByExample" parameterType="cn.hs.checkitem.pojo.CheckItemExample">
     delete from check_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.hs.checkitemsettings.pojo.CheckItem">
-    insert into check_item (HOSNUM, ITEM_ID, ITEM_NAME, 
-      ENGLISH_ABBREVIATIONS, UNIT, ITEM_TYPE, 
-      PY_SPELL, WB_SPELL, TRACELOG, 
-      ORDER_NUMBER)
+  <insert id="insert" parameterType="cn.hs.checkitem.pojo.CheckItem">
+    insert into check_item (hosnum, item_id, item_name, 
+      english_abbreviation, unit, item_type, 
+      upper_reference_value, lower_reference_value, 
+      reference_value, default_value, py_spell, 
+      wb_spell, order_number, trace_log
+      )
     values (#{hosnum,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
-      #{englishAbbreviations,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{itemType,jdbcType=VARCHAR}, 
-      #{pySpell,jdbcType=VARCHAR}, #{wbSpell,jdbcType=VARCHAR}, #{tracelog,jdbcType=TIMESTAMP}, 
-      #{orderNumber,jdbcType=INTEGER})
+      #{englishAbbreviation,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{itemType,jdbcType=VARCHAR}, 
+      #{upperReferenceValue,jdbcType=INTEGER}, #{lowerReferenceValue,jdbcType=INTEGER}, 
+      #{referenceValue,jdbcType=VARCHAR}, #{defaultValue,jdbcType=VARCHAR}, #{pySpell,jdbcType=VARCHAR}, 
+      #{wbSpell,jdbcType=VARCHAR}, #{orderNumber,jdbcType=INTEGER}, #{traceLog,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="cn.hs.checkitemsettings.pojo.CheckItem">
+  <insert id="insertSelective" parameterType="cn.hs.checkitem.pojo.CheckItem">
     insert into check_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="hosnum != null">
-        HOSNUM,
+        hosnum,
       </if>
       <if test="itemId != null">
-        ITEM_ID,
+        item_id,
       </if>
       <if test="itemName != null">
-        ITEM_NAME,
+        item_name,
       </if>
-      <if test="englishAbbreviations != null">
-        ENGLISH_ABBREVIATIONS,
+      <if test="englishAbbreviation != null">
+        english_abbreviation,
       </if>
       <if test="unit != null">
-        UNIT,
+        unit,
       </if>
       <if test="itemType != null">
-        ITEM_TYPE,
+        item_type,
+      </if>
+      <if test="upperReferenceValue != null">
+        upper_reference_value,
+      </if>
+      <if test="lowerReferenceValue != null">
+        lower_reference_value,
+      </if>
+      <if test="referenceValue != null">
+        reference_value,
+      </if>
+      <if test="defaultValue != null">
+        default_value,
       </if>
       <if test="pySpell != null">
-        PY_SPELL,
+        py_spell,
       </if>
       <if test="wbSpell != null">
-        WB_SPELL,
-      </if>
-      <if test="tracelog != null">
-        TRACELOG,
+        wb_spell,
       </if>
       <if test="orderNumber != null">
-        ORDER_NUMBER,
+        order_number,
+      </if>
+      <if test="traceLog != null">
+        trace_log,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -161,8 +182,8 @@
       <if test="itemName != null">
         #{itemName,jdbcType=VARCHAR},
       </if>
-      <if test="englishAbbreviations != null">
-        #{englishAbbreviations,jdbcType=VARCHAR},
+      <if test="englishAbbreviation != null">
+        #{englishAbbreviation,jdbcType=VARCHAR},
       </if>
       <if test="unit != null">
         #{unit,jdbcType=VARCHAR},
@@ -170,21 +191,33 @@
       <if test="itemType != null">
         #{itemType,jdbcType=VARCHAR},
       </if>
+      <if test="upperReferenceValue != null">
+        #{upperReferenceValue,jdbcType=INTEGER},
+      </if>
+      <if test="lowerReferenceValue != null">
+        #{lowerReferenceValue,jdbcType=INTEGER},
+      </if>
+      <if test="referenceValue != null">
+        #{referenceValue,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultValue != null">
+        #{defaultValue,jdbcType=VARCHAR},
+      </if>
       <if test="pySpell != null">
         #{pySpell,jdbcType=VARCHAR},
       </if>
       <if test="wbSpell != null">
         #{wbSpell,jdbcType=VARCHAR},
       </if>
-      <if test="tracelog != null">
-        #{tracelog,jdbcType=TIMESTAMP},
-      </if>
       <if test="orderNumber != null">
         #{orderNumber,jdbcType=INTEGER},
       </if>
+      <if test="traceLog != null">
+        #{traceLog,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.hs.checkitemsettings.pojo.CheckItemExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="cn.hs.checkitem.pojo.CheckItemExample" resultType="java.lang.Long">
     select count(*) from check_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -194,34 +227,46 @@
     update check_item
     <set>
       <if test="record.hosnum != null">
-        HOSNUM = #{record.hosnum,jdbcType=VARCHAR},
+        hosnum = #{record.hosnum,jdbcType=VARCHAR},
       </if>
       <if test="record.itemId != null">
-        ITEM_ID = #{record.itemId,jdbcType=VARCHAR},
+        item_id = #{record.itemId,jdbcType=VARCHAR},
       </if>
       <if test="record.itemName != null">
-        ITEM_NAME = #{record.itemName,jdbcType=VARCHAR},
+        item_name = #{record.itemName,jdbcType=VARCHAR},
       </if>
-      <if test="record.englishAbbreviations != null">
-        ENGLISH_ABBREVIATIONS = #{record.englishAbbreviations,jdbcType=VARCHAR},
+      <if test="record.englishAbbreviation != null">
+        english_abbreviation = #{record.englishAbbreviation,jdbcType=VARCHAR},
       </if>
       <if test="record.unit != null">
-        UNIT = #{record.unit,jdbcType=VARCHAR},
+        unit = #{record.unit,jdbcType=VARCHAR},
       </if>
       <if test="record.itemType != null">
-        ITEM_TYPE = #{record.itemType,jdbcType=VARCHAR},
+        item_type = #{record.itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upperReferenceValue != null">
+        upper_reference_value = #{record.upperReferenceValue,jdbcType=INTEGER},
+      </if>
+      <if test="record.lowerReferenceValue != null">
+        lower_reference_value = #{record.lowerReferenceValue,jdbcType=INTEGER},
+      </if>
+      <if test="record.referenceValue != null">
+        reference_value = #{record.referenceValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.defaultValue != null">
+        default_value = #{record.defaultValue,jdbcType=VARCHAR},
       </if>
       <if test="record.pySpell != null">
-        PY_SPELL = #{record.pySpell,jdbcType=VARCHAR},
+        py_spell = #{record.pySpell,jdbcType=VARCHAR},
       </if>
       <if test="record.wbSpell != null">
-        WB_SPELL = #{record.wbSpell,jdbcType=VARCHAR},
-      </if>
-      <if test="record.tracelog != null">
-        TRACELOG = #{record.tracelog,jdbcType=TIMESTAMP},
+        wb_spell = #{record.wbSpell,jdbcType=VARCHAR},
       </if>
       <if test="record.orderNumber != null">
-        ORDER_NUMBER = #{record.orderNumber,jdbcType=INTEGER},
+        order_number = #{record.orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.traceLog != null">
+        trace_log = #{record.traceLog,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -230,73 +275,100 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update check_item
-    set HOSNUM = #{record.hosnum,jdbcType=VARCHAR},
-      ITEM_ID = #{record.itemId,jdbcType=VARCHAR},
-      ITEM_NAME = #{record.itemName,jdbcType=VARCHAR},
-      ENGLISH_ABBREVIATIONS = #{record.englishAbbreviations,jdbcType=VARCHAR},
-      UNIT = #{record.unit,jdbcType=VARCHAR},
-      ITEM_TYPE = #{record.itemType,jdbcType=VARCHAR},
-      PY_SPELL = #{record.pySpell,jdbcType=VARCHAR},
-      WB_SPELL = #{record.wbSpell,jdbcType=VARCHAR},
-      TRACELOG = #{record.tracelog,jdbcType=TIMESTAMP},
-      ORDER_NUMBER = #{record.orderNumber,jdbcType=INTEGER}
+    set hosnum = #{record.hosnum,jdbcType=VARCHAR},
+      item_id = #{record.itemId,jdbcType=VARCHAR},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      english_abbreviation = #{record.englishAbbreviation,jdbcType=VARCHAR},
+      unit = #{record.unit,jdbcType=VARCHAR},
+      item_type = #{record.itemType,jdbcType=VARCHAR},
+      upper_reference_value = #{record.upperReferenceValue,jdbcType=INTEGER},
+      lower_reference_value = #{record.lowerReferenceValue,jdbcType=INTEGER},
+      reference_value = #{record.referenceValue,jdbcType=VARCHAR},
+      default_value = #{record.defaultValue,jdbcType=VARCHAR},
+      py_spell = #{record.pySpell,jdbcType=VARCHAR},
+      wb_spell = #{record.wbSpell,jdbcType=VARCHAR},
+      order_number = #{record.orderNumber,jdbcType=INTEGER},
+      trace_log = #{record.traceLog,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.hs.checkitemsettings.pojo.CheckItem">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hs.checkitem.pojo.CheckItem">
     update check_item
     <set>
       <if test="itemName != null">
-        ITEM_NAME = #{itemName,jdbcType=VARCHAR},
+        item_name = #{itemName,jdbcType=VARCHAR},
       </if>
-      <if test="englishAbbreviations != null">
-        ENGLISH_ABBREVIATIONS = #{englishAbbreviations,jdbcType=VARCHAR},
+      <if test="englishAbbreviation != null">
+        english_abbreviation = #{englishAbbreviation,jdbcType=VARCHAR},
       </if>
       <if test="unit != null">
-        UNIT = #{unit,jdbcType=VARCHAR},
+        unit = #{unit,jdbcType=VARCHAR},
       </if>
       <if test="itemType != null">
-        ITEM_TYPE = #{itemType,jdbcType=VARCHAR},
+        item_type = #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="upperReferenceValue != null">
+        upper_reference_value = #{upperReferenceValue,jdbcType=INTEGER},
+      </if>
+      <if test="lowerReferenceValue != null">
+        lower_reference_value = #{lowerReferenceValue,jdbcType=INTEGER},
+      </if>
+      <if test="referenceValue != null">
+        reference_value = #{referenceValue,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultValue != null">
+        default_value = #{defaultValue,jdbcType=VARCHAR},
       </if>
       <if test="pySpell != null">
-        PY_SPELL = #{pySpell,jdbcType=VARCHAR},
+        py_spell = #{pySpell,jdbcType=VARCHAR},
       </if>
       <if test="wbSpell != null">
-        WB_SPELL = #{wbSpell,jdbcType=VARCHAR},
-      </if>
-      <if test="tracelog != null">
-        TRACELOG = #{tracelog,jdbcType=TIMESTAMP},
+        wb_spell = #{wbSpell,jdbcType=VARCHAR},
       </if>
       <if test="orderNumber != null">
-        ORDER_NUMBER = #{orderNumber,jdbcType=INTEGER},
+        order_number = #{orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="traceLog != null">
+        trace_log = #{traceLog,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where HOSNUM = #{hosnum,jdbcType=VARCHAR}
-      and ITEM_ID = #{itemId,jdbcType=VARCHAR}
+    where hosnum = #{hosnum,jdbcType=VARCHAR}
+      and item_id = #{itemId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.hs.checkitemsettings.pojo.CheckItem">
+  <update id="updateByPrimaryKey" parameterType="cn.hs.checkitem.pojo.CheckItem">
     update check_item
-    set ITEM_NAME = #{itemName,jdbcType=VARCHAR},
-      ENGLISH_ABBREVIATIONS = #{englishAbbreviations,jdbcType=VARCHAR},
-      UNIT = #{unit,jdbcType=VARCHAR},
-      ITEM_TYPE = #{itemType,jdbcType=VARCHAR},
-      PY_SPELL = #{pySpell,jdbcType=VARCHAR},
-      WB_SPELL = #{wbSpell,jdbcType=VARCHAR},
-      TRACELOG = #{tracelog,jdbcType=TIMESTAMP},
-      ORDER_NUMBER = #{orderNumber,jdbcType=INTEGER}
-    where HOSNUM = #{hosnum,jdbcType=VARCHAR}
-      and ITEM_ID = #{itemId,jdbcType=VARCHAR}
+    set item_name = #{itemName,jdbcType=VARCHAR},
+      english_abbreviation = #{englishAbbreviation,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=VARCHAR},
+      upper_reference_value = #{upperReferenceValue,jdbcType=INTEGER},
+      lower_reference_value = #{lowerReferenceValue,jdbcType=INTEGER},
+      reference_value = #{referenceValue,jdbcType=VARCHAR},
+      default_value = #{defaultValue,jdbcType=VARCHAR},
+      py_spell = #{pySpell,jdbcType=VARCHAR},
+      wb_spell = #{wbSpell,jdbcType=VARCHAR},
+      order_number = #{orderNumber,jdbcType=INTEGER},
+      trace_log = #{traceLog,jdbcType=TIMESTAMP}
+    where hosnum = #{hosnum,jdbcType=VARCHAR}
+      and item_id = #{itemId,jdbcType=VARCHAR}
   </update>
 
 
   <select id="getCheckItems" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from check_item
-    where HOSNUM = #{hosNum}
-    <if test="inputValue != null and inputValue != ''">
-      and (ENGLISH_ABBREVIATIONS = #{inputValue} OR ITEM_NAME = #{inputValue} OR ITEM_ID = #{inputValue})
+    select ci.*
+    from check_item ci
+    <if test="workGroupId != null and workGroupId != ''">
+      join work_group_detail wgd on ci.item_id = wgd.item_id
+      join work_group wg on wg.work_group_id = wgd.work_group_id and wg.work_group_id = #{workGroupId}
+    </if>
+    <if test="checkItemGroupId != null and checkItemGroupId != ''">
+      join check_item_group_detail cigd on ci.item_id = cigd.item_id
+      join check_item_group cig on cig.group_id = cigd.item_group_id and cig.group_id = #{checkItemGroupId}
+    </if>
+    where ci.HOSNUM = #{hosNum}
+    <if test="checkItem != null and checkItem != ''">
+      and (ci.ENGLISH_ABBREVIATION = #{checkItem} OR ci.ITEM_NAME = #{checkItem} OR ci.ITEM_ID = #{checkItem})
     </if>
   </select>
   <delete id="deleteCheckItems">

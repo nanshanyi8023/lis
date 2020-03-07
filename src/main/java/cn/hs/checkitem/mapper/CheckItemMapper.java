@@ -1,8 +1,8 @@
-package cn.hs.checkitemsettings.mapper;
+package cn.hs.checkitem.mapper;
 
-import cn.hs.checkitemsettings.pojo.CheckItem;
-import cn.hs.checkitemsettings.pojo.CheckItemExample;
-import cn.hs.checkitemsettings.pojo.CheckItemKey;
+import cn.hs.checkitem.pojo.CheckItem;
+import cn.hs.checkitem.pojo.CheckItemExample;
+import cn.hs.checkitem.pojo.CheckItemKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,11 +29,13 @@ public interface CheckItemMapper {
 
     int updateByPrimaryKey(CheckItem record);
 
+
     /**
      * 自定义方法
      */
     //根据id,名称或英文缩写模糊搜索检验项目
-    List<CheckItem> getCheckItems(@Param("hosNum") String hosNum, @Param("inputValue") String inputValue);
+    List<CheckItem> getCheckItems(@Param("hosNum") String hosNum, @Param("workGroupId") String workGroupId,
+                                  @Param("checkItemGroupId") String checkItemGroupId,@Param("checkItem") String checkItem);
 
     //删除选中检验项目
     int deleteCheckItems(@Param("hosNum") String hosNum, @Param("list") List<String> itemIdList);
@@ -43,5 +45,4 @@ public interface CheckItemMapper {
 
     //获取最大的检验项目id值
     String getMaxId(@Param("hosNum")String hosNum);
-
 }

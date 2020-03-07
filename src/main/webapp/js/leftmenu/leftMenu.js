@@ -68,11 +68,31 @@
                 {
                     id: "inspectSettings",
                     text: "检验设置",
-                    open: 0,
+                    open: 1,
                     items: [
                         {
-                            id: "inspectionItemSettings",
+                            id: "checkItemSettings",
                             text: "检验项目设置",
+                            icons:{file:""}
+                        },
+                        {
+                            id: "checkItemGroupSettings",
+                            text: "检验项目组合设置",
+                            icons:{file:""}
+                        },
+                        {
+                            id: "workGroupSettings",
+                            text: "工作组设置",
+                            icons:{file:""}
+                        },
+                        {
+                            id: "equipmentSettings",
+                            text: "检验设备设置",
+                            icons:{file:""}
+                        },
+                        {
+                            id: "equipmentChannelSettings",
+                            text: "检验设备通道设置",
                             icons:{file:""}
                         }
                     ]
@@ -113,7 +133,7 @@
                     case "userinfoSetting":
                         UserInfo.init();
                         break;
-                    case "inspectionItemSettings":
+                    case "checkItemSettings":
                         checkItemSettings.init();
                         break;
                 }

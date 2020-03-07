@@ -1,4 +1,4 @@
-package cn.hs.checkitemsettings.pojo;
+package cn.hs.checkitem.pojo;
 
 public class CheckItemKey {
     private String hosnum;
