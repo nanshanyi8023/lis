@@ -68,11 +68,31 @@
                 {
                     id: "inspectSettings",
                     text: "检验设置",
-                    open: 0,
+                    open: 1,
                     items: [
                         {
-                            id: "inspectionItemSettings",
+                            id: "checkItemSettings",
                             text: "检验项目设置",
+                            icons:{file:""}
+                        },
+                        {
+                            id: "checkItemGroupSettings",
+                            text: "检验项目组合设置",
+                            icons:{file:""}
+                        },
+                        {
+                            id: "workGroupSettings",
+                            text: "工作组设置",
+                            icons:{file:""}
+                        },
+                        {
+                            id: "equipmentSettings",
+                            text: "检验设备设置",
+                            icons:{file:""}
+                        },
+                        {
+                            id: "equipmentChannelSettings",
+                            text: "检验设备通道设置",
                             icons:{file:""}
                         }
                     ]
@@ -107,11 +127,14 @@
         },
         initEvent: function () {
             MenuTree.obj.attachEvent("onSelect", function(id){
-                //$("#RightLayoutObj").html("");    //清空右边内容----如果不是当前才需要清空----如果有未保存内容也需要提示
+                $("#RightLayoutObj").html("");    //清空右边内容----如果不是当前才需要清空----如果有未保存内容也需要提示
 
                 switch (id) {
                     case "userinfoSetting":
                         UserInfo.init();
+                        break;
+                    case "checkItemSettings":
+                        checkItemSettings.init();
                         break;
                 }
             });

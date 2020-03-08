@@ -25,10 +25,10 @@ public class LoginService {
     //将用户名和医院编码添加到cookie
     private void addCookie(HttpServletResponse response,UserInfo userInfo){
         Cookie loginNameCookie = new Cookie("loginName",userInfo.getLoginName());
-        loginNameCookie.setPath("/");
+        loginNameCookie.setPath("/lis");
         response.addCookie(loginNameCookie);
-        Cookie hosnumCookie = new Cookie("hosnum",userInfo.getHosnum());
-        hosnumCookie.setPath("/");
+        Cookie hosnumCookie = new Cookie("hosNum",userInfo.getHosnum());
+        hosnumCookie.setPath("/lis");
         response.addCookie(hosnumCookie);
     }
 }

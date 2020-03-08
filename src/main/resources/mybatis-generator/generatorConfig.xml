@@ -15,9 +15,9 @@
         <!--jdbc的数据库连接 -->
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
-                connectionURL="jdbc:mysql://localhost:3306/lis"
+                connectionURL="jdbc:mysql://cdb-dorxc5wq.cd.tencentcdb.com:10114/lis"
                 userId="root"
-                password="123">
+                password="hs1558270476">
         </jdbcConnection>
 
         <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
@@ -26,12 +26,12 @@
         </javaTypeResolver>
 
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="cn.hs.userinfo.pojo" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="cn.hs.checkitemgroup.pojo" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--生成映射文件.xml存放位置-->
-        <sqlMapGenerator targetPackage="mapperxml.userinfo" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapperxml.checkitemgroup" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
@@ -40,12 +40,12 @@
                 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.hs.userinfo.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.hs.checkitemgroup.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="USER_INFO_12344555"></table>
+        <table tableName="check_item_group_detail_34534"></table>
 
         <!-- mybatis插件的搭建 -->
     </context>

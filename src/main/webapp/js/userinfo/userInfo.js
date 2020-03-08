@@ -5,7 +5,7 @@
         obj:null,
         config:{
             parent:"RightLayoutObj",
-            pattern: "3U",
+            pattern: "3J",
             offsets: {
             top: 2,
             right: 2,
@@ -15,8 +15,8 @@
             cells:[
                 {
                     id:"a",
-                    text:"基础设置",
-                    collapsed_text: "单击展开基础设置",   // 折叠栏标题
+                    text:"基础信息设置",
+                    collapsed_text: "单击展开基础信息设置",   // 折叠栏标题
                     collapse: false,       // 初始是否折叠
                     height:420,
                     width:900,
@@ -24,15 +24,15 @@
                 },
                 {
                     id:"b",
-                    text:"手写签名照设置",
-                    collapsed_text: "单击展开手写签名照设置",
+                    text:"密码设置",
+                    collapsed_text: "单击展开密码设置",
                     collapse: false,
                     fix_size: [true, true]
                 },
                 {
                     id:"c",
-                    text:"密码设置",
-                    collapsed_text: "单击展开密码设置",
+                    text:"手写签名照设置",
+                    collapsed_text: "单击展开手写签名照设置",
                     collapse: false,
                     fix_size: [true, true]
                 }
@@ -43,6 +43,7 @@
         }
     };
 
+    //基础信息设置表单
     var BasicSettingsForm = {
         obj:null,
         config:[
@@ -107,7 +108,7 @@
             ).then(function (userInfo) {
                 BasicSettingsForm.obj.setFormData(userInfo);
             }).catch(function (reason) {
-                alertErrorMsg(reason);
+                dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
             });
         },
@@ -116,19 +117,105 @@
             ajaxUtils.postBody('userInfo/saveBasicSettings.json',
                 userInfo
             ).then(function (data) {
-                dhtmlx.alert("保存成功");
+                dhtmlxAlert.alertMsg("修改基础信息成功");
             }).catch(function (reason) {
-                alertErrorMsg(reason);
+                dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
             });
         }
     };
 
+    //密码修改表单
+    var PasswordSettingsForm = {
+        obj:null,
+        config:[
+            {type:"settings",position:"label-top", offsetLeft: 55, offsetTop: 10},
+            {
+                type: "block", list: [
+                    {type: "input", name: 'name', label: '用户名:', inputWidth:180, maxLength:12,readonly: true,style:"background:#eaeaea"},
+                    {type: "input", name: 'oldPassword', label: '原密码:', inputWidth:180, maxLength:12},
+                    {type: "password", name: 'newPassword', label: '新密码:', inputWidth:180, maxLength:12},
+                    {type: "password", name: 'confirmNewPassword', label: '确认新密码:', inputWidth:180, maxLength:12},
+                ]
+            },
+            {
+                type: "block", list: [
+                    {type: "button", name: "saveButton", value: "保存", offsetLeft: 53, offsetTop: 15},
+                    {type: "newcolumn"},
+                    {type: "button", name: "cancelButton", value: "取消", offsetLeft: 35, offsetTop: 15}
+                ]
+            }
+        ],
+        initobj:function () {
+            PasswordSettingsForm.obj = Layout.obj.cells("b").attachForm(PasswordSettingsForm.config);
+            PasswordSettingsForm.obj.setItemValue("name",$.cookie("loginName"));
+        },
+        initEvent:function () {
+            PasswordSettingsForm.obj.attachEvent("onButtonClick",function (name) {
+                switch (name) {
+                    case "saveButton":
+                        PasswordSettingsForm.savePasswordSettings();
+                        break;
+                    case "cancelButton":
+                        PasswordSettingsForm.cancelPasswordSettings();
+                        break;
+                    default:
+                }
+            });
+        },
+        //保存修改后的密码
+        savePasswordSettings:function(){
+            var oldPassword = PasswordSettingsForm.obj.getItemValue("oldPassword");
+            var newPassword = PasswordSettingsForm.obj.getItemValue("newPassword");
+            var confirmNewPassword = PasswordSettingsForm.obj.getItemValue("confirmNewPassword");
+            if (isEmpty(oldPassword)) {
+                dhtmlxAlert.alertWarningMsg("请输入原密码！");
+                return;
+            }
+            if (isEmpty(newPassword)) {
+                dhtmlxAlert.alertWarningMsg("请输入新密码！");
+                return;
+            }
+            if (isEmpty(confirmNewPassword)) {
+                dhtmlxAlert.alertWarningMsg("请输入确认新密码！");
+                return;
+            }
+            if (newPassword != confirmNewPassword) {
+                dhtmlxAlert.alertWarningMsg("两次输入的新密码不一致，请重新输入！");
+                PasswordSettingsForm.obj.setItemValue("newPassword","");
+                PasswordSettingsForm.obj.setItemValue("confirmNewPassword","");
+                return;
+            }
+            ajaxUtils.postBody('userInfo/savePasswordSettings.json', {
+                "oldPassword":oldPassword,
+                "newPassword":newPassword
+            }).then(function (flag) {
+                if (flag == "true"){
+                    dhtmlxAlert.alertMsg("修改密码成功");
+                    PasswordSettingsForm.cancelPasswordSettings();
+                } else if (flag == "false") {
+                    dhtmlxAlert.alertWarningMsg("原密码错误！");
+                }
+            }).catch(function (reason) {
+                dhtmlxAlert.alertErrorMsg(reason);
+            }).finally(function () {
+            });
+        },
+
+        //清空密码栏
+        cancelPasswordSettings:function () {
+            PasswordSettingsForm.obj.setItemValue("oldPassword","");
+            PasswordSettingsForm.obj.setItemValue("newPassword","");
+            PasswordSettingsForm.obj.setItemValue("confirmNewPassword","");
+        }
+    };
 
     var init = function () {
         Layout.initObj();
         BasicSettingsForm.initobj();
         BasicSettingsForm.initEvent();
+        PasswordSettingsForm.initobj();
+        PasswordSettingsForm.initEvent();
     };
 
     var UserInfo = function () {

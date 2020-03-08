@@ -23,9 +23,9 @@
     <!--配置连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql:///lis"/>
+        <property name="jdbcUrl" value="jdbc:mysql://cdb-dorxc5wq.cd.tencentcdb.com:10114/lis"/>        <!-- jdbc:mysql:///lis (本地) -->
         <property name="user" value="root"/>
-        <property name="password" value="123"/>
+        <property name="password" value="hs1558270476"/>     <!-- 123 (本地) -->
     </bean>
 
     <!--配置SqlSessionFactory工厂（Mapper.xml）-->

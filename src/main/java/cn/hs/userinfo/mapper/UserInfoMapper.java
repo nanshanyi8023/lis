@@ -28,4 +28,13 @@ public interface UserInfoMapper {
 
     int updateByPrimaryKey(UserInfo record);
 
+
+    /**
+     * 自定义方法
+     */
+    //根据登录用户名和密码确认身份
+    UserInfo selectByLogin(@Param("loginName") String loginName, @Param("oldPassword") String oldPassword);
+
+    //修改密码
+    void updateLoginPassword(@Param("loginName") String loginName, @Param("newPassword") String newPassword);
 }
