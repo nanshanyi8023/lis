@@ -24,6 +24,8 @@
     <script type="text/javascript" src="js/leftmenu/leftMenu.js"></script>
     <script type="text/javascript" src="js/userinfo/userInfo.js"></script>
     <script type="text/javascript" src="js/checksettings/checkItemSettings.js"></script>
+    <script type="text/javascript" src="js/workgroupsettings/workGroupSettings.js"></script>
+
 
     <style type="text/css">
         html, body {

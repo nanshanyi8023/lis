@@ -36,4 +36,6 @@ public interface WorkGroupMapper {
     //查找所有的工作组id和名称
     List<WorkGroup> selectAllWorkGroup(@Param("hosNum") String hosNum);
 
+
+
 }

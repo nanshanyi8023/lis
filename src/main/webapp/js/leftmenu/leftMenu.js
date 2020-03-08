@@ -136,6 +136,12 @@
                     case "checkItemSettings":
                         checkItemSettings.init();
                         break;
+                    case "checkItemGroupSettings":
+                        checkItemGroupSettings.init();
+                        break;
+                    case "workGroupSettings":
+                        workGroupSettings.init();
+                        break;
                 }
             });
         }
