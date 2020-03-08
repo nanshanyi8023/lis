@@ -161,8 +161,8 @@
         //清空查询功能
         clearSearchBtnEvent:function(){
             ItemOperationForm.obj.clear();
-            ItemOperationForm.obj.getCombo("workGroup").unSelectOption()//setComboText("");
-            ItemOperationForm.obj.getCombo("checkItemGroup").unSelectOption()//setComboText("");
+            ItemOperationForm.obj.getCombo("workGroup").unSelectOption();
+            ItemOperationForm.obj.getCombo("checkItemGroup").unSelectOption();
             ItemGrid.loadData();
         },
         //添加功能
@@ -189,9 +189,9 @@
         initObj: function () {
             ItemGrid.obj = Layout.obj.cells("b").attachGrid();
             ItemGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            ItemGrid.obj.setHeader("选择,编号,项目名称,英文缩写,计量单位,项目类型,参考值,默认值,拼音助记码,五笔助记码",null,
+            ItemGrid.obj.setHeader("选择,编号,项目名称,英文缩写,计量单位,项目类型,参考值,默认值,所属工作组,所属检验项目组合",null,
                 ["text-align:center;","text-align:center;","text-align:center","text-align:center","text-align:center","text-align:center","text-align:center","text-align:center"]);  //设置标题内容居中
-            ItemGrid.obj.setColumnIds("ch,itemId,itemName,englishAbbreviation,unit,itemType,referenceValue,defaultValue,pySpell,wbSpell");
+            ItemGrid.obj.setColumnIds("ch,itemId,itemName,englishAbbreviation,unit,itemType,referenceValue,defaultValue,workGroup,checkItemGroup");
             ItemGrid.obj.setColAlign("center,center,center,center,center,center,center,center");   //设置列中数据居中
             ItemGrid.obj.setInitWidths("50,150,*,150,150,150,150,150,0,0");          //列宽
             ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro,ro,ro,ro");
@@ -203,6 +203,7 @@
             ItemGrid.obj.attachEvent("onRowDblClicked",function () {
                 var rowData = dhtmlxUtils.getSelectedRowBindingData(ItemGrid.obj);
                 ItemDetailWindow.createObj(rowData);
+
             });
         },
         loadData: function (workGroupId,checkItemGroupId,checkItem) {
@@ -228,7 +229,7 @@
             ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 700, 400);   //(id, left, top, width, height)
             ItemDetailWindow.obj.setText("项目详情");  //标题
             ItemDetailWindow.obj.denyResize();  //拒绝调整大小
-            ItemDetailWindow.obj.denyMove();    //拒绝窗口移动
+            //ItemDetailWindow.obj.denyMove();    //拒绝窗口移动
             ItemDetailWindow.obj.denyPark();
             ItemDetailWindow.obj.setModal(true);
             ItemDetailWindow.obj.centerOnScreen(); //窗口居中显示在屏幕中
@@ -236,7 +237,7 @@
         },
         initWindow: function (rowData) {
             ItemDetailWindow.Layout.initObj();
-            ItemDetailWindow.Form.initObj();
+            ItemDetailWindow.Form.initObj(rowData);
             ItemDetailWindow.Form.initEvent();
             ItemDetailWindow.Form.loadData(rowData);
         }    
@@ -285,10 +286,16 @@
             },
             {
                 type: "block", list: [
-                    {type: "newcolumn"},
-                    {type: "input", name:"englishAbbreviations",label: "英文缩写", inputWidth: 180,maxLength:15},
+                    {type: "input", name:"englishAbbreviation",label: "英文缩写", inputWidth: 180,maxLength:15},
                     {type: "newcolumn"},
                     {type: "input", name:"unit",label: "计&nbsp&nbsp量&nbsp&nbsp单&nbsp&nbsp位", inputWidth: 180,maxLength:10},
+                ]
+            },
+            {
+                type: "block", list: [
+                    {type: "input", name:"referenceValue",label: "参&nbsp&nbsp考&nbsp值", inputWidth: 180,maxLength:15},
+                    {type: "newcolumn"},
+                    {type: "input", name:"defaultValue",label: "默&nbsp&nbsp&nbsp&nbsp认&nbsp&nbsp&nbsp&nbsp&nbsp值", inputWidth: 180,maxLength:10},
                 ]
             },
             {
@@ -302,30 +309,32 @@
                             {text: "血凝项目", value: "血凝项目"},
                             {text: "血库项目", value: "血库项目"},
                             {text: "免疫项目", value: "免疫项目"},
-                            {text: "细菌", value: "细菌"},
+                            {text: "细菌", value: "细菌"}
                         ]
                     }
                 ]
             },
             {
                 type: "block", list: [
-                    {type: "input", name: "pySpell", label: "拼音助记", value: "", inputWidth: 180, readonly: true,style:"background:#eaeaea" },
+                    {type: "button", name: "itemDetailSaveBtn", value: "保存", offsetLeft: 200, offsetTop: 15},
                     {type: "newcolumn"},
-                    {type: "input", name: "wbSpell", label: "五&nbsp&nbsp笔&nbsp&nbsp助&nbsp&nbsp记", value: "", offsetLeft: 30,inputWidth: 175, readonly: true,style:"background:#eaeaea" }
-                ]
-            },
-            {
-                type: "block", list: [
-                    {type: "button", name: "itemDetailSaveBtn", value: "保存", offsetLeft: 200, offsetTop: 30},
-                    {type: "newcolumn"},
-                    {type: "button", name: "itemDetailCancelBtn", value: "取消", offsetLeft: 20, offsetTop: 30}
+                    {type: "button", name: "itemDetailCancelBtn", value: "取消", offsetLeft: 20, offsetTop: 15}
                 ]
             }
         ],
-        initObj: function () {
+        initObj: function (rowData) {
             ItemDetailWindow.Form.obj = ItemDetailWindow.Layout.obj.cells("a").attachForm(ItemDetailWindow.Form.config);
         },
         initEvent: function () {
+            /*ItemDetailWindow.Form.obj.attachEvent("onChange", function (name, value, state){
+                //当工作组下拉框变化时，检验项目组合下拉框也变
+                if (name == 'workGroup'){
+                    var workGroupId = ItemDetailWindow.Form.obj.getCombo("workGroup").getSelectedValue();
+                    if (workGroupId !== null && workGroupId !== ""){
+                        ItemDetailWindow.Form.getAllCheckItemGroup(workGroupId);
+                    }
+                }
+            });*/
             ItemDetailWindow.Form.obj.attachEvent("onButtonClick", function (name) {
                 switch (name) {
                     case "itemDetailSaveBtn":

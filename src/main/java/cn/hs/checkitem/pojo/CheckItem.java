@@ -3,6 +3,11 @@ package cn.hs.checkitem.pojo;
 import java.util.Date;
 
 public class CheckItem extends CheckItemKey {
+    //新增workGorup和checkItemGroup字段
+    private String workGroup;
+
+    private String checkItemGroup;
+
     private String itemName;
 
     private String englishAbbreviation;
@@ -19,13 +24,25 @@ public class CheckItem extends CheckItemKey {
 
     private String defaultValue;
 
-    private String pySpell;
-
-    private String wbSpell;
-
     private Integer orderNumber;
 
     private Date traceLog;
+
+    public String getWorkGroup() {
+        return workGroup;
+    }
+
+    public void setWorkGroup(String workGroup) {
+        this.workGroup = workGroup;
+    }
+
+    public String getCheckItemGroup() {
+        return checkItemGroup;
+    }
+
+    public void setCheckItemGroup(String checkItemGroup) {
+        this.checkItemGroup = checkItemGroup;
+    }
 
     public String getItemName() {
         return itemName;
@@ -89,22 +106,6 @@ public class CheckItem extends CheckItemKey {
 
     public void setDefaultValue(String defaultValue) {
         this.defaultValue = defaultValue == null ? null : defaultValue.trim();
-    }
-
-    public String getPySpell() {
-        return pySpell;
-    }
-
-    public void setPySpell(String pySpell) {
-        this.pySpell = pySpell == null ? null : pySpell.trim();
-    }
-
-    public String getWbSpell() {
-        return wbSpell;
-    }
-
-    public void setWbSpell(String wbSpell) {
-        this.wbSpell = wbSpell == null ? null : wbSpell.trim();
     }
 
     public Integer getOrderNumber() {

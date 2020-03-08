@@ -12,8 +12,6 @@
     <result column="lower_reference_value" jdbcType="INTEGER" property="lowerReferenceValue" />
     <result column="reference_value" jdbcType="VARCHAR" property="referenceValue" />
     <result column="default_value" jdbcType="VARCHAR" property="defaultValue" />
-    <result column="py_spell" jdbcType="VARCHAR" property="pySpell" />
-    <result column="wb_spell" jdbcType="VARCHAR" property="wbSpell" />
     <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
     <result column="trace_log" jdbcType="TIMESTAMP" property="traceLog" />
   </resultMap>
@@ -77,8 +75,7 @@
   </sql>
   <sql id="Base_Column_List">
     hosnum, item_id, item_name, english_abbreviation, unit, item_type, upper_reference_value, 
-    lower_reference_value, reference_value, default_value, py_spell, wb_spell, order_number, 
-    trace_log
+    lower_reference_value, reference_value, default_value, order_number, trace_log
   </sql>
   <select id="selectByExample" parameterType="cn.hs.checkitem.pojo.CheckItemExample" resultMap="BaseResultMap">
     select
@@ -116,15 +113,13 @@
     insert into check_item (hosnum, item_id, item_name, 
       english_abbreviation, unit, item_type, 
       upper_reference_value, lower_reference_value, 
-      reference_value, default_value, py_spell, 
-      wb_spell, order_number, trace_log
-      )
+      reference_value, default_value, order_number, 
+      trace_log)
     values (#{hosnum,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
       #{englishAbbreviation,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{itemType,jdbcType=VARCHAR}, 
       #{upperReferenceValue,jdbcType=INTEGER}, #{lowerReferenceValue,jdbcType=INTEGER}, 
-      #{referenceValue,jdbcType=VARCHAR}, #{defaultValue,jdbcType=VARCHAR}, #{pySpell,jdbcType=VARCHAR}, 
-      #{wbSpell,jdbcType=VARCHAR}, #{orderNumber,jdbcType=INTEGER}, #{traceLog,jdbcType=TIMESTAMP}
-      )
+      #{referenceValue,jdbcType=VARCHAR}, #{defaultValue,jdbcType=VARCHAR}, #{orderNumber,jdbcType=INTEGER}, 
+      #{traceLog,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.hs.checkitem.pojo.CheckItem">
     insert into check_item
@@ -158,12 +153,6 @@
       </if>
       <if test="defaultValue != null">
         default_value,
-      </if>
-      <if test="pySpell != null">
-        py_spell,
-      </if>
-      <if test="wbSpell != null">
-        wb_spell,
       </if>
       <if test="orderNumber != null">
         order_number,
@@ -202,12 +191,6 @@
       </if>
       <if test="defaultValue != null">
         #{defaultValue,jdbcType=VARCHAR},
-      </if>
-      <if test="pySpell != null">
-        #{pySpell,jdbcType=VARCHAR},
-      </if>
-      <if test="wbSpell != null">
-        #{wbSpell,jdbcType=VARCHAR},
       </if>
       <if test="orderNumber != null">
         #{orderNumber,jdbcType=INTEGER},
@@ -256,12 +239,6 @@
       <if test="record.defaultValue != null">
         default_value = #{record.defaultValue,jdbcType=VARCHAR},
       </if>
-      <if test="record.pySpell != null">
-        py_spell = #{record.pySpell,jdbcType=VARCHAR},
-      </if>
-      <if test="record.wbSpell != null">
-        wb_spell = #{record.wbSpell,jdbcType=VARCHAR},
-      </if>
       <if test="record.orderNumber != null">
         order_number = #{record.orderNumber,jdbcType=INTEGER},
       </if>
@@ -285,8 +262,6 @@
       lower_reference_value = #{record.lowerReferenceValue,jdbcType=INTEGER},
       reference_value = #{record.referenceValue,jdbcType=VARCHAR},
       default_value = #{record.defaultValue,jdbcType=VARCHAR},
-      py_spell = #{record.pySpell,jdbcType=VARCHAR},
-      wb_spell = #{record.wbSpell,jdbcType=VARCHAR},
       order_number = #{record.orderNumber,jdbcType=INTEGER},
       trace_log = #{record.traceLog,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -320,12 +295,6 @@
       <if test="defaultValue != null">
         default_value = #{defaultValue,jdbcType=VARCHAR},
       </if>
-      <if test="pySpell != null">
-        py_spell = #{pySpell,jdbcType=VARCHAR},
-      </if>
-      <if test="wbSpell != null">
-        wb_spell = #{wbSpell,jdbcType=VARCHAR},
-      </if>
       <if test="orderNumber != null">
         order_number = #{orderNumber,jdbcType=INTEGER},
       </if>
@@ -346,13 +315,12 @@
       lower_reference_value = #{lowerReferenceValue,jdbcType=INTEGER},
       reference_value = #{referenceValue,jdbcType=VARCHAR},
       default_value = #{defaultValue,jdbcType=VARCHAR},
-      py_spell = #{pySpell,jdbcType=VARCHAR},
-      wb_spell = #{wbSpell,jdbcType=VARCHAR},
       order_number = #{orderNumber,jdbcType=INTEGER},
       trace_log = #{traceLog,jdbcType=TIMESTAMP}
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and item_id = #{itemId,jdbcType=VARCHAR}
   </update>
+
 
 
   <select id="getCheckItems" resultMap="BaseResultMap">

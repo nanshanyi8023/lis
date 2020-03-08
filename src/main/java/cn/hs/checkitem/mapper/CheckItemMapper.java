@@ -4,6 +4,7 @@ import cn.hs.checkitem.pojo.CheckItem;
 import cn.hs.checkitem.pojo.CheckItemExample;
 import cn.hs.checkitem.pojo.CheckItemKey;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface CheckItemMapper {

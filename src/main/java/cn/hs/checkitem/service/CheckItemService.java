@@ -2,11 +2,15 @@ package cn.hs.checkitem.service;
 
 import cn.hs.checkitem.mapper.CheckItemMapper;
 import cn.hs.checkitem.pojo.CheckItem;
+import cn.hs.checkitemgroup.mapper.CheckItemGroupDetailMapper;
 import cn.hs.checkitemgroup.mapper.CheckItemGroupMapper;
 import cn.hs.checkitemgroup.pojo.CheckItemGroup;
+import cn.hs.checkitemgroup.pojo.CheckItemGroupDetail;
 import cn.hs.publicmethod.BusinessException;
+import cn.hs.workgroup.mapper.WorkGroupDetailMapper;
 import cn.hs.workgroup.mapper.WorkGroupMapper;
 import cn.hs.workgroup.pojo.WorkGroup;
+import cn.hs.workgroup.pojo.WorkGroupDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -26,6 +30,12 @@ public class CheckItemService {
     @Autowired
     private CheckItemGroupMapper checkItemGroupMapper;
 
+    /*@Autowired
+    private WorkGroupDetailMapper workGroupDetailMapper;
+
+    @Autowired
+    private CheckItemGroupDetailMapper checkItemGroupDetailMapper;*/
+
     @Autowired
     private HttpServletRequest request;
 
@@ -42,8 +52,26 @@ public class CheckItemService {
 
     //查找检验项目
     public List<CheckItem> getCheckItems(String workGroupId, String checkItemGroupId, String checkItem) {
-        List<CheckItem> checkItems = checkItemMapper.getCheckItems(this.getHosNum(), workGroupId,checkItemGroupId,checkItem);
-        return checkItems;
+        List<CheckItem> checkItemList = checkItemMapper.getCheckItems(this.getHosNum(), workGroupId,checkItemGroupId,checkItem);
+        /*//查找工作组并将id赋给checkItem
+        List<WorkGroupDetail> workGroupIdAndCheckItemIdList = workGroupDetailMapper.getWorkGroupIdAndCheckItemId(this.getHosNum());
+        //查找检验项目组合并将id赋给checkItem
+        List<CheckItemGroupDetail> checkItemGroupDetailList = checkItemGroupDetailMapper.getItemGroupIdAndItemId(this.getHosNum());
+        for (int i = 0; i < checkItemList.size(); i++) {
+            for (int j = 0; j < workGroupIdAndCheckItemIdList.size(); j++) {
+                if (checkItemList.get(i).getItemId().equals(workGroupIdAndCheckItemIdList.get(j).getItemId())){
+                    checkItemList.get(i).setWorkGroup(workGroupIdAndCheckItemIdList.get(j).getWorkGroupId());
+                    continue;
+                }
+            }
+            for (int j = 0; j < checkItemGroupDetailList.size(); j++) {
+                if (checkItemList.get(i).getItemId().equals(checkItemGroupDetailList.get(j).getItemId())){
+                    checkItemList.get(i).setCheckItemGroup(checkItemGroupDetailList.get(j).getItemGroupId());
+                    continue;
+                }
+            }
+        }*/
+        return checkItemList;
     }
 
     //删除检验项目
@@ -58,12 +86,6 @@ public class CheckItemService {
     public CheckItem saveCheckItem(CheckItem checkItem) {
         String hosNum = this.getHosNum();
         checkItem.setHosnum(hosNum);
-        /*if (StringUtils.isEmpty(checkItem.getPySpell())) {
-            checkItem.setPySpell(WordUtil.trans2PyCode(checkItem.getItemName()));
-        }
-        if (StringUtils.isEmpty(checkItem.getWbSpell())) {
-            checkItem.setWbSpell(WordUtil.trans2PyCode(checkItem.getItemName()));
-        }*/
         if (StringUtils.isEmpty(checkItem.getItemId())){  //新增
             if (this.isRepeat(hosNum,checkItem.getItemName())){
                 throw new BusinessException("检验项目名称不可重复");
