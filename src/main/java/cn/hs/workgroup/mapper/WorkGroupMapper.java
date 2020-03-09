@@ -42,4 +42,10 @@ public interface WorkGroupMapper {
 
     //根据工作组id删除对应的工作组
     int deleteWorkGroups(@Param("hosNum") String hosNum, @Param("list") List<String> itemIdList);
+
+    //查找所有的工作组名称
+    List<String> getAllWorkGroupName(@Param("hosNum") String hosNum);
+
+    //查找最大的工作组id
+    String getMaxId(@Param("hosNum") String hosNum);
 }

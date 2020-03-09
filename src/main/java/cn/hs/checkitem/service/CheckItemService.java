@@ -100,7 +100,7 @@ public class CheckItemService {
 
     //判断检验项目名称是否重复
     private boolean isRepeat(String hosNum, String itemName) {
-        List<String> list =  checkItemMapper.getAllExamMethod(hosNum);
+        List<String> list =  checkItemMapper.getAllCheckItemName(hosNum);
         for (int i = 0; i < list.size(); i++) {
             if (itemName.equals(list.get(i))){
                 return true;

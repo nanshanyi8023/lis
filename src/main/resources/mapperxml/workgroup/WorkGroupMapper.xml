@@ -296,4 +296,14 @@
       #{item}
     </foreach>
   </delete>
+  <select id="getAllWorkGroupName" resultType="java.lang.String">
+    select work_group_name
+    from work_group
+    where hosnum = #{hosNum}
+  </select>
+  <select id="getMaxId" resultType="java.lang.String">
+    select IF(max(cast(work_group_id as unsigned int)) + 1 = NULL, '1', max(cast(work_group_id as unsigned int))  + 1)
+    from work_group
+    where hosnum = #{hosNum}
+  </select>
 </mapper>

@@ -134,7 +134,7 @@
             ajaxUtils.get('workGroupSettings/getworkGroups.json', {
                 workGroup:workGroup
             }).then(function (data) {
-                dhtmlxUtils.clearAndLoadJsonListData(ItemGrid.obj, data, "itemId");  //删除所有行，加载数据
+                dhtmlxUtils.clearAndLoadJsonListData(ItemGrid.obj, data, "workGroupId");  //删除所有行，加载数据
                 ItemGrid.obj.sortRows(1,"int","asc");
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
@@ -148,7 +148,7 @@
         obj: null,
         createObj: function (rowData) {
             var windowFactory = new dhtmlXWindows();
-            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 700, 400);   //(id, left, top, width, height)
+            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 700, 350);   //(id, left, top, width, height)
             ItemDetailWindow.obj.setText("项目详情");  //标题
             ItemDetailWindow.obj.denyResize();  //拒绝调整大小
             ItemDetailWindow.obj.denyPark();
@@ -200,23 +200,23 @@
             {type: "settings", position: "label-left", blockOffset: 0, offsetLeft: 30, offsetTop: 10},
             {
                 type: "block", list: [
-                    {type: "input", name: "workGroupName", label: "工作组", value: "", inputWidth: 180,maxLength:15},
+                    {type: "input", name: "workGroupName", label: "工&nbsp&nbsp作&nbsp组", value: "", inputWidth: 180,maxLength:15},
                     {type: "newcolumn"},
                     {type: "input", name: "workGroupId", label: "工作组编号", value: "",inputWidth: 180,readonly: true,style:"background:#eaeaea"  }
                 ]
             },
             {
                 type: "block", list: [
-                    {type: "input", name:"groupCode",label: "组代码", inputWidth: 180,maxLength:15},
+                    {type: "input", name:"groupCode",label: "组&nbsp&nbsp代&nbsp码", inputWidth: 180,maxLength:15},
                     {type: "newcolumn"},
-                    {type: "input", name:"groupType",label: "组类型", inputWidth: 180,maxLength:10}
+                    {type: "input", name:"groupType",label: "组&nbsp&nbsp&nbsp类&nbsp&nbsp&nbsp型", inputWidth: 180,maxLength:10}
                 ]
             },
             {
                 type: "block", list: [
                     {type: "input", name:"sampleType",label: "样本类型", inputWidth: 180,maxLength:15},
                     {type: "newcolumn"},
-                    {type: "input", name:"departmentName",label: "所属科室", inputWidth: 180,maxLength:10}
+                    {type: "input", name:"departmentName",label: "所&nbsp属&nbsp科&nbsp室", inputWidth: 180,maxLength:10}
                 ]
             },
             {

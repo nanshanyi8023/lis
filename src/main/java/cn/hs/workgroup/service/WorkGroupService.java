@@ -1,9 +1,11 @@
 package cn.hs.workgroup.service;
 
+import cn.hs.publicmethod.BusinessException;
 import cn.hs.workgroup.mapper.WorkGroupMapper;
 import cn.hs.workgroup.pojo.WorkGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +46,28 @@ public class WorkGroupService {
 
     //保存工作组
     public WorkGroup saveWorkGroup(WorkGroup workGroup) {
-
+        String hosNum = this.getHosNum();
+        workGroup.setHosnum(hosNum);
+        if (StringUtils.isEmpty(workGroup.getWorkGroupId())){  //新增
+            if (this.isRepeat(hosNum,workGroup.getWorkGroupName())){
+                throw new BusinessException("检验项目名称不可重复");
+            }
+            workGroup.setWorkGroupId(workGroupMapper.getMaxId(hosNum));
+            workGroupMapper.insertSelective(workGroup);
+        }else {  //更新
+            workGroupMapper.updateByPrimaryKeySelective(workGroup);
+        }
         return null;
+    }
+
+    //判断检验项目名称是否重复
+    private boolean isRepeat(String hosNum, String workGroupName) {
+        List<String> list =  workGroupMapper.getAllWorkGroupName(hosNum);
+        for (int i = 0; i < list.size(); i++) {
+            if (workGroupName.equals(list.get(i))){
+                return true;
+            }
+        }
+        return false;
     }
 }
