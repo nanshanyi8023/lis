@@ -26,6 +26,9 @@
         <property name="jdbcUrl" value="jdbc:mysql://cdb-dorxc5wq.cd.tencentcdb.com:10114/lis"/>        <!-- jdbc:mysql:///lis (本地) -->
         <property name="user" value="root"/>
         <property name="password" value="hs1558270476"/>     <!-- 123 (本地) -->
+        <!--每隔10分钟自动检测数据库连接情况，如果断开则自动重连。-->
+        <property name="testConnectionOnCheckin" value="true"></property>
+        <property name="idleConnectionTestPeriod" value="600"></property>
     </bean>
 
     <!--配置SqlSessionFactory工厂（Mapper.xml）-->

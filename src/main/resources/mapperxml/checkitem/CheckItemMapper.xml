@@ -336,7 +336,7 @@
     </if>
     where ci.HOSNUM = #{hosNum}
     <if test="checkItem != null and checkItem != ''">
-      and (ci.ENGLISH_ABBREVIATION = #{checkItem} OR ci.ITEM_NAME = #{checkItem} OR ci.ITEM_ID = #{checkItem})
+      and (ci.ENGLISH_ABBREVIATION LIKE '%' #{checkItem} '%' OR ci.ITEM_NAME LIKE '%' #{checkItem} '%' OR ci.ITEM_ID LIKE '%' #{checkItem} '%')
     </if>
   </select>
   <delete id="deleteCheckItems">

@@ -197,6 +197,7 @@
             ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro,ro,ro,ro");
             ItemGrid.obj.setColumnHidden(8,true);
             ItemGrid.obj.setColumnHidden(9,true);
+            ItemGrid.obj.enableSmartRendering(true);
             ItemGrid.obj.init();
         },
         initEvent: function () {

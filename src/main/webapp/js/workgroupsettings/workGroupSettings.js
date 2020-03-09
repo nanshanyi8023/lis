@@ -121,6 +121,7 @@
             ItemGrid.obj.setColAlign("center,center,center,center,center,center,center");   //设置列中数据居中
             ItemGrid.obj.setInitWidths("50,150,*,200,200,200,200");          //列宽
             ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro");
+            ItemGrid.obj.enableSmartRendering(true);
             ItemGrid.obj.init();
         },
         initEvent: function () {

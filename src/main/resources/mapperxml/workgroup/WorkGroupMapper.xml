@@ -281,4 +281,19 @@
     from work_group
     where hosnum = #{hosNum}
   </select>
+  <select id="getworkGroups" resultMap="BaseResultMap">
+    select *
+    from work_group
+    where hosnum = #{hosNum}
+    <if test="workGroup != null and workGroup != ''">
+      and (work_group_id LIKE '%' #{workGroup} '%' OR work_group_name LIKE '%' #{workGroup} '%')
+    </if>
+  </select>
+  <delete id="deleteWorkGroups">
+    delete from work_group
+    where hosnum = #{hosNum} AND work_group_id IN
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
 </mapper>

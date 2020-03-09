@@ -31,7 +31,7 @@ public class WorkGroupService {
 
     //查找工作组
     public List<WorkGroup> getworkGroups(String workGroup) {
-        return null;
+        return workGroupMapper.getworkGroups(this.getHosNum(),workGroup);
     }
 
     //删除选中工作组
@@ -39,11 +39,12 @@ public class WorkGroupService {
         if (itemIdList.isEmpty()){
             return 0;
         }
-        return 0;
+        return workGroupMapper.deleteWorkGroups(this.getHosNum(),itemIdList);
     }
 
     //保存工作组
     public WorkGroup saveWorkGroup(WorkGroup workGroup) {
+
         return null;
     }
 }
