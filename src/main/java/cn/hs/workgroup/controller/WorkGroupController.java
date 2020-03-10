@@ -38,10 +38,20 @@ public class WorkGroupController {
     @RequestMapping(value = "/saveWorkGroup.json", method = RequestMethod.POST)
     public ApiResult saveWorkGroup(@RequestBody WorkGroup workGroup){
         try {
-            return ApiResult.success(workGroupService.saveWorkGroup(workGroup));
+            workGroupService.saveWorkGroup(workGroup);
+            return ApiResult.success();
         } catch (Exception e){
             return ApiResult.failed(e.getMessage());
         }
     }
 
+    //根据组类型查找组代码
+    @RequestMapping(value = "/getGroupCode.json", method = RequestMethod.GET)
+    public ApiResult getGroupCode(@RequestParam(required = true) String groupType){
+        try {
+            return ApiResult.success(workGroupService.getGroupCode(groupType));
+        } catch (Exception e){
+            return ApiResult.failed(e.getMessage());
+        }
+    }
 }

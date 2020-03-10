@@ -341,7 +341,7 @@
   </select>
   <delete id="deleteCheckItems">
     DELETE FROM check_item
-    WHERE hosnum = #{hosNum} AND item_id IN
+    WHERE hosnum = #{hosNum} and item_id in
     <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
       #{item}
     </foreach>

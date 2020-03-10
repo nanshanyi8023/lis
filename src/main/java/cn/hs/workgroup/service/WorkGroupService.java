@@ -45,7 +45,7 @@ public class WorkGroupService {
     }
 
     //保存工作组
-    public WorkGroup saveWorkGroup(WorkGroup workGroup) {
+    public void saveWorkGroup(WorkGroup workGroup) {
         String hosNum = this.getHosNum();
         workGroup.setHosnum(hosNum);
         if (StringUtils.isEmpty(workGroup.getWorkGroupId())){  //新增
@@ -57,7 +57,6 @@ public class WorkGroupService {
         }else {  //更新
             workGroupMapper.updateByPrimaryKeySelective(workGroup);
         }
-        return null;
     }
 
     //判断检验项目名称是否重复
@@ -69,5 +68,10 @@ public class WorkGroupService {
             }
         }
         return false;
+    }
+
+    //根据组类型查找组代码
+    public String getGroupCode(String groupType) {
+        return workGroupMapper.getGroupCode(this.getHosNum(),groupType);
     }
 }

@@ -83,7 +83,7 @@ public class CheckItemService {
     }
 
     //保存检验项目
-    public CheckItem saveCheckItem(CheckItem checkItem) {
+    public void saveCheckItem(CheckItem checkItem) {
         String hosNum = this.getHosNum();
         checkItem.setHosnum(hosNum);
         if (StringUtils.isEmpty(checkItem.getItemId())){  //新增
@@ -95,7 +95,6 @@ public class CheckItemService {
         }else {  //更新
             checkItemMapper.updateByPrimaryKeySelective(checkItem);
         }
-        return null;
     }
 
     //判断检验项目名称是否重复

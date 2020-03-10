@@ -115,12 +115,12 @@
         initObj: function () {
             ItemGrid.obj = Layout.obj.cells("b").attachGrid();
             ItemGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            ItemGrid.obj.setHeader("选择,编号,工作组名称,组代码,组类型,样本类型,所属科室",null,
-                ["text-align:center;","text-align:center;","text-align:center","text-align:center","text-align:center","text-align:center","text-align:center"]);  //设置标题内容居中
-            ItemGrid.obj.setColumnIds("ch,workGroupId,workGroupName,groupCode,groupType,sampleType,departmentName");
-            ItemGrid.obj.setColAlign("center,center,center,center,center,center,center");   //设置列中数据居中
-            ItemGrid.obj.setInitWidths("50,150,*,200,200,200,200");          //列宽
-            ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro");
+            ItemGrid.obj.setHeader("选择,编号,工作组名称,组类型,样本类型,所属科室",null,
+                ["text-align:center;","text-align:center;","text-align:center","text-align:center","text-align:center","text-align:center"]);  //设置标题内容居中
+            ItemGrid.obj.setColumnIds("ch,workGroupId,workGroupName,groupType,sampleType,departmentName");
+            ItemGrid.obj.setColAlign("center,center,center,center,center,center");   //设置列中数据居中
+            ItemGrid.obj.setInitWidths("50,150,*,200,200,200");          //列宽
+            ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro");
             ItemGrid.obj.enableSmartRendering(true);
             ItemGrid.obj.init();
         },
@@ -202,21 +202,62 @@
                 type: "block", list: [
                     {type: "input", name: "workGroupName", label: "工&nbsp&nbsp作&nbsp组", value: "", inputWidth: 180,maxLength:15},
                     {type: "newcolumn"},
-                    {type: "input", name: "workGroupId", label: "工作组编号", value: "",inputWidth: 180,readonly: true,style:"background:#eaeaea"  }
+                    {type: "input", name: "workGroupId", label: "工作组编号", value: "",inputWidth: 180,readonly: true,style:"background:#eaeaea"}
                 ]
             },
             {
                 type: "block", list: [
-                    {type: "input", name:"groupCode",label: "组&nbsp&nbsp代&nbsp码", inputWidth: 180,maxLength:15},
+                    {type: "combo", name:"groupType",label: "组&nbsp&nbsp类&nbsp型", inputWidth: 180,maxLength:15,
+                        options:[
+                            {text: "生化仪", value: "生化仪"},
+                            {text: "血球仪", value: "血球仪"},
+                            {text: "尿分仪", value: "尿分仪"},
+                            {text: "微生物组", value: "微生物组"},
+                            {text: "自定义报告", value: "自定义报告"},
+                            {text: "血凝仪", value: "血凝仪"},
+                            {text: "免疫组", value: "免疫组"},
+                            {text: "基蛋白组", value: "基蛋白组"},
+                            {text:"血气仪", value:"血气仪"}
+                        ]},
                     {type: "newcolumn"},
-                    {type: "input", name:"groupType",label: "组&nbsp&nbsp&nbsp类&nbsp&nbsp&nbsp型", inputWidth: 180,maxLength:10}
+                    {type: "input", name:"groupCode",label: "组&nbsp&nbsp&nbsp代&nbsp&nbsp&nbsp码", inputWidth: 180,readonly: true,style:"background:#eaeaea"}
+
+
                 ]
             },
             {
                 type: "block", list: [
-                    {type: "input", name:"sampleType",label: "样本类型", inputWidth: 180,maxLength:15},
+                    {type: "combo", name:"sampleType",label: "样本类型", inputWidth: 180,maxLength:15,
+                        options:[
+                            {text: "未知", value: "未知"},
+                            {text: "血清", value: "血清"},
+                            {text: "静脉血", value: "静脉血"},
+                            {text: "尿液", value: "尿液"},
+                            {text: "手术切除组织", value: "手术切除组织"},
+                            {text: "全血", value: "全血"},
+                            {text: "中段尿", value: "中段尿"},
+                            {text: "抗凝血", value: "抗凝血"},
+                            {text:"胃液", value:"胃液"},
+                            {text:"关节腔积液", value:"关节腔积液"},
+                            {text:"专用肝素钠抗凝管", value:"专用肝素钠抗凝管"},
+                            {text:"其他", value:"其他"}
+                        ]},
                     {type: "newcolumn"},
-                    {type: "input", name:"departmentName",label: "所&nbsp属&nbsp科&nbsp室", inputWidth: 180,maxLength:10}
+                    {type: "combo", name:"departmentName",label: "所&nbsp属&nbsp科&nbsp室", inputWidth: 180,maxLength:10,
+                        options:[
+                            {text: "检验科", value: "检验科"},
+                            {text: "血库", value: "血库"},
+                            {text: "重症康复病区", value: "重症康复病区"},
+                            {text: "医技辅助", value: "医技辅助"},
+                            {text: "临床科室", value: "临床科室"},
+                            {text: "外科", value: "外科"},
+                            {text: "眼科", value: "眼科"},
+                            {text: "耳鼻喉科", value: "耳鼻喉科"},
+                            {text:"麻醉科", value:"麻醉科"},
+                            {text:"妇产科", value:"妇产科"},
+                            {text:"康复科", value:"康复科"},
+                            {text:"抢救科室", value:"抢救科室"}
+                        ]}
                 ]
             },
             {
@@ -241,6 +282,17 @@
                         break;
                     default:
                 }
+            });
+            //组类型变化时，自动更改组代码
+            ItemDetailWindow.Form.obj.getCombo("groupType").attachEvent("onChange", function(value, text){
+                ajaxUtils.get('workGroupSettings/getGroupCode.json', {
+                    groupType:value
+                }).then(function (groupCode) {
+                    ItemDetailWindow.Form.obj.setItemValue("groupCode",groupCode);
+                }).catch(function (reason) {
+                    dhtmlxAlert.alertErrorMsg(reason);
+                }).finally(function () {
+                });
             });
         },
         //保存按钮

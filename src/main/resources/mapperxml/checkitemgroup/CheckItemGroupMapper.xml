@@ -264,4 +264,37 @@
     from check_item_group
     where hosnum = #{hosNum} and work_group_id = #{workGroupId}
   </select>
+  <select id="getcheckItemGroups" resultMap="BaseResultMap">
+    select cig.*
+    from check_item_group cig
+    <if test="workGroupId != null and workGroupId != ''">
+      join work_group wg on cig.work_group_id = wg.work_group_id and cig.work_group_id = #{workGroupId}
+    </if>
+    where cig.hosnum = #{hosNum}
+    <if test="checkItemGroup != null and checkItemGroup != ''">
+      and (cig.group_id LIKE '%' #{checkItemGroup} '%' OR cig.group_name LIKE '%' #{checkItemGroup} '%')
+    </if>
+  </select>
+  <delete id="deleteCheckItemGroups">
+    delete from check_item_group
+    where hosnum = #{hosNum} and group_id in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+  <select id="getAllcheckItemGroupName" resultType="java.lang.String">
+    select distinct group_name
+    from check_item_group
+    where hosnum = #{hosNum}
+  </select>
+  <select id="getMaxId" resultType="java.lang.String">
+     select IF(max(cast(group_id as unsigned int)) + 1 = NULL, '1000', max(cast(group_id as unsigned int))  + 1)
+    from check_item_group
+    where hosnum = #{hosNum}
+  </select>
+  <select id="getAllSampleType" resultType="java.lang.String">
+    select distinct sample_type
+    from check_item_group
+    where hosnum = #{hosNum}
+  </select>
 </mapper>

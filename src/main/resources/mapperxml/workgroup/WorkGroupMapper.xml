@@ -306,4 +306,10 @@
     from work_group
     where hosnum = #{hosNum}
   </select>
+  <select id="getGroupCode" resultType="java.lang.String">
+    select group_code
+    from work_group
+    where hosnum = #{hosNum} and group_type = #{groupType}
+    limit 1
+  </select>
 </mapper>

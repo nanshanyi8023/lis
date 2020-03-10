@@ -154,7 +154,7 @@
             ItemGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
             ItemGrid.obj.setHeader("选择,编号,检验项目组合名称,样品类型,采样部位,所属工作组,所属工作组id",null,
                 ["text-align:center;","text-align:center;","text-align:center","text-align:center","text-align:center","text-align:center"]);  //设置标题内容居中
-            ItemGrid.obj.setColumnIds("ch,checkItemGroupId,checkItemGroupName,sampleType,samplingSite,workGroup,workGroupId");
+            ItemGrid.obj.setColumnIds("ch,groupId,groupName,sampleType,samplingSite,workGroup,workGroupId");
             ItemGrid.obj.setColAlign("center,center,center,center,center,center");   //设置列中数据居中
             ItemGrid.obj.setInitWidths("50,150,*,150,150,150,0");          //列宽
             ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro");
@@ -246,26 +246,23 @@
             },
             {
                 type: "block", list: [
-                    {type: "input", name:"sampleType",label: "样品类型", inputWidth: 180,maxLength:15},
+                    {type: "combo", name:"sampleType",label: "样品类型", inputWidth: 180,maxLength:15},
                     {type: "newcolumn"},
-                    {type: "input", name:"samplingSite",label: "采样部位", inputWidth: 180,maxLength:10}
-                ]
-            },
-            {
-                type:"block",list:[
-                    {type: "combo", name:"workGroup",label: "所属工作组", inputWidth: 180
-                        /*options:[
-                            {text: "常规项目", value: "常规项目", selected: true},
-                            {text: "生化项目", value: "生化项目"},
-                            {text: "普通项目", value: "普通项目"},
+                    {type: "combo", name:"samplingSite",label: "采样部位", inputWidth: 180,maxLength:10,
+                        options:[
+                            {text: "体液", value: "体液"},
+                            {text: "静脉血", value: "静脉血"},
+                            {text: "抗凝血", value: "抗凝血"},
                             {text: "临检项目", value: "临检项目"},
                             {text: "血凝项目", value: "血凝项目"},
                             {text: "血库项目", value: "血库项目"},
                             {text: "免疫项目", value: "免疫项目"},
-                            {text: "细菌", value: "细菌"}
-                        ]*/
+                            {text: "细菌", value: "细菌"}]
                     }
                 ]
+            },
+            {
+                type:"block", list: [{type: "combo", name: "workGroup", label: "所属工作组", inputWidth: 180}]
             },
             {
                 type: "block", list: [
@@ -278,6 +275,7 @@
         initObj: function () {
             ItemDetailWindow.Form.obj = ItemDetailWindow.Layout.obj.cells("a").attachForm(ItemDetailWindow.Form.config);
             ItemDetailWindow.Form.getAllWorkGroup();
+            ItemDetailWindow.Form.getAllSampleType();
         },
         //查找所有工作组
         getAllWorkGroup:function(){
@@ -290,6 +288,22 @@
                     return [e.workGroupId, e.workGroupName];
                 });
                 workGroupCombo.addOption(options);
+            }).catch(function (reason) {
+                dhtmlxAlert.alertErrorMsg(reason);
+            }).finally(function () {
+            });
+        },
+        //查找所有样品类型
+        getAllSampleType :function(){
+            ajaxUtils.get('checkItemGroupSettings/getAllSampleType.json'
+            ).then(function (data) {
+                //初始化样品类型下拉框
+                var sampleTypeCombo = ItemDetailWindow.Form.obj.getCombo("sampleType");
+                sampleTypeCombo.clearAll();
+                var options = data.map(function (e, index, array) {
+                    return [e, e];
+                });
+                sampleTypeCombo.addOption(options);
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {

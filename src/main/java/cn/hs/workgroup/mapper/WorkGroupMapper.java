@@ -48,4 +48,7 @@ public interface WorkGroupMapper {
 
     //查找最大的工作组id
     String getMaxId(@Param("hosNum") String hosNum);
+
+    //根据组类型查找组代码
+    String getGroupCode(@Param("hosNum") String hosNum, @Param("groupType") String groupType);
 }

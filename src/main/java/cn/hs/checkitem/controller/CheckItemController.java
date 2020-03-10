@@ -40,7 +40,8 @@ public class CheckItemController {
     @RequestMapping(value = "/saveCheckItem.json", method = RequestMethod.POST)
     public ApiResult saveCheckItem(@RequestBody CheckItem checkItem){
         try {
-            return ApiResult.success(checkItemService.saveCheckItem(checkItem));
+            checkItemService.saveCheckItem(checkItem);
+            return ApiResult.success();
         } catch (Exception e){
             return ApiResult.failed(e.getMessage());
         }
