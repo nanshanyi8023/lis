@@ -246,7 +246,7 @@
             },
             {
                 type: "block", list: [
-                    {type: "combo", name:"sampleType",label: "样品类型", inputWidth: 180,maxLength:15},
+                    {type: "combo", name:"sampleType",label: "样&nbsp;&nbsp品&nbsp;&nbsp类&nbsp;&nbsp型", inputWidth: 180,maxLength:15},
                     {type: "newcolumn"},
                     {type: "combo", name:"samplingSite",label: "采样部位", inputWidth: 180,maxLength:10,
                         options:[
@@ -262,7 +262,7 @@
                 ]
             },
             {
-                type:"block", list: [{type: "combo", name: "workGroup", label: "所属工作组", inputWidth: 180}]
+                type:"block", list: [{type: "combo", name: "workGroup", label: "所属&nbsp;工&nbsp;作&nbsp;组", inputWidth: 180}]
             },
             {
                 type: "block", list: [

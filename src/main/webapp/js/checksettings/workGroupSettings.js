@@ -148,7 +148,7 @@
         obj: null,
         createObj: function (rowData) {
             var windowFactory = new dhtmlXWindows();
-            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 700, 350);   //(id, left, top, width, height)
+            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 700, 320);   //(id, left, top, width, height)
             ItemDetailWindow.obj.setText("项目详情");  //标题
             ItemDetailWindow.obj.denyResize();  //拒绝调整大小
             ItemDetailWindow.obj.denyPark();
@@ -285,6 +285,10 @@
             });
             //组类型变化时，自动更改组代码
             ItemDetailWindow.Form.obj.getCombo("groupType").attachEvent("onChange", function(value, text){
+                if (value == "" || value == null) {
+                    ItemDetailWindow.Form.obj.setItemValue("groupCode","");
+                    return;
+                }
                 ajaxUtils.get('workGroupSettings/getGroupCode.json', {
                     groupType:value
                 }).then(function (groupCode) {
