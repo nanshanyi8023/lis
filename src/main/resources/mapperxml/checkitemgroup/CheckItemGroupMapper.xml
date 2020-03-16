@@ -265,8 +265,9 @@
     where hosnum = #{hosNum} and work_group_id = #{workGroupId}
   </select>
   <select id="getcheckItemGroups" resultMap="BaseResultMap">
-    select cig.*
+    select cig.*, wg2.work_group_name as workGroup
     from check_item_group cig
+    left join work_group wg2 on cig.work_group_id = wg2.work_group_id
     <if test="workGroupId != null and workGroupId != ''">
       join work_group wg on cig.work_group_id = wg.work_group_id and cig.work_group_id = #{workGroupId}
     </if>

@@ -33,7 +33,8 @@ public class CheckItemGroupService {
 
     //查找检验项目组合
     public List<CheckItemGroup> getcheckItemGroups(String workGroupId, String checkItemGroup) {
-        return checkItemGroupMapper.getcheckItemGroups(this.getHosNum(),workGroupId,checkItemGroup);
+        List<CheckItemGroup> checkItemGroups = checkItemGroupMapper.getcheckItemGroups(this.getHosNum(), workGroupId, checkItemGroup);
+        return checkItemGroups;
     }
 
     public int deleteCheckItemGroups(List<String> itemIdList) {

@@ -21,7 +21,7 @@
                     collapsed_text: "collapsed_textA",   // 折叠栏标题
                     collapse: false,       // 初始是否折叠
                     fix_size: [true, true],
-                    height:50
+                    height: 50
                 },
                 {
                     id: "b",
@@ -46,7 +46,15 @@
         config: [
             {type: "combo", name: "workGroup", label: "工作组：", width: 150, offsetLeft: 10, offsetTop: 13, maxLength: 20},
             {type: "newcolumn"},
-            {type: "input", name: "checkItemGroup", label: "检验项目组合：", width: 200, offsetLeft: 10, offsetTop: 12, maxLength: 20},
+            {
+                type: "input",
+                name: "checkItemGroup",
+                label: "检验项目组合：",
+                width: 200,
+                offsetLeft: 10,
+                offsetTop: 12,
+                maxLength: 20
+            },
             {type: "newcolumn"},
             {type: "button", name: "itemSearchBtn", value: "查询", offsetLeft: 20},
             {type: "newcolumn"},
@@ -64,7 +72,7 @@
             ItemOperationForm.itemSearchBtnEvent();
         },
         //查找所有工作组
-        getAllWorkGroup:function(){
+        getAllWorkGroup: function () {
             ajaxUtils.get('checkItemSettings/getAllWorkGroup.json'
             ).then(function (data) {
                 //初始化工作组下拉框
@@ -79,12 +87,12 @@
             }).finally(function () {
             });
         },
-        initEvent:function () {
+        initEvent: function () {
             //按回车时搜索
-            ItemOperationForm.obj.attachEvent("onEnter",function () {
+            ItemOperationForm.obj.attachEvent("onEnter", function () {
                 ItemOperationForm.itemSearchBtnEvent();
             });
-            ItemOperationForm.obj.getCombo("workGroup").attachEvent("onKeyPressed", function(keyCode){
+            ItemOperationForm.obj.getCombo("workGroup").attachEvent("onKeyPressed", function (keyCode) {
                 if (keyCode == '13') {
                     ItemOperationForm.itemSearchBtnEvent();
                 }
@@ -103,7 +111,7 @@
                         break;
                     case "itemDeleteBtn":
                         var itemIdList = dhtmlxUtils.getCheckedRowIds(ItemGrid.obj);   //获取ItemGrid中checkbox所有被勾选上行的rowId
-                        if (itemIdList.length === 0){
+                        if (itemIdList.length === 0) {
                             dhtmlxAlert.alertMsg("需至少选中一个要删除的项目");
                             return;
                         }
@@ -119,16 +127,16 @@
         itemSearchBtnEvent: function () {
             var workGroupId = ItemOperationForm.obj.getCombo("workGroup").getSelectedValue();
             var checkItemGroup = ItemOperationForm.obj.getItemValue("checkItemGroup");
-            ItemGrid.loadData(workGroupId,checkItemGroup);
+            ItemGrid.loadData(workGroupId, checkItemGroup);
         },
         //清空查询功能
-        clearSearchBtnEvent:function(){
+        clearSearchBtnEvent: function () {
             ItemOperationForm.obj.clear();
             ItemOperationForm.obj.getCombo("workGroup").unSelectOption();
             ItemGrid.loadData();
         },
         //添加功能
-        itemAddBtnEvent:function () {
+        itemAddBtnEvent: function () {
             ItemDetailWindow.createObj();
         },
         //删除功能
@@ -145,35 +153,35 @@
         }
     };
 
-    //检验项目列表
+    //检验项目组合列表
     var ItemGrid = {
         obj: null,
         initObj: function () {
             ItemGrid.obj = Layout.obj.cells("b").attachGrid();
             ItemGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            ItemGrid.obj.setHeader("选择,编号,检验项目组合名称,样品类型,采样部位,所属工作组,所属工作组id",null,
-                ["text-align:center;","text-align:center;","text-align:center","text-align:center","text-align:center","text-align:center"]);  //设置标题内容居中
+            ItemGrid.obj.setHeader("选择,编号,检验项目组合名称,样品类型,采样部位,所属工作组,所属工作组id", null,
+                ["text-align:center;", "text-align:center;", "text-align:center", "text-align:center", "text-align:center", "text-align:center"]);  //设置标题内容居中
             ItemGrid.obj.setColumnIds("ch,groupId,groupName,sampleType,samplingSite,workGroup,workGroupId");
             ItemGrid.obj.setColAlign("center,center,center,center,center,center");   //设置列中数据居中
-            ItemGrid.obj.setInitWidths("50,150,*,150,150,150,0");          //列宽
+            ItemGrid.obj.setInitWidths("50,150,*,200,200,200,0");          //列宽
             ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro");
-            ItemGrid.obj.setColumnHidden(6,true);
+            ItemGrid.obj.setColumnHidden(6, true);
             ItemGrid.obj.enableSmartRendering(true);
             ItemGrid.obj.init();
         },
         initEvent: function () {
-            ItemGrid.obj.attachEvent("onRowDblClicked",function () {
+            ItemGrid.obj.attachEvent("onRowDblClicked", function () {
                 var rowData = dhtmlxUtils.getSelectedRowBindingData(ItemGrid.obj);
                 ItemDetailWindow.createObj(rowData);
             });
         },
-        loadData: function (workGroupId,checkItemGroup) {
+        loadData: function (workGroupId, checkItemGroup) {
             ajaxUtils.get('checkItemGroupSettings/getcheckItemGroups.json', {
-                workGroupId:workGroupId,
-                checkItemGroup:checkItemGroup
+                workGroupId: workGroupId,
+                checkItemGroup: checkItemGroup
             }).then(function (data) {
-                dhtmlxUtils.clearAndLoadJsonListData(ItemGrid.obj, data, "checkItemGroupId");  //删除所有行，加载数据
-                ItemGrid.obj.sortRows(1,"int","asc");
+                dhtmlxUtils.clearAndLoadJsonListData(ItemGrid.obj, data, "groupId");  //删除所有行，加载数据
+                ItemGrid.obj.sortRows(1, "int", "asc");
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
@@ -235,20 +243,42 @@
     ItemDetailWindow.Form = {
         obj: null,
         config: [
-            {type: "settings", position: "label-left", blockOffset: 0, offsetLeft: 30, offsetTop: 10},
+            {type: "settings", position: "label-left", blockOffset: 0, offsetLeft: 30, offsetTop: 13},
             {
                 type: "block", list: [
-                    {type: "input", name: "checkItemGroupName", label: "检验项目组合", value: "", inputWidth: 180,maxLength:15},
+                    {
+                        type: "input",
+                        name: "groupName",
+                        label: "检验项目组合",
+                        value: "",
+                        inputWidth: 180,
+                        maxLength: 15
+                    },
                     {type: "newcolumn"},
-                    {type: "input", name: "checkItemGroupId", label: "检验项目组合编号", value: "",inputWidth: 180,readonly: true,style:"background:#eaeaea"  }
+                    {
+                        type: "input",
+                        name: "groupId",
+                        label: "检验项目组合编号",
+                        value: "",
+                        inputWidth: 180,
+                        readonly: true,
+                        style: "background:#eaeaea"
+                    }
                 ]
             },
             {
                 type: "block", list: [
-                    {type: "combo", name:"sampleType",label: "样&nbsp;&nbsp品&nbsp;&nbsp类&nbsp;&nbsp型", inputWidth: 180,maxLength:15},
+                    {
+                        type: "combo",
+                        name: "sampleType",
+                        label: "样&nbsp;&nbsp;品&nbsp;&nbsp;类&nbsp;&nbsp;&nbsp;型",
+                        inputWidth: 180,
+                        maxLength: 15
+                    },
                     {type: "newcolumn"},
-                    {type: "combo", name:"samplingSite",label: "采样部位", inputWidth: 180,maxLength:10,
-                        options:[
+                    {
+                        type: "combo", name: "samplingSite", label: "采样部位", inputWidth: 180, maxLength: 10,
+                        options: [
                             {text: "体液", value: "体液"},
                             {text: "静脉血", value: "静脉血"},
                             {text: "抗凝血", value: "抗凝血"},
@@ -261,7 +291,8 @@
                 ]
             },
             {
-                type:"block", list: [{type: "combo", name: "workGroup", label: "所属&nbsp;工&nbsp;作&nbsp;组", inputWidth: 180}]
+                type: "block",
+                list: [{type: "combo", name: "workGroup", label: "所&nbsp;属&nbsp;工&nbsp;作&nbsp;组", inputWidth: 180}]
             },
             {
                 type: "block", list: [
@@ -277,7 +308,7 @@
             ItemDetailWindow.Form.getAllSampleType();
         },
         //查找所有工作组
-        getAllWorkGroup:function(){
+        getAllWorkGroup: function () {
             ajaxUtils.get('checkItemSettings/getAllWorkGroup.json'
             ).then(function (data) {
                 //初始化工作组下拉框
@@ -293,7 +324,7 @@
             });
         },
         //查找所有样品类型
-        getAllSampleType :function(){
+        getAllSampleType: function () {
             ajaxUtils.get('checkItemGroupSettings/getAllSampleType.json'
             ).then(function (data) {
                 //初始化样品类型下拉框
@@ -344,7 +375,7 @@
         },
         //双击查看项目后回写表单
         loadData: function (rowData) {
-            if (!rowData){
+            if (!rowData) {
                 return;
             }
             ItemDetailWindow.Form.obj.setFormData(rowData);
@@ -359,7 +390,8 @@
         ItemGrid.initEvent();
     };
 
-    var checkItemGroupSettings = function(){};
+    var checkItemGroupSettings = function () {
+    };
     checkItemGroupSettings.init = init;
-    global.checkItemGroupSettings = checkItemGroupSettings||{};
+    global.checkItemGroupSettings = checkItemGroupSettings || {};
 }(this);

@@ -21,7 +21,7 @@
                     collapsed_text: "collapsed_textA",   // 折叠栏标题
                     collapse: false,       // 初始是否折叠
                     fix_size: [true, true],
-                    height:50
+                    height: 50
                 },
                 {
                     id: "b",
@@ -46,9 +46,25 @@
         config: [
             {type: "combo", name: "workGroup", label: "工作组：", width: 150, offsetLeft: 10, offsetTop: 13, maxLength: 20},
             {type: "newcolumn"},
-            {type: "combo", name: "checkItemGroup", label: "检验项目组合：", width: 200, offsetLeft: 10, offsetTop: 13, maxLength: 20},
+            {
+                type: "combo",
+                name: "checkItemGroup",
+                label: "检验项目组合：",
+                width: 200,
+                offsetLeft: 10,
+                offsetTop: 13,
+                maxLength: 20
+            },
             {type: "newcolumn"},
-            {type: "input", name: "checkItem", label: "检验项目：", width: 150, offsetLeft: 10, offsetTop: 12, maxLength: 20},
+            {
+                type: "input",
+                name: "checkItem",
+                label: "检验项目：",
+                width: 150,
+                offsetLeft: 10,
+                offsetTop: 12,
+                maxLength: 20
+            },
             {type: "newcolumn"},
             {type: "button", name: "itemSearchBtn", value: "查询", offsetLeft: 20},
             {type: "newcolumn"},
@@ -66,7 +82,7 @@
             ItemOperationForm.itemSearchBtnEvent();
         },
         //查找所有工作组
-        getAllWorkGroup:function(){
+        getAllWorkGroup: function () {
             ajaxUtils.get('checkItemSettings/getAllWorkGroup.json'
             ).then(function (data) {
                 //初始化工作组下拉框
@@ -82,10 +98,10 @@
             });
         },
         //查找所有检验项目组合
-        getAllCheckItemGroup:function(workGroupId){
-            ajaxUtils.get('checkItemSettings/getAllCheckItemGroup.json',{
-                workGroupId : workGroupId
-                }).then(function (data) {
+        getAllCheckItemGroup: function (workGroupId) {
+            ajaxUtils.get('checkItemSettings/getAllCheckItemGroup.json', {
+                workGroupId: workGroupId
+            }).then(function (data) {
                 //初始化检验项目组合下拉框
                 var checkItemGroupCombo = ItemOperationForm.obj.getCombo("checkItemGroup");
                 checkItemGroupCombo.clearAll();
@@ -99,27 +115,27 @@
             }).finally(function () {
             });
         },
-        initEvent:function () {
+        initEvent: function () {
             //初始化检验项目组合下拉框
-            ItemOperationForm.obj.attachEvent("onChange", function (name, value, state){
+            ItemOperationForm.obj.attachEvent("onChange", function (name, value, state) {
                 //当工作组下拉框变化时，检验项目组合下拉框也变
-                if (name == 'workGroup'){
+                if (name == 'workGroup') {
                     var workGroupId = ItemOperationForm.obj.getCombo("workGroup").getSelectedValue();
-                    if (workGroupId !== null && workGroupId !== ""){
+                    if (workGroupId !== null && workGroupId !== "") {
                         ItemOperationForm.getAllCheckItemGroup(workGroupId);
                     }
                 }
             });
             //按回车时搜索
-            ItemOperationForm.obj.attachEvent("onEnter",function () {
+            ItemOperationForm.obj.attachEvent("onEnter", function () {
                 ItemOperationForm.itemSearchBtnEvent();
             });
-            ItemOperationForm.obj.getCombo("workGroup").attachEvent("onKeyPressed", function(keyCode){
+            ItemOperationForm.obj.getCombo("workGroup").attachEvent("onKeyPressed", function (keyCode) {
                 if (keyCode == '13') {
                     ItemOperationForm.itemSearchBtnEvent();
                 }
             });
-            ItemOperationForm.obj.getCombo("checkItemGroup").attachEvent("onKeyPressed", function(keyCode){
+            ItemOperationForm.obj.getCombo("checkItemGroup").attachEvent("onKeyPressed", function (keyCode) {
                 if (keyCode == '13') {
                     ItemOperationForm.itemSearchBtnEvent();
                 }
@@ -138,7 +154,7 @@
                         break;
                     case "itemDeleteBtn":
                         var itemIdList = dhtmlxUtils.getCheckedRowIds(ItemGrid.obj);   //获取ItemGrid中checkbox所有被勾选上行的rowId
-                        if (itemIdList.length === 0){
+                        if (itemIdList.length === 0) {
                             dhtmlxAlert.alertMsg("需至少选中一个要删除的项目");
                             return;
                         }
@@ -155,17 +171,17 @@
             var workGroupId = ItemOperationForm.obj.getCombo("workGroup").getSelectedValue();
             var checkItemGroupId = ItemOperationForm.obj.getCombo("checkItemGroup").getSelectedValue();
             var checkItem = ItemOperationForm.obj.getItemValue("checkItem");
-            ItemGrid.loadData(workGroupId,checkItemGroupId,checkItem);
+            ItemGrid.loadData(workGroupId, checkItemGroupId, checkItem);
         },
         //清空查询功能
-        clearSearchBtnEvent:function(){
+        clearSearchBtnEvent: function () {
             ItemOperationForm.obj.clear();
             ItemOperationForm.obj.getCombo("workGroup").unSelectOption();
             ItemOperationForm.obj.getCombo("checkItemGroup").unSelectOption();
             ItemGrid.loadData();
         },
         //添加功能
-        itemAddBtnEvent:function () {
+        itemAddBtnEvent: function () {
             ItemDetailWindow.createObj();
         },
         //删除功能
@@ -188,31 +204,31 @@
         initObj: function () {
             ItemGrid.obj = Layout.obj.cells("b").attachGrid();
             ItemGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            ItemGrid.obj.setHeader("选择,编号,项目名称,英文缩写,计量单位,项目类型,参考值,默认值,所属工作组,所属检验项目组合",null,
-                ["text-align:center;","text-align:center;","text-align:center","text-align:center","text-align:center","text-align:center","text-align:center","text-align:center"]);  //设置标题内容居中
+            ItemGrid.obj.setHeader("选择,编号,项目名称,英文缩写,计量单位,项目类型,参考值,默认值,所属工作组,所属检验项目组合", null,
+                ["text-align:center;", "text-align:center;", "text-align:center", "text-align:center", "text-align:center", "text-align:center", "text-align:center", "text-align:center"]);  //设置标题内容居中
             ItemGrid.obj.setColumnIds("ch,itemId,itemName,englishAbbreviation,unit,itemType,referenceValue,defaultValue,workGroup,checkItemGroup");
             ItemGrid.obj.setColAlign("center,center,center,center,center,center,center,center");   //设置列中数据居中
             ItemGrid.obj.setInitWidths("50,150,*,150,150,150,150,150,0,0");          //列宽
             ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro,ro,ro,ro");
-            ItemGrid.obj.setColumnHidden(8,true);
-            ItemGrid.obj.setColumnHidden(9,true);
+            ItemGrid.obj.setColumnHidden(8, true);
+            ItemGrid.obj.setColumnHidden(9, true);
             ItemGrid.obj.enableSmartRendering(true);
             ItemGrid.obj.init();
         },
         initEvent: function () {
-            ItemGrid.obj.attachEvent("onRowDblClicked",function () {
+            ItemGrid.obj.attachEvent("onRowDblClicked", function () {
                 var rowData = dhtmlxUtils.getSelectedRowBindingData(ItemGrid.obj);
                 ItemDetailWindow.createObj(rowData);
             });
         },
-        loadData: function (workGroupId,checkItemGroupId,checkItem) {
+        loadData: function (workGroupId, checkItemGroupId, checkItem) {
             ajaxUtils.get('checkItemSettings/getCheckItems.json', {
-                workGroupId:workGroupId,
-                checkItemGroupId:checkItemGroupId,
-                checkItem:checkItem
+                workGroupId: workGroupId,
+                checkItemGroupId: checkItemGroupId,
+                checkItem: checkItem
             }).then(function (data) {
                 dhtmlxUtils.clearAndLoadJsonListData(ItemGrid.obj, data, "itemId");  //删除所有行，加载数据
-                ItemGrid.obj.sortRows(1,"int","asc");
+                ItemGrid.obj.sortRows(1, "int", "asc");
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
@@ -239,7 +255,7 @@
             ItemDetailWindow.Form.initObj();
             ItemDetailWindow.Form.initEvent();
             ItemDetailWindow.Form.loadData(rowData);
-        }    
+        }
     };
 
     //详细信息窗口布局设置
@@ -278,29 +294,56 @@
             {type: "settings", position: "label-left", blockOffset: 0, offsetLeft: 30, offsetTop: 10},
             {
                 type: "block", list: [
-                    {type: "input", name: "itemName", label: "检验项目", value: "", inputWidth: 180,maxLength:15},
+                    {type: "input", name: "itemName", label: "检验项目", value: "", inputWidth: 180, maxLength: 15},
                     {type: "newcolumn"},
-                    {type: "input", name: "itemId", label: "检验项目编号", value: "",inputWidth: 180,readonly: true,style:"background:#eaeaea"  }
+                    {
+                        type: "input",
+                        name: "itemId",
+                        label: "检验项目编号",
+                        value: "",
+                        inputWidth: 180,
+                        readonly: true,
+                        style: "background:#eaeaea"
+                    }
                 ]
             },
             {
                 type: "block", list: [
-                    {type: "input", name:"englishAbbreviation",label: "英文缩写", inputWidth: 180,maxLength:15},
+                    {type: "input", name: "englishAbbreviation", label: "英文缩写", inputWidth: 180, maxLength: 15},
                     {type: "newcolumn"},
-                    {type: "input", name:"unit",label: "计&nbsp&nbsp量&nbsp&nbsp单&nbsp&nbsp位", inputWidth: 180,maxLength:10}
+                    {
+                        type: "input",
+                        name: "unit",
+                        label: "计&nbsp&nbsp量&nbsp&nbsp单&nbsp&nbsp位",
+                        inputWidth: 180,
+                        maxLength: 10
+                    }
                 ]
             },
             {
                 type: "block", list: [
-                    {type: "input", name:"referenceValue",label: "参&nbsp&nbsp考&nbsp值", inputWidth: 180,maxLength:15},
+                    {
+                        type: "input",
+                        name: "referenceValue",
+                        label: "参&nbsp&nbsp考&nbsp值",
+                        inputWidth: 180,
+                        maxLength: 15
+                    },
                     {type: "newcolumn"},
-                    {type: "input", name:"defaultValue",label: "默&nbsp&nbsp&nbsp&nbsp认&nbsp&nbsp&nbsp&nbsp&nbsp值", inputWidth: 180,maxLength:10}
+                    {
+                        type: "input",
+                        name: "defaultValue",
+                        label: "默&nbsp&nbsp&nbsp&nbsp认&nbsp&nbsp&nbsp&nbsp&nbsp值",
+                        inputWidth: 180,
+                        maxLength: 10
+                    }
                 ]
             },
             {
-                type:"block",list:[
-                    {type: "combo", id:"itemType",name:"itemType",label: "项目类型", inputWidth: 180,
-                        options:[
+                type: "block", list: [
+                    {
+                        type: "combo", id: "itemType", name: "itemType", label: "项目类型", inputWidth: 180,
+                        options: [
                             {text: "常规项目", value: "常规项目", selected: true},
                             {text: "生化项目", value: "生化项目"},
                             {text: "普通项目", value: "普通项目"},
@@ -364,7 +407,7 @@
         },
         //双击查看项目后回写表单
         loadData: function (rowData) {
-            if (!rowData){
+            if (!rowData) {
                 return;
             }
             ItemDetailWindow.Form.obj.setFormData(rowData);
@@ -372,14 +415,15 @@
     };
 
     var init = function () {
-    Layout.initObj();
-    ItemOperationForm.initObj();
-    ItemOperationForm.initEvent();
-    ItemGrid.initObj();
-    ItemGrid.initEvent();
+        Layout.initObj();
+        ItemOperationForm.initObj();
+        ItemOperationForm.initEvent();
+        ItemGrid.initObj();
+        ItemGrid.initEvent();
     };
 
-    var checkItemSettings = function(){};
+    var checkItemSettings = function () {
+    };
     checkItemSettings.init = init;
-    global.checkItemSettings = checkItemSettings||{};
+    global.checkItemSettings = checkItemSettings || {};
 }(this);
