@@ -6,7 +6,6 @@
         obj: null,
 
         config: {
-            parent: "RightLayoutObj",
             pattern: "2E",
             offsets: {
                 top: 2,
@@ -36,7 +35,7 @@
         },
 
         initObj: function () {
-            Layout.obj = new dhtmlXLayoutObject(Layout.config);
+            Layout.obj = SystemHome.Layout.obj.cells("c").attachLayout(Layout.config);
         }
     };
 
@@ -45,7 +44,7 @@
         obj: null,
 
         config: [
-            {type: "combo", name: "workGroup", label: "工作组：", width: 150, offsetLeft: 10, offsetTop: 12, maxLength: 20},
+            {type: "combo", name: "workGroup", label: "工作组：", width: 150, offsetLeft: 10, offsetTop: 13, maxLength: 20},
             {type: "newcolumn"},
             {type: "input", name: "checkItemGroup", label: "检验项目组合：", width: 200, offsetLeft: 10, offsetTop: 12, maxLength: 20},
             {type: "newcolumn"},

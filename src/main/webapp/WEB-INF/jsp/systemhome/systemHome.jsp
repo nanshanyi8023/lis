@@ -26,6 +26,8 @@
     <script type="text/javascript" src="js/checksettings/checkItemSettings.js"></script>
     <script type="text/javascript" src="js/checksettings/checkItemGroupSettings.js"></script>
     <script type="text/javascript" src="js/checksettings/workGroupSettings.js"></script>
+    <script type="text/javascript" src="js/systemhome/systemHome.js"></script>
+
 
 
     <style type="text/css">
@@ -57,24 +59,11 @@
 
 </head>
 <body>
-<script>
-    var width
-</script>
-<div style="width:1600px;height: 755px">
-    <%--顶部欢迎条--%>
-    <div id="TopLayoutObj" style="width: 100%;height: 10%;"></div>
-    <div style="width: 100%; height:90%">
-        <%--左边菜单栏--%>
-        <div id="LeftLayoutObj" style="float:left; width: 15%;height:100%"></div>
-        <%--右边内容详情--%>
-        <div id="RightLayoutObj" style = "float:left; width: 85%;height:100%"></div>
-    </div>
-</div>
+<div id = "SystemHomeObj"  style="width: 100%;height: 100%;"></div>
 <script type="text/javascript">
     $(document).ready(function () {
         //初始化页面
-        TopWelcomeBar.init();
-        LeftMenu.init();
+        SystemHome.init();
     });
 </script>
 

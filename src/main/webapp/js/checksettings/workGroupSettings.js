@@ -6,7 +6,6 @@
         obj: null,
 
         config: {
-            parent: "RightLayoutObj",
             pattern: "2E",
             offsets: {
                 top: 2,
@@ -36,7 +35,7 @@
         },
 
         initObj: function () {
-            Layout.obj = new dhtmlXLayoutObject(Layout.config);
+            Layout.obj = SystemHome.Layout.obj.cells("c").attachLayout(Layout.config);
         }
     };
 
