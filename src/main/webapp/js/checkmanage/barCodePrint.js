@@ -89,8 +89,6 @@
         //查询按钮功能
         searchBtnEvent:function () {
             PatientListGrid.loadData();
-
-
         },
         //打印条码按钮功能
         printBarCodeBtnEvent:function () {
@@ -146,19 +144,23 @@
         initObj: function () {
             CheckApplicationGrid.obj = Layout.obj.cells("c").attachGrid();
             CheckApplicationGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            CheckApplicationGrid.obj.setHeader("选择,姓名,检验项目,采集容器,价格,送检科室,急诊,开单医生,开单时间,条码打印状态", null,
+            CheckApplicationGrid.obj.setHeader("选择,姓名,检验项目,采集容器,价格,送检科室,急诊,开单医生,开单时间,条码打印状态,检验申请id,病人id,检验项目组合id", null,
                 ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
-            CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroupName,collectionContainer,itemPrice,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu");
+            CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroupName,collectionContainer,itemPrice,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu,itemId,patientId,checkItemGroupId");
             CheckApplicationGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中
-            CheckApplicationGrid.obj.setInitWidths("80,100,*,180,100,100,80,120,120,120");          //列宽
-            CheckApplicationGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ch,ro,ro,ro");
+            CheckApplicationGrid.obj.setInitWidths("80,100,*,180,100,100,80,120,120,120,0,0,0");          //列宽
+            CheckApplicationGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ch,ro,ro,ro,ro,ro,ro");
             CheckApplicationGrid.obj.init();
+            CheckApplicationGrid.obj.setColumnHidden(10,true);
+            CheckApplicationGrid.obj.setColumnHidden(11,true);
+            CheckApplicationGrid.obj.setColumnHidden(12,true);
             //CheckApplicationGrid.obj.enableAutoWidth(true);
         },
         initEvent: function () {
-            CheckApplicationGrid.obj.attachEvent("onRowSelect",function () {
-
-
+            CheckApplicationGrid.obj.attachEvent("onRowSelect", function (id, ind) {
+                //自动勾选上本行或取消勾选
+                var flag = CheckApplicationGrid.obj.cells(id, 0).getValue() == '1' ? 0 : 1;
+                CheckApplicationGrid.obj.cells(id, 0).setValue(flag);
             });
         },
         loadData: function () {
@@ -179,7 +181,7 @@
                 for (var i = 0 ; i < data.length ;i++){
                     data[i].billingTime = new Date(data[i].billingTime).toLocaleDateString();
                 }
-                dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "");  //删除所有行，加载数据
+                dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "itemId");  //删除所有行，加载数据
                 //CheckApplicationGrid.obj.sortRows(1,"int","asc");
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
