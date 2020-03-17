@@ -29,7 +29,7 @@
                     collapsed_text: "单击展开功能列表",   // 折叠栏标题
                     collapse: false,       // 初始是否折叠
                     fix_size: [true, true],
-                    width:300
+                    width:250
                 },
                 {
                     id: "c",

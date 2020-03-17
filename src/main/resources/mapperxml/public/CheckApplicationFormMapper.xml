@@ -389,14 +389,14 @@
     select *
     from check_application_form
     where hosnum = #{hosNum} and patient_id in
-    <foreach collection="checkApplicationSearchDto.patientIdList" item="item" index="index" open="(" separator="," close=")">
+    <foreach collection="patientIdList" item="item" index="index" open="(" separator="," close=")">
       #{item}
     </foreach>
-    <if test="checkApplicationSearchDto.startDate != null and checkApplicationSearchDto.startDate != ''">
-      and ()
+    <if test="startDate != null">
+      and billing_time &gt;= #{startDate}
     </if>
-    <if test="checkApplicationSearchDto.endDate != null and checkApplicationSearchDto.endDate != ''">
-      and ()
+    <if test="endDate != null">
+      and billing_time &lt;= #{endDate}
     </if>
   </select>
 </mapper>

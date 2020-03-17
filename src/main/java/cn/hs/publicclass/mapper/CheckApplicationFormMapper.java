@@ -1,9 +1,10 @@
 package cn.hs.publicclass.mapper;
 
-import cn.hs.barcodeprint.dto.CheckApplicationSearchDto;
 import cn.hs.publicclass.table.checkapplicationform.CheckApplicationForm;
 import cn.hs.publicclass.table.checkapplicationform.CheckApplicationFormExample;
 import cn.hs.publicclass.table.checkapplicationform.CheckApplicationFormKey;
+
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -35,5 +36,6 @@ public interface CheckApplicationFormMapper {
      * 自定义方法
      */
     //根据患者id和开单时间查找对应的检验申请
-    List<CheckApplicationForm> selectByPatientAndTime(@Param("hosNum") String hosNum, @Param("checkApplicationSearchDto") CheckApplicationSearchDto checkApplicationSearchDto);
+    List<CheckApplicationForm> selectByPatientAndTime(@Param("hosNum") String hosNum, @Param("patientIdList") List<String> patientIdList,
+                                                      @Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }

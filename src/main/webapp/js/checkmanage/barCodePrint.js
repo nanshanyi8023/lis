@@ -9,10 +9,10 @@
             parent: "RightLayoutObj",
             pattern: "3T",
             offsets: {
-                top: 1,
-                right: 1,
-                bottom: 1,
-                left: 1
+                top: 2,
+                right: 2,
+                bottom: 2,
+                left: 2
             },
             cells: [
                 {
@@ -88,8 +88,7 @@
         },
         //查询按钮功能
         searchBtnEvent:function () {
-            var formData = OperationForm.obj.getFormData();
-            PatientListGrid.loadData(formData);
+            PatientListGrid.loadData();
 
 
         },
@@ -111,6 +110,7 @@
             PatientListGrid.obj.setInitWidths("60,*,130");          //列宽
             PatientListGrid.obj.setColTypes("ch,ro,ro");
             PatientListGrid.obj.init();
+            PatientListGrid.loadData();
         },
         initEvent: function () {
             PatientListGrid.obj.attachEvent("onRowSelect", function (id, ind) {
@@ -126,7 +126,8 @@
                 CheckApplicationGrid.loadData();
             });
         },
-        loadData: function (formData) {
+        loadData: function () {
+            var formData = OperationForm.obj.getFormData();
             ajaxUtils.postBody('barCodePrint/getPatientInfo.json',
                 formData
             ).then(function (data) {
@@ -149,11 +150,10 @@
                 ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
             CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroupName,collectionContainer,itemPrice,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu");
             CheckApplicationGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中
-            //CheckApplicationGrid.obj.setInitWidths("60,100,*,100,100,100,100,100,100,100");          //列宽
+            CheckApplicationGrid.obj.setInitWidths("80,100,*,180,100,100,80,120,120,120");          //列宽
             CheckApplicationGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ch,ro,ro,ro");
             CheckApplicationGrid.obj.init();
-            CheckApplicationGrid.obj.enableAutoWidth(true);
-
+            //CheckApplicationGrid.obj.enableAutoWidth(true);
         },
         initEvent: function () {
             CheckApplicationGrid.obj.attachEvent("onRowSelect",function () {
@@ -162,14 +162,23 @@
             });
         },
         loadData: function () {
+            var patientIdList = dhtmlxUtils.getCheckedRowIds(PatientListGrid.obj,0);
+            //如果勾选患者行为空，则清空申请列表并且不查询
+            if (isEmpty(patientIdList)) {
+                CheckApplicationGrid.obj.clearAll();
+                return;
+            }
             var checkApplicationSearch = {
-                patientIdList : dhtmlxUtils.getCheckedRowIds(PatientListGrid.obj, 0),
-                startDate : OperationForm.obj.getItemValue("startDate"),
-                endDate : OperationForm.obj.getItemValue("endDate")
+                patientIdList : patientIdList,
+                startDate : OperationForm.obj.getItemValue("startDate",true),
+                endDate : OperationForm.obj.getItemValue("endDate",true)
             };
             ajaxUtils.postBody('barCodePrint/getCheckApplication.json',
                 checkApplicationSearch
             ).then(function (data) {
+                for (var i = 0 ; i < data.length ;i++){
+                    data[i].billingTime = new Date(data[i].billingTime).toLocaleDateString();
+                }
                 dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "");  //删除所有行，加载数据
                 //CheckApplicationGrid.obj.sortRows(1,"int","asc");
             }).catch(function (reason) {
