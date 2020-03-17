@@ -19,13 +19,15 @@
     <script type="text/javascript" src="toolfile/dhtmlxAlert.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxUtils.js"></script>
     <script type="text/javascript" src="toolfile/isEmpyt.js"></script>
+    <script type="text/javascript" src="toolfile/dhtmlxCalendarLanguage.js"></script>
 
     <script type="text/javascript" src="js/topwelcomebar/topWelcomeBar.js"></script>
     <script type="text/javascript" src="js/leftmenu/leftMenu.js"></script>
-    <script type="text/javascript" src="js/userinfo/userInfo.js"></script>
+    <script type="text/javascript" src="js/checkmanage/barCodePrint.js"></script>
     <script type="text/javascript" src="js/checksettings/checkItemSettings.js"></script>
     <script type="text/javascript" src="js/checksettings/checkItemGroupSettings.js"></script>
     <script type="text/javascript" src="js/checksettings/workGroupSettings.js"></script>
+    <script type="text/javascript" src="js/userinfo/userInfo.js"></script>
     <script type="text/javascript" src="js/systemhome/systemHome.js"></script>
 
 
@@ -59,11 +61,26 @@
 
 </head>
 <body>
-<div id = "SystemHomeObj"  style="width: 100%;height: 100%;"></div>
+<script>
+    var width
+</script>
+<div style="width:1600px;height: 755px">
+    <%--顶部欢迎条--%>
+    <div id="TopLayoutObj" style="width: 100%;height: 10%;"></div>
+    <div style="width: 100%; height:90%">
+        <%--左边菜单栏--%>
+        <div id="LeftLayoutObj" style="float:left; width: 15%;height:100%"></div>
+        <%--右边内容详情--%>
+        <div id="RightLayoutObj" style = "float:left; width: 85%;height:100%"></div>
+    </div>
+</div>
 <script type="text/javascript">
     $(document).ready(function () {
+        //设置dhtmlx时钟的语言
+        dhtmlxCalendarLanage.setChinese();
         //初始化页面
-        SystemHome.init();
+        TopWelcomeBar.init();
+        LeftMenu.init();
     });
 </script>
 

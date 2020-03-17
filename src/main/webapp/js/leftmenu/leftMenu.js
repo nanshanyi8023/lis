@@ -104,8 +104,8 @@
             MenuTree.obj.attachEvent("onSelect", function(id){
                 SystemHome.Layout.obj.cells("c").detachObject();    //清空右边内容
                 switch (id) {
-                    case "userinfoSetting":
-                        UserInfo.init();
+                    case "barCodePrint":
+                        barCodePrint.init();
                         break;
                     case "checkItemSettings":
                         checkItemSettings.init();
@@ -115,6 +115,9 @@
                         break;
                     case "workGroupSettings":
                         workGroupSettings.init();
+                        break;
+                    case "userinfoSetting":
+                        UserInfo.init();
                         break;
                 }
             });
