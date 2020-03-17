@@ -171,8 +171,7 @@
         },
         initEvent: function () {
             ItemGrid.obj.attachEvent("onRowDblClicked", function () {
-                var rowData = dhtmlxUtils.getSelectedRowBindingData(ItemGrid.obj);
-                ItemDetailWindow.createObj(rowData);
+                ItemDetailWindow.createObj();
             });
         },
         loadData: function (workGroupId, checkItemGroup) {
@@ -192,21 +191,22 @@
     //新增以及查看详细信息窗口
     var ItemDetailWindow = {
         obj: null,
-        createObj: function (rowData) {
+        createObj: function () {
             var windowFactory = new dhtmlXWindows();
-            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 700, 400);   //(id, left, top, width, height)
+            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 700, 350);   //(id, left, top, width, height)
             ItemDetailWindow.obj.setText("项目详情");  //标题
             ItemDetailWindow.obj.denyResize();  //拒绝调整大小
             ItemDetailWindow.obj.denyPark();
             ItemDetailWindow.obj.setModal(true);
             ItemDetailWindow.obj.centerOnScreen(); //窗口居中显示在屏幕中
-            ItemDetailWindow.initWindow(rowData);
+            ItemDetailWindow.initWindow();
         },
-        initWindow: function (rowData) {
+        initWindow: function () {
             ItemDetailWindow.Layout.initObj();
             ItemDetailWindow.Form.initObj();
             ItemDetailWindow.Form.initEvent();
-            ItemDetailWindow.Form.loadData(rowData);
+
+
         }
     };
 
@@ -258,7 +258,7 @@
                     {
                         type: "input",
                         name: "groupId",
-                        label: "检验项目组合编号",
+                        label: "编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号",
                         value: "",
                         inputWidth: 180,
                         readonly: true,
@@ -286,13 +286,14 @@
                             {text: "血凝项目", value: "血凝项目"},
                             {text: "血库项目", value: "血库项目"},
                             {text: "免疫项目", value: "免疫项目"},
-                            {text: "细菌", value: "细菌"}]
+                            {text: "细菌", value: "细菌"},
+                            {text: "未知", value: "未知"}]
                     }
                 ]
             },
             {
                 type: "block",
-                list: [{type: "combo", name: "workGroup", label: "所&nbsp;属&nbsp;工&nbsp;作&nbsp;组", inputWidth: 180}]
+                list: [{type: "combo", name: "workGroupId", label: "所&nbsp;属&nbsp;工&nbsp;作&nbsp;组", inputWidth: 180}]
             },
             {
                 type: "block", list: [
@@ -305,15 +306,13 @@
         initObj: function () {
             ItemDetailWindow.Form.obj = ItemDetailWindow.Layout.obj.cells("a").attachForm(ItemDetailWindow.Form.config);
             ItemDetailWindow.Form.getAllWorkGroup();
-            ItemDetailWindow.Form.getAllSampleType();
         },
         //查找所有工作组
         getAllWorkGroup: function () {
             ajaxUtils.get('checkItemSettings/getAllWorkGroup.json'
             ).then(function (data) {
                 //初始化工作组下拉框
-                var workGroupCombo = ItemDetailWindow.Form.obj.getCombo("workGroup");
-                workGroupCombo.clearAll();
+                var workGroupCombo = ItemDetailWindow.Form.obj.getCombo("workGroupId");
                 var options = data.map(function (e, index, array) {
                     return [e.workGroupId, e.workGroupName];
                 });
@@ -321,6 +320,7 @@
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
+                ItemDetailWindow.Form.getAllSampleType();
             });
         },
         //查找所有样品类型
@@ -329,7 +329,6 @@
             ).then(function (data) {
                 //初始化样品类型下拉框
                 var sampleTypeCombo = ItemDetailWindow.Form.obj.getCombo("sampleType");
-                sampleTypeCombo.clearAll();
                 var options = data.map(function (e, index, array) {
                     return [e, e];
                 });
@@ -337,6 +336,9 @@
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
+                //加载详细信息窗口表单数据
+                var rowData = dhtmlxUtils.getSelectedRowBindingData(ItemGrid.obj);
+                ItemDetailWindow.Form.loadData(rowData);
             });
         },
         initEvent: function () {
@@ -355,7 +357,7 @@
         //保存按钮
         itemDetailSaveBtnEvent: function () {
             var formData = ItemDetailWindow.Form.obj.getFormData();
-            if (!formData.checkItemGroupName) {
+            if (!formData.groupName) {
                 dhtmlxAlert.alertWarningMsg("检验项目组合名称不可为空");
                 return;
             }

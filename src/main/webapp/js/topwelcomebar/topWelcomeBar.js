@@ -17,7 +17,7 @@
             }
         ],
         initobj : function () {
-            TopForm.obj = SystemHome.Layout.obj.cells("a").attachForm(TopForm.config);
+            //TopForm.obj = SystemHome.Layout.obj.cells("a").attachForm(TopForm.config);
         }
     };
 
