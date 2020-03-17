@@ -2,7 +2,7 @@ package cn.hs.checkitemgroup.controller;
 
 import cn.hs.checkitemgroup.pojo.CheckItemGroup;
 import cn.hs.checkitemgroup.service.CheckItemGroupService;
-import cn.hs.publicmethod.ApiResult;
+import cn.hs.publicclass.method.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

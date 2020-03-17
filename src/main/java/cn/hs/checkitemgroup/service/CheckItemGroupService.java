@@ -2,7 +2,7 @@ package cn.hs.checkitemgroup.service;
 
 import cn.hs.checkitemgroup.mapper.CheckItemGroupMapper;
 import cn.hs.checkitemgroup.pojo.CheckItemGroup;
-import cn.hs.publicmethod.BusinessException;
+import cn.hs.publicclass.method.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

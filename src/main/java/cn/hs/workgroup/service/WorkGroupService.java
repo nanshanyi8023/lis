@@ -1,6 +1,6 @@
 package cn.hs.workgroup.service;
 
-import cn.hs.publicmethod.BusinessException;
+import cn.hs.publicclass.method.BusinessException;
 import cn.hs.workgroup.mapper.WorkGroupMapper;
 import cn.hs.workgroup.pojo.WorkGroup;
 import org.springframework.beans.factory.annotation.Autowired;

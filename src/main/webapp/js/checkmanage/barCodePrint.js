@@ -9,10 +9,10 @@
             parent: "RightLayoutObj",
             pattern: "3T",
             offsets: {
-                top: 2,
-                right: 2,
-                bottom: 2,
-                left: 2
+                top: 1,
+                right: 1,
+                bottom: 1,
+                left: 1
             },
             cells: [
                 {
@@ -26,12 +26,12 @@
                 },
                 {
                     id: "b",
-                    text: "病人列表",
+                    text: "患者列表",
                     header: true,      // 显示标题
-                    collapsed_text: "病人列表",   // 折叠栏标题
+                    collapsed_text: "患者列表",   // 折叠栏标题
                     collapse: false,       // 初始不折叠
                     fix_size: [true, true],
-                    width:250
+                    width:300
                 },
                 {
                     id: "c",
@@ -53,11 +53,11 @@
     var OperationForm = {
         obj:null,
         config: [
-            {type: "input", name: "patientId", label: "病人id：", width: 100, offsetLeft: 50, offsetTop: 12, maxLength: 20},
+            {type: "input", name: "patientId", label: "患者id：", width: 100, offsetLeft: 50, offsetTop: 12, maxLength: 20},
             {type: "newcolumn"},
-            {type: "input", name: "patientName", label: "病人姓名：", width: 100, offsetLeft: 10, offsetTop: 12, maxLength: 20},
+            {type: "input", name: "patientName", label: "患者姓名：", width: 100, offsetLeft: 10, offsetTop: 12, maxLength: 20},
             {type: "newcolumn"},
-            {type: "calendar", name: "startDate", label: "申请时间：", inputWidth:100, offsetLeft: 10, offsetTop: 12},
+            {type: "calendar", name: "startDate", label: "开单时间：", inputWidth:100, offsetLeft: 10, offsetTop: 12},
             {type: "newcolumn"},
             {type: "calendar", name: "endDate", label: "~", inputWidth:100, offsetTop: 12},  //, enableTime: true, enableTodayButton: true, calendarPosition: "right"
             {type: "newcolumn"},
@@ -89,8 +89,8 @@
         //查询按钮功能
         searchBtnEvent:function () {
             var formData = OperationForm.obj.getFormData();
-            PatientListGrid.obj.loadData(formData);
-            //清空医嘱列表并选择病人列表第一个
+            PatientListGrid.loadData(formData);
+
 
         },
         //打印条码按钮功能
@@ -99,29 +99,37 @@
         }
     };
 
-    //病人列表
+    //患者列表
     var PatientListGrid = {
         obj:null,
         initObj: function () {
             PatientListGrid.obj = Layout.obj.cells("b").attachGrid();
             PatientListGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            PatientListGrid.obj.setHeader("选择,病人id,病人姓名",null, ["text-align:center;","text-align:center;","text-align:center;"]);  //设置标题内容居中
+            PatientListGrid.obj.setHeader("选择,患者id,患者姓名",null, ["text-align:center;","text-align:center;","text-align:center;"]);  //设置标题内容居中
             PatientListGrid.obj.setColumnIds("ch,patientId,patientName");
             PatientListGrid.obj.setColAlign("center,center,center");   //设置列中数据居中
-            PatientListGrid.obj.setInitWidths("40,*,130");          //列宽
+            PatientListGrid.obj.setInitWidths("60,*,130");          //列宽
             PatientListGrid.obj.setColTypes("ch,ro,ro");
             PatientListGrid.obj.init();
         },
         initEvent: function () {
-            PatientListGrid.obj.attachEvent("onRowSelect",function () {
-                //自动勾选上本行，并查找该病人对应的检验医嘱
-
+            PatientListGrid.obj.attachEvent("onRowSelect", function (id, ind) {
+                //自动勾选上本行或取消勾选
+                var flag = PatientListGrid.obj.cells(id, 0).getValue() == '1' ? 0 : 1;
+                PatientListGrid.obj.cells(id, 0).setValue(flag);
+                //查找患者对应的检验申请
+                CheckApplicationGrid.loadData();
+            });
+            PatientListGrid.obj.attachEvent("onCheck", function (rId, cInd, state) {
+                PatientListGrid.obj.selectRowById(rId, true, true, false);
+                //查找患者对应的检验申请
+                CheckApplicationGrid.loadData();
             });
         },
-        loadData: function () {
-            ajaxUtils.get('barCodePrint/getPatientInfo.json', {
-
-            }).then(function (data) {
+        loadData: function (formData) {
+            ajaxUtils.postBody('barCodePrint/getPatientInfo.json',
+                formData
+            ).then(function (data) {
                 dhtmlxUtils.clearAndLoadJsonListData(PatientListGrid.obj, data, "patientId");  //删除所有行，加载数据
                 PatientListGrid.obj.sortRows(1,"int","asc");
             }).catch(function (reason) {
@@ -132,30 +140,38 @@
     };
 
     //检验申请列表
-    var checkApplicationGrid = {
+    var CheckApplicationGrid = {
         obj:null,
         initObj: function () {
-            checkApplicationGrid.obj = Layout.obj.cells("c").attachGrid();
-            checkApplicationGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            checkApplicationGrid.obj.setHeader("选择,姓名,检验项目,价格,",null, ["text-align:center;","text-align:center;","text-align:center;"]);  //设置标题内容居中
-            checkApplicationGrid.obj.setColumnIds("ch,patientName,doctorOrderItem,itemPrice,");
-            checkApplicationGrid.obj.setColAlign("center,center,center");   //设置列中数据居中
-            checkApplicationGrid.obj.setInitWidths("40,*,130");          //列宽
-            checkApplicationGrid.obj.setColTypes("ch,ro,ro");
-            checkApplicationGrid.obj.init();
+            CheckApplicationGrid.obj = Layout.obj.cells("c").attachGrid();
+            CheckApplicationGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
+            CheckApplicationGrid.obj.setHeader("选择,姓名,检验项目,采集容器,价格,送检科室,急诊,开单医生,开单时间,条码打印状态", null,
+                ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
+            CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroupName,collectionContainer,itemPrice,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu");
+            CheckApplicationGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中
+            //CheckApplicationGrid.obj.setInitWidths("60,100,*,100,100,100,100,100,100,100");          //列宽
+            CheckApplicationGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ch,ro,ro,ro");
+            CheckApplicationGrid.obj.init();
+            CheckApplicationGrid.obj.enableAutoWidth(true);
+
         },
         initEvent: function () {
-            checkApplicationGrid.obj.attachEvent("onRowSelect",function () {
-                //自动勾选上本行，并查找该病人对应的检验医嘱
+            CheckApplicationGrid.obj.attachEvent("onRowSelect",function () {
+
 
             });
         },
         loadData: function () {
-            ajaxUtils.get('barCodePrint/getPatientInfo.json', {
-
-            }).then(function (data) {
-                dhtmlxUtils.clearAndLoadJsonListData(checkApplicationGrid.obj, data, "patientId");  //删除所有行，加载数据
-                checkApplicationGrid.obj.sortRows(1,"int","asc");
+            var checkApplicationSearch = {
+                patientIdList : dhtmlxUtils.getCheckedRowIds(PatientListGrid.obj, 0),
+                startDate : OperationForm.obj.getItemValue("startDate"),
+                endDate : OperationForm.obj.getItemValue("endDate")
+            };
+            ajaxUtils.postBody('barCodePrint/getCheckApplication.json',
+                checkApplicationSearch
+            ).then(function (data) {
+                dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "");  //删除所有行，加载数据
+                //CheckApplicationGrid.obj.sortRows(1,"int","asc");
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
@@ -166,8 +182,11 @@
     var init = function () {
         Layout.initObj();
         OperationForm.initObj();
+        OperationForm.initEvent();
         PatientListGrid.initObj();
         PatientListGrid.initEvent();
+        CheckApplicationGrid.initObj();
+        CheckApplicationGrid.initEvent();
     };
 
     var barCodePrint = function(){};

@@ -1,6 +1,6 @@
 package cn.hs.checkitem.controller;
 
-import cn.hs.publicmethod.ApiResult;
+import cn.hs.publicclass.method.ApiResult;
 import cn.hs.checkitem.pojo.CheckItem;
 import cn.hs.checkitem.service.CheckItemService;
 import org.springframework.beans.factory.annotation.Autowired;

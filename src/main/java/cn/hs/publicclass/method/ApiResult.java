@@ -1,4 +1,4 @@
-package cn.hs.publicmethod;
+package cn.hs.publicclass.method;
 
 import java.util.Date;
 

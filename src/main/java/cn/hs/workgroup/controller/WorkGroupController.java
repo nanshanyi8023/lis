@@ -1,6 +1,6 @@
 package cn.hs.workgroup.controller;
 
-import cn.hs.publicmethod.ApiResult;
+import cn.hs.publicclass.method.ApiResult;
 import cn.hs.workgroup.pojo.WorkGroup;
 import cn.hs.workgroup.service.WorkGroupService;
 import org.springframework.beans.factory.annotation.Autowired;

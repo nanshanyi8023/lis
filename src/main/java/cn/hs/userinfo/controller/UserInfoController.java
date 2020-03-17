@@ -1,6 +1,6 @@
 package cn.hs.userinfo.controller;
 
-import cn.hs.publicmethod.ApiResult;
+import cn.hs.publicclass.method.ApiResult;
 import cn.hs.userinfo.dto.Password;
 import cn.hs.userinfo.pojo.UserInfo;
 import cn.hs.userinfo.service.UserInfoService;
