@@ -5,10 +5,9 @@ import cn.hs.barcodeprint.dto.PatientSearchDto;
 import cn.hs.barcodeprint.service.BarCodePrintService;
 import cn.hs.publicclass.method.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/barCodePrint")
@@ -32,6 +31,16 @@ public class BarCodePrintController {
     public ApiResult getCheckApplication(@RequestBody CheckApplicationSearchDto checkApplicationSearchDto){
         try {
             return ApiResult.success(barCodePrintService.getCheckApplication(checkApplicationSearchDto));
+        } catch (Exception e){
+            return ApiResult.failed(e.getMessage());
+        }
+    }
+
+    //查询打印条码
+    @RequestMapping(value = "/getPrintBarCode.json", method = RequestMethod.GET)
+    public ApiResult getPrintBarCode(@RequestParam(required = true) List<String> checkApplicationIdList){
+        try {
+            return ApiResult.success(barCodePrintService.getPrintBarCode(checkApplicationIdList));
         } catch (Exception e){
             return ApiResult.failed(e.getMessage());
         }

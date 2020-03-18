@@ -4,7 +4,6 @@
     var Layout = {
         obj: null,
         config: {
-            parent: "RightLayoutObj",
             pattern: "3J",
             offsets: {
                 top: 2,

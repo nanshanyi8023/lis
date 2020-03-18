@@ -65,4 +65,9 @@ public class BarCodePrintService {
         List<CheckApplicationForm> checkApplicationFormList = checkApplicationFormMapper.selectByPatientAndTime(this.getHosNum(),patientIdList,startDate,endDate);
         return checkApplicationFormList;
     }
+
+    //查询打印条码
+    public Object getPrintBarCode(List<String> checkApplicationIdList) {
+        return null;
+    }
 }

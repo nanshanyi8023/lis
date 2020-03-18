@@ -6,7 +6,6 @@
         obj: null,
 
         config: {
-            parent: "RightLayoutObj",
             pattern: "3T",
             offsets: {
                 top: 2,
@@ -18,7 +17,7 @@
                 {
                     id: "a",
                     text: "查询条件",
-                    header: false,      // 显示标题
+                    header: false,      // 隐藏标题
                     collapsed_text: "查询条件",   // 折叠栏标题
                     collapse: false,       // 初始不折叠
                     fix_size: [true, true],
@@ -53,7 +52,7 @@
     var OperationForm = {
         obj:null,
         config: [
-            {type: "input", name: "patientId", label: "患者id：", width: 100, offsetLeft: 50, offsetTop: 12, maxLength: 20},
+            {type: "input", name: "patientId", label: "就诊卡号：", width: 100, offsetLeft: 50, offsetTop: 12, maxLength: 20},
             {type: "newcolumn"},
             {type: "input", name: "patientName", label: "患者姓名：", width: 100, offsetLeft: 10, offsetTop: 12, maxLength: 20},
             {type: "newcolumn"},
@@ -92,7 +91,15 @@
         },
         //打印条码按钮功能
         printBarCodeBtnEvent:function () {
+            var checkApplicationIdList = dhtmlxUtils.getCheckedRowIds(CheckApplicationGrid.obj,0);
+            ajaxUtils.get('barCodePrint/getPrintBarCode.json', {
+                checkApplicationIdList: checkApplicationIdList
+            }).then(function (data) {
 
+            }).catch(function (reason) {
+                dhtmlxAlert.alertErrorMsg(reason);
+            }).finally(function () {
+            });
         }
     };
 
@@ -102,7 +109,7 @@
         initObj: function () {
             PatientListGrid.obj = Layout.obj.cells("b").attachGrid();
             PatientListGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            PatientListGrid.obj.setHeader("选择,患者id,患者姓名",null, ["text-align:center;","text-align:center;","text-align:center;"]);  //设置标题内容居中
+            PatientListGrid.obj.setHeader("选择,就诊卡号,患者姓名",null, ["text-align:center;","text-align:center;","text-align:center;"]);  //设置标题内容居中
             PatientListGrid.obj.setColumnIds("ch,patientId,patientName");
             PatientListGrid.obj.setColAlign("center,center,center");   //设置列中数据居中
             PatientListGrid.obj.setInitWidths("60,*,130");          //列宽
@@ -144,7 +151,7 @@
         initObj: function () {
             CheckApplicationGrid.obj = Layout.obj.cells("c").attachGrid();
             CheckApplicationGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            CheckApplicationGrid.obj.setHeader("选择,姓名,检验项目,采集容器,价格,送检科室,急诊,开单医生,开单时间,条码打印状态,检验申请id,病人id,检验项目组合id", null,
+            CheckApplicationGrid.obj.setHeader("<input id='allSelect' type='checkbox' value='0' /><label for='allSelect'>全选</label>,姓名,检验项目,采集容器,价格,送检科室,急诊,开单医生,开单时间,条码打印状态,检验申请id,病人id,检验项目组合id", null,
                 ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
             CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroupName,collectionContainer,itemPrice,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu,itemId,patientId,checkItemGroupId");
             CheckApplicationGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中
@@ -157,8 +164,22 @@
             //CheckApplicationGrid.obj.enableAutoWidth(true);
         },
         initEvent: function () {
+            //全选按钮
+            $("#allSelect").click(function () {
+                if ($("#allSelect").val()==="0") {
+                    CheckApplicationGrid.obj.forEachRow(function(id){
+                        CheckApplicationGrid.obj.cells(id, 0).setValue("1");
+                    });
+                    $("#allSelect").val("1");
+                }else if ($("#allSelect").val()==="1"){
+                    CheckApplicationGrid.obj.forEachRow(function(id){
+                        CheckApplicationGrid.obj.cells(id, 0).setValue("0");
+                    });
+                    $("#allSelect").val("0");
+                }
+            });
+            //点击某行时自动勾选上本行或取消勾选
             CheckApplicationGrid.obj.attachEvent("onRowSelect", function (id, ind) {
-                //自动勾选上本行或取消勾选
                 var flag = CheckApplicationGrid.obj.cells(id, 0).getValue() == '1' ? 0 : 1;
                 CheckApplicationGrid.obj.cells(id, 0).setValue(flag);
             });
