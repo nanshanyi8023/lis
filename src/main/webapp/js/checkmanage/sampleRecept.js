@@ -156,7 +156,7 @@
         },
         loadData: function () {
 
-            ajaxUtils.postBody('barCodePrint/getCheckApplication.json',
+            ajaxUtils.postBody('barCodePrint/getCheckApplication.json'
             ).then(function (data) {
 
                 dhtmlxUtils.clearAndLoadJsonListData(ReceivedSampleGrid.obj, data, "itemId");  //删除所有行,加载数据

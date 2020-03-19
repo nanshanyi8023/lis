@@ -30,7 +30,7 @@
                     collapsed_text: "患者列表",   // 折叠栏标题
                     collapse: false,       // 初始不折叠
                     fix_size: [true, true],
-                    width:300
+                    width: 350
                 },
                 {
                     id: "c",
@@ -58,7 +58,7 @@
             {type: "newcolumn"},
             {type: "calendar", name: "startDate", label: "开单时间：", inputWidth:100, offsetLeft: 10, offsetTop: 12},
             {type: "newcolumn"},
-            {type: "calendar", name: "endDate", label: "~", inputWidth:100, offsetTop: 12},  //, enableTime: true, enableTodayButton: true, calendarPosition: "right"
+            {type: "calendar", name: "endDate", label: "~", inputWidth: 100, offsetTop: 12},
             {type: "newcolumn"},
             {type: "button", name: "searchBtn", value: "查询", offsetLeft: 20},
             {type: "newcolumn"},
@@ -92,10 +92,12 @@
         //打印条码按钮功能
         printBarCodeBtnEvent:function () {
             var checkApplicationIdList = dhtmlxUtils.getCheckedRowIds(CheckApplicationGrid.obj,0);
-            ajaxUtils.get('barCodePrint/getPrintBarCode.json', {
-                checkApplicationIdList: checkApplicationIdList
-            }).then(function (data) {
-
+            ajaxUtils.postBody('barCodePrint/getPrintBarCode.json',
+                checkApplicationIdList
+            ).then(function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    console(data[i].itemId + "----" + data[i].barcodeNnumber);
+                }
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
@@ -109,11 +111,11 @@
         initObj: function () {
             PatientListGrid.obj = Layout.obj.cells("b").attachGrid();
             PatientListGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            PatientListGrid.obj.setHeader("选择,就诊卡号,患者姓名",null, ["text-align:center;","text-align:center;","text-align:center;"]);  //设置标题内容居中
-            PatientListGrid.obj.setColumnIds("ch,patientId,patientName");
-            PatientListGrid.obj.setColAlign("center,center,center");   //设置列中数据居中
-            PatientListGrid.obj.setInitWidths("60,*,130");          //列宽
-            PatientListGrid.obj.setColTypes("ch,ro,ro");
+            PatientListGrid.obj.setHeader("选择,就诊卡号,患者姓名,性别,年龄", null, ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
+            PatientListGrid.obj.setColumnIds("ch,patientId,patientName,sex,age");
+            PatientListGrid.obj.setColAlign("center,center,center,center,center");   //设置列中数据居中
+            PatientListGrid.obj.setInitWidths("50,*,80,50,50");          //列宽
+            PatientListGrid.obj.setColTypes("ch,ro,ro,ro,ro");
             PatientListGrid.obj.init();
             PatientListGrid.loadData();
         },
@@ -151,16 +153,16 @@
         initObj: function () {
             CheckApplicationGrid.obj = Layout.obj.cells("c").attachGrid();
             CheckApplicationGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            CheckApplicationGrid.obj.setHeader("<input id='allSelect' type='checkbox' value='0' /><label for='allSelect'>全选</label>,姓名,检验项目,采集容器,价格,送检科室,急诊,开单医生,开单时间,条码打印状态,检验申请id,病人id,检验项目组合id", null,
-                ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
-            CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroupName,collectionContainer,itemPrice,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu,itemId,patientId,checkItemGroupId");
-            CheckApplicationGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中
-            CheckApplicationGrid.obj.setInitWidths("80,100,*,180,100,100,80,120,120,120,0,0,0");          //列宽
-            CheckApplicationGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ch,ro,ro,ro,ro,ro,ro");
+            CheckApplicationGrid.obj.setHeader("<input id='allSelect' type='checkbox' value='0' /><label for='allSelect'>全选</label>,姓名,检验项目,采集容器,送检科室,急诊,开单医生,开单时间,条码打印状态,检验申请id,病人id,检验项目组合id", null,
+                ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
+            CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroup,collectionContainer,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu,itemId,patientId,checkItemGroupId");
+            CheckApplicationGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center");   //设置列中数据居中
+            CheckApplicationGrid.obj.setInitWidths("80,100,*,180,100,100,80,120,120,0,0,0");          //列宽
+            CheckApplicationGrid.obj.setColTypes("ch,ro,ro,ro,ro,ch,ro,ro,ro,ro,ro,ro");
             CheckApplicationGrid.obj.init();
+            CheckApplicationGrid.obj.setColumnHidden(9, true);
             CheckApplicationGrid.obj.setColumnHidden(10,true);
             CheckApplicationGrid.obj.setColumnHidden(11,true);
-            CheckApplicationGrid.obj.setColumnHidden(12,true);
             //CheckApplicationGrid.obj.enableAutoWidth(true);
         },
         initEvent: function () {
@@ -204,6 +206,10 @@
                 }
                 dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "itemId");  //删除所有行，加载数据
                 //CheckApplicationGrid.obj.sortRows(1,"int","asc");
+                //将急诊栏禁用
+                CheckApplicationGrid.obj.forEachRow(function (id) {
+                    CheckApplicationGrid.obj.cells(id, 5).setDisabled(true);
+                });
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {

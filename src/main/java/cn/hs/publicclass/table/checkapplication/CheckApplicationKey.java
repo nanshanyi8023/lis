@@ -1,6 +1,6 @@
-package cn.hs.publicclass.table.checkapplicationform;
+package cn.hs.publicclass.table.checkapplication;
 
-public class CheckApplicationFormKey {
+public class CheckApplicationKey {
     private String hosnum;
 
     private String itemId;

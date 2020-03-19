@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hs.publicclass.mapper.CheckApplicationFormMapper">
-  <resultMap id="BaseResultMap" type="cn.hs.publicclass.table.checkapplicationform.CheckApplicationForm">
+<mapper namespace="cn.hs.publicclass.mapper.CheckApplicationMapper">
+  <resultMap id="BaseResultMap" type="cn.hs.publicclass.table.checkapplication.CheckApplication">
     <id column="hosnum" jdbcType="VARCHAR" property="hosnum" />
     <id column="item_id" jdbcType="VARCHAR" property="itemId" />
-    <result column="check_item_group_id" jdbcType="VARCHAR" property="checkItemGroupId" />
-    <result column="check_item_group_name" jdbcType="VARCHAR" property="checkItemGroupName" />
     <result column="patient_id" jdbcType="VARCHAR" property="patientId" />
     <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
     <result column="collection_container" jdbcType="VARCHAR" property="collectionContainer" />
-    <result column="item_price" jdbcType="DECIMAL" property="itemPrice" />
     <result column="submit_department" jdbcType="VARCHAR" property="submitDepartment" />
     <result column="is_emergency" jdbcType="VARCHAR" property="isEmergency" />
+    <result column="sample_type" jdbcType="VARCHAR" property="sampleType"/>
     <result column="billing_doctor" jdbcType="VARCHAR" property="billingDoctor" />
     <result column="billing_time" jdbcType="TIMESTAMP" property="billingTime" />
+    <result column="barcode_number" jdbcType="VARCHAR" property="barcodeNumber"/>
     <result column="print_statu" jdbcType="VARCHAR" property="printStatu" />
     <result column="sample_reception_statu" jdbcType="VARCHAR" property="sampleReceptionStatu" />
-    <result column="barcode_number" jdbcType="VARCHAR" property="barcodeNumber" />
     <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -78,17 +76,18 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    hosnum, item_id, check_item_group_id, check_item_group_name, patient_id, patient_name, 
-    collection_container, item_price, submit_department, is_emergency, billing_doctor, 
-    billing_time, print_statu, sample_reception_statu, barcode_number, order_number
+    hosnum, item_id, patient_id, patient_name, collection_container, submit_department, 
+    is_emergency, sample_type, billing_doctor, billing_time, barcode_number, print_statu, 
+    sample_reception_statu, order_number
   </sql>
-  <select id="selectByExample" parameterType="cn.hs.publicclass.table.checkapplicationform.CheckApplicationFormExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationExample"
+          resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from check_application_form
+    from check_application
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -96,52 +95,45 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplicationform.CheckApplicationFormKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationKey"
+          resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from check_application_form
+    from check_application
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and item_id = #{itemId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplicationform.CheckApplicationFormKey">
-    delete from check_application_form
+  <delete id="deleteByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationKey">
+    delete from check_application
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and item_id = #{itemId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.hs.publicclass.table.checkapplicationform.CheckApplicationFormExample">
-    delete from check_application_form
+  <delete id="deleteByExample" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationExample">
+    delete from check_application
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.hs.publicclass.table.checkapplicationform.CheckApplicationForm">
-    insert into check_application_form (hosnum, item_id, check_item_group_id, 
-      check_item_group_name, patient_id, patient_name, 
-      collection_container, item_price, submit_department, 
-      is_emergency, billing_doctor, billing_time, 
-      print_statu, sample_reception_statu, barcode_number, 
-      order_number)
-    values (#{hosnum,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{checkItemGroupId,jdbcType=VARCHAR}, 
-      #{checkItemGroupName,jdbcType=VARCHAR}, #{patientId,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, 
-      #{collectionContainer,jdbcType=VARCHAR}, #{itemPrice,jdbcType=DECIMAL}, #{submitDepartment,jdbcType=VARCHAR}, 
-      #{isEmergency,jdbcType=VARCHAR}, #{billingDoctor,jdbcType=VARCHAR}, #{billingTime,jdbcType=TIMESTAMP}, 
-      #{printStatu,jdbcType=VARCHAR}, #{sampleReceptionStatu,jdbcType=VARCHAR}, #{barcodeNumber,jdbcType=VARCHAR}, 
-      #{orderNumber,jdbcType=INTEGER})
+  <insert id="insert" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
+    insert into check_application (hosnum, item_id, patient_id, 
+      patient_name, collection_container, submit_department, 
+      is_emergency, sample_type, billing_doctor, 
+      billing_time, barcode_number, print_statu, 
+      sample_reception_statu, order_number)
+    values (#{hosnum,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{patientId,jdbcType=VARCHAR}, 
+      #{patientName,jdbcType=VARCHAR}, #{collectionContainer,jdbcType=VARCHAR}, #{submitDepartment,jdbcType=VARCHAR}, 
+      #{isEmergency,jdbcType=VARCHAR}, #{sampleType,jdbcType=VARCHAR}, #{billingDoctor,jdbcType=VARCHAR}, 
+      #{billingTime,jdbcType=TIMESTAMP}, #{barcodeNumber,jdbcType=VARCHAR}, #{printStatu,jdbcType=VARCHAR}, 
+      #{sampleReceptionStatu,jdbcType=VARCHAR}, #{orderNumber,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="cn.hs.publicclass.table.checkapplicationform.CheckApplicationForm">
-    insert into check_application_form
+  <insert id="insertSelective" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
+    insert into check_application
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="hosnum != null">
         hosnum,
       </if>
       <if test="itemId != null">
         item_id,
-      </if>
-      <if test="checkItemGroupId != null">
-        check_item_group_id,
-      </if>
-      <if test="checkItemGroupName != null">
-        check_item_group_name,
       </if>
       <if test="patientId != null">
         patient_id,
@@ -152,14 +144,14 @@
       <if test="collectionContainer != null">
         collection_container,
       </if>
-      <if test="itemPrice != null">
-        item_price,
-      </if>
       <if test="submitDepartment != null">
         submit_department,
       </if>
       <if test="isEmergency != null">
         is_emergency,
+      </if>
+      <if test="sampleType != null">
+        sample_type,
       </if>
       <if test="billingDoctor != null">
         billing_doctor,
@@ -167,14 +159,14 @@
       <if test="billingTime != null">
         billing_time,
       </if>
+      <if test="barcodeNumber != null">
+        barcode_number,
+      </if>
       <if test="printStatu != null">
         print_statu,
       </if>
       <if test="sampleReceptionStatu != null">
         sample_reception_statu,
-      </if>
-      <if test="barcodeNumber != null">
-        barcode_number,
       </if>
       <if test="orderNumber != null">
         order_number,
@@ -187,12 +179,6 @@
       <if test="itemId != null">
         #{itemId,jdbcType=VARCHAR},
       </if>
-      <if test="checkItemGroupId != null">
-        #{checkItemGroupId,jdbcType=VARCHAR},
-      </if>
-      <if test="checkItemGroupName != null">
-        #{checkItemGroupName,jdbcType=VARCHAR},
-      </if>
       <if test="patientId != null">
         #{patientId,jdbcType=VARCHAR},
       </if>
@@ -202,14 +188,14 @@
       <if test="collectionContainer != null">
         #{collectionContainer,jdbcType=VARCHAR},
       </if>
-      <if test="itemPrice != null">
-        #{itemPrice,jdbcType=DECIMAL},
-      </if>
       <if test="submitDepartment != null">
         #{submitDepartment,jdbcType=VARCHAR},
       </if>
       <if test="isEmergency != null">
         #{isEmergency,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleType != null">
+        #{sampleType,jdbcType=VARCHAR},
       </if>
       <if test="billingDoctor != null">
         #{billingDoctor,jdbcType=VARCHAR},
@@ -217,40 +203,35 @@
       <if test="billingTime != null">
         #{billingTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="barcodeNumber != null">
+        #{barcodeNumber,jdbcType=VARCHAR},
+      </if>
       <if test="printStatu != null">
         #{printStatu,jdbcType=VARCHAR},
       </if>
       <if test="sampleReceptionStatu != null">
         #{sampleReceptionStatu,jdbcType=VARCHAR},
       </if>
-      <if test="barcodeNumber != null">
-        #{barcodeNumber,jdbcType=VARCHAR},
-      </if>
       <if test="orderNumber != null">
         #{orderNumber,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.hs.publicclass.table.checkapplicationform.CheckApplicationFormExample" resultType="java.lang.Long">
-    select count(*) from check_application_form
+  <select id="countByExample" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationExample"
+          resultType="java.lang.Long">
+    select count(*) from check_application
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-    <update id="updateByExampleSelective" parameterType="map">
-    update check_application_form
+  <update id="updateByExampleSelective" parameterType="map">
+    update check_application
     <set>
       <if test="record.hosnum != null">
         hosnum = #{record.hosnum,jdbcType=VARCHAR},
       </if>
       <if test="record.itemId != null">
         item_id = #{record.itemId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.checkItemGroupId != null">
-        check_item_group_id = #{record.checkItemGroupId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.checkItemGroupName != null">
-        check_item_group_name = #{record.checkItemGroupName,jdbcType=VARCHAR},
       </if>
       <if test="record.patientId != null">
         patient_id = #{record.patientId,jdbcType=VARCHAR},
@@ -261,14 +242,14 @@
       <if test="record.collectionContainer != null">
         collection_container = #{record.collectionContainer,jdbcType=VARCHAR},
       </if>
-      <if test="record.itemPrice != null">
-        item_price = #{record.itemPrice,jdbcType=DECIMAL},
-      </if>
       <if test="record.submitDepartment != null">
         submit_department = #{record.submitDepartment,jdbcType=VARCHAR},
       </if>
       <if test="record.isEmergency != null">
         is_emergency = #{record.isEmergency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sampleType != null">
+        sample_type = #{record.sampleType,jdbcType=VARCHAR},
       </if>
       <if test="record.billingDoctor != null">
         billing_doctor = #{record.billingDoctor,jdbcType=VARCHAR},
@@ -276,14 +257,14 @@
       <if test="record.billingTime != null">
         billing_time = #{record.billingTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.barcodeNumber != null">
+        barcode_number = #{record.barcodeNumber,jdbcType=VARCHAR},
+      </if>
       <if test="record.printStatu != null">
         print_statu = #{record.printStatu,jdbcType=VARCHAR},
       </if>
       <if test="record.sampleReceptionStatu != null">
         sample_reception_statu = #{record.sampleReceptionStatu,jdbcType=VARCHAR},
-      </if>
-      <if test="record.barcodeNumber != null">
-        barcode_number = #{record.barcodeNumber,jdbcType=VARCHAR},
       </if>
       <if test="record.orderNumber != null">
         order_number = #{record.orderNumber,jdbcType=INTEGER},
@@ -294,36 +275,28 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update check_application_form
+    update check_application
     set hosnum = #{record.hosnum,jdbcType=VARCHAR},
       item_id = #{record.itemId,jdbcType=VARCHAR},
-      check_item_group_id = #{record.checkItemGroupId,jdbcType=VARCHAR},
-      check_item_group_name = #{record.checkItemGroupName,jdbcType=VARCHAR},
       patient_id = #{record.patientId,jdbcType=VARCHAR},
       patient_name = #{record.patientName,jdbcType=VARCHAR},
       collection_container = #{record.collectionContainer,jdbcType=VARCHAR},
-      item_price = #{record.itemPrice,jdbcType=DECIMAL},
       submit_department = #{record.submitDepartment,jdbcType=VARCHAR},
       is_emergency = #{record.isEmergency,jdbcType=VARCHAR},
+    sample_type = #{record.sampleType,jdbcType=VARCHAR},
       billing_doctor = #{record.billingDoctor,jdbcType=VARCHAR},
       billing_time = #{record.billingTime,jdbcType=TIMESTAMP},
+    barcode_number = #{record.barcodeNumber,jdbcType=VARCHAR},
       print_statu = #{record.printStatu,jdbcType=VARCHAR},
       sample_reception_statu = #{record.sampleReceptionStatu,jdbcType=VARCHAR},
-      barcode_number = #{record.barcodeNumber,jdbcType=VARCHAR},
       order_number = #{record.orderNumber,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.hs.publicclass.table.checkapplicationform.CheckApplicationForm">
-    update check_application_form
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
+    update check_application
     <set>
-      <if test="checkItemGroupId != null">
-        check_item_group_id = #{checkItemGroupId,jdbcType=VARCHAR},
-      </if>
-      <if test="checkItemGroupName != null">
-        check_item_group_name = #{checkItemGroupName,jdbcType=VARCHAR},
-      </if>
       <if test="patientId != null">
         patient_id = #{patientId,jdbcType=VARCHAR},
       </if>
@@ -333,14 +306,14 @@
       <if test="collectionContainer != null">
         collection_container = #{collectionContainer,jdbcType=VARCHAR},
       </if>
-      <if test="itemPrice != null">
-        item_price = #{itemPrice,jdbcType=DECIMAL},
-      </if>
       <if test="submitDepartment != null">
         submit_department = #{submitDepartment,jdbcType=VARCHAR},
       </if>
       <if test="isEmergency != null">
         is_emergency = #{isEmergency,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleType != null">
+        sample_type = #{sampleType,jdbcType=VARCHAR},
       </if>
       <if test="billingDoctor != null">
         billing_doctor = #{billingDoctor,jdbcType=VARCHAR},
@@ -348,14 +321,14 @@
       <if test="billingTime != null">
         billing_time = #{billingTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="barcodeNumber != null">
+        barcode_number = #{barcodeNumber,jdbcType=VARCHAR},
+      </if>
       <if test="printStatu != null">
         print_statu = #{printStatu,jdbcType=VARCHAR},
       </if>
       <if test="sampleReceptionStatu != null">
         sample_reception_statu = #{sampleReceptionStatu,jdbcType=VARCHAR},
-      </if>
-      <if test="barcodeNumber != null">
-        barcode_number = #{barcodeNumber,jdbcType=VARCHAR},
       </if>
       <if test="orderNumber != null">
         order_number = #{orderNumber,jdbcType=INTEGER},
@@ -364,30 +337,29 @@
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and item_id = #{itemId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplicationform.CheckApplicationForm">
-    update check_application_form
-    set check_item_group_id = #{checkItemGroupId,jdbcType=VARCHAR},
-      check_item_group_name = #{checkItemGroupName,jdbcType=VARCHAR},
-      patient_id = #{patientId,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
+    update check_application
+    set patient_id = #{patientId,jdbcType=VARCHAR},
       patient_name = #{patientName,jdbcType=VARCHAR},
       collection_container = #{collectionContainer,jdbcType=VARCHAR},
-      item_price = #{itemPrice,jdbcType=DECIMAL},
       submit_department = #{submitDepartment,jdbcType=VARCHAR},
       is_emergency = #{isEmergency,jdbcType=VARCHAR},
+      sample_type = #{sampleType,jdbcType=VARCHAR},
       billing_doctor = #{billingDoctor,jdbcType=VARCHAR},
       billing_time = #{billingTime,jdbcType=TIMESTAMP},
+      barcode_number = #{barcodeNumber,jdbcType=VARCHAR},
       print_statu = #{printStatu,jdbcType=VARCHAR},
       sample_reception_statu = #{sampleReceptionStatu,jdbcType=VARCHAR},
-      barcode_number = #{barcodeNumber,jdbcType=VARCHAR},
       order_number = #{orderNumber,jdbcType=INTEGER}
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and item_id = #{itemId,jdbcType=VARCHAR}
   </update>
 
 
+
   <select id="selectByPatientAndTime" resultMap="BaseResultMap">
     select *
-    from check_application_form
+    from check_application
     where hosnum = #{hosNum} and patient_id in
     <foreach collection="patientIdList" item="item" index="index" open="(" separator="," close=")">
       #{item}
@@ -398,5 +370,15 @@
     <if test="endDate != null">
       and billing_time &lt;= #{endDate}
     </if>
+  </select>
+  <select id="selectBarcodeNnumber" resultType="java.lang.String">
+      select barcode_number
+      from check_application
+      where hosnum = #{hosNum} and item_id = #{checkApplicationId}
+    </select>
+  <select id="getMaxBarcodeNnumber" resultType="java.lang.String">
+    select IF(max(cast(barcode_number int)) + 1 = NULL, '100000001', max(cast(barcode_number int))  + 1)
+    from check_application
+    where hosnum = #{hosNum}
   </select>
 </mapper>

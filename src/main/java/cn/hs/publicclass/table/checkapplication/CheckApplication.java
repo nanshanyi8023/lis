@@ -1,12 +1,10 @@
-package cn.hs.publicclass.table.checkapplicationform;
+package cn.hs.publicclass.table.checkapplication;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
-public class CheckApplicationForm extends CheckApplicationFormKey {
-    private String checkItemGroupId;
-
-    private String checkItemGroupName;
+public class CheckApplication extends CheckApplicationKey {
+    //新增检验项目组合字段（用","隔开检验项目组合）
+    private String checkItemGroup;
 
     private String patientId;
 
@@ -14,38 +12,30 @@ public class CheckApplicationForm extends CheckApplicationFormKey {
 
     private String collectionContainer;
 
-    private BigDecimal itemPrice;
-
     private String submitDepartment;
 
     private String isEmergency;
+
+    private String sampleType;
 
     private String billingDoctor;
 
     private Date billingTime;
 
+    private String barcodeNumber;
+
     private String printStatu;
 
     private String sampleReceptionStatu;
 
-    private String barcodeNumber;
-
     private Integer orderNumber;
 
-    public String getCheckItemGroupId() {
-        return checkItemGroupId;
+    public String getCheckItemGroup() {
+        return checkItemGroup;
     }
 
-    public void setCheckItemGroupId(String checkItemGroupId) {
-        this.checkItemGroupId = checkItemGroupId == null ? null : checkItemGroupId.trim();
-    }
-
-    public String getCheckItemGroupName() {
-        return checkItemGroupName;
-    }
-
-    public void setCheckItemGroupName(String checkItemGroupName) {
-        this.checkItemGroupName = checkItemGroupName == null ? null : checkItemGroupName.trim();
+    public void setCheckItemGroup(String checkItemGroup) {
+        this.checkItemGroup = checkItemGroup;
     }
 
     public String getPatientId() {
@@ -72,14 +62,6 @@ public class CheckApplicationForm extends CheckApplicationFormKey {
         this.collectionContainer = collectionContainer == null ? null : collectionContainer.trim();
     }
 
-    public BigDecimal getItemPrice() {
-        return itemPrice;
-    }
-
-    public void setItemPrice(BigDecimal itemPrice) {
-        this.itemPrice = itemPrice;
-    }
-
     public String getSubmitDepartment() {
         return submitDepartment;
     }
@@ -94,6 +76,14 @@ public class CheckApplicationForm extends CheckApplicationFormKey {
 
     public void setIsEmergency(String isEmergency) {
         this.isEmergency = isEmergency == null ? null : isEmergency.trim();
+    }
+
+    public String getSampleType() {
+        return sampleType;
+    }
+
+    public void setSampleType(String sampleType) {
+        this.sampleType = sampleType == null ? null : sampleType.trim();
     }
 
     public String getBillingDoctor() {
@@ -112,6 +102,14 @@ public class CheckApplicationForm extends CheckApplicationFormKey {
         this.billingTime = billingTime;
     }
 
+    public String getBarcodeNumber() {
+        return barcodeNumber;
+    }
+
+    public void setBarcodeNumber(String barcodeNumber) {
+        this.barcodeNumber = barcodeNumber == null ? null : barcodeNumber.trim();
+    }
+
     public String getPrintStatu() {
         return printStatu;
     }
@@ -126,14 +124,6 @@ public class CheckApplicationForm extends CheckApplicationFormKey {
 
     public void setSampleReceptionStatu(String sampleReceptionStatu) {
         this.sampleReceptionStatu = sampleReceptionStatu == null ? null : sampleReceptionStatu.trim();
-    }
-
-    public String getBarcodeNumber() {
-        return barcodeNumber;
-    }
-
-    public void setBarcodeNumber(String barcodeNumber) {
-        this.barcodeNumber = barcodeNumber == null ? null : barcodeNumber.trim();
     }
 
     public Integer getOrderNumber() {

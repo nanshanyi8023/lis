@@ -37,8 +37,8 @@ public class BarCodePrintController {
     }
 
     //查询打印条码
-    @RequestMapping(value = "/getPrintBarCode.json", method = RequestMethod.GET)
-    public ApiResult getPrintBarCode(@RequestParam(required = true) List<String> checkApplicationIdList){
+    @RequestMapping(value = "/getPrintBarCode.json", method = RequestMethod.POST)
+    public ApiResult getPrintBarCode(@RequestBody List<String> checkApplicationIdList) {
         try {
             return ApiResult.success(barCodePrintService.getPrintBarCode(checkApplicationIdList));
         } catch (Exception e){

@@ -1,18 +1,17 @@
-package cn.hs.publicclass.table.checkapplicationform;
+package cn.hs.publicclass.table.checkapplication;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CheckApplicationFormExample {
+public class CheckApplicationExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public CheckApplicationFormExample() {
+    public CheckApplicationExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -246,146 +245,6 @@ public class CheckApplicationFormExample {
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdIsNull() {
-            addCriterion("check_item_group_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdIsNotNull() {
-            addCriterion("check_item_group_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdEqualTo(String value) {
-            addCriterion("check_item_group_id =", value, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdNotEqualTo(String value) {
-            addCriterion("check_item_group_id <>", value, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdGreaterThan(String value) {
-            addCriterion("check_item_group_id >", value, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdGreaterThanOrEqualTo(String value) {
-            addCriterion("check_item_group_id >=", value, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdLessThan(String value) {
-            addCriterion("check_item_group_id <", value, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdLessThanOrEqualTo(String value) {
-            addCriterion("check_item_group_id <=", value, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdLike(String value) {
-            addCriterion("check_item_group_id like", value, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdNotLike(String value) {
-            addCriterion("check_item_group_id not like", value, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdIn(List<String> values) {
-            addCriterion("check_item_group_id in", values, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdNotIn(List<String> values) {
-            addCriterion("check_item_group_id not in", values, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdBetween(String value1, String value2) {
-            addCriterion("check_item_group_id between", value1, value2, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupIdNotBetween(String value1, String value2) {
-            addCriterion("check_item_group_id not between", value1, value2, "checkItemGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameIsNull() {
-            addCriterion("check_item_group_name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameIsNotNull() {
-            addCriterion("check_item_group_name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameEqualTo(String value) {
-            addCriterion("check_item_group_name =", value, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameNotEqualTo(String value) {
-            addCriterion("check_item_group_name <>", value, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameGreaterThan(String value) {
-            addCriterion("check_item_group_name >", value, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameGreaterThanOrEqualTo(String value) {
-            addCriterion("check_item_group_name >=", value, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameLessThan(String value) {
-            addCriterion("check_item_group_name <", value, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameLessThanOrEqualTo(String value) {
-            addCriterion("check_item_group_name <=", value, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameLike(String value) {
-            addCriterion("check_item_group_name like", value, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameNotLike(String value) {
-            addCriterion("check_item_group_name not like", value, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameIn(List<String> values) {
-            addCriterion("check_item_group_name in", values, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameNotIn(List<String> values) {
-            addCriterion("check_item_group_name not in", values, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameBetween(String value1, String value2) {
-            addCriterion("check_item_group_name between", value1, value2, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameNotBetween(String value1, String value2) {
-            addCriterion("check_item_group_name not between", value1, value2, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
         public Criteria andPatientIdIsNull() {
             addCriterion("patient_id is null");
             return (Criteria) this;
@@ -596,66 +455,6 @@ public class CheckApplicationFormExample {
             return (Criteria) this;
         }
 
-        public Criteria andItemPriceIsNull() {
-            addCriterion("item_price is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceIsNotNull() {
-            addCriterion("item_price is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceEqualTo(BigDecimal value) {
-            addCriterion("item_price =", value, "itemPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceNotEqualTo(BigDecimal value) {
-            addCriterion("item_price <>", value, "itemPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceGreaterThan(BigDecimal value) {
-            addCriterion("item_price >", value, "itemPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("item_price >=", value, "itemPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceLessThan(BigDecimal value) {
-            addCriterion("item_price <", value, "itemPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("item_price <=", value, "itemPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceIn(List<BigDecimal> values) {
-            addCriterion("item_price in", values, "itemPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceNotIn(List<BigDecimal> values) {
-            addCriterion("item_price not in", values, "itemPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("item_price between", value1, value2, "itemPrice");
-            return (Criteria) this;
-        }
-
-        public Criteria andItemPriceNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("item_price not between", value1, value2, "itemPrice");
-            return (Criteria) this;
-        }
-
         public Criteria andSubmitDepartmentIsNull() {
             addCriterion("submit_department is null");
             return (Criteria) this;
@@ -796,6 +595,76 @@ public class CheckApplicationFormExample {
             return (Criteria) this;
         }
 
+        public Criteria andSampleTypeIsNull() {
+            addCriterion("sample_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeIsNotNull() {
+            addCriterion("sample_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeEqualTo(String value) {
+            addCriterion("sample_type =", value, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeNotEqualTo(String value) {
+            addCriterion("sample_type <>", value, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeGreaterThan(String value) {
+            addCriterion("sample_type >", value, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("sample_type >=", value, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeLessThan(String value) {
+            addCriterion("sample_type <", value, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeLessThanOrEqualTo(String value) {
+            addCriterion("sample_type <=", value, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeLike(String value) {
+            addCriterion("sample_type like", value, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeNotLike(String value) {
+            addCriterion("sample_type not like", value, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeIn(List<String> values) {
+            addCriterion("sample_type in", values, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeNotIn(List<String> values) {
+            addCriterion("sample_type not in", values, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeBetween(String value1, String value2) {
+            addCriterion("sample_type between", value1, value2, "sampleType");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleTypeNotBetween(String value1, String value2) {
+            addCriterion("sample_type not between", value1, value2, "sampleType");
+            return (Criteria) this;
+        }
+
         public Criteria andBillingDoctorIsNull() {
             addCriterion("billing_doctor is null");
             return (Criteria) this;
@@ -923,6 +792,76 @@ public class CheckApplicationFormExample {
 
         public Criteria andBillingTimeNotBetween(Date value1, Date value2) {
             addCriterion("billing_time not between", value1, value2, "billingTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberIsNull() {
+            addCriterion("barcode_number is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberIsNotNull() {
+            addCriterion("barcode_number is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberEqualTo(String value) {
+            addCriterion("barcode_number =", value, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberNotEqualTo(String value) {
+            addCriterion("barcode_number <>", value, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberGreaterThan(String value) {
+            addCriterion("barcode_number >", value, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberGreaterThanOrEqualTo(String value) {
+            addCriterion("barcode_number >=", value, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberLessThan(String value) {
+            addCriterion("barcode_number <", value, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberLessThanOrEqualTo(String value) {
+            addCriterion("barcode_number <=", value, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberLike(String value) {
+            addCriterion("barcode_number like", value, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberNotLike(String value) {
+            addCriterion("barcode_number not like", value, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberIn(List<String> values) {
+            addCriterion("barcode_number in", values, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberNotIn(List<String> values) {
+            addCriterion("barcode_number not in", values, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberBetween(String value1, String value2) {
+            addCriterion("barcode_number between", value1, value2, "barcodeNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andBarcodeNumberNotBetween(String value1, String value2) {
+            addCriterion("barcode_number not between", value1, value2, "barcodeNumber");
             return (Criteria) this;
         }
 
@@ -1063,76 +1002,6 @@ public class CheckApplicationFormExample {
 
         public Criteria andSampleReceptionStatuNotBetween(String value1, String value2) {
             addCriterion("sample_reception_statu not between", value1, value2, "sampleReceptionStatu");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberIsNull() {
-            addCriterion("barcode_number is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberIsNotNull() {
-            addCriterion("barcode_number is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberEqualTo(String value) {
-            addCriterion("barcode_number =", value, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberNotEqualTo(String value) {
-            addCriterion("barcode_number <>", value, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberGreaterThan(String value) {
-            addCriterion("barcode_number >", value, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberGreaterThanOrEqualTo(String value) {
-            addCriterion("barcode_number >=", value, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberLessThan(String value) {
-            addCriterion("barcode_number <", value, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberLessThanOrEqualTo(String value) {
-            addCriterion("barcode_number <=", value, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberLike(String value) {
-            addCriterion("barcode_number like", value, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberNotLike(String value) {
-            addCriterion("barcode_number not like", value, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberIn(List<String> values) {
-            addCriterion("barcode_number in", values, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberNotIn(List<String> values) {
-            addCriterion("barcode_number not in", values, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberBetween(String value1, String value2) {
-            addCriterion("barcode_number between", value1, value2, "barcodeNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andBarcodeNumberNotBetween(String value1, String value2) {
-            addCriterion("barcode_number not between", value1, value2, "barcodeNumber");
             return (Criteria) this;
         }
 
