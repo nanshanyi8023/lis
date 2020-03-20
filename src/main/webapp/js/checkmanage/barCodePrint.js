@@ -94,10 +94,8 @@
             var checkApplicationIdList = dhtmlxUtils.getCheckedRowIds(CheckApplicationGrid.obj,0);
             ajaxUtils.postBody('barCodePrint/getPrintBarCode.json',
                 checkApplicationIdList
-            ).then(function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    printBarCode(data[i]);
-                }
+            ).then(function (barCodeData) {
+                printBarCode(barCodeData);
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
