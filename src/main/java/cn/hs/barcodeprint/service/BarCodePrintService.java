@@ -6,6 +6,7 @@ import cn.hs.publicclass.mapper.CheckApplicationDetailMapper;
 import cn.hs.publicclass.mapper.CheckApplicationMapper;
 import cn.hs.publicclass.mapper.PatientInfoMapper;
 import cn.hs.publicclass.table.checkapplication.CheckApplication;
+import cn.hs.publicclass.table.checkapplication.CheckApplicationKey;
 import cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail;
 import cn.hs.publicclass.table.patientinfo.PatientInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,15 +95,20 @@ public class BarCodePrintService {
     public Object getPrintBarCode(List<String> checkApplicationIdList) {
         List<CheckApplication> barcodeNnumberList = new ArrayList<CheckApplication>();
         for (int i = 0; i < checkApplicationIdList.size(); i++) {
-            CheckApplication item = new CheckApplication();
-            item.setItemId(checkApplicationIdList.get(i));
+            //根据id查找对应的检验申请信息
+            CheckApplicationKey checkApplicationKey = new CheckApplicationKey();
+            checkApplicationKey.setHosnum(this.getHosNum());
+            checkApplicationKey.setItemId(checkApplicationIdList.get(i));
+            CheckApplication item = checkApplicationMapper.selectByPrimaryKey(checkApplicationKey);
+            //查询是否存在对应的条码号
             String barcodeNnumber = checkApplicationMapper.selectBarcodeNnumber(this.getHosNum(), checkApplicationIdList.get(i));
             if (barcodeNnumber == null || barcodeNnumber.equals("")) {     //不存在条码，生成
                 barcodeNnumber = checkApplicationMapper.getMaxBarcodeNnumber(this.getHosNum());
                 item.setBarcodeNumber(barcodeNnumber);
+                //向数据库中插入该检验申请的条码号
+                checkApplicationMapper.updateBarcodeNnumber(this.getHosNum(), checkApplicationIdList.get(i), barcodeNnumber);
             } else {  //存在条码，直接返回
                 item.setBarcodeNumber(barcodeNnumber);
-                barcodeNnumberList.add(item);
             }
             barcodeNnumberList.add(item);
         }

@@ -96,7 +96,7 @@
                 checkApplicationIdList
             ).then(function (data) {
                 for (var i = 0; i < data.length; i++) {
-                    console(data[i].itemId + "----" + data[i].barcodeNnumber);
+                    printBarCode(data[i]);
                 }
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);

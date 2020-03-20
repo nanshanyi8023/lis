@@ -352,7 +352,9 @@
     where hosnum = #{hosNum}
   </select>
   <select id="getMaxId" resultType="java.lang.String">
-    select IF(max(cast(item_id as unsigned int)) + 1 = NULL, '100000', max(cast(item_id as unsigned int))  + 1)
+    select IF(max(cast(item_id as unsigned int)) = '' || max(cast(item_id as unsigned int)) = NULL,
+          '100000',
+           max(cast(item_id as unsigned int)) + 1)
     from check_item
     where hosnum = #{hosNum}
   </select>

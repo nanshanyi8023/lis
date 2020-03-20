@@ -289,7 +289,9 @@
     where hosnum = #{hosNum}
   </select>
   <select id="getMaxId" resultType="java.lang.String">
-     select IF(max(cast(group_id as unsigned int)) + 1 = NULL, '1000', max(cast(group_id as unsigned int))  + 1)
+    select IF(max(cast(group_id as unsigned int)) = '' || max(cast(group_id as unsigned int)) = NULL,
+          '1000',
+           max(cast(group_id as unsigned int)) + 1)
     from check_item_group
     where hosnum = #{hosNum}
   </select>

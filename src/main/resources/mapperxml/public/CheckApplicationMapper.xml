@@ -377,8 +377,15 @@
       where hosnum = #{hosNum} and item_id = #{checkApplicationId}
     </select>
   <select id="getMaxBarcodeNnumber" resultType="java.lang.String">
-    select IF(max(cast(barcode_number int)) + 1 = NULL, '100000001', max(cast(barcode_number int))  + 1)
+    select IF(max(cast(barcode_number as unsigned int)) = '' || max(cast(barcode_number as unsigned int)) = NULL,
+          '100000001',
+           max(cast(barcode_number as unsigned int)) + 1)
     from check_application
     where hosnum = #{hosNum}
   </select>
+  <update id="updateBarcodeNnumber">
+    update check_application
+    set barcode_number = #{barcodeNnumber}
+    where item_id = #{checkApplicationId}
+  </update>
 </mapper>

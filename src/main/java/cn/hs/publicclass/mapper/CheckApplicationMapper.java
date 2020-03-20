@@ -45,4 +45,7 @@ public interface CheckApplicationMapper {
 
     //获取最大条码号
     String getMaxBarcodeNnumber(@Param("hosNum") String hosNum);
+
+    //更新条码号
+    void updateBarcodeNnumber(@Param("hosNum") String hosNum, @Param("checkApplicationId") String checkApplicationId, @Param("barcodeNnumber") String barcodeNnumber);
 }
