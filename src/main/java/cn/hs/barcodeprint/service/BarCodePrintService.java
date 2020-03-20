@@ -11,6 +11,7 @@ import cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail;
 import cn.hs.publicclass.table.patientinfo.PatientInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -59,10 +60,10 @@ public class BarCodePrintService {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String stringStartDate = checkApplicationSearchDto.getStartDate() + " 00:00:00";
             String stringEndDate = checkApplicationSearchDto.getEndDate() + " 23:59:59";
-            if (stringStartDate != null && stringStartDate != ""){
+            if (StringUtils.isNotEmpty(stringStartDate)) {
                 startDate = simpleDateFormat.parse(stringStartDate);
             }
-            if (stringEndDate != null && stringEndDate != ""){
+            if (StringUtils.isNotEmpty(stringEndDate)) {
                 endDate = simpleDateFormat.parse(stringEndDate);
             }
         } catch (ParseException e) {
@@ -102,7 +103,7 @@ public class BarCodePrintService {
             CheckApplication item = checkApplicationMapper.selectByPrimaryKey(checkApplicationKey);
             //查询是否存在对应的条码号
             String barcodeNnumber = checkApplicationMapper.selectBarcodeNnumber(this.getHosNum(), checkApplicationIdList.get(i));
-            if (barcodeNnumber == null || barcodeNnumber.equals("")) {     //不存在条码，生成
+            if (StringUtils.isEmpty(barcodeNnumber)) {     //不存在条码，生成
                 barcodeNnumber = checkApplicationMapper.getMaxBarcodeNnumber(this.getHosNum());
                 item.setBarcodeNumber(barcodeNnumber);
                 //向数据库中插入该检验申请的条码号
