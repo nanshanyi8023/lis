@@ -18,7 +18,7 @@
     <script type="text/javascript" src="toolfile/ajaxUtils.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxAlert.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxUtils.js"></script>
-    <script type="text/javascript" src="toolfile/isEmpyt.js"></script>
+    <script type="text/javascript" src="toolfile/JSUtils.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxCalendarLanguage.js"></script>
     <script type="text/javascript" src="toolfile/lodopFuncs.js"></script>
 

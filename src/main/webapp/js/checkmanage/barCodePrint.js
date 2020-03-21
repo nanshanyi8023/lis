@@ -95,6 +95,10 @@
             ajaxUtils.postBody('barCodePrint/getPrintBarCode.json',
                 checkApplicationIdList
             ).then(function (barCodeData) {
+                if (JSUtils.isEmpty(barCodeData)){
+                    dhtmlxAlert.alertWarningMsg("请选择需要打印的行");
+                    return;
+                }
                 printBarCode(barCodeData);
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
@@ -187,7 +191,7 @@
         loadData: function () {
             var patientIdList = dhtmlxUtils.getCheckedRowIds(PatientListGrid.obj,0);
             //如果勾选患者行为空，则清空申请列表并且不查询
-            if (isEmpty(patientIdList)) {
+            if (JSUtils.isEmpty(patientIdList)) {
                 CheckApplicationGrid.obj.clearAll();
                 return;
             }

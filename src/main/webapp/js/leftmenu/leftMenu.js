@@ -14,6 +14,11 @@
                     // icons: {folder_opened: "inspectManagement", folder_closed: "inspectManagement"},
                     items: [
                         {
+                            id: "barCodePrint",
+                            text: "条码打印",
+                            icons: {file: "barCodePrint"}
+                        },
+                        {
                             id: "sampleAccept",
                             text: "样本接收",
                             icons: {file: "sampleAccept"}
@@ -32,11 +37,6 @@
                             id: "reportQuery",
                             text: "报告查询",
                             icons: {file: "reportQuery"}
-                        },
-                        {
-                            id: "barCodePrint",
-                            text: "条码打印",
-                            icons: {file: "barCodePrint"}
                         }
                     ]
                 },

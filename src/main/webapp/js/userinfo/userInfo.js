@@ -199,15 +199,15 @@
             var oldPassword = PasswordSettingsForm.obj.getItemValue("oldPassword");
             var newPassword = PasswordSettingsForm.obj.getItemValue("newPassword");
             var confirmNewPassword = PasswordSettingsForm.obj.getItemValue("confirmNewPassword");
-            if (isEmpty(oldPassword)) {
+            if (JSUtils.isEmpty(oldPassword)) {
                 dhtmlxAlert.alertWarningMsg("请输入原密码！");
                 return;
             }
-            if (isEmpty(newPassword)) {
+            if (JSUtils.isEmpty(newPassword)) {
                 dhtmlxAlert.alertWarningMsg("请输入新密码！");
                 return;
             }
-            if (isEmpty(confirmNewPassword)) {
+            if (JSUtils.isEmpty(confirmNewPassword)) {
                 dhtmlxAlert.alertWarningMsg("请输入确认新密码！");
                 return;
             }
