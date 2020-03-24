@@ -155,17 +155,18 @@
         initObj: function () {
             CheckApplicationGrid.obj = Layout.obj.cells("c").attachGrid();
             CheckApplicationGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            CheckApplicationGrid.obj.setHeader("<input id='allSelect' type='checkbox' value='0' /><label for='allSelect'>全选</label>,姓名,检验项目,采集容器,送检科室,急诊,开单医生,开单时间,条码打印状态,检验申请id,病人id,检验项目组合id", null,
-                ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
-            CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroup,collectionContainer,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu,itemId,patientId,checkItemGroupId");
-            CheckApplicationGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center");   //设置列中数据居中
-            CheckApplicationGrid.obj.setInitWidths("80,100,*,180,100,100,80,120,120,0,0,0");          //列宽
-            CheckApplicationGrid.obj.setColTypes("ch,ro,ro,ro,ro,ch,ro,ro,ro,ro,ro,ro");
+            CheckApplicationGrid.obj.setHeader("<input id='allSelect' type='checkbox' value='0' style='padding-left: 15px' />,姓名,检验项目,样本类型,采集容器,送检科室,急诊,开单医生,开单时间,条码打印状态,检验申请id,病人id,检验项目组合id", null,  //
+                ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
+            CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroup,sampleType,collectionContainer,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu,itemId,patientId,checkItemGroupId");
+            CheckApplicationGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中
+            CheckApplicationGrid.obj.setInitWidths("50,100,*,100,100,100,100,80,100,100,0,0,0");          //列宽
+            CheckApplicationGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ch,ro,ro,ro,ro,ro,ro");
             CheckApplicationGrid.obj.init();
-            CheckApplicationGrid.obj.setColumnHidden(9, true);
-            CheckApplicationGrid.obj.setColumnHidden(10,true);
+            CheckApplicationGrid.obj.setColumnHidden(10, true);
             CheckApplicationGrid.obj.setColumnHidden(11,true);
+            CheckApplicationGrid.obj.setColumnHidden(12, true);
             //CheckApplicationGrid.obj.enableAutoWidth(true);
+            CheckApplicationGrid.obj.enableColumnAutoSize(true);
         },
         initEvent: function () {
             //全选按钮
@@ -210,7 +211,7 @@
                 //CheckApplicationGrid.obj.sortRows(1,"int","asc");
                 //将急诊栏禁用
                 CheckApplicationGrid.obj.forEachRow(function (id) {
-                    CheckApplicationGrid.obj.cells(id, 5).setDisabled(true);
+                    CheckApplicationGrid.obj.cells(id, 6).setDisabled(true);
                 });
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);

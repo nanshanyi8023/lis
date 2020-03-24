@@ -31,6 +31,8 @@
     <script type="text/javascript" src="js/checksettings/workGroupSettings.js"></script>
     <script type="text/javascript" src="js/checkmanage/barCodePrint.js"></script>
     <script type="text/javascript" src="js/checkmanage/barCodePrintLodop.js"></script>
+    <script type="text/javascript" src="js/checkmanage/sampleRecept.js"></script>
+
 
     <object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0>
         <embed id="LODOP_EM" type="application/x-print-lodop" width=0 height=0></embed>
@@ -43,8 +45,9 @@
             overflow: hidden;
             margin: 0px;
         }
-        .sampleAccept{
-            background-image: url(images/systemhome/sampleAccept.png);
+
+        .sampleRecept {
+            background-image: url(images/systemhome/sampleRecept.png);
         }
         .sampleReturn{
             background-image: url(images/systemhome/sampleReturn.png);

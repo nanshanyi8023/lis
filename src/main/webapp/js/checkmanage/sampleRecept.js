@@ -4,30 +4,29 @@
     //页面总布局
     var Layout = {
         obj: null,
-
         config: {
             pattern: "2E",
             offsets: {
-                top: 2,
-                right: 2,
-                bottom: 2,
-                left: 2
+                top: 1,
+                right: 1,
+                bottom: 1,
+                left: 1
             },
             cells: [
                 {
                     id: "a",
-                    text: "查询条件",
+                    text: "操作栏",
                     header: false,      // 隐藏标题
-                    collapsed_text: "查询条件",   // 折叠栏标题
+                    collapsed_text: "操作栏",   // 折叠栏标题
                     collapse: false,       // 初始不折叠
                     fix_size: [true, true],
-                    height: 50
+                    height: 80
                 },
                 {
                     id: "b",
-                    text: "已接收样本列表",
+                    text: "已接收样本",
                     header: true,      // 显示标题
-                    collapsed_text: "已接收样本列表",   // 折叠栏标题
+                    collapsed_text: "已接收样本",   // 折叠栏标题
                     collapse: false,       // 初始不折叠
                     fix_size: [true, true]
                 }
@@ -39,41 +38,61 @@
         }
     };
 
-    //操作栏,查询和打印
+    var ReceiveToolbar = {
+        obj: null,
+        config: {
+            align: "left",
+            icon_path: "images/samplerecept",
+            items: [
+                {id: "text", type: "text", text: "<span style=\"font-weight: bold;font-size: 12px\">条码号:</span>"},
+                {id: "barCodeNumber", type: "buttonInput", text: ""},
+                {id: "sep1", type: "separator"},
+                {
+                    id: "receiveButton",
+                    type: "button",
+                    text: "<span style=\"font-weight: bold;font-size: 12px\">接 收</span>",
+                    img: "receiveImg.png"
+                }
+            ]
+        },
+        initobj: function () {
+            ReceiveToolbar.obj = Layout.obj.cells("a").attachToolbar(ReceiveToolbar.config);
+        },
+        initEvent: function () {
+            //按回车时接收样本
+            ReceiveToolbar.obj.attachEvent("onEnter", function () {
+                ReceiveToolbar.receiveButtonEvent();
+            });
+            ReceiveToolbar.obj.attachEvent("onClick", function (name) {
+                switch (name) {
+                    case "receiveButton":
+                        ReceiveToolbar.receiveButtonEvent();
+                        break;
+                    default:
+                }
+            });
+        },
+        receiveButtonEvent: function () {
+
+        }
+    };
+
+    //操作栏,查询和退回样本
     var OperationForm = {
         obj: null,
         config: [
-            {
-                type: "input",
-                name: "patientId",
-                label: "就诊卡号：",
-                width: 100,
-                offsetLeft: 50,
-                offsetTop: 12,
-                maxLength: 20
-            },
-            {type: "newcolumn"},
-            {
-                type: "input",
-                name: "patientName",
-                label: "患者姓名：",
-                width: 100,
-                offsetLeft: 10,
-                offsetTop: 12,
-                maxLength: 20
-            },
             {type: "newcolumn"},
             {
                 type: "input",
                 name: "sampleCodeNumber",
-                label: "样本条码号：",
+                label: "条码号：",
                 width: 100,
                 offsetLeft: 10,
                 offsetTop: 12,
                 maxLength: 20
             },
             {type: "newcolumn"},
-            {type: "calendar", name: "startDate", label: "样本接收时间：", inputWidth: 100, offsetLeft: 10, offsetTop: 12},
+            {type: "calendar", name: "startDate", label: "接收时间：", inputWidth: 100, offsetLeft: 10, offsetTop: 12},
             {type: "newcolumn"},
             {type: "calendar", name: "endDate", label: "~", inputWidth: 100, offsetTop: 12},
             {type: "newcolumn"},
@@ -170,10 +189,12 @@
 
     var init = function () {
         Layout.initObj();
+        ReceiveToolbar.initobj();
+        ReceiveToolbar.initEvent();
         OperationForm.initObj();
         OperationForm.initEvent();
-        ReceivedSampleGrid.initObj();
-        ReceivedSampleGrid.initEvent();
+        /*ReceivedSampleGrid.initObj();
+        ReceivedSampleGrid.initEvent();*/
     };
 
     var sampleRecept = function () {

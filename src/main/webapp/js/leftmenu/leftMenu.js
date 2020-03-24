@@ -5,7 +5,7 @@
     var MenuTree = {
         obj: null,
         config: {
-            skin: "toolfile/dhtmlxstand/skins/skyblue/imgs/dhxtreeview_skyblue/",
+            //skin: "toolfile/dhtmlxstand/skins/skyblue/imgs/dhxtreeview_skyblue/",
             items: [
                 {
                     id: "inspectManagement",
@@ -19,9 +19,9 @@
                             icons: {file: "barCodePrint"}
                         },
                         {
-                            id: "sampleAccept",
+                            id: "sampleRecept",
                             text: "样本接收",
-                            icons: {file: "sampleAccept"}
+                            icons: {file: "sampleRecept"}
                         },
                         {
                             id: "sampleReturn",
@@ -40,7 +40,7 @@
                         }
                     ]
                 },
-                {
+                /*{
                     id: "inspectSettings",
                     text: "检验设置",
                     open: 1,
@@ -71,7 +71,7 @@
                             icons:{file:""}
                         }
                     ]
-                },
+                },*/
                 {
                     id: "inspectionOrder",
                     text: "检验医嘱",
@@ -106,6 +106,9 @@
                 switch (id) {
                     case "barCodePrint":
                         barCodePrint.init();
+                        break;
+                    case "sampleRecept":
+                        sampleRecept.init();
                         break;
                     case "checkItemSettings":
                         checkItemSettings.init();
