@@ -26,7 +26,7 @@
         </javaTypeResolver>
 
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="cn.hs.publicclass.table.checkapplicationdetail"
+        <javaModelGenerator targetPackage="cn.hs.publicclass.table.checkapplication"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
@@ -46,7 +46,7 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="check_application_detail_34543sdf"></table>
+        <table tableName="check_application_3454g"></table>
 
         <!-- mybatis插件的搭建 -->
     </context>

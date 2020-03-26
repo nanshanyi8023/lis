@@ -1005,6 +1005,66 @@ public class CheckApplicationExample {
             return (Criteria) this;
         }
 
+        public Criteria andSampleReceptionTimeIsNull() {
+            addCriterion("sample_reception_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeIsNotNull() {
+            addCriterion("sample_reception_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeEqualTo(Date value) {
+            addCriterion("sample_reception_time =", value, "sampleReceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeNotEqualTo(Date value) {
+            addCriterion("sample_reception_time <>", value, "sampleReceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeGreaterThan(Date value) {
+            addCriterion("sample_reception_time >", value, "sampleReceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("sample_reception_time >=", value, "sampleReceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeLessThan(Date value) {
+            addCriterion("sample_reception_time <", value, "sampleReceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeLessThanOrEqualTo(Date value) {
+            addCriterion("sample_reception_time <=", value, "sampleReceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeIn(List<Date> values) {
+            addCriterion("sample_reception_time in", values, "sampleReceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeNotIn(List<Date> values) {
+            addCriterion("sample_reception_time not in", values, "sampleReceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeBetween(Date value1, Date value2) {
+            addCriterion("sample_reception_time between", value1, value2, "sampleReceptionTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReceptionTimeNotBetween(Date value1, Date value2) {
+            addCriterion("sample_reception_time not between", value1, value2, "sampleReceptionTime");
+            return (Criteria) this;
+        }
+
         public Criteria andOrderNumberIsNull() {
             addCriterion("order_number is null");
             return (Criteria) this;
@@ -1062,6 +1122,136 @@ public class CheckApplicationExample {
 
         public Criteria andOrderNumberNotBetween(Integer value1, Integer value2) {
             addCriterion("order_number not between", value1, value2, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeIsNull() {
+            addCriterion("sample_return_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeIsNotNull() {
+            addCriterion("sample_return_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeEqualTo(Date value) {
+            addCriterion("sample_return_time =", value, "sampleReturnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeNotEqualTo(Date value) {
+            addCriterion("sample_return_time <>", value, "sampleReturnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeGreaterThan(Date value) {
+            addCriterion("sample_return_time >", value, "sampleReturnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("sample_return_time >=", value, "sampleReturnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeLessThan(Date value) {
+            addCriterion("sample_return_time <", value, "sampleReturnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeLessThanOrEqualTo(Date value) {
+            addCriterion("sample_return_time <=", value, "sampleReturnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeIn(List<Date> values) {
+            addCriterion("sample_return_time in", values, "sampleReturnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeNotIn(List<Date> values) {
+            addCriterion("sample_return_time not in", values, "sampleReturnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeBetween(Date value1, Date value2) {
+            addCriterion("sample_return_time between", value1, value2, "sampleReturnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnTimeNotBetween(Date value1, Date value2) {
+            addCriterion("sample_return_time not between", value1, value2, "sampleReturnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonIsNull() {
+            addCriterion("sample_return_reason is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonIsNotNull() {
+            addCriterion("sample_return_reason is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonEqualTo(String value) {
+            addCriterion("sample_return_reason =", value, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonNotEqualTo(String value) {
+            addCriterion("sample_return_reason <>", value, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonGreaterThan(String value) {
+            addCriterion("sample_return_reason >", value, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonGreaterThanOrEqualTo(String value) {
+            addCriterion("sample_return_reason >=", value, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonLessThan(String value) {
+            addCriterion("sample_return_reason <", value, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonLessThanOrEqualTo(String value) {
+            addCriterion("sample_return_reason <=", value, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonLike(String value) {
+            addCriterion("sample_return_reason like", value, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonNotLike(String value) {
+            addCriterion("sample_return_reason not like", value, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonIn(List<String> values) {
+            addCriterion("sample_return_reason in", values, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonNotIn(List<String> values) {
+            addCriterion("sample_return_reason not in", values, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonBetween(String value1, String value2) {
+            addCriterion("sample_return_reason between", value1, value2, "sampleReturnReason");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnReasonNotBetween(String value1, String value2) {
+            addCriterion("sample_return_reason not between", value1, value2, "sampleReturnReason");
             return (Criteria) this;
         }
     }

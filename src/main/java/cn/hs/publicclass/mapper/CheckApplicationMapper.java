@@ -6,7 +6,6 @@ import cn.hs.publicclass.table.checkapplication.CheckApplicationKey;
 
 import java.util.Date;
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface CheckApplicationMapper {
@@ -33,8 +32,9 @@ public interface CheckApplicationMapper {
     int updateByPrimaryKey(CheckApplication record);
 
 
+
     /**
-     * 自定义方法
+     * 条码打印页面
      */
     //根据患者id和开单时间查找对应的检验申请
     List<CheckApplication> selectByPatientAndTime(@Param("hosNum") String hosNum, @Param("patientIdList") List<String> patientIdList,
@@ -48,4 +48,14 @@ public interface CheckApplicationMapper {
 
     //更新条码号
     void updateBarcodeNnumber(@Param("hosNum") String hosNum, @Param("checkApplicationId") String checkApplicationId, @Param("barcodeNnumber") String barcodeNnumber);
+
+    /**
+     *  样本退回页面
+     */
+    //查找对应的已接收样本
+    List<CheckApplication> selectReceptedSample(@Param("hosNum") String hosNum , @Param("barCodeNumber") String barCodeNumber,
+                                                @Param("startDate") Date startDate, @Param("endDate") Date endDate);
+
+    //根据条码号接收样本
+    void receiveSample(@Param("hosNum") String hosNum, @Param("barCodeNumber") String barCodeNumber);
 }

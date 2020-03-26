@@ -28,7 +28,13 @@ public class CheckApplication extends CheckApplicationKey {
 
     private String sampleReceptionStatu;
 
+    private Date sampleReceptionTime;
+
     private Integer orderNumber;
+
+    private Date sampleReturnTime;
+
+    private String sampleReturnReason;
 
     public String getCheckItemGroup() {
         return checkItemGroup;
@@ -126,11 +132,35 @@ public class CheckApplication extends CheckApplicationKey {
         this.sampleReceptionStatu = sampleReceptionStatu == null ? null : sampleReceptionStatu.trim();
     }
 
+    public Date getSampleReceptionTime() {
+        return sampleReceptionTime;
+    }
+
+    public void setSampleReceptionTime(Date sampleReceptionTime) {
+        this.sampleReceptionTime = sampleReceptionTime;
+    }
+
     public Integer getOrderNumber() {
         return orderNumber;
     }
 
     public void setOrderNumber(Integer orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    public Date getSampleReturnTime() {
+        return sampleReturnTime;
+    }
+
+    public void setSampleReturnTime(Date sampleReturnTime) {
+        this.sampleReturnTime = sampleReturnTime;
+    }
+
+    public String getSampleReturnReason() {
+        return sampleReturnReason;
+    }
+
+    public void setSampleReturnReason(String sampleReturnReason) {
+        this.sampleReturnReason = sampleReturnReason == null ? null : sampleReturnReason.trim();
     }
 }
