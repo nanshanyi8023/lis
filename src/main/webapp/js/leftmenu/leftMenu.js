@@ -5,7 +5,6 @@
     var MenuTree = {
         obj: null,
         config: {
-            //skin: "toolfile/dhtmlxstand/skins/skyblue/imgs/dhxtreeview_skyblue/",
             items: [
                 {
                     id: "inspectManagement",

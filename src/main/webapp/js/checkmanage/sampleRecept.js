@@ -83,7 +83,7 @@
             ajaxUtils.get('sampleRecept/receiveSample.json', {
                 barCodeNumber:barCodeNumber
             }).then(function () {
-
+                ReceiveToolbar.obj.clearAll();
                 ReceivedSampleGrid.loadData();
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);

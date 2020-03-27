@@ -45,6 +45,9 @@
             overflow: hidden;
             margin: 0px;
         }
+        .topFormClass{
+            background-color: #333333;
+        }
 
         .sampleRecept {
             background-image: url(images/systemhome/sampleRecept.png);
@@ -64,6 +67,48 @@
         .userinfoSetting{
             background-image: url(images/systemhome/userInfoSetting.png);
         }
+
+        /*设置左侧菜单栏样式*/
+        /*margin*/
+        .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item {
+            margin-top: 5px;
+        }
+        /*整体背景颜色   #02224a*/
+        .dhxtreeview_dhx_skyblue {
+            background-color: #333333;
+        }
+        /*字的颜色和背景颜色*/
+        .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_label {
+            color: #bbb;
+            background-color: #333333;
+            font-size: 13px;
+        }
+        /*项目高度及项目间边框*/
+        .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text {
+            border: 1px solid #333333 ;
+            height: 30px;
+        }
+        /*选中行背景颜色和边框颜色 #4a90e2*/
+        .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected, .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover {
+            background-color: #333333;
+            border-color: #333333;
+        }
+        /*选中行字的背景颜色，边框颜色和字的颜色*/
+        .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected div.dhxtreeview_item_label, .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover div.dhxtreeview_item_label {
+            background-color: #333333;
+            border-color: #333333;
+            color: #ffffff;
+        }
+        /*鼠标悬停时的背景颜色和边框颜色*/
+        .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover {
+            background-color: #4c4c4c;
+            border-color: #4c4c4c;
+        }
+        /*鼠标悬停时字的背景颜色和边框颜色*/
+        .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover div.dhxtreeview_item_label {
+            border-color: #4c4c4c;
+            background-color: #4c4c4c;
+        }
     </style>
 
 </head>
@@ -75,6 +120,9 @@
         dhtmlxCalendarLanage.setChinese();
         //初始化页面
         SystemHome.init();
+
+       /* $(".dhxlayout_sep").height(0);
+        $(".dhx_cell_layout dhx_cell_nested_layout").css("top","70px");*/
     });
 </script>
 

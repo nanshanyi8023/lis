@@ -8,10 +8,10 @@
             parent: "SystemHomeObj",
             pattern: "3T",
             offsets: {
-                top: 1,
-                right: 1,
-                bottom: 1,
-                left: 1
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
             },
             cells: [
                 {
@@ -21,10 +21,11 @@
                     collapsed_text: "collapsed_textA",   // 折叠栏标题
                     collapse: false,       // 初始是否折叠
                     fix_size: [true, true],
-                    height:70
+                    height:50
                 },
                 {
                     id: "b",
+                    header: false,      // 隐藏标题
                     text: "&nbsp&nbsp&nbsp&nbsp功能列表",
                     collapsed_text: "单击展开功能列表",   // 折叠栏标题
                     collapse: false,       // 初始是否折叠

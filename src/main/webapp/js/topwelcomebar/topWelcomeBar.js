@@ -5,7 +5,7 @@
         obj:null,
 
         config:[
-            {
+            /*{
                 type: "image",
                 name: "topImage",
                 url:  "images/systemhome/topImage.png",
@@ -14,10 +14,11 @@
                 imageHeight: 70,
                 inputWidth: 560,
                 inputHeight:75
-            }
+            }*/
+            {type: "block", height:50,className:"topFormClass"}
         ],
         initobj : function () {
-            //TopForm.obj = SystemHome.Layout.obj.cells("a").attachForm(TopForm.config);
+            TopForm.obj = SystemHome.Layout.obj.cells("a").attachForm(TopForm.config);
         }
     };
 
