@@ -7,6 +7,7 @@ var setChinese = function () {
     dhtmlXCalendarObject.prototype.langData["cn"] = {
         // date format for inputs
         dateformat: "%Y-%m-%d",
+        serverDateFormat: "%Y-%m-%d",
         // header format
         hdrformat: "%Y %F",
         // full names of months

@@ -77,14 +77,19 @@
         receiveButtonEvent: function () {
             var barCodeNumber = ReceiveToolbar.obj.getValue("barCodeNumber");
             if (JSUtils.isEmpty(barCodeNumber)) {
-                dhtmlxAlert.alertWarningMsg("请扫码或输入条码");
+                dhtmlxAlert.alertMsg("请扫码或输入条码");
+                return;
+            }
+            if(JSUtils.isNotNum(barCodeNumber)){
+                dhtmlxAlert.alertMsg("请输入数字");
                 return;
             }
             ajaxUtils.get('sampleRecept/receiveSample.json', {
                 barCodeNumber:barCodeNumber
-            }).then(function () {
-                ReceiveToolbar.obj.clearAll();
+            }).then(function (data) {
+                ReceiveToolbar.obj.setValue('barCodeNumber', '', false);
                 ReceivedSampleGrid.loadData();
+                dhtmlxAlert.alertMsg(data);
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
@@ -126,7 +131,16 @@
                         OperationForm.searchBtnEvent();
                         break;
                     case "returnSampleBtn":
-                        OperationForm.returnSampleBtnEvent();
+                        var sampleIdList = dhtmlxUtils.getCheckedRowIds(ReceivedSampleGrid.obj,0);
+                        //如果勾选样本行为空，则提示且不执行退回操作
+                        if (JSUtils.isEmpty(sampleIdList)) {
+                            dhtmlxAlert.alertMsg("请勾选需要退回的样本");
+                            return;
+                        }
+                        
+                        dhtmlxAlert.confirmWarningMsg("是否确认退回所选样本?", function () {
+                            OperationForm.returnSampleBtnEvent(sampleIdList);
+                        });
                         break;
                     default:
                 }
@@ -138,11 +152,23 @@
         },
         //查询按钮功能
         searchBtnEvent: function () {
+            var barCodeNumber = OperationForm.obj.getItemValue("barCodeNumber");
+            if(JSUtils.isNotEmpty(barCodeNumber) && JSUtils.isNotNum(barCodeNumber)){
+                dhtmlxAlert.alertMsg("条码号请输入数字");
+                return;
+            }
             ReceivedSampleGrid.loadData();
         },
         //退回样本按钮功能
-        returnSampleBtnEvent: function () {
-
+        returnSampleBtnEvent: function (sampleIdList) {
+            ajaxUtils.postBody('sampleRecept/returnSample.json',
+                sampleIdList
+            ).then(function (data) {
+                ReceivedSampleGrid.loadData();
+            }).catch(function (reason) {
+                dhtmlxAlert.alertErrorMsg(reason);
+            }).finally(function () {
+            });
         }
     };
 

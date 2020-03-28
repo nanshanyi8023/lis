@@ -6,6 +6,8 @@ import cn.hs.samplerecept.service.SampleReceptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/sampleRecept")
 public class SampleReceptController {
@@ -26,8 +28,17 @@ public class SampleReceptController {
     @RequestMapping(value = "/receiveSample.json", method = RequestMethod.GET)
     public ApiResult receiveSample(@RequestParam(required = true) String barCodeNumber){
         try {
-            sampleReceptService.receiveSample(barCodeNumber);
-            return ApiResult.success();
+            return ApiResult.success(sampleReceptService.receiveSample(barCodeNumber));
+        } catch (Exception e){
+            return ApiResult.failed(e.getMessage());
+        }
+    }
+
+    //退回样本
+    @RequestMapping(value = "/returnSample.json", method = RequestMethod.POST)
+    public ApiResult returnSample(@RequestBody List<String> sampleIdList){
+        try {
+            return ApiResult.success(sampleReceptService.returnSample(sampleIdList));
         } catch (Exception e){
             return ApiResult.failed(e.getMessage());
         }

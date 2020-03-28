@@ -2,19 +2,16 @@ package cn.hs.samplerecept.service;
 
 import cn.hs.publicclass.mapper.CheckApplicationDetailMapper;
 import cn.hs.publicclass.mapper.CheckApplicationMapper;
+import cn.hs.publicclass.method.FormatDate;
 import cn.hs.publicclass.table.checkapplication.CheckApplication;
 import cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail;
 import cn.hs.samplerecept.dto.ReceptedSampleQueryDto;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -43,23 +40,12 @@ public class SampleReceptService {
 
     //查询符合条件的已接收样本
     public List<CheckApplication> getReceptedSample(ReceptedSampleQueryDto receptedSampleQueryDto) {
-        Date startDate = null;
-        Date endDate = null;
-        try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String stringStartDate = receptedSampleQueryDto.getStartDate() + " 00:00:00";
-            String stringEndDate = receptedSampleQueryDto.getEndDate() + " 23:59:59";
-            if (StringUtils.isNotEmpty(stringStartDate)) {
-                startDate = simpleDateFormat.parse(stringStartDate);
-            }
-            if (StringUtils.isNotEmpty(stringEndDate)) {
-                endDate = simpleDateFormat.parse(stringEndDate);
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        List<CheckApplication> checkApplicationList = checkApplicationMapper.selectReceptedSample(this.getHosNum(), receptedSampleQueryDto.getBarCodeNumber(), startDate, endDate);
-        if (checkApplicationList.size() <= 0){
+        String startDate = FormatDate.formatstartDate(receptedSampleQueryDto.getStartDate());
+        receptedSampleQueryDto.setStartDate(startDate);
+        String endDate = FormatDate.formatEndDay(receptedSampleQueryDto.getEndDate());
+        receptedSampleQueryDto.setEndDate(endDate);
+        List<CheckApplication> checkApplicationList = checkApplicationMapper.selectReceptedSample(this.getHosNum(), receptedSampleQueryDto);
+        if (checkApplicationList.size() <= 0) {
             return checkApplicationList;
         }
 
@@ -85,7 +71,30 @@ public class SampleReceptService {
     }
 
     //根据条码号接收样本
-    public void receiveSample(String barCodeNumber) {
-        checkApplicationMapper.receiveSample(this.getHosNum(),barCodeNumber);
+    public String receiveSample(String barCodeNumber) {
+        //判断样本条码号是否存在
+        CheckApplication checkApplication = checkApplicationMapper.getCheckApplication(this.getHosNum(), barCodeNumber);
+        if (checkApplication == null) {
+            return "未查询到该条码号，请检查输入条码号是否正确";
+        }
+        //判断条码号对应的样本是否已接收
+        checkApplication = checkApplicationMapper.getReceptionStatu(this.getHosNum(), barCodeNumber);
+        if (checkApplication.getSampleReceptionStatu().equals("已接收")) {
+            String receptionDay = FormatDate.formatDay(checkApplication.getSampleReceptionTime());
+            return "该样本已于" + receptionDay + "接收!";
+        } else if (checkApplication.getSampleReceptionStatu().equals("已退回")) {
+            String returnDay = FormatDate.formatDay(checkApplication.getSampleReturnTime());
+            return "该样本已于" + returnDay + "退回!";
+        }
+        //接收样本
+        checkApplicationMapper.receiveSample(this.getHosNum(), barCodeNumber);
+        return "接收样本成功";
+    }
+
+    public int returnSample(List<String> sampleIdList) {
+        if (sampleIdList.isEmpty()){
+            return 0;
+        }
+        return checkApplicationMapper.returnSample(this.getHosNum(),sampleIdList);
     }
 }

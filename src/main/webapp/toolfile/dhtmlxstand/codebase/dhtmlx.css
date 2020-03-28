@@ -247,8 +247,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date {
   color: #000000;
-  background-color: #a3a3a3;
-  border-color: #a3a3a3;
+  background-color: #b3b3b3;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_weekend {
   color: #c66200;
@@ -275,8 +275,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_holiday {
   color: #ff0000;
-  background-color: #a3a3a3;
-  border-color: #a3a3a3;
+  background-color: #b3b3b3;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_weekend_holiday {
   color: #ff0000;
@@ -293,8 +293,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_hover {
   color: #000000;
-  background-color: #b5b5b5;
-  border-color: #a3a3a3;
+  background-color: #c5c5c5;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_weekend_hover {
   color: #c66200;
@@ -303,8 +303,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_hover {
   color: #000000;
-  background-color: #a3a3a3;
-  border-color: #a3a3a3;
+  background-color: #b3b3b3;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_weekend_hover {
   color: #c66200;
@@ -313,8 +313,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_holiday_hover {
   color: #ff0000;
-  background-color: #b5b5b5;
-  border-color: #a3a3a3;
+  background-color: #c5c5c5;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_weekend_holiday_hover {
   color: #ff0000;
@@ -323,8 +323,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_holiday_hover {
   color: #ff0000;
-  background-color: #a3a3a3;
-  border-color: #a3a3a3;
+  background-color: #b3b3b3;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_weekend_holiday_hover {
   color: #ff0000;
@@ -504,13 +504,13 @@
   cursor: default;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj table.dhtmlxcalendar_selector_table td.dhtmlxcalendar_selector_cell_middle ul li.dhtmlxcalendar_selector_cell_active {
-  background-color: #a3a3a3;
-  border-color: #a3a3a3;
+  background-color: #b3b3b3;
+  border-color: #b3b3b3;
   color: #000000;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj table.dhtmlxcalendar_selector_table td.dhtmlxcalendar_selector_cell_middle ul li.dhtmlxcalendar_selector_cell_hover {
-  background-color: #b5b5b5;
-  border-color: #a3a3a3;
+  background-color: #c5c5c5;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj.dhtmlxcalendar_selector_month table.dhtmlxcalendar_selector_table td.dhtmlxcalendar_selector_cell_left,
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj.dhtmlxcalendar_selector_month table.dhtmlxcalendar_selector_table td.dhtmlxcalendar_selector_cell_right {
@@ -745,9 +745,9 @@ div.dhxcombolist_dhx_skyblue div.dhxcombo_option {
   cursor: default;
 }
 div.dhxcombolist_dhx_skyblue div.dhxcombo_option.dhxcombo_option_selected {
-  background-color: #a3a3a3 !important;
-  border-top: 1px solid #a3a3a3 !important;
-  border-bottom: 1px solid #a3a3a3 !important;
+  background-color: #b3b3b3 !important;
+  border-top: 1px solid #b3b3b3 !important;
+  border-bottom: 1px solid #b3b3b3 !important;
   color: #000000;
 }
 div.dhxcombolist_dhx_skyblue div.dhxcombo_option div.dhxcombo_option_text {
@@ -949,7 +949,7 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_multicolumn div.dhxcombo_option.dhxcom
   z-index: 1;
 }
 div.dhxcombolist_dhx_skyblue.dhxcombolist_multicolumn div.dhxcombo_option.dhxcombo_option_selected div.dhxcombo_cell {
-  border-left-color: #a3a3a3;
+  border-left-color: #b3b3b3;
 }
 div.dhxcombolist_dhx_skyblue.dhxcombolist_multicolumn div.dhxcombo_option div.dhxcombo_cell_text,
 div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_hdrcell_text {
@@ -1663,8 +1663,8 @@ div.dhtmlxMenu_dhx_skyblue_TopLevel_Item_Disabled {
   color: #999999 !important;
 }
 div.dhtmlxMenu_dhx_skyblue_TopLevel_Item_Selected {
-  border: 1px solid #a3a3a3;
-  background-color: #a3a3a3;
+  border: 1px solid #b3b3b3;
+  background-color: #b3b3b3;
   color: #000000;
 }
 div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon {
@@ -1702,9 +1702,9 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tb
   user-select: none;
 }
 div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tbl tr.sub_item_selected td {
-  background-color: #a3a3a3;
-  border-top: 1px solid #a3a3a3;
-  border-bottom: 1px solid #a3a3a3;
+  background-color: #b3b3b3;
+  border-top: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
   color: #000000;
 }
 div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tbl tr.sub_item_selected div.sub_item_hk {
@@ -3085,9 +3085,9 @@ div.dhxform_item_template div.dhx_cell_editor div.dhx_cell_toolbar_def div.dhx_t
 }
 /*default item in selected state*/
 .dhx_dataview_default_item_selected {
-  background-color: #a3a3a3;
-  color: #a3a3a3;
-  border-color: #a3a3a3;
+  background-color: #b3b3b3;
+  color: #b3b3b3;
+  border-color: #b3b3b3;
   background-repeat: repeat-x;
 }
 /*defautl styles which will be used by any kind of dataview's item*/
@@ -3160,9 +3160,9 @@ div.dhxform_item_template div.dhx_cell_editor div.dhx_cell_toolbar_def div.dhx_t
 }
 /*default item in selected state*/
 .dhx_list_default_item_selected {
-  background-color: #a3a3a3;
-  color: #a3a3a3;
-  border-color: #a3a3a3;
+  background-color: #b3b3b3;
+  color: #b3b3b3;
+  border-color: #b3b3b3;
   background-repeat: repeat-x;
 }
 /*defautl styles which will be used by any kind of list's item*/
@@ -3371,9 +3371,9 @@ div.dhxform_item_template div.dhx_cell_editor div.dhx_cell_toolbar_def div.dhx_t
 }
 .dhxtree_dhx_skyblue .selectedTreeRow_lor,
 .dhxtree_dhx_skyblue .selectedTreeRow {
-  background-color: #a3a3a3;
+  background-color: #b3b3b3;
   background-repeat: repeat-x;
-  border: 1px solid #a3a3a3;
+  border: 1px solid #b3b3b3;
   color: #000000;
   line-height: 17px;
   font-family: Tahoma;
@@ -3724,21 +3724,21 @@ div.gridbox_dhx_skyblue.gridbox table.obj tr td.editable div.treegrid_cell {
   padding: 1px 4px !important;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr.rowselected {
-  background-color: #a3a3a3;
+  background-color: #b3b3b3;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr.rowselected td {
-  background-color: #a3a3a3;
+  background-color: #b3b3b3;
   color: #000000;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr.rowselected td,
 div.gridbox_dhx_skyblue.gridbox table.obj tr.odd_dhx_skyblue.rowselected td {
-  background-color: #a3a3a3;
-  border-top: 1px solid #a3a3a3;
-  border-bottom: 1px solid #a3a3a3;
-  border-right: 1px solid #a3a3a3;
+  background-color: #b3b3b3;
+  border-top: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
+  border-right: 1px solid #b3b3b3;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr td.cellselected {
-  background-color: #a3a3a3;
+  background-color: #b3b3b3;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr.odd_dhx_skyblue {
   background: #f5f5f5;
@@ -4144,12 +4144,12 @@ div.gridbox_dhx_skyblue.gridbox .obj.row20px td[excell] img {
 }
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected,
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover {
-  background-color: #a3a3a3;
+  background-color: #b3b3b3;
   border-color: #c3c3c3;
 }
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected div.dhxtreeview_item_label,
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover div.dhxtreeview_item_label {
-  background-color: #a3a3a3;
+  background-color: #b3b3b3;
   border-color: #c3c3c3;
   color: #000000;
 }
@@ -6798,7 +6798,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item.dhxsidebar_item_selected {
   z-index: 3;
   border-color: #c3c3c3;
-  background-color: #a3a3a3;
+  background-color: #b3b3b3;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item img.dhxsidebar_item_icon {
   position: absolute;
@@ -6866,7 +6866,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side.dhxsidebar_touch div.dhxsidebar_side_items div.dhxsidebar_item.dhxsidebar_item_selected {
   z-index: 3;
   border-color: #c3c3c3;
-  background-color: #a3a3a3;
+  background-color: #b3b3b3;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side.dhxsidebar_tpl_details div.dhxsidebar_side_items div.dhxsidebar_item {
   height: 23px;

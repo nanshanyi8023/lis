@@ -44,7 +44,7 @@
         obj: null,
 
         config: [
-            {type: "combo", name: "workGroup", label: "工作组：", width: 150, offsetLeft: 10, offsetTop: 13, maxLength: 20},
+            {type: "combo", name: "workGroup", label: "工作组：", width: 150, offsetLeft: 10, offsetTop: 12, maxLength: 20},
             {type: "newcolumn"},
             {
                 type: "input",

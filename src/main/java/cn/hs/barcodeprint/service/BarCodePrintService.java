@@ -5,6 +5,7 @@ import cn.hs.barcodeprint.dto.PatientSearchDto;
 import cn.hs.publicclass.mapper.CheckApplicationDetailMapper;
 import cn.hs.publicclass.mapper.CheckApplicationMapper;
 import cn.hs.publicclass.mapper.PatientInfoMapper;
+import cn.hs.publicclass.method.FormatDate;
 import cn.hs.publicclass.table.checkapplication.CheckApplication;
 import cn.hs.publicclass.table.checkapplication.CheckApplicationKey;
 import cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail;
@@ -15,10 +16,7 @@ import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -48,34 +46,29 @@ public class BarCodePrintService {
 
     //查询符合条件的患者信息
     public List<PatientInfo> getPatientInfo(PatientSearchDto patientSearchDto) {
+        String startDate = FormatDate.formatstartDate(patientSearchDto.getStartDate());
+        patientSearchDto.setStartDate(startDate);
+        String endDate = FormatDate.formatEndDay(patientSearchDto.getEndDate());
+        patientSearchDto.setEndDate(endDate);
         return patientInfoMapper.getPatientInfo(this.getHosNum(), patientSearchDto);
     }
 
     //查询符合条件的检验申请
     public List<CheckApplication> getCheckApplication(CheckApplicationSearchDto checkApplicationSearchDto) {
-        List<String> patientIdList = checkApplicationSearchDto.getPatientIdList();
-        Date startDate = null;
-        Date endDate = null;
-        try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String stringStartDate = checkApplicationSearchDto.getStartDate() + " 00:00:00";
-            String stringEndDate = checkApplicationSearchDto.getEndDate() + " 23:59:59";
-            if (StringUtils.isNotEmpty(stringStartDate)) {
-                startDate = simpleDateFormat.parse(stringStartDate);
-            }
-            if (StringUtils.isNotEmpty(stringEndDate)) {
-                endDate = simpleDateFormat.parse(stringEndDate);
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        List<CheckApplication> checkApplicationList = checkApplicationMapper.selectByPatientAndTime(this.getHosNum(), patientIdList, startDate, endDate);
+        String startDate = FormatDate.formatstartDate(checkApplicationSearchDto.getStartDate());
+        checkApplicationSearchDto.setStartDate(startDate);
+        String endDate = FormatDate.formatEndDay(checkApplicationSearchDto.getEndDate());
+        checkApplicationSearchDto.setEndDate(endDate);
+        List<CheckApplication> checkApplicationList = checkApplicationMapper.selectByPatientAndTime(this.getHosNum(), checkApplicationSearchDto);
 
         //将对应的检验项目组合拼到checkApplicationList中
         //需要的所有检验申请id
         List<String> checkApplicationIdList = new ArrayList<String>();
         for (CheckApplication checkApplication : checkApplicationList) {
             checkApplicationIdList.add(checkApplication.getItemId());
+        }
+        if (checkApplicationIdList.size() <= 0) {
+            return checkApplicationList;
         }
         //查询所有需要的检验申请id对应的检验项目组合
         List<CheckApplicationDetail> checkApplicationDetailList = checkApplicationDetailMapper.getCheckItemGroup(this.getHosNum(), checkApplicationIdList);

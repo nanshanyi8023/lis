@@ -1,7 +1,7 @@
 package cn.hs.barcodeprint.dto;
 
 public class PatientSearchDto {
-    private String patientId;   //患者id
+    private String patientId;   //患者id(查找单个患者)
     private String patientName; //患者姓名
     private String startDate;   //查询开始时间
     private String endDate;     //查询结束时间
