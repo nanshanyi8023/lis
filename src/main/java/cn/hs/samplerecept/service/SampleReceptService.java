@@ -93,9 +93,9 @@ public class SampleReceptService {
     }
 
     public int returnSample(RetrunSampleDto retrunSampleDto) {
-        if (retrunSampleDto.getSampleIdList().isEmpty()){
+        if (retrunSampleDto.getSampleIdList().isEmpty()) {
             return 0;
         }
-        return checkApplicationMapper.returnSample(this.getHosNum(),retrunSampleDto.getSampleIdList(),retrunSampleDto.getReturnReason());
+        return checkApplicationMapper.returnSample(this.getHosNum(), retrunSampleDto.getSampleIdList(), retrunSampleDto.getReturnReason());
     }
 }

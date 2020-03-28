@@ -222,7 +222,6 @@
         }
     };
 
-
     //样本退回原因窗口
     var returnSampleWindow = {
         obj: null,
@@ -270,6 +269,7 @@
         }
     };
 
+    //样本退回原因窗口表单
     returnSampleWindow.Form = {
         obj:null,
         config:[
@@ -330,7 +330,6 @@
             returnSampleWindow.obj.close();
         }
     };
-
 
     var init = function () {
         Layout.initObj();

@@ -17,30 +17,30 @@ public class SampleReceptController {
 
     //查询符合条件的已接收样本
     @RequestMapping(value = "/getReceptedSample.json", method = RequestMethod.POST)
-    public ApiResult getReceptedSample(@RequestBody ReceptedSampleQueryDto receptedSampleQueryDto){
+    public ApiResult getReceptedSample(@RequestBody ReceptedSampleQueryDto receptedSampleQueryDto) {
         try {
             return ApiResult.success(sampleReceptService.getReceptedSample(receptedSampleQueryDto));
-        } catch (Exception e){
+        } catch (Exception e) {
             return ApiResult.failed(e.getMessage());
         }
     }
 
     //根据条码号接收样本
     @RequestMapping(value = "/receiveSample.json", method = RequestMethod.GET)
-    public ApiResult receiveSample(@RequestParam(required = true) String barCodeNumber){
+    public ApiResult receiveSample(@RequestParam(required = true) String barCodeNumber) {
         try {
             return ApiResult.success(sampleReceptService.receiveSample(barCodeNumber));
-        } catch (Exception e){
+        } catch (Exception e) {
             return ApiResult.failed(e.getMessage());
         }
     }
 
     //退回样本
     @RequestMapping(value = "/returnSample.json", method = RequestMethod.POST)
-    public ApiResult returnSample(@RequestBody RetrunSampleDto retrunSampleDto){
+    public ApiResult returnSample(@RequestBody RetrunSampleDto retrunSampleDto) {
         try {
             return ApiResult.success(sampleReceptService.returnSample(retrunSampleDto));
-        } catch (Exception e){
+        } catch (Exception e) {
             return ApiResult.failed(e.getMessage());
         }
     }

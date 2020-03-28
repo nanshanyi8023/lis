@@ -34,7 +34,6 @@ public interface CheckApplicationMapper {
     int updateByPrimaryKey(CheckApplication record);
 
 
-
     /**
      * 条码打印页面
      */
@@ -51,10 +50,10 @@ public interface CheckApplicationMapper {
     void updateBarcodeNnumber(@Param("hosNum") String hosNum, @Param("checkApplicationId") String checkApplicationId, @Param("barcodeNnumber") String barcodeNnumber);
 
     /**
-     *  样本接收页面
+     * 样本接收页面
      */
     //查找对应的已接收样本
-    List<CheckApplication> selectReceptedSample(@Param("hosNum") String hosNum , @Param("receptedSampleQueryDto") ReceptedSampleQueryDto receptedSampleQueryDto);
+    List<CheckApplication> selectReceptedSample(@Param("hosNum") String hosNum, @Param("receptedSampleQueryDto") ReceptedSampleQueryDto receptedSampleQueryDto);
 
     //根据条码号查找对应的检验申请（判断条码号是否存在）
     CheckApplication getCheckApplication(@Param("hosNum") String hosNum, @Param("barCodeNumber") String barCodeNumber);
