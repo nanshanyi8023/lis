@@ -1,6 +1,6 @@
 package cn.hs.login.controller;
 
-import cn.hs.publicmethod.ApiResult;
+import cn.hs.publicclass.method.ApiResult;
 import cn.hs.login.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;

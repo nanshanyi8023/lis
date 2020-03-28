@@ -281,4 +281,37 @@
     from work_group
     where hosnum = #{hosNum}
   </select>
+  <select id="getworkGroups" resultMap="BaseResultMap">
+    select *
+    from work_group
+    where hosnum = #{hosNum}
+    <if test="workGroup != null and workGroup != ''">
+      and (work_group_id LIKE '%' #{workGroup} '%' OR work_group_name LIKE '%' #{workGroup} '%')
+    </if>
+  </select>
+  <delete id="deleteWorkGroups">
+    delete from work_group
+    where hosnum = #{hosNum} AND work_group_id IN
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+  <select id="getAllWorkGroupName" resultType="java.lang.String">
+    select work_group_name
+    from work_group
+    where hosnum = #{hosNum}
+  </select>
+  <select id="getMaxId" resultType="java.lang.String">
+    select IF(max(cast(work_group_id as unsigned int)) = '' || max(cast(work_group_id as unsigned int)) = NULL,
+          '1',
+           max(cast(work_group_id as unsigned int)) + 1)
+    from work_group
+    where hosnum = #{hosNum}
+  </select>
+  <select id="getGroupCode" resultType="java.lang.String">
+    select group_code
+    from work_group
+    where hosnum = #{hosNum} and group_type = #{groupType}
+    limit 1
+  </select>
 </mapper>

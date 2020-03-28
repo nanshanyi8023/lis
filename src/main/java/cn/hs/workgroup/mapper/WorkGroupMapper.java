@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface WorkGroupMapper {
+
     long countByExample(WorkGroupExample example);
 
     int deleteByExample(WorkGroupExample example);
@@ -36,4 +37,18 @@ public interface WorkGroupMapper {
     //查找所有的工作组id和名称
     List<WorkGroup> selectAllWorkGroup(@Param("hosNum") String hosNum);
 
+    //根据工作组id或工作组名称查找对应的工作组
+    List<WorkGroup> getworkGroups(@Param("hosNum")String hosNum, @Param("workGroup") String workGroup);
+
+    //根据工作组id删除对应的工作组
+    int deleteWorkGroups(@Param("hosNum") String hosNum, @Param("list") List<String> itemIdList);
+
+    //查找所有的工作组名称
+    List<String> getAllWorkGroupName(@Param("hosNum") String hosNum);
+
+    //查找最大的工作组id
+    String getMaxId(@Param("hosNum") String hosNum);
+
+    //根据组类型查找组代码
+    String getGroupCode(@Param("hosNum") String hosNum, @Param("groupType") String groupType);
 }

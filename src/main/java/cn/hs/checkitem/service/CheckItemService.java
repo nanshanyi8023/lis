@@ -2,15 +2,11 @@ package cn.hs.checkitem.service;
 
 import cn.hs.checkitem.mapper.CheckItemMapper;
 import cn.hs.checkitem.pojo.CheckItem;
-import cn.hs.checkitemgroup.mapper.CheckItemGroupDetailMapper;
 import cn.hs.checkitemgroup.mapper.CheckItemGroupMapper;
 import cn.hs.checkitemgroup.pojo.CheckItemGroup;
-import cn.hs.checkitemgroup.pojo.CheckItemGroupDetail;
-import cn.hs.publicmethod.BusinessException;
-import cn.hs.workgroup.mapper.WorkGroupDetailMapper;
+import cn.hs.publicclass.method.BusinessException;
 import cn.hs.workgroup.mapper.WorkGroupMapper;
 import cn.hs.workgroup.pojo.WorkGroup;
-import cn.hs.workgroup.pojo.WorkGroupDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -83,7 +79,7 @@ public class CheckItemService {
     }
 
     //保存检验项目
-    public CheckItem saveCheckItem(CheckItem checkItem) {
+    public void saveCheckItem(CheckItem checkItem) {
         String hosNum = this.getHosNum();
         checkItem.setHosnum(hosNum);
         if (StringUtils.isEmpty(checkItem.getItemId())){  //新增
@@ -95,12 +91,11 @@ public class CheckItemService {
         }else {  //更新
             checkItemMapper.updateByPrimaryKeySelective(checkItem);
         }
-        return null;
     }
 
     //判断检验项目名称是否重复
     private boolean isRepeat(String hosNum, String itemName) {
-        List<String> list =  checkItemMapper.getAllExamMethod(hosNum);
+        List<String> list =  checkItemMapper.getAllCheckItemName(hosNum);
         for (int i = 0; i < list.size(); i++) {
             if (itemName.equals(list.get(i))){
                 return true;

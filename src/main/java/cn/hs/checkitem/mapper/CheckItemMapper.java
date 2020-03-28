@@ -42,7 +42,7 @@ public interface CheckItemMapper {
     int deleteCheckItems(@Param("hosNum") String hosNum, @Param("list") List<String> itemIdList);
 
     //获取所有检验项目名称
-    List<String> getAllExamMethod(@Param("hosNum")String hosNum);
+    List<String> getAllCheckItemName(@Param("hosNum")String hosNum);
 
     //获取最大的检验项目id值
     String getMaxId(@Param("hosNum")String hosNum);

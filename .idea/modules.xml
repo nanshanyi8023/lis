@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/lis.iml" filepath="$PROJECT_DIR$/lis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lisHS.iml" filepath="$PROJECT_DIR$/lisHS.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hs.publicclass.mapper.CheckApplicationMapper">
+  <resultMap id="BaseResultMap" type="cn.hs.publicclass.table.checkapplication.CheckApplication">
+    <id column="hosnum" jdbcType="VARCHAR" property="hosnum" />
+    <id column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="patient_id" jdbcType="VARCHAR" property="patientId" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="collection_container" jdbcType="VARCHAR" property="collectionContainer" />
+    <result column="submit_department" jdbcType="VARCHAR" property="submitDepartment" />
+    <result column="is_emergency" jdbcType="VARCHAR" property="isEmergency" />
+    <result column="sample_type" jdbcType="VARCHAR" property="sampleType" />
+    <result column="billing_doctor" jdbcType="VARCHAR" property="billingDoctor" />
+    <result column="billing_time" jdbcType="TIMESTAMP" property="billingTime" />
+    <result column="barcode_number" jdbcType="VARCHAR" property="barcodeNumber" />
+    <result column="print_statu" jdbcType="VARCHAR" property="printStatu" />
+    <result column="sample_reception_statu" jdbcType="VARCHAR" property="sampleReceptionStatu" />
+    <result column="sample_reception_time" jdbcType="TIMESTAMP" property="sampleReceptionTime" />
+    <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
+    <result column="sample_return_time" jdbcType="TIMESTAMP" property="sampleReturnTime" />
+    <result column="sample_return_reason" jdbcType="VARCHAR" property="sampleReturnReason" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    hosnum, item_id, patient_id, patient_name, collection_container, submit_department, 
+    is_emergency, sample_type, billing_doctor, billing_time, barcode_number, print_statu, 
+    sample_reception_statu, sample_reception_time, order_number, sample_return_time, 
+    sample_return_reason
+  </sql>
+  <select id="selectByExample" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from check_application
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from check_application
+    where hosnum = #{hosnum,jdbcType=VARCHAR}
+      and item_id = #{itemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationKey">
+    delete from check_application
+    where hosnum = #{hosnum,jdbcType=VARCHAR}
+      and item_id = #{itemId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationExample">
+    delete from check_application
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
+    insert into check_application (hosnum, item_id, patient_id, 
+      patient_name, collection_container, submit_department, 
+      is_emergency, sample_type, billing_doctor, 
+      billing_time, barcode_number, print_statu, 
+      sample_reception_statu, sample_reception_time, 
+      order_number, sample_return_time, sample_return_reason
+      )
+    values (#{hosnum,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{patientId,jdbcType=VARCHAR}, 
+      #{patientName,jdbcType=VARCHAR}, #{collectionContainer,jdbcType=VARCHAR}, #{submitDepartment,jdbcType=VARCHAR}, 
+      #{isEmergency,jdbcType=VARCHAR}, #{sampleType,jdbcType=VARCHAR}, #{billingDoctor,jdbcType=VARCHAR}, 
+      #{billingTime,jdbcType=TIMESTAMP}, #{barcodeNumber,jdbcType=VARCHAR}, #{printStatu,jdbcType=VARCHAR}, 
+      #{sampleReceptionStatu,jdbcType=VARCHAR}, #{sampleReceptionTime,jdbcType=TIMESTAMP}, 
+      #{orderNumber,jdbcType=INTEGER}, #{sampleReturnTime,jdbcType=TIMESTAMP}, #{sampleReturnReason,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
+    insert into check_application
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hosnum != null">
+        hosnum,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="patientId != null">
+        patient_id,
+      </if>
+      <if test="patientName != null">
+        patient_name,
+      </if>
+      <if test="collectionContainer != null">
+        collection_container,
+      </if>
+      <if test="submitDepartment != null">
+        submit_department,
+      </if>
+      <if test="isEmergency != null">
+        is_emergency,
+      </if>
+      <if test="sampleType != null">
+        sample_type,
+      </if>
+      <if test="billingDoctor != null">
+        billing_doctor,
+      </if>
+      <if test="billingTime != null">
+        billing_time,
+      </if>
+      <if test="barcodeNumber != null">
+        barcode_number,
+      </if>
+      <if test="printStatu != null">
+        print_statu,
+      </if>
+      <if test="sampleReceptionStatu != null">
+        sample_reception_statu,
+      </if>
+      <if test="sampleReceptionTime != null">
+        sample_reception_time,
+      </if>
+      <if test="orderNumber != null">
+        order_number,
+      </if>
+      <if test="sampleReturnTime != null">
+        sample_return_time,
+      </if>
+      <if test="sampleReturnReason != null">
+        sample_return_reason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hosnum != null">
+        #{hosnum,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientId != null">
+        #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionContainer != null">
+        #{collectionContainer,jdbcType=VARCHAR},
+      </if>
+      <if test="submitDepartment != null">
+        #{submitDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="isEmergency != null">
+        #{isEmergency,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleType != null">
+        #{sampleType,jdbcType=VARCHAR},
+      </if>
+      <if test="billingDoctor != null">
+        #{billingDoctor,jdbcType=VARCHAR},
+      </if>
+      <if test="billingTime != null">
+        #{billingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="barcodeNumber != null">
+        #{barcodeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="printStatu != null">
+        #{printStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleReceptionStatu != null">
+        #{sampleReceptionStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleReceptionTime != null">
+        #{sampleReceptionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderNumber != null">
+        #{orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="sampleReturnTime != null">
+        #{sampleReturnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sampleReturnReason != null">
+        #{sampleReturnReason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationExample" resultType="java.lang.Long">
+    select count(*) from check_application
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update check_application
+    <set>
+      <if test="record.hosnum != null">
+        hosnum = #{record.hosnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemId != null">
+        item_id = #{record.itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patientId != null">
+        patient_id = #{record.patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patientName != null">
+        patient_name = #{record.patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.collectionContainer != null">
+        collection_container = #{record.collectionContainer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.submitDepartment != null">
+        submit_department = #{record.submitDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isEmergency != null">
+        is_emergency = #{record.isEmergency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sampleType != null">
+        sample_type = #{record.sampleType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billingDoctor != null">
+        billing_doctor = #{record.billingDoctor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billingTime != null">
+        billing_time = #{record.billingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.barcodeNumber != null">
+        barcode_number = #{record.barcodeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.printStatu != null">
+        print_statu = #{record.printStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sampleReceptionStatu != null">
+        sample_reception_statu = #{record.sampleReceptionStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sampleReceptionTime != null">
+        sample_reception_time = #{record.sampleReceptionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderNumber != null">
+        order_number = #{record.orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.sampleReturnTime != null">
+        sample_return_time = #{record.sampleReturnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sampleReturnReason != null">
+        sample_return_reason = #{record.sampleReturnReason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update check_application
+    set hosnum = #{record.hosnum,jdbcType=VARCHAR},
+      item_id = #{record.itemId,jdbcType=VARCHAR},
+      patient_id = #{record.patientId,jdbcType=VARCHAR},
+      patient_name = #{record.patientName,jdbcType=VARCHAR},
+      collection_container = #{record.collectionContainer,jdbcType=VARCHAR},
+      submit_department = #{record.submitDepartment,jdbcType=VARCHAR},
+      is_emergency = #{record.isEmergency,jdbcType=VARCHAR},
+      sample_type = #{record.sampleType,jdbcType=VARCHAR},
+      billing_doctor = #{record.billingDoctor,jdbcType=VARCHAR},
+      billing_time = #{record.billingTime,jdbcType=TIMESTAMP},
+      barcode_number = #{record.barcodeNumber,jdbcType=VARCHAR},
+      print_statu = #{record.printStatu,jdbcType=VARCHAR},
+      sample_reception_statu = #{record.sampleReceptionStatu,jdbcType=VARCHAR},
+      sample_reception_time = #{record.sampleReceptionTime,jdbcType=TIMESTAMP},
+      order_number = #{record.orderNumber,jdbcType=INTEGER},
+      sample_return_time = #{record.sampleReturnTime,jdbcType=TIMESTAMP},
+      sample_return_reason = #{record.sampleReturnReason,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
+    update check_application
+    <set>
+      <if test="patientId != null">
+        patient_id = #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null">
+        patient_name = #{patientName,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionContainer != null">
+        collection_container = #{collectionContainer,jdbcType=VARCHAR},
+      </if>
+      <if test="submitDepartment != null">
+        submit_department = #{submitDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="isEmergency != null">
+        is_emergency = #{isEmergency,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleType != null">
+        sample_type = #{sampleType,jdbcType=VARCHAR},
+      </if>
+      <if test="billingDoctor != null">
+        billing_doctor = #{billingDoctor,jdbcType=VARCHAR},
+      </if>
+      <if test="billingTime != null">
+        billing_time = #{billingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="barcodeNumber != null">
+        barcode_number = #{barcodeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="printStatu != null">
+        print_statu = #{printStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleReceptionStatu != null">
+        sample_reception_statu = #{sampleReceptionStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleReceptionTime != null">
+        sample_reception_time = #{sampleReceptionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderNumber != null">
+        order_number = #{orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="sampleReturnTime != null">
+        sample_return_time = #{sampleReturnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sampleReturnReason != null">
+        sample_return_reason = #{sampleReturnReason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hosnum = #{hosnum,jdbcType=VARCHAR}
+      and item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
+    update check_application
+    set patient_id = #{patientId,jdbcType=VARCHAR},
+      patient_name = #{patientName,jdbcType=VARCHAR},
+      collection_container = #{collectionContainer,jdbcType=VARCHAR},
+      submit_department = #{submitDepartment,jdbcType=VARCHAR},
+      is_emergency = #{isEmergency,jdbcType=VARCHAR},
+      sample_type = #{sampleType,jdbcType=VARCHAR},
+      billing_doctor = #{billingDoctor,jdbcType=VARCHAR},
+      billing_time = #{billingTime,jdbcType=TIMESTAMP},
+      barcode_number = #{barcodeNumber,jdbcType=VARCHAR},
+      print_statu = #{printStatu,jdbcType=VARCHAR},
+      sample_reception_statu = #{sampleReceptionStatu,jdbcType=VARCHAR},
+      sample_reception_time = #{sampleReceptionTime,jdbcType=TIMESTAMP},
+      order_number = #{orderNumber,jdbcType=INTEGER},
+      sample_return_time = #{sampleReturnTime,jdbcType=TIMESTAMP},
+      sample_return_reason = #{sampleReturnReason,jdbcType=VARCHAR}
+    where hosnum = #{hosnum,jdbcType=VARCHAR}
+      and item_id = #{itemId,jdbcType=VARCHAR}
+  </update>
+
+
+
+
+  <!--条码打印页面-->
+  <select id="selectByPatientAndTime" resultMap="BaseResultMap">
+    select *
+    from check_application
+    where hosnum = #{hosNum} and patient_id in
+    <foreach collection="checkApplicationSearchDto.patientIdList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    <if test="checkApplicationSearchDto.startDate != null and checkApplicationSearchDto.startDate != ''">
+      and billing_time &gt;= #{checkApplicationSearchDto.startDate}
+    </if>
+    <if test="checkApplicationSearchDto.endDate != null and checkApplicationSearchDto.endDate != ''">
+      and billing_time &lt;= #{checkApplicationSearchDto.endDate}
+    </if>
+  </select>
+  <select id="selectBarcodeNnumber" resultType="java.lang.String">
+      select barcode_number
+      from check_application
+      where hosnum = #{hosNum} and item_id = #{checkApplicationId}
+    </select>
+  <select id="getMaxBarcodeNnumber" resultType="java.lang.String">
+    select IF(max(cast(barcode_number as unsigned int)) = '' || max(cast(barcode_number as unsigned int)) = NULL,
+          '100000001',
+           max(cast(barcode_number as unsigned int)) + 1)
+    from check_application
+    where hosnum = #{hosNum}
+  </select>
+  <update id="updateBarcodeNnumber">
+    update check_application
+    set barcode_number = #{barcodeNnumber}
+    where item_id = #{checkApplicationId}
+  </update>
+
+  <!--样本接收页面-->
+  <select id="selectReceptedSample" resultMap="BaseResultMap">
+    select *
+    from check_application
+    where hosnum = #{hosNum} and sample_reception_statu = '已接收'
+    <if test="receptedSampleQueryDto.barCodeNumber != null and receptedSampleQueryDto.barCodeNumber != ''">
+      and barcode_number = #{receptedSampleQueryDto.barCodeNumber}
+    </if>
+    <if test="receptedSampleQueryDto.startDate != null and receptedSampleQueryDto.startDate != ''">
+      and billing_time &gt;= #{receptedSampleQueryDto.startDate}
+    </if>
+    <if test="receptedSampleQueryDto.endDate != null and receptedSampleQueryDto.endDate != ''">
+      and billing_time &lt;= #{receptedSampleQueryDto.endDate}
+    </if>
+  </select>
+  <select id="getCheckApplication" resultMap="BaseResultMap">
+    select *
+    from check_application
+    where hosnum = #{hosNum} and barcode_number = #{barCodeNumber}
+  </select>
+  <select id="getReceptionStatu" resultMap="BaseResultMap">
+    select sample_reception_statu,sample_reception_time,sample_return_time
+    from check_application
+    where  hosnum = #{hosNum} and barcode_number = #{barCodeNumber}
+  </select>
+  <update id="receiveSample">
+    update check_application
+    set sample_reception_statu = '已接收', sample_reception_time = sysdate()
+    where hosnum = #{hosNum} and barcode_number = #{barCodeNumber}
+  </update>
+  <update id="returnSample">
+    update check_application
+    set sample_reception_statu = '已退回', sample_return_time = sysdate(), sample_return_reason = #{returnReason}
+    where hosnum = #{hosNum} and item_id in
+    <foreach collection="sampleIdList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+</mapper>

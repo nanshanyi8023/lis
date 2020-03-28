@@ -1,6 +1,6 @@
 package cn.hs.checkitem.controller;
 
-import cn.hs.publicmethod.ApiResult;
+import cn.hs.publicclass.method.ApiResult;
 import cn.hs.checkitem.pojo.CheckItem;
 import cn.hs.checkitem.service.CheckItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,8 @@ public class CheckItemController {
     @RequestMapping(value = "/saveCheckItem.json", method = RequestMethod.POST)
     public ApiResult saveCheckItem(@RequestBody CheckItem checkItem){
         try {
-            return ApiResult.success(checkItemService.saveCheckItem(checkItem));
+            checkItemService.saveCheckItem(checkItem);
+            return ApiResult.success();
         } catch (Exception e){
             return ApiResult.failed(e.getMessage());
         }

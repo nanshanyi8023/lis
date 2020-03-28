@@ -43,11 +43,11 @@
   width: 211px;
   height: 25px;
   margin: 0px;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
-  border: 1px solid #a4bed4;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
   overflow: hidden;
   color: #000000;
   -webkit-user-select: text;
@@ -100,7 +100,7 @@
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_month_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_month_hdr span.dhtmlxcalendar_month_label_year {
   position: relative;
   font-weight: bold;
-  color: #34404b;
+  color: #333333;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_time_cont.dhtmlxcalendar_mode_time ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_time_hdr span.dhtmlxcalendar_label_today,
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_time_cont.dhtmlxcalendar_mode_time ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_time_hdr span.dhtmlxcalendar_label_clear {
@@ -125,9 +125,9 @@
   width: 211px;
   margin: 0px;
   padding-bottom: 1px;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px solid #cbd9e4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px solid #eaded3;
   -webkit-user-select: text;
   -khtml-user-select: text;
   -moz-user-select: text;
@@ -146,7 +146,7 @@
   line-height: 19px;
   margin-right: 1px;
   font-size: 9px;
-  background-color: #ecf4ff;
+  background-color: #f6f6f6;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_days_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_day_weekday_cell,
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_days_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_day_weekday_cell_first {
@@ -159,9 +159,9 @@
   width: 211px;
   margin: 0px;
   padding-bottom: 1px;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -237,8 +237,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month {
   color: #000000;
-  background-color: #ecf4ff;
-  border-color: #ecf4ff;
+  background-color: #f6f6f6;
+  border-color: #f6f6f6;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_weekend {
   color: #c66200;
@@ -247,8 +247,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date {
   color: #000000;
-  background-color: #b5deff;
-  border-color: #a1ceed;
+  background-color: #b3b3b3;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_weekend {
   color: #c66200;
@@ -265,8 +265,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_holiday {
   color: #ff0000;
-  background-color: #ecf4ff;
-  border-color: #ecf4ff;
+  background-color: #f6f6f6;
+  border-color: #f6f6f6;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_weekend_holiday {
   color: #ff0000;
@@ -275,8 +275,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_holiday {
   color: #ff0000;
-  background-color: #b5deff;
-  border-color: #a1ceed;
+  background-color: #b3b3b3;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_weekend_holiday {
   color: #ff0000;
@@ -293,8 +293,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_hover {
   color: #000000;
-  background-color: #d9eeff;
-  border-color: #a1ceed;
+  background-color: #c5c5c5;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_weekend_hover {
   color: #c66200;
@@ -303,8 +303,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_hover {
   color: #000000;
-  background-color: #b5deff;
-  border-color: #a1ceed;
+  background-color: #b3b3b3;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_weekend_hover {
   color: #c66200;
@@ -313,8 +313,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_holiday_hover {
   color: #ff0000;
-  background-color: #d9eeff;
-  border-color: #a1ceed;
+  background-color: #c5c5c5;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_weekend_holiday_hover {
   color: #ff0000;
@@ -323,8 +323,8 @@
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_holiday_hover {
   color: #ff0000;
-  background-color: #b5deff;
-  border-color: #a1ceed;
+  background-color: #b3b3b3;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_cell_month_date_weekend_holiday_hover {
   color: #ff0000;
@@ -342,13 +342,13 @@
   width: 211px;
   height: 25px;
   margin: 0px;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px solid #a4bed4;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -361,7 +361,7 @@
   width: 211px;
   height: 25px;
   line-height: 24px;
-  color: #34404b;
+  color: #333333;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_time_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_time_hdr {
   text-align: left;
@@ -429,7 +429,7 @@
   background-position: -53px top;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj table.dhtmlxcalendar_selector_table {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-color: white;
   border-top: none;
   margin-top: 9px;
@@ -441,7 +441,7 @@
   border-top: 1px solid white;
   padding: 0px;
   margin: 0px;
-  background-color: #ecf4ff;
+  background-color: #f6f6f6;
   background-image: url("imgs/dhxcalendar_skyblue/dhxcalendar_arrow_left.gif");
   background-position: center center;
   background-repeat: no-repeat;
@@ -460,7 +460,7 @@
   text-align: center;
   border-top: 1px solid white;
   border-width: 1px 0px 0px 0px;
-  background-color: #ecf4ff;
+  background-color: #f6f6f6;
   background-image: url("imgs/dhxcalendar_skyblue/dhxcalendar_arrow_right.gif");
   background-position: center center;
   background-repeat: no-repeat;
@@ -493,8 +493,8 @@
   vertical-align: middle;
   margin: 0px 1px 0px 0px;
   padding: 0px;
-  background-color: #e9f3ff;
-  border: 1px solid #e9f3ff;
+  background-color: #f3f5f6;
+  border: 1px solid #f3f5f6;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -504,13 +504,13 @@
   cursor: default;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj table.dhtmlxcalendar_selector_table td.dhtmlxcalendar_selector_cell_middle ul li.dhtmlxcalendar_selector_cell_active {
-  background-color: #b5deff;
-  border-color: #a1ceed;
+  background-color: #b3b3b3;
+  border-color: #b3b3b3;
   color: #000000;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj table.dhtmlxcalendar_selector_table td.dhtmlxcalendar_selector_cell_middle ul li.dhtmlxcalendar_selector_cell_hover {
-  background-color: #d9eeff;
-  border-color: #a1ceed;
+  background-color: #c5c5c5;
+  border-color: #b3b3b3;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj.dhtmlxcalendar_selector_month table.dhtmlxcalendar_selector_table td.dhtmlxcalendar_selector_cell_left,
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj.dhtmlxcalendar_selector_month table.dhtmlxcalendar_selector_table td.dhtmlxcalendar_selector_cell_right {
@@ -563,7 +563,7 @@
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj.dhtmlxcalendar_selector_minutes table.dhtmlxcalendar_selector_table {
   margin-top: 0px;
   margin-bottom: 9px;
-  border-top: 1px solid #a4bed4;
+  border-top: 1px solid #c3c3c3;
   border-bottom: none;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_selector_obj div.dhtmlxcalendar_area_selector_month,
@@ -604,15 +604,15 @@
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_wn div.dhtmlxcalendar_days_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell_wn {
   display: block;
   width: 21px;
-  color: #638eb1;
-  background-color: #d9eaff;
+  color: #6d90a8;
+  background-color: #e3ecf6;
 }
 .dhtmlxcalendar_dhx_skyblue div.dhtmlxcalendar_wn div.dhtmlxcalendar_dates_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell_wn {
   display: block;
   width: 19px;
-  color: #638eb1;
-  background-color: #d9eaff;
-  border-color: #d9eaff;
+  color: #6d90a8;
+  background-color: #e3ecf6;
+  border-color: #e3ecf6;
   font-size: 10px;
 }
 div.dhtmlxcalendar_skin_detect {
@@ -632,7 +632,7 @@ div.dhtmlxcalendar_skin_detect {
 
 div.dhxcombo_dhx_skyblue {
   position: relative;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   vertical-align: middle;
   background-color: white;
   overflow: hidden;
@@ -671,11 +671,11 @@ div.dhxcombo_dhx_skyblue div.dhxcombo_select_button {
   top: 1px;
   right: 1px;
   font-size: 1px;
-  border: 1px solid #a4bed4;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   border-radius: 2px;
   cursor: pointer;
   -webkit-user-select: none;
@@ -715,9 +715,9 @@ div.dhxcombolist_dhx_skyblue {
   font-family: Tahoma;
   font-size: 12px;
   color: #000000;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   box-shadow: 0 2px 3px #ccc;
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   -webkit-user-select: none;
@@ -738,16 +738,16 @@ div.dhxcombolist_dhx_skyblue div.dhxcombo_option {
   font-size: inherit;
   height: 20px;
   line-height: 19px;
-  border-top: 1px solid #e7f1ff;
-  border-bottom: 1px solid #e7f1ff;
+  border-top: 1px solid #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
   vertical-align: middle;
   overflow: hidden;
   cursor: default;
 }
 div.dhxcombolist_dhx_skyblue div.dhxcombo_option.dhxcombo_option_selected {
-  background-color: #b5deff !important;
-  border-top: 1px solid #a1ceed !important;
-  border-bottom: 1px solid #a1ceed !important;
+  background-color: #b3b3b3 !important;
+  border-top: 1px solid #b3b3b3 !important;
+  border-bottom: 1px solid #b3b3b3 !important;
   color: #000000;
 }
 div.dhxcombolist_dhx_skyblue div.dhxcombo_option div.dhxcombo_option_text {
@@ -882,10 +882,10 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr {
   box-shadow: none;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext {
   position: relative;
@@ -908,7 +908,7 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
   overflow: hidden;
   position: relative;
   z-index: 2;
-  border-left: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
   padding: 0px;
   margin: 0px;
 }
@@ -921,8 +921,8 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_multicolumn div.dhxcombo_option {
   line-height: 24px;
   margin-top: -1px;
   z-index: 0;
-  border-top: 1px solid #d3e7ff;
-  border-bottom: 1px solid #d3e7ff;
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
   background-color: white;
 }
 div.dhxcombolist_dhx_skyblue.dhxcombolist_multicolumn div.dhxcombo_option:last-child {
@@ -937,7 +937,7 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_multicolumn div.dhxcombo_option div.dh
   white-space: nowrap;
   overflow: hidden;
   position: relative;
-  border-left: 1px solid #d3e7ff;
+  border-left: 1px solid #e9e9e9;
   padding: 0px;
   margin: 0px;
 }
@@ -949,7 +949,7 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_multicolumn div.dhxcombo_option.dhxcom
   z-index: 1;
 }
 div.dhxcombolist_dhx_skyblue.dhxcombolist_multicolumn div.dhxcombo_option.dhxcombo_option_selected div.dhxcombo_cell {
-  border-left-color: #b5deff;
+  border-left-color: #b3b3b3;
 }
 div.dhxcombolist_dhx_skyblue.dhxcombolist_multicolumn div.dhxcombo_option div.dhxcombo_cell_text,
 div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_hdrcell_text {
@@ -994,8 +994,8 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
   position: absolute;
   width: 254px;
   height: 272px;
-  border: 1px solid #a4bed4;
-  background-color: #e7f1ff;
+  border: 1px solid #c3c3c3;
+  background-color: #f3f3f3;
 }
 .dhtmlxcp_dhx_skyblue .dhxcp_add_memory {
   height: 317px !important;
@@ -1004,7 +1004,7 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
   margin: 1px;
   width: 252px;
   height: 270px;
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -1027,12 +1027,12 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
   height: 120px;
   background-image: url("imgs/dhxcp_skyblue/dhxcp_colors.png");
   background-repeat: no-repeat;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   cursor: pointer;
   float: left;
 }
 .dhtmlxcp_dhx_skyblue .dhxcp_contrast_area {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   position: relative;
   height: 120px;
   width: 10px;
@@ -1080,12 +1080,12 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
 .dhtmlxcp_dhx_skyblue .dhxcp_value_color {
   width: 56px;
   height: 30px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
 }
 .dhtmlxcp_dhx_skyblue .dhxcp_value {
   width: 49px;
   height: 20px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   border-radius: 0px;
   background-color: white;
   margin: 5px 0px 0px 0px;
@@ -1121,7 +1121,7 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
 .dhtmlxcp_dhx_skyblue input.dhxcp_input_rgb {
   width: 25px;
   height: 19px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   border-radius: 0px;
   background-color: white;
   font-family: Tahoma;
@@ -1146,27 +1146,27 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
 .dhtmlxcp_dhx_skyblue button {
   outline: none;
   border-radius: 2px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
   padding: 0px;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 .dhtmlxcp_dhx_skyblue button:hover {
-  background-color: #f1f7ff;
-  background: linear-gradient(#f1f7ff, #e2efff);
-  background: -webkit-linear-gradient(#f1f7ff, #e2efff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f1f7ff, endColorStr=#e2efff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f8f8f8;
+  background: linear-gradient(#f8f8f8, #f0f0f0);
+  background: -webkit-linear-gradient(#f8f8f8, #f0f0f0);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f8f8f8, endColorStr=#f0f0f0) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 .dhtmlxcp_dhx_skyblue button:active {
-  background-color: #d2e7fe;
-  background: linear-gradient(#d2e7fe, #d3e7ff);
-  background: -webkit-linear-gradient(#d2e7fe, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#d2e7fe, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #e8e8e8;
+  background: linear-gradient(#e8e8e8, #e9e9e9);
+  background: -webkit-linear-gradient(#e8e8e8, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e8e8e8, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   box-shadow: 0 0 3px #ccc inset;
 }
 .dhtmlxcp_dhx_skyblue .dhxcp_save_to_memory {
@@ -1196,7 +1196,7 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
   width: 24px;
   height: 24px;
   background-color: #ffffff;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   display: inline-block;
   margin: 0px 1px;
 }
@@ -1243,7 +1243,7 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
 }
 .dhtmlxcp_dhx_skyblue.dhtmlxcp_in_form .dhxcp_g_area {
   padding: 5px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   box-shadow: 0 0 9px rgba(0, 0, 0, 0.35);
 }
 
@@ -1281,11 +1281,11 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border: 1px solid #a4bed4;
-  background-color: #f1f7ff;
-  background: linear-gradient(#f1f7ff, #e2efff);
-  background: -webkit-linear-gradient(#f1f7ff, #e2efff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f1f7ff, endColorStr=#e2efff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
+  background-color: #f8f8f8;
+  background: linear-gradient(#f8f8f8, #f0f0f0);
+  background: -webkit-linear-gradient(#f8f8f8, #f0f0f0);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f8f8f8, endColorStr=#f0f0f0) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   border-radius: 2px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -1293,10 +1293,10 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
   z-index: 1;
 }
 .dhtmlxslider_dhx_skyblue .dhxsl_runner.dhxsl_runner_actv {
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   z-index: 2;
 }
 .dhtmlxslider_dhx_skyblue .dhxsl_runner_dis {
@@ -1310,7 +1310,7 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   position: relative;
   border-radius: 2px;
   background-color: white;
@@ -1320,7 +1320,7 @@ div.dhxcombolist_dhx_skyblue.dhxcombolist_hdr div.dhxcombo_hdrtext div.dhxcombo_
 }
 .dhtmlxslider_dhx_skyblue .dhxsl_track div.dhxsl_track_bg {
   position: absolute;
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
   font-size: 1px;
   overflow: hidden;
   -webkit-user-select: none;
@@ -1378,9 +1378,9 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area {
   position: relative;
   margin: 10px;
   padding: 3px 0px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   box-shadow: 0 0 3px #ccc;
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
   border-radius: 2px;
   /* components-related */
 }
@@ -1393,8 +1393,8 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td {
   padding: 0px 8px;
   height: 24px;
   line-height: 23px;
-  border-top: 1px solid #e7f1ff;
-  border-bottom: 1px solid #e7f1ff;
+  border-top: 1px solid #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
   white-space: nowrap;
   cursor: default;
   -webkit-user-select: none;
@@ -1422,7 +1422,7 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area tr.dhx_popup_sep td.dhx_popup_sep d
   line-height: 1px;
   height: 0px;
   width: 100%;
-  border-top: 1px solid #a4bed5;
+  border-top: 1px solid #b0c0c9;
   overflow: hidden;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td:first-child {
@@ -1432,14 +1432,14 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td:last-child {
   padding-right: 16px;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area tr:hover td.dhx_popup_td {
-  background-color: #b5d8ff;
-  border-top: 1px solid #8dcef4;
-  border-bottom: 1px solid #8dcef4;
+  background-color: #c1daf3;
+  border-top: 1px solid #99d0e8;
+  border-bottom: 1px solid #99d0e8;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area tr.dhxnode:hover td.dhx_popup_td {
   background: none;
-  border-top: 1px solid #e7f1ff;
-  border-bottom: 1px solid #e7f1ff;
+  border-top: 1px solid #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area tr.dhxnode td.dhx_popup_td {
   padding-top: 8px!important;
@@ -1461,21 +1461,21 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area tr.dhxnode td.dhx_popup_td div.dhxt
   background: none;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area tr.dhxnode td.dhx_popup_td div.dhxeditor_dhx_skyblue {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area tr.dhxnode td.dhx_popup_td .dhxform_obj_dhx_skyblue div.dhxeditor_dhx_skyblue {
   border-width: 0px;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area tr.dhxnode td.dhx_popup_td div.dhtmlxcp_dhx_skyblue div.dhxcp_g_area {
   position: relative;
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
   border: 0px solid white;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area tr.dhxnode td.dhx_popup_td div.dhtmlxcp_dhx_skyblue div.dhxcp_g_area div.dhxcp_sub_area {
-  background: #e7f1ff;
+  background: #f3f3f3;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area tr.dhxnode td.dhx_popup_td div.dhxcarousel_cont {
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area.dhx_popup_area_ie {
   box-shadow: 0 0 6px #ccc;
@@ -1496,9 +1496,9 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area.dhx_popup_area_ie td.dhx_popup_td.d
   padding-right: 16px;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_area.dhx_popup_area_ie tr.tr_hover td.dhx_popup_td {
-  background-color: #b5d8ff;
-  border-top: 1px solid #8dcef4;
-  border-bottom: 1px solid #8dcef4;
+  background-color: #c1daf3;
+  border-top: 1px solid #99d0e8;
+  border-bottom: 1px solid #99d0e8;
 }
 div.dhx_popup_dhx_skyblue div.dhx_popup_arrow {
   position: absolute;
@@ -1663,19 +1663,19 @@ div.dhtmlxMenu_dhx_skyblue_TopLevel_Item_Disabled {
   color: #999999 !important;
 }
 div.dhtmlxMenu_dhx_skyblue_TopLevel_Item_Selected {
-  border: 1px solid #a1ceed;
-  background-color: #b5deff;
+  border: 1px solid #b3b3b3;
+  background-color: #b3b3b3;
   color: #000000;
 }
 div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon {
   position: absolute;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   box-shadow: 0 0 3px #ccc;
   padding: 3px 0px;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
   overflow: hidden;
   cursor: default;
   line-height: normal;
@@ -1692,8 +1692,8 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tb
   color: #000000;
   line-height: normal;
   padding: 0px 3px;
-  border-top: 1px solid #e7f1ff;
-  border-bottom: 1px solid #e7f1ff;
+  border-top: 1px solid #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -1702,9 +1702,9 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tb
   user-select: none;
 }
 div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tbl tr.sub_item_selected td {
-  background-color: #b5deff;
-  border-top: 1px solid #a1ceed;
-  border-bottom: 1px solid #a1ceed;
+  background-color: #b3b3b3;
+  border-top: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
   color: #000000;
 }
 div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tbl tr.sub_item_selected div.sub_item_hk {
@@ -1823,7 +1823,7 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon div.sub_sep {
   line-height: 1px;
   height: 1px;
   width: 100%;
-  border-top: 1px solid #a4bed4;
+  border-top: 1px solid #c3c3c3;
 }
 iframe.dhtmlxMenu_IE6CoverFix_dhx_skyblue {
   position: absolute;
@@ -1836,7 +1836,7 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowUp_Over,
 div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowUp_Disabled {
   position: relative;
   font-size: 1px;
-  border-bottom: 1px solid #a4bed4;
+  border-bottom: 1px solid #c3c3c3;
   background-image: url("imgs/dhxmenu_skyblue/dhxmenu_arrow_up.gif");
   background-repeat: no-repeat;
   background-position: center center;
@@ -1851,7 +1851,7 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Over,
 div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   position: relative;
   font-size: 1px;
-  border-top: 1px solid #a4bed4;
+  border-top: 1px solid #c3c3c3;
   background-image: url("imgs/dhxmenu_skyblue/dhxmenu_arrow_down.gif");
   background-repeat: no-repeat;
   background-position: center center;
@@ -1877,23 +1877,23 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
 }
 .dhtmlxribbon_dhx_skyblue.dhxrb_without_tabbar {
   background-color: #ffffff;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
 }
 .dhtmlxribbon_dhx_skyblue {
   overflow: hidden;
   width: 100%;
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_background_area {
   height: 115px;
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
   margin: 1px;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_with_tabbar {
   height: 145px;
 }
 .dhtmlxribbon_dhx_skyblue div.dhx_cell_tabbar {
-  background-color: #e7f1ff !important;
+  background-color: #f3f3f3 !important;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_g_area {
   height: 115px;
@@ -1905,8 +1905,8 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
 .dhtmlxribbon_dhx_skyblue .dhxrb_block_base {
   margin: 3px;
   float: left;
-  border: 1px solid #a4bed4;
-  background-color: #ddebff;
+  border: 1px solid #c3c3c3;
+  background-color: #eeeeee;
   border-radius: 2px;
   height: 106px;
   overflow: hidden;
@@ -1929,8 +1929,8 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   clear: left;
   font-family: Tahoma;
   font-size: 11px;
-  color: #5f85bb;
-  background-color: #d3e7ff;
+  color: #8d8d8d;
+  background-color: #e9e9e9;
   *padding: 1px 3px 4px;
   *font-size: 11px;
   *font-family: Tahoma, FreeSans;
@@ -1942,11 +1942,11 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   padding: 4px 6px;
   height: 72px;
   border-radius: 2px;
-  border: 1px solid #ddebff;
+  border: 1px solid #eeeeee;
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
-  background-color: #ddebff;
+  background-color: #eeeeee;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_big_button .dhxrb_image {
   width: 48px;
@@ -1992,11 +1992,11 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   clear: left;
   padding: 3px 4px 0px 4px;
   border-radius: 2px;
-  border: 1px solid #ddebff;
+  border: 1px solid #eeeeee;
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
-  background-color: #ddebff;
+  background-color: #eeeeee;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_in_row {
   height: 20px;
@@ -2006,11 +2006,11 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   white-space: nowrap;
   overflow: hidden;
   border-radius: 2px;
-  border: 1px solid #ddebff;
+  border: 1px solid #eeeeee;
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
-  background-color: #ddebff;
+  background-color: #eeeeee;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_group .dhxrb_buttoncombo_cont {
   height: 22px;
@@ -2055,7 +2055,7 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_input {
   float: left;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   height: 14px;
   width: 80px;
   font-family: Tahoma;
@@ -2131,11 +2131,11 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   user-select: none;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_highlight0 {
-  border: 1px solid #a4bed4;
-  background-color: #f1f7ff;
-  background: linear-gradient(#f1f7ff, #e2efff);
-  background: -webkit-linear-gradient(#f1f7ff, #e2efff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f1f7ff, endColorStr=#e2efff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
+  background-color: #f8f8f8;
+  background: linear-gradient(#f8f8f8, #f0f0f0);
+  background: -webkit-linear-gradient(#f8f8f8, #f0f0f0);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f8f8f8, endColorStr=#f0f0f0) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -2144,12 +2144,12 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   user-select: none;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_highlight1 {
-  border: 1px solid #a4bed4;
-  background-color: #d2e7fe;
-  background: linear-gradient(#d2e7fe, #d3e7ff);
-  background: -webkit-linear-gradient(#d2e7fe, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#d2e7fe, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
-  box-shadow: 0 0 3px #afc1d4 inset;
+  border: 1px solid #c3c3c3;
+  background-color: #e8e8e8;
+  background: linear-gradient(#e8e8e8, #e9e9e9);
+  background: -webkit-linear-gradient(#e8e8e8, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e8e8e8, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  box-shadow: 0 0 3px #c5c2be inset;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -2158,14 +2158,14 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   user-select: none;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_group .dhxrb_highlight0 {
-  border: 1px solid #ddedff;
+  border: 1px solid #e9eff3;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_group .dhxrb_highlight1 {
-  background-color: #d2e7fe;
-  background: linear-gradient(#d2e7fe, #d3e7ff);
-  background: -webkit-linear-gradient(#d2e7fe, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#d2e7fe, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
-  box-shadow: 0 0 3px #afc1d4 inset;
+  background-color: #e8e8e8;
+  background: linear-gradient(#e8e8e8, #e9e9e9);
+  background: -webkit-linear-gradient(#e8e8e8, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e8e8e8, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  box-shadow: 0 0 3px #c5c2be inset;
   border: 0px;
   padding: 3px 5px 2px 5px;
 }
@@ -2190,8 +2190,8 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   background: url("imgs/dhxribbon_skyblue/dhxribbon_arrow.gif") no-repeat 50%;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_3rows_block .dhxrb_group {
-  border: 1px solid #a4bed4;
-  background: #e7f1ff;
+  border: 1px solid #c3c3c3;
+  background: #f3f3f3;
   height: 24px;
   border-radius: 2px;
   float: left;
@@ -2201,8 +2201,8 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   position: relative;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_block_row .dhxrb_group {
-  border: 1px solid #a4bed4;
-  background: #e7f1ff;
+  border: 1px solid #c3c3c3;
+  background: #f3f3f3;
   height: 24px;
   border-radius: 2px;
   float: left;
@@ -2216,7 +2216,7 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
 .dhtmlxribbon_dhx_skyblue .dhxrb_separator_groupp {
   height: 24px;
   width: 0;
-  border-left: 1px solid #c4deff;
+  border-left: 1px solid #d0e0f3;
   overflow: hidden;
   float: left;
 }
@@ -2233,7 +2233,7 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   background-color: #eeeeee;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_checkbox {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-color: #ffffff;
   float: left;
   width: 12px;
@@ -2244,7 +2244,7 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
 .dhtmlxribbon_dhx_skyblue .dhxrb_item_text {
   font-family: Tahoma;
   font-size: 13px;
-  color: #256488;
+  color: #31667c;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_in_group .dhxrb_item_text {
   height: 19px;
@@ -2256,12 +2256,12 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
 .dhtmlxribbon_dhx_skyblue .dhxrb_in_row .dhxrb_item_text {
   font-family: Tahoma;
   font-size: 14px;
-  color: #256488;
+  color: #31667c;
 }
 .dhtmlxribbon_dhx_skyblue .dhxrb_big_button .dhxrb_item_text {
   font-family: Tahoma;
   font-size: 30px;
-  color: #256488;
+  color: #31667c;
   line-height: 72px;
   height: 72px;
   float: left;
@@ -2281,11 +2281,11 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   overflow: hidden;
 }
 .dhx_toolbar_dhx_skyblue {
-  border: 1px solid #a4bed4;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   position: relative;
   padding: 0px 5px;
   height: 30px;
@@ -2339,25 +2339,25 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
 }
 .dhx_toolbar_dhx_skyblue div.dhx_toolbar_btn.dhxtoolbar_btn_over,
 .dhx_toolbar_dhx_skyblue div.dhx_toolbar_arw.dhxtoolbar_btn_over {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   border-radius: 2px;
   padding: 1px 2px;
   *padding-bottom: 3px;
-  background-color: #f1f7ff;
-  background: linear-gradient(#f1f7ff, #e2efff);
-  background: -webkit-linear-gradient(#f1f7ff, #e2efff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f1f7ff, endColorStr=#e2efff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f8f8f8;
+  background: linear-gradient(#f8f8f8, #f0f0f0);
+  background: -webkit-linear-gradient(#f8f8f8, #f0f0f0);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f8f8f8, endColorStr=#f0f0f0) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 .dhx_toolbar_dhx_skyblue div.dhx_toolbar_btn.dhxtoolbar_btn_pres,
 .dhx_toolbar_dhx_skyblue div.dhx_toolbar_arw.dhxtoolbar_btn_pres {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   border-radius: 2px;
   padding: 1px 2px;
   *padding-bottom: 3px;
-  background-color: #d2e7fe;
-  background: linear-gradient(#d2e7fe, #d3e7ff);
-  background: -webkit-linear-gradient(#d2e7fe, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#d2e7fe, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #e8e8e8;
+  background: linear-gradient(#e8e8e8, #e9e9e9);
+  background: -webkit-linear-gradient(#e8e8e8, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e8e8e8, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   box-shadow: 0 0 5px rgba(127, 127, 127, 0.15) inset;
 }
 .dhx_toolbar_dhx_skyblue div.dhx_toolbar_btn.dhxtoolbar_btn_pres_dis {
@@ -2366,10 +2366,10 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   border-radius: 2px;
   padding: 1px 2px;
   *padding-bottom: 3px;
-  background-color: #d2e7fe;
-  background: linear-gradient(#d2e7fe, #d3e7ff);
-  background: -webkit-linear-gradient(#d2e7fe, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#d2e7fe, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #e8e8e8;
+  background: linear-gradient(#e8e8e8, #e9e9e9);
+  background: -webkit-linear-gradient(#e8e8e8, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e8e8e8, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   box-shadow: 0 0 5px rgba(127, 127, 127, 0.15) inset;
 }
 .dhx_toolbar_dhx_skyblue div.dhx_toolbar_btn img {
@@ -2405,7 +2405,7 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
 .dhx_toolbar_dhx_skyblue div.dhx_toolbar_btn .dhxtoolbar_input {
   position: relative;
   float: left;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-color: white;
   margin: 1px;
   padding: 2px 4px 3px 4px;
@@ -2453,7 +2453,7 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
 }
 .dhx_toolbar_dhx_skyblue div.dhx_toolbar_sep {
   float: left;
-  border-left: 1px solid #c0d9ec;
+  border-left: 1px solid #ccdbe0;
   height: 20px;
   margin: 5px 6px 0px 5px;
   overflow: hidden;
@@ -2481,20 +2481,20 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   padding: 0px;
   width: 2px;
   font-size: 1px;
-  border-top: 1px solid #a4bed5;
-  border-bottom: 1px solid #a4bed5;
-  background-color: #e7f1ff;
+  border-top: 1px solid #b0c0c9;
+  border-bottom: 1px solid #b0c0c9;
+  background-color: #f3f3f3;
   overflow: hidden;
 }
 .dhx_toolbar_dhx_skyblue div.dhxtoolbar_sl_bg_l {
   margin-left: 4px;
-  border-left: 1px solid #a4bed5;
+  border-left: 1px solid #b0c0c9;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
 }
 .dhx_toolbar_dhx_skyblue div.dhxtoolbar_sl_bg_r {
   margin-right: 4px;
-  border-right: 1px solid #a4bed5;
+  border-right: 1px solid #b0c0c9;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
 }
@@ -2504,11 +2504,11 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
   top: 5px;
   width: 7px;
   height: 14px;
-  border: 1px solid #a4bed4;
-  background-color: #e1eeff;
-  background: linear-gradient(#e1eeff, #d4e7ff);
-  background: -webkit-linear-gradient(#e1eeff, #d4e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e1eeff, endColorStr=#d4e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
+  background-color: #efeff0;
+  background: linear-gradient(#efeff0, #eae9e9);
+  background: -webkit-linear-gradient(#efeff0, #eae9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#efeff0, endColorStr=#eae9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   border-radius: 1px;
   cursor: default;
   font-size: 1px;
@@ -2659,13 +2659,13 @@ div.dhtmlxMenu_dhx_skyblue_SubLevelArea_ArrowDown_Disabled {
 }
 div.dhx_toolbar_poly_dhx_skyblue {
   position: absolute;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   box-shadow: 0 0 3px #ccc;
   padding: 3px 0px;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
   overflow: hidden;
   cursor: default;
   line-height: normal;
@@ -2685,14 +2685,14 @@ div.dhx_toolbar_poly_dhx_skyblue td {
   color: #000000;
   line-height: normal;
   padding: 0px 3px;
-  border-top: 1px solid #e7f1ff;
-  border-bottom: 1px solid #e7f1ff;
+  border-top: 1px solid #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
 }
 div.dhx_toolbar_poly_dhx_skyblue .tr_btn_over td,
 div.dhx_toolbar_poly_dhx_skyblue .tr_btn_selected td {
-  background-color: #b5deff;
-  border-top: 1px solid #a1cef4;
-  border-bottom: 1px solid #a1cef4;
+  background-color: #c1e0f3;
+  border-top: 1px solid #add0e8;
+  border-bottom: 1px solid #add0e8;
 }
 div.dhx_toolbar_poly_dhx_skyblue .tr_btn_disabled td {
   color: #999999;
@@ -2728,13 +2728,13 @@ div.dhx_toolbar_poly_dhx_skyblue div.btn_sep {
   line-height: 1px;
   height: 0px;
   width: 100%;
-  border-top: 1px solid #a4bed5;
+  border-top: 1px solid #b0c0c9;
 }
 div.dhx_toolbar_slider_label_dhx_skyblue {
   position: absolute;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   box-shadow: 0 0 3px #ccc;
-  background-color: #e7f1ff;
+  background-color: #f3f3f3;
   padding: 5px 8px;
   border-radius: 2px;
   overflow: hidden;
@@ -2809,11 +2809,11 @@ div.dhx_toolbar_slider_label_dhx_skyblue {
   position: relative;
   height: 30px;
   padding: 0px 5px;
-  border-bottom: 1px solid #a4bed4;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border-bottom: 1px solid #c3c3c3;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 .dhxeditor_dhx_skyblue div.dhx_cell_editor div.dhx_cell_stb div.dhx_cell_stb_button {
   float: left;
@@ -2870,14 +2870,14 @@ div.dhxform_item_template div.dhx_cell_editor div.dhx_cell_toolbar_def div.dhx_t
 }
 .dhxwins_vp_dhx_skyblue div.dhx_cell_cont_wins div.dhxeditor_dhx_skyblue div.dhx_cell_editor div.dhx_cell_stb,
 .dhxwins_vp_dhx_skyblue div.dhx_cell_cont_wins div.dhxeditor_dhx_skyblue div.dhx_cell_editor div.dhx_cell_toolbar_def div.dhx_toolbar_dhx_skyblue {
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-top: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-top: 1px solid #c3c3c3;
 }
 .dhxwins_vp_dhx_skyblue div.dhx_cell_cont_wins div.dhxeditor_dhx_skyblue div.dhx_cell_editor div.dhx_cell_cont_editor {
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
 }
 .dhxwins_vp_dhx_skyblue div.dhx_cell_cont_wins div.dhxeditor_dhx_skyblue div.dhx_cell_editor div.dhx_cell_toolbar_def {
   padding: 0px;
@@ -3080,14 +3080,14 @@ div.dhxform_item_template div.dhx_cell_editor div.dhx_cell_toolbar_def div.dhx_t
 }
 .dhx_dataview .dhx_dataview_default_item,
 .dhx_dataview .dhx_dataview_default_item_selected {
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px dotted #a4bed4;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px dotted #c3c3c3;
 }
 /*default item in selected state*/
 .dhx_dataview_default_item_selected {
-  background-color: #a1ceed;
-  color: #b5deff;
-  border-color: #a1ceed;
+  background-color: #b3b3b3;
+  color: #b3b3b3;
+  border-color: #b3b3b3;
   background-repeat: repeat-x;
 }
 /*defautl styles which will be used by any kind of dataview's item*/
@@ -3155,14 +3155,14 @@ div.dhxform_item_template div.dhx_cell_editor div.dhx_cell_toolbar_def div.dhx_t
 }
 .dhx_list .dhx_list_default_item,
 .dhx_list .dhx_list_default_item_selected {
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px dotted #a4bed4;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px dotted #c3c3c3;
 }
 /*default item in selected state*/
 .dhx_list_default_item_selected {
-  background-color: #a1ceed;
-  color: #b5deff;
-  border-color: #a1ceed;
+  background-color: #b3b3b3;
+  color: #b3b3b3;
+  border-color: #b3b3b3;
   background-repeat: repeat-x;
 }
 /*defautl styles which will be used by any kind of list's item*/
@@ -3371,9 +3371,9 @@ div.dhxform_item_template div.dhx_cell_editor div.dhx_cell_toolbar_def div.dhx_t
 }
 .dhxtree_dhx_skyblue .selectedTreeRow_lor,
 .dhxtree_dhx_skyblue .selectedTreeRow {
-  background-color: #b5deff;
+  background-color: #b3b3b3;
   background-repeat: repeat-x;
-  border: 1px solid #a1ceed;
+  border: 1px solid #b3b3b3;
   color: #000000;
   line-height: 17px;
   font-family: Tahoma;
@@ -3619,11 +3619,11 @@ div.gridbox table.hdr td.columnTargetL div.hdrcell {
 div.gridboxgridbox_dhx_skyblue div.ftr td {
   text-align: right;
   color: #000000;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
-  border-color: #a4bed4;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border-color: #c3c3c3;
 }
 div.gridbox td.filter input,
 div.gridbox td.filter select {
@@ -3643,24 +3643,24 @@ div.gridbox .filter input::-ms-clear {
 div.gridbox_dhx_skyblue.gridbox .ftr,
 div.gridbox_dhx_skyblue.gridbox .xhdr {
   color: #000000;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 div.gridbox_dhx_skyblue.isModern table.hdr tr td {
   color: #000000;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 div.gridbox_dhx_skyblue.isIE table.hdr tr {
   color: #000000;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr td {
   border-width: 0px 0px 0px 0px;
@@ -3673,7 +3673,7 @@ div.gridbox_dhx_skyblue.gridbox table.hdr td div.hdrcell {
 }
 div.gridbox_dhx_skyblue.gridbox table.hdr td {
   border-width: 1px 1px 1px 1px;
-  border-color: #e7f1ff #a4bed4 #a4bed4 #e7f1ff;
+  border-color: #f3f3f3 #c3c3c3 #c3c3c3 #f3f3f3;
   background-color: transparent;
   font-family: Tahoma;
   font-size: 12px;
@@ -3683,7 +3683,7 @@ div.gridbox_dhx_skyblue.gridbox table.hdr td {
   position: relative;
 }
 div.gridbox_dhx_skyblue.gridbox {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj {
   font-family: Tahoma;
@@ -3724,29 +3724,29 @@ div.gridbox_dhx_skyblue.gridbox table.obj tr td.editable div.treegrid_cell {
   padding: 1px 4px !important;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr.rowselected {
-  background-color: #b5deff;
+  background-color: #b3b3b3;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr.rowselected td {
-  background-color: #b5deff;
+  background-color: #b3b3b3;
   color: #000000;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr.rowselected td,
 div.gridbox_dhx_skyblue.gridbox table.obj tr.odd_dhx_skyblue.rowselected td {
-  background-color: #b5deff;
-  border-top: 1px solid #a1ceed;
-  border-bottom: 1px solid #a1ceed;
-  border-right: 1px solid #b5deff;
+  background-color: #b3b3b3;
+  border-top: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
+  border-right: 1px solid #b3b3b3;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr td.cellselected {
-  background-color: #b5deff;
+  background-color: #b3b3b3;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr.odd_dhx_skyblue {
-  background: #ebf3ff;
-  border-top: 1px solid #ebf3ff;
-  border-bottom: 1px solid #ebf3ff;
+  background: #f5f5f5;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
 }
 div.gridbox_dhx_skyblue.gridbox table.obj tr.odd_dhx_skyblue {
-  background: #ebf3ff;
+  background: #f5f5f5;
 }
 .dhx_combo_select,
 .gridbox_dhx_skyblue.gridbox .dhx_combo_edit,
@@ -3946,17 +3946,17 @@ div.dhx_page_active_light {
 div.dhx_page_active_skyblue {
   font-weight: bold;
   color: #000000;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
-  border: 1px solid #a4bed4;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
   cursor: default;
   padding: 0px;
   color: black;
 }
 div.dhx_page_active_skyblue div.dhx_page_active_skyblue {
-  border: 0px solid #a4bed4;
+  border: 0px solid #c3c3c3;
 }
 .calcTable {
   width: 100px;
@@ -4144,22 +4144,22 @@ div.gridbox_dhx_skyblue.gridbox .obj.row20px td[excell] img {
 }
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected,
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover {
-  background-color: #b5deff;
-  border-color: #a4bed4;
+  background-color: #b3b3b3;
+  border-color: #c3c3c3;
 }
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected div.dhxtreeview_item_label,
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover div.dhxtreeview_item_label {
-  background-color: #b5deff;
-  border-color: #a4bed4;
+  background-color: #b3b3b3;
+  border-color: #c3c3c3;
   color: #000000;
 }
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover {
-  background-color: #f1f7ff;
-  border-color: #b9cdde;
+  background-color: #f8f8f8;
+  border-color: #d2d2d2;
 }
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover div.dhxtreeview_item_label {
-  border-color: #b9cdde;
-  background-color: #f1f7ff;
+  border-color: #d2d2d2;
+  background-color: #f8f8f8;
 }
 .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon {
   position: absolute;
@@ -4282,7 +4282,7 @@ div.gridbox_dhx_skyblue.gridbox .obj.row20px td[excell] img {
   border-color: #ffffff;
 }
 .dhxtreeview_dhx_skyblue.dhxtreeview_with_border {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
 }
 .dhxtreeview_dhx_skyblue.dhxtreeview_icon_width {
   position: absolute;
@@ -4378,7 +4378,7 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
   white-space: normal;
 }
 .dhxform_obj_dhx_skyblue div.dhxform_label div.dhxform_label_nav_link:focus {
-  color: #305f87;
+  color: #6e5656;
 }
 .dhxform_obj_dhx_skyblue div.disabled span.nav_link {
   color: inherit;
@@ -4491,7 +4491,7 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
   display: none;
 }
 .dhxform_obj_dhx_skyblue .dhxform_textarea {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   font-family: Tahoma;
   font-size: 1em;
   color: #000000;
@@ -4500,7 +4500,7 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
 .dhxform_obj_dhx_skyblue div.disabled .dhxform_textarea {
   color: #b2b2b2;
   background-color: white;
-  border: 1px solid #c2d0dd;
+  border: 1px solid #ced2d1;
 }
 .dhxform_obj_dhx_skyblue.dhxform_rtl .dhxform_textarea {
   text-align: right;
@@ -4535,7 +4535,7 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
   margin: 0px;
 }
 .dhxform_obj_dhx_skyblue .dhxform_select {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-color: #ffffff;
   margin: 0px;
   padding: 3px 2px 3px 0px;
@@ -4549,7 +4549,7 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
 .dhxform_obj_dhx_skyblue div.disabled .dhxform_select {
   color: #b2b2b2;
   background-color: #ffffff;
-  border: 1px solid #c2d0dd;
+  border: 1px solid #ced2d1;
 }
 .dhxform_obj_dhx_skyblue.dhxform_rtl select,
 .dhxform_obj_dhx_skyblue.dhxform_rtl option {
@@ -4565,19 +4565,19 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
   margin-left: 5px;
 }
 .dhxform_obj_dhx_skyblue fieldset.dhxform_fs {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   margin: 0px;
   padding: 5px 0 12px 0px;
   clear: left;
   width: 100%;
 }
 .dhxform_obj_dhx_skyblue div.disabled fieldset.dhxform_fs {
-  border: 1px solid #c2d0dd;
+  border: 1px solid #ced2d1;
 }
 .dhxform_obj_dhx_skyblue fieldset.dhxform_fs legend.fs_legend {
   font-family: Tahoma;
   font-size: inherit;
-  color: #7099bb;
+  color: #9d9d9d;
   font-weight: normal;
   padding: 0px 4px 1px 4px;
   margin-left: 5px;
@@ -4696,7 +4696,7 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
 .dhxform_obj_dhx_skyblue div.dhxform_txt_label2 {
   font-family: Tahoma;
   font-size: inherit;
-  color: #7099bb;
+  color: #9d9d9d;
   font-weight: bold;
   margin: 0px 3px;
   padding: 5px 0px;
@@ -4715,11 +4715,11 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  border: 1px solid #a4bed4;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   margin: 5px 2px;
   border-radius: 2px;
   float: left;
@@ -4733,16 +4733,16 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
   float: right;
 }
 .dhxform_obj_dhx_skyblue div.dhxform_btn.dhxform_btn_over {
-  background-color: #f1f7ff;
-  background: linear-gradient(#f1f7ff, #e2efff);
-  background: -webkit-linear-gradient(#f1f7ff, #e2efff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f1f7ff, endColorStr=#e2efff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f8f8f8;
+  background: linear-gradient(#f8f8f8, #f0f0f0);
+  background: -webkit-linear-gradient(#f8f8f8, #f0f0f0);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f8f8f8, endColorStr=#f0f0f0) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 .dhxform_obj_dhx_skyblue div.dhxform_btn.dhxform_btn_pressed {
-  background-color: #d2e7fe;
-  background: linear-gradient(#d2e7fe, #d3e7ff);
-  background: -webkit-linear-gradient(#d2e7fe, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#d2e7fe, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #e8e8e8;
+  background: linear-gradient(#e8e8e8, #e9e9e9);
+  background: -webkit-linear-gradient(#e8e8e8, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e8e8e8, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   box-shadow: 0 0 5px rgba(127, 127, 127, 0.15) inset;
 }
 .dhxform_obj_dhx_skyblue div.disabled div.dhxform_btn {
@@ -4815,21 +4815,21 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
   color: red;
 }
 .dhxform_obj_dhx_skyblue div.disabled .dhx_combo_box.dhx_skyblue {
-  border: 1px solid #c2d0dd;
+  border: 1px solid #ced2d1;
 }
 .dhxform_obj_dhx_skyblue div.disabled .dhx_combo_box.dhx_skyblue .dhx_combo_input {
   color: #b2b2b2;
   background-color: #ffffff;
 }
 .dhxform_obj_dhx_skyblue div.dhxform_item_template.dhxeditor_dhx_skyblue div.dhx_cell_editor div.dhx_cell_stb {
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-top: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-top: 1px solid #c3c3c3;
 }
 .dhxform_obj_dhx_skyblue div.dhxform_item_template.dhxeditor_dhx_skyblue div.dhx_cell_editor div.dhx_cell_cont_editor {
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
 }
 .dhxform_obj_dhx_skyblue div.dhxform_item_template.dhxeditor_dhx_skyblue div.dhxcont_content_blocker {
   display: none;
@@ -5078,7 +5078,7 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
 .dhxform_obj_dhx_skyblue div.dhxform_image {
   position: relative;
   overflow: hidden;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
 }
 .dhxform_obj_dhx_skyblue div.dhxform_image img.dhxform_image_img {
   position: absolute;
@@ -5133,7 +5133,7 @@ div.dhx_popup_dhx_skyblue div.dhx_popup_area td.dhx_popup_td div.dhxtreeview_dhx
   filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
 .dhxform_obj_dhx_skyblue div.disabled div.dhxform_image {
-  border-color: #c2d0dd;
+  border-color: #ced2d1;
 }
 .dhxform_obj_dhx_skyblue div.disabled div.dhxform_image img.dhxform_image_img {
   opacity: 0.5;
@@ -5170,7 +5170,7 @@ div.dhx_form_skin_detect {
 .dhx_vault_dhx_skyblue {
   position: relative;
   overflow: hidden;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-color: #eaf2fb;
   line-height: normal;
 }
@@ -5200,7 +5200,7 @@ div.dhx_form_skin_detect {
   height: 22px;
   line-height: 21px;
   padding: 2px 3px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-color: #f7f9fc;
   background: linear-gradient(#f7f9fc, #eaf2fb);
   background: -webkit-linear-gradient(#f7f9fc, #eaf2fb);
@@ -5288,7 +5288,7 @@ div.dhx_form_skin_detect {
   position: absolute;
   overflow: auto;
   background-color: white;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
@@ -5426,7 +5426,7 @@ div.dhx_form_skin_detect {
 .dhx_vault_dhx_skyblue div.dhx_vault_files div.dhx_vault_file_param div.dhx_vault_progress {
   position: relative;
   width: 110px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   margin-top: 3px;
   margin-bottom: 3px;
   font-family: Tahoma;
@@ -5550,9 +5550,9 @@ div.dhxvault_skin_detect {
 }
 .dhxacc_base_dhx_skyblue .dhxacc_cont div.dhx_cell_acc div.dhx_cell_cont_acc {
   position: absolute;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
   border-top: 0px solid white;
   overflow: hidden;
   z-index: 0;
@@ -5587,13 +5587,13 @@ div.dhxvault_skin_detect {
   line-height: 26px;
   font-family: Tahoma;
   font-size: 11px;
-  color: #34404b;
+  color: #333333;
   font-weight: bold;
-  border: 1px solid #a4bed4;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   overflow: hidden;
   cursor: default;
   z-index: 3;
@@ -5661,14 +5661,14 @@ div.dhxvault_skin_detect {
   background-position: -16px 0px;
 }
 .dhxacc_base_dhx_skyblue .dhxacc_cont div.dhx_cell_acc.acc_cell_dragged {
-  box-shadow: 0 0 5px #829cb2;
+  box-shadow: 0 0 5px #a1a1a1;
   z-index: 5 !important;
 }
 .dhxacc_base_dhx_skyblue .dhxacc_cont div.dhx_cell_acc div.dhx_cell_menu_def {
   position: relative;
   overflow: hidden;
   border-width: 0px 1px 1px 1px;
-  border-color: #a4bed4;
+  border-color: #c3c3c3;
   border-style: solid;
 }
 .dhxacc_base_dhx_skyblue .dhxacc_cont div.dhx_cell_acc div.dhx_cell_menu_def div.dhtmlxMenu_dhx_skyblue_Middle {
@@ -5700,7 +5700,7 @@ div.dhxvault_skin_detect {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  background-color: #ddecff;
+  background-color: #eeeeee;
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
@@ -5710,9 +5710,9 @@ div.dhxvault_skin_detect {
   padding: 0px 4px;
   height: 21px;
   line-height: 21px;
-  border-bottom: 1px solid #a4bed4;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
+  border-bottom: 1px solid #c3c3c3;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -5731,7 +5731,7 @@ div.dhxvault_skin_detect {
   position: absolute;
   left: 0px;
   top: 0px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-position: center 55%;
   background-image: url("imgs/dhxacc_skyblue/dhxacc_cell_progress.gif");
   background-repeat: no-repeat;
@@ -5793,8 +5793,8 @@ div.dhxvault_skin_detect {
 .dhxacc_base_dhx_skyblue div.dhxcelltop_statusbar div.dhxcont_statusbar {
   position: relative;
   margin-top: 4px;
-  border: 1px solid #a4bed4;
-  background-color: #ddecff;
+  border: 1px solid #c3c3c3;
+  background-color: #eeeeee;
   padding: 7px 6px;
   font-family: Tahoma;
   font-size: 11px;
@@ -5854,9 +5854,9 @@ div.dhxvault_skin_detect {
 }
 .dhxlayout_base_dhx_skyblue .dhxlayout_cont div.dhx_cell_layout div.dhx_cell_cont_layout {
   position: absolute;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
   border-top: 0px solid #ffffff;
   overflow: hidden;
   z-index: 0;
@@ -5874,13 +5874,13 @@ div.dhxvault_skin_detect {
   line-height: 26px;
   font-family: Tahoma;
   font-size: 11px;
-  color: #34404b;
+  color: #333333;
   font-weight: bold;
-  border: 1px solid #a4bed4;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   overflow: hidden;
   cursor: default;
 }
@@ -5930,7 +5930,7 @@ div.dhxvault_skin_detect {
 .dhxlayout_base_dhx_skyblue .dhxlayout_cont div.dhx_cell_layout.dhxlayout_collapsed_h div.dhx_cell_hdr {
   height: 18px;
   line-height: 17px;
-  color: #3a4854;
+  color: #3b3b3b;
   font-weight: normal;
 }
 .dhxlayout_base_dhx_skyblue .dhxlayout_cont div.dhx_cell_layout.dhxlayout_collapsed_h div.dhx_cell_hdr div.dhxlayout_arrow.dhxlayout_arrow_ha {
@@ -5941,11 +5941,11 @@ div.dhxvault_skin_detect {
 }
 .dhxlayout_base_dhx_skyblue .dhxlayout_cont div.dhx_cell_layout.dhxlayout_collapsed_v div.dhx_cell_hdr {
   width: 18px;
-  background: -moz-linear-gradient(left, #e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(left, #e2efff, #d3e7ff);
-  background: -o-linear-gradient(left, #e2efff, #d3e7ff);
-  background: -ms-linear-gradient(left, #e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=1, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background: -moz-linear-gradient(left, #f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(left, #f0f0f0, #e9e9e9);
+  background: -o-linear-gradient(left, #f0f0f0, #e9e9e9);
+  background: -ms-linear-gradient(left, #f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=1, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 .dhxlayout_base_dhx_skyblue .dhxlayout_cont div.dhx_cell_layout.dhxlayout_collapsed_v div.dhx_cell_hdr div.dhx_cell_hdr_text {
   position: absolute;
@@ -5954,7 +5954,7 @@ div.dhxvault_skin_detect {
   transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform-origin: left center;
-  color: #3a4854;
+  color: #3b3b3b;
   font-weight: normal;
   text-overflow: ellipsis;
 }
@@ -6039,7 +6039,7 @@ div.dhxvault_skin_detect {
 }
 .dhxlayout_base_dhx_skyblue .dhxlayout_cont div.dhxlayout_resize_area {
   position: absolute;
-  background-color: #a4bed4;
+  background-color: #c3c3c3;
   opacity: 0.15;
   filter: progid:DXImageTransform.Microsoft.Alpha(opacity=15);
   z-index: 1;
@@ -6048,7 +6048,7 @@ div.dhxvault_skin_detect {
 }
 .dhxlayout_base_dhx_skyblue .dhxlayout_cont div.dhxlayout_resize_sep {
   position: absolute;
-  background-color: #a4bed4;
+  background-color: #c3c3c3;
   overflow: hidden;
   display: block;
   opacity: 0.5;
@@ -6060,7 +6060,7 @@ div.dhxvault_skin_detect {
   position: relative;
   overflow: hidden;
   border-width: 0px 1px 1px 1px;
-  border-color: #a4bed4;
+  border-color: #c3c3c3;
   border-style: solid;
 }
 .dhxlayout_base_dhx_skyblue .dhxlayout_cont div.dhx_cell_menu_def div.dhtmlxMenu_dhx_skyblue_Middle {
@@ -6092,7 +6092,7 @@ div.dhxvault_skin_detect {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  background-color: #ddecff;
+  background-color: #eeeeee;
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
@@ -6102,9 +6102,9 @@ div.dhxvault_skin_detect {
   padding: 0px 4px;
   height: 21px;
   line-height: 21px;
-  border-bottom: 1px solid #a4bed4;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
+  border-bottom: 1px solid #c3c3c3;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -6123,7 +6123,7 @@ div.dhxvault_skin_detect {
   position: absolute;
   left: 0px;
   top: 0px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-position: center 55%;
   background-image: url("imgs/dhxlayout_skyblue/dhxlayout_cell_progress.gif");
   background-repeat: no-repeat;
@@ -6189,8 +6189,8 @@ div.dhxvault_skin_detect {
 .dhxlayout_base_dhx_skyblue div.dhxcelltop_statusbar div.dhxcont_statusbar {
   position: relative;
   margin-top: 4px;
-  border: 1px solid #a4bed4;
-  background-color: #ddecff;
+  border: 1px solid #c3c3c3;
+  background-color: #eeeeee;
   padding: 7px 6px;
   font-family: Tahoma;
   font-size: 11px;
@@ -6253,11 +6253,11 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   height: 28px;
   overflow: hidden;
   white-space: nowrap;
-  border: 1px solid #a4bed4;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border: 1px solid #c3c3c3;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   z-index: 2;
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs_bottom div.dhxtabbar_tabs {
@@ -6308,9 +6308,9 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   height: 4px;
   overflow: hidden;
   z-index: 2;
-  border-top: 1px solid #a4bed4;
+  border-top: 1px solid #c3c3c3;
   border-bottom: 0px solid white;
-  background-color: #d3e7ff;
+  background-color: #e9e9e9;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -6324,10 +6324,10 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   top: 0px;
   width: 15px;
   height: 100%;
-  background-color: #fffeff;
-  background: linear-gradient(#fffeff, #d3e7ff);
-  background: -webkit-linear-gradient(#fffeff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#fffeff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #fffff0;
+  background: linear-gradient(#fffff0, #e9e9e9);
+  background: -webkit-linear-gradient(#fffff0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#fffff0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -6343,7 +6343,7 @@ div.dhxlayout_sep_sw_dhx_skyblue {
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs div.dhxtabbar_tabs_ar_left div.dhxtabbar_arrow_img {
   position: relative;
   height: 100%;
-  border-right: 1px solid #a4bed4;
+  border-right: 1px solid #c3c3c3;
   background-image: url("imgs/dhxtabbar_skyblue/dhxtabbar_arrows.gif");
   background-position: 0px 11px;
   background-repeat: no-repeat;
@@ -6354,10 +6354,10 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   top: 0px;
   width: 15px;
   height: 100%;
-  background-color: #fffeff;
-  background: linear-gradient(#fffeff, #d3e7ff);
-  background: -webkit-linear-gradient(#fffeff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#fffeff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #fffff0;
+  background: linear-gradient(#fffff0, #e9e9e9);
+  background: -webkit-linear-gradient(#fffff0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#fffff0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -6373,7 +6373,7 @@ div.dhxlayout_sep_sw_dhx_skyblue {
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs div.dhxtabbar_tabs_ar_right div.dhxtabbar_arrow_img {
   position: relative;
   height: 100%;
-  border-left: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
   background-image: url("imgs/dhxtabbar_skyblue/dhxtabbar_arrows.gif");
   background-position: -14px 11px;
   background-repeat: no-repeat;
@@ -6412,9 +6412,9 @@ div.dhxlayout_sep_sw_dhx_skyblue {
 }
 .dhxtabbar_base_dhx_skyblue div.dhx_cell_tabbar div.dhx_cell_cont_tabbar {
   position: absolute;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
   border-top: 0px solid white;
   overflow: hidden;
   z-index: 0;
@@ -6429,9 +6429,9 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   background-color: white;
   font-family: Tahoma;
   font-size: 11px;
-  color: #34404b;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
+  color: #333333;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
   z-index: 1;
   cursor: pointer;
   -webkit-user-select: none;
@@ -6440,10 +6440,10 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
@@ -6461,10 +6461,10 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   margin-right: -1px;
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs div.dhxtabbar_tab.dhxtabbar_tab_dis {
-  background-color: #ecf5ff;
-  background: linear-gradient(#ecf5ff, #d3e7ff);
-  background: -webkit-linear-gradient(#ecf5ff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#ecf5ff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f6f6f6;
+  background: linear-gradient(#f6f6f6, #e9e9e9);
+  background: -webkit-linear-gradient(#f6f6f6, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f6f6f6, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs div.dhxtabbar_tab.dhxtabbar_tab_actv,
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs div.dhxtabbar_tab.dhxtabbar_tab_actv_dis {
@@ -6480,7 +6480,7 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   vertical-align: middle;
   top: 0px;
   border-top: 1px solid #ffffff;
-  color: #34404b;
+  color: #333333;
   text-align: center;
   overflow: hidden;
 }
@@ -6493,7 +6493,7 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   border-right: 1px solid #ffffff;
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs div.dhxtabbar_tab.dhxtabbar_tab_actv div.dhxtabbar_tab_text {
-  color: #34404b;
+  color: #333333;
   font-weight: bold;
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs div.dhxtabbar_tab.dhxtabbar_tab_actv_dis div.dhxtabbar_tab_text {
@@ -6509,7 +6509,7 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   right: 5px;
   width: 11px;
   height: 11px;
-  border: 1px solid #b4d3ff;
+  border: 1px solid #dadada;
   border-radius: 2px;
   background-image: url("imgs/dhxtabbar_skyblue/dhxtabbar_button_close.gif");
   background-position: 0px 0px;
@@ -6519,16 +6519,16 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   z-index: 1;
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs div.dhxtabbar_tab.dhxtabbar_tab_actv div.dhxtabbar_tab_close {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-position: -11px 0px;
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs div.dhxtabbar_tab.dhxtabbar_tab_dis div.dhxtabbar_tab_close,
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs div.dhxtabbar_tab.dhxtabbar_tab_actv_dis div.dhxtabbar_tab_close {
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-position: -22px 0px;
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs_bottom div.dhx_cell_tabbar div.dhx_cell_cont_tabbar {
-  border-top: 1px solid #a4bed4;
+  border-top: 1px solid #c3c3c3;
   border-bottom: 0px solid white;
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs_bottom div.dhx_cell_tabbar div.dhx_toolbar_dhx_skyblue {
@@ -6554,16 +6554,16 @@ div.dhxlayout_sep_sw_dhx_skyblue {
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs_bottom div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tabs_line {
   top: 0px;
   bottom: none;
-  border-bottom: 1px solid #a4bed4;
+  border-bottom: 1px solid #c3c3c3;
   border-top: 0px solid white;
-  background-color: #e2efff;
+  background-color: #f0f0f0;
 }
 .dhxtabbar_base_dhx_skyblue div.dhx_cell_tabbar div.dhx_cell_menu_def {
   position: relative;
   overflow: hidden;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
   border-top: 0px solid white;
 }
 .dhxtabbar_base_dhx_skyblue div.dhx_cell_tabbar div.dhx_cell_menu_def div.dhtmlxMenu_dhx_skyblue_Middle {
@@ -6577,9 +6577,9 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   padding: 0px 2px;
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs_bottom div.dhx_cell_tabbar div.dhx_cell_menu_def {
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-top: 1px solid #a4bed4;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-top: 1px solid #c3c3c3;
   border-bottom: 0px solid white;
 }
 .dhxtabbar_base_dhx_skyblue div.dhx_cell_tabbar div.dhx_toolbar_dhx_skyblue {
@@ -6600,7 +6600,7 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
-  background-color: #ddecff;
+  background-color: #eeeeee;
 }
 .dhxtabbar_base_dhx_skyblue div.dhx_cell_tabbar div.dhx_cell_statusbar_def div.dhx_cell_statusbar_text {
   position: relative;
@@ -6608,14 +6608,14 @@ div.dhxlayout_sep_sw_dhx_skyblue {
   height: 21px;
   line-height: 21px;
   border-top: 0px solid white;
-  border-bottom: 1px solid #a4bed4;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
+  border-bottom: 1px solid #c3c3c3;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
   white-space: nowrap;
   overflow: hidden;
 }
 .dhxtabbar_base_dhx_skyblue div.dhxtabbar_tabs_bottom div.dhx_cell_tabbar div.dhx_cell_statusbar_def div.dhx_cell_statusbar_text {
-  border-top: 1px solid #a4bed4;
+  border-top: 1px solid #c3c3c3;
   border-bottom: 0px solid white;
 }
 .dhxtabbar_base_dhx_skyblue div.dhx_cell_tabbar div.dhx_cell_progress_bar {
@@ -6695,8 +6695,8 @@ div.dhxlayout_sep_sw_dhx_skyblue {
 .dhxtabbar_base_dhx_skyblue div.dhxcelltop_statusbar div.dhxcont_statusbar {
   position: relative;
   margin-top: 4px;
-  border: 1px solid #a4bed4;
-  background-color: #ddecff;
+  border: 1px solid #c3c3c3;
+  background-color: #eeeeee;
   padding: 7px 6px;
   font-family: Tahoma;
   font-size: 11px;
@@ -6739,7 +6739,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   top: 0px;
   background-color: #f5f5f5;
   border-style: solid;
-  border-color: #a4bed4;
+  border-color: #c3c3c3;
   border-width: 1px 1px 0px 1px;
   overflow: hidden;
   z-index: 5;
@@ -6791,14 +6791,14 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item:hover {
-  background-color: #f1f7ff;
-  border-color: #b9cdde;
+  background-color: #f8f8f8;
+  border-color: #d2d2d2;
   z-index: 2;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item.dhxsidebar_item_selected {
   z-index: 3;
-  border-color: #a4bed4;
-  background-color: #b5deff;
+  border-color: #c3c3c3;
+  background-color: #b3b3b3;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item img.dhxsidebar_item_icon {
   position: absolute;
@@ -6840,7 +6840,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   user-select: none;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item:hover div.dhxsidebar_bubble {
-  border-color: #f1f7ff;
+  border-color: #f8f8f8;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item.dhxsidebar_item_selected div.dhxsidebar_bubble {
   border-color: white;
@@ -6865,8 +6865,8 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side.dhxsidebar_touch div.dhxsidebar_side_items div.dhxsidebar_item.dhxsidebar_item_selected {
   z-index: 3;
-  border-color: #a4bed4;
-  background-color: #b5deff;
+  border-color: #c3c3c3;
+  background-color: #b3b3b3;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_side.dhxsidebar_tpl_details div.dhxsidebar_side_items div.dhxsidebar_item {
   height: 23px;
@@ -6964,10 +6964,10 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhx_cell_sidebar div.dhx_cell_cont_sidebar {
   position: absolute;
-  border-left: 0px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
-  border-bottom: 1px solid #a4bed4;
-  border-top: 1px solid #a4bed4;
+  border-left: 0px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
+  border-top: 1px solid #c3c3c3;
   overflow: hidden;
   z-index: 0;
 }
@@ -6979,7 +6979,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   height: 27px;
   line-height: 26px;
   font-weight: bold;
-  border-color: #a4bed4;
+  border-color: #c3c3c3;
   border-style: solid;
   border-width: 1px 1px 0px 0px;
   overflow: hidden;
@@ -6987,11 +6987,11 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   z-index: 1;
   font-family: Tahoma;
   font-size: 11px;
-  color: #34404b;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  color: #333333;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -7032,7 +7032,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   position: relative;
   overflow: hidden;
   border-width: 0px 1px 1px 1px;
-  border-color: #a4bed4;
+  border-color: #c3c3c3;
   border-style: solid;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhx_cell_sidebar div.dhx_cell_menu_def div.dhtmlxMenu_dhx_skyblue_Middle {
@@ -7064,7 +7064,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  background-color: #ddecff;
+  background-color: #eeeeee;
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
@@ -7074,9 +7074,9 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   padding: 0px 4px;
   height: 21px;
   line-height: 21px;
-  border-bottom: 1px solid #a4bed4;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
+  border-bottom: 1px solid #c3c3c3;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -7095,7 +7095,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   position: absolute;
   left: 0px;
   top: 0px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-position: center 55%;
   background-image: url("imgs/dhxsidebar_skyblue/dhxsidebar_cell_progress.gif");
   background-repeat: no-repeat;
@@ -7174,7 +7174,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   left: 0px;
   bottom: 0px;
   height: 24px;
-  border-color: #a4bed4;
+  border-color: #c3c3c3;
   border-style: solid;
   border-width: 1px 1px 1px 1px;
   font-size: 1px;
@@ -7195,14 +7195,14 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   font-size: 1px;
   overflow: hidden;
   z-index: 1;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_arrows div.dhxsidebar_arrow.dhxsidebar_arrow_left {
   left: 0px;
-  border-right: 1px solid #a4bed4;
+  border-right: 1px solid #c3c3c3;
   z-index: 2;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_arrows div.dhxsidebar_arrow.dhxsidebar_arrow_left div.dhxsidebar_arrow_image {
@@ -7226,10 +7226,10 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   overflow: hidden;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxsidebar_cont div.dhxsidebar_arrows div.dhxsidebar_arrow:active {
-  background-color: #d2e7fe;
-  background: linear-gradient(#d2e7fe, #d3e7ff);
-  background: -webkit-linear-gradient(#d2e7fe, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#d2e7fe, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #e8e8e8;
+  background: linear-gradient(#e8e8e8, #e9e9e9);
+  background: -webkit-linear-gradient(#e8e8e8, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e8e8e8, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   box-shadow: 0 0 5px rgba(127, 127, 127, 0.15) inset;
 }
 .dhxsidebar_base_dhx_skyblue div.dhxcelltop_progress {
@@ -7287,8 +7287,8 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 .dhxsidebar_base_dhx_skyblue div.dhxcelltop_statusbar div.dhxcont_statusbar {
   position: relative;
   margin-top: 4px;
-  border: 1px solid #a4bed4;
-  background-color: #ddecff;
+  border: 1px solid #c3c3c3;
+  background-color: #eeeeee;
   padding: 7px 6px;
   font-family: Tahoma;
   font-size: 11px;
@@ -7315,7 +7315,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 .dhxwins_vp_dhx_skyblue div.dhxwin_active {
   position: absolute;
   overflow: hidden;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   box-shadow: 0 0 3px #cecece;
   border-radius: 3px;
   background: white;
@@ -7325,7 +7325,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 .dhxwins_vp_dhx_skyblue div.dhxwin_inactive {
   position: absolute;
   overflow: hidden;
-  border: 1px solid #c1d1de;
+  border: 1px solid #e0d6cd;
   box-shadow: 0 0 3px #dedede;
   border-radius: 3px;
   background: white;
@@ -7334,16 +7334,16 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 }
 .dhxwins_vp_dhx_skyblue div.dhxwin_brd {
   position: absolute;
-  border-left: 5px solid #d3e6fe;
-  border-right: 5px solid #d3e6fe;
-  border-bottom: 5px solid #d3e6fe;
+  border-left: 5px solid #dfe8f2;
+  border-right: 5px solid #dfe8f2;
+  border-bottom: 5px solid #dfe8f2;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   background: white;
   z-index: 0;
 }
 .dhxwins_vp_dhx_skyblue div.dhxwin_brd.dhxwin_hdr_hidden {
-  border-top: 5px solid #d3e6fe;
+  border-top: 5px solid #dfe8f2;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 }
@@ -7404,13 +7404,13 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   border-right: 1px solid white;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  background-color: #e5f0fd;
-  background: linear-gradient(#e5f0fd, #d3e6fe);
-  background: -webkit-linear-gradient(#e5f0fd, #d3e6fe);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e5f0fd, endColorStr=#d3e6fe) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f1f2f1;
+  background: linear-gradient(#f1f2f1, #dfe8f2);
+  background: -webkit-linear-gradient(#f1f2f1, #dfe8f2);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f1f2f1, endColorStr=#dfe8f2) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   font-family: Tahoma;
   font-size: 11px;
-  color: #34404b;
+  color: #333333;
   cursor: inherit;
   overflow: hidden;
   z-index: 3;
@@ -7421,7 +7421,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   color: #777;
   opacity: 0.8;
   filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e5f0fd, endColorStr=#d3e6fe);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f1f2f1, endColorStr=#dfe8f2);
 }
 .dhxwins_vp_dhx_skyblue div.dhxwin_hdr.dhxwin_hdr_parked {
   border-bottom: 1px solid white;
@@ -7548,7 +7548,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 }
 .dhxwins_vp_dhx_skyblue div.dhxwin_hdr div.dhxwin_btns div.dhxwin_button.dhxwin_button_sticked {
   background-position: -90px 0px;
-  background-color: #a4bed4 !important;
+  background-color: #c3c3c3 !important;
 }
 .dhxwins_vp_dhx_skyblue div.dhxwin_hdr div.dhxwin_btns div.dhxwin_button_dis.dhxwin_button_sticked_dis {
   background-position: -90px -15px;
@@ -7582,7 +7582,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 }
 .dhxwins_vp_dhx_skyblue div.dhxwin_resize {
   position: absolute;
-  background-color: #d3e6fe;
+  background-color: #dfe8f2;
   border-radius: 3px;
   opacity: 0.5;
   filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
@@ -7596,7 +7596,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 }
 .dhxwins_vp_dhx_skyblue div.dhxwins_mcover {
   position: absolute;
-  background-color: #e5f0fd;
+  background-color: #f1f2f1;
   left: 0px;
   top: 0px;
   width: 100%;
@@ -7671,7 +7671,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
 .dhxwins_vp_dhx_skyblue div.dhxwin_inactive div.dhx_cell_wins div.dhx_cell_menu_def {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid #d3e6fe;
+  border-bottom: 1px solid #dfe8f2;
 }
 .dhxwins_vp_dhx_skyblue div.dhxwin_active div.dhx_cell_wins div.dhx_cell_menu_def div.dhtmlxMenu_dhx_skyblue_Middle,
 .dhxwins_vp_dhx_skyblue div.dhxwin_inactive div.dhx_cell_wins div.dhx_cell_menu_def div.dhtmlxMenu_dhx_skyblue_Middle {
@@ -7709,7 +7709,7 @@ span.dhxtabbar_tabs_text_test_dhx_skyblue {
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
-  background-color: #d3e6fe;
+  background-color: #dfe8f2;
 }
 .dhxwins_vp_dhx_skyblue div.dhxwin_active div.dhx_cell_wins div.dhx_cell_statusbar_def div.dhx_cell_statusbar_text,
 .dhxwins_vp_dhx_skyblue div.dhxwin_inactive div.dhx_cell_wins div.dhx_cell_statusbar_def div.dhx_cell_statusbar_text {
@@ -7826,7 +7826,7 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
 }
 .dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhxcarousel_area div.dhx_cell_carousel div.dhx_cell_cont_carousel {
   position: absolute;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   overflow: hidden;
   z-index: 0;
 }
@@ -7837,7 +7837,7 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
   position: relative;
   overflow: hidden;
   border-width: 0px 1px 1px 1px;
-  border-color: #a4bed4;
+  border-color: #c3c3c3;
   border-style: solid;
 }
 .dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhxcarousel_area div.dhx_cell_carousel div.dhx_cell_menu_def div.dhtmlxMenu_dhx_skyblue_Middle {
@@ -7869,7 +7869,7 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  background-color: #ddecff;
+  background-color: #eeeeee;
   font-family: Tahoma;
   font-size: 11px;
   color: #000000;
@@ -7879,9 +7879,9 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
   padding: 0px 4px;
   height: 21px;
   line-height: 21px;
-  border-bottom: 1px solid #a4bed4;
-  border-left: 1px solid #a4bed4;
-  border-right: 1px solid #a4bed4;
+  border-bottom: 1px solid #c3c3c3;
+  border-left: 1px solid #c3c3c3;
+  border-right: 1px solid #c3c3c3;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -7900,7 +7900,7 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
   position: absolute;
   left: 0px;
   top: 0px;
-  border: 1px solid #a4bed4;
+  border: 1px solid #c3c3c3;
   background-position: center 55%;
   background-image: url("imgs/dhxcarousel_skyblue/dhxcarousel_cell_progress.gif");
   background-repeat: no-repeat;
@@ -7927,11 +7927,11 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
   left: 0px;
   z-index: 3;
   overflow: visible;
-  border-top: 1px solid #a4bed4;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  border-top: 1px solid #c3c3c3;
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls div.dhx_carousel_btn {
@@ -7942,8 +7942,8 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
   overflow: hidden;
   font-family: Arial;
   font-size: 14px;
-  color: #5f8db3;
-  border: 0px solid #a4bed4;
+  color: #909090;
+  border: 0px solid #c3c3c3;
   text-align: center;
   line-height: 29px;
   z-index: 2;
@@ -7953,24 +7953,24 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  background-color: #e2efff;
-  background: linear-gradient(#e2efff, #d3e7ff);
-  background: -webkit-linear-gradient(#e2efff, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e2efff, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f0f0f0;
+  background: linear-gradient(#f0f0f0, #e9e9e9);
+  background: -webkit-linear-gradient(#f0f0f0, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f0f0f0, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 .dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls div.dhx_carousel_btn.dhx_carousel_btn_prev:hover,
 .dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls div.dhx_carousel_btn.dhx_carousel_btn_next:hover {
-  background-color: #f1f7ff;
-  background: linear-gradient(#f1f7ff, #e2efff);
-  background: -webkit-linear-gradient(#f1f7ff, #e2efff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f1f7ff, endColorStr=#e2efff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #f8f8f8;
+  background: linear-gradient(#f8f8f8, #f0f0f0);
+  background: -webkit-linear-gradient(#f8f8f8, #f0f0f0);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f8f8f8, endColorStr=#f0f0f0) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
 }
 .dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls div.dhx_carousel_btn.dhx_carousel_btn_prev:active,
 .dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls div.dhx_carousel_btn.dhx_carousel_btn_next:active {
-  background-color: #d2e7fe;
-  background: linear-gradient(#d2e7fe, #d3e7ff);
-  background: -webkit-linear-gradient(#d2e7fe, #d3e7ff);
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#d2e7fe, endColorStr=#d3e7ff) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  background-color: #e8e8e8;
+  background: linear-gradient(#e8e8e8, #e9e9e9);
+  background: -webkit-linear-gradient(#e8e8e8, #e9e9e9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#e8e8e8, endColorStr=#e9e9e9) progid:DXImageTransform.Microsoft.Alpha(opacity=100);
   box-shadow: 0 0 5px rgba(127, 127, 127, 0.15) inset;
 }
 .dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls div.dhx_carousel_btn.dhx_carousel_btn_prev,
@@ -8008,7 +8008,7 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
   margin: 0 2px;
   width: 12px;
   height: 12px;
-  border: 1px solid #5f8db3;
+  border: 1px solid #909090;
   border-radius: 12px;
   background-color: white;
   font-size: 1px;
@@ -8033,9 +8033,9 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
   height: 6px;
   top: 2px;
   left: 2px;
-  border: 1px solid #5f8db3;
+  border: 1px solid #909090;
   border-radius: 12px;
-  background-color: #5f8db3;
+  background-color: #909090;
   overflow: hidden;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -8099,8 +8099,8 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
 .dhxcarousel_base_dhx_skyblue div.dhxcelltop_statusbar div.dhxcont_statusbar {
   position: relative;
   margin-top: 4px;
-  border: 1px solid #a4bed4;
-  background-color: #ddecff;
+  border: 1px solid #c3c3c3;
+  background-color: #eeeeee;
   padding: 7px 6px;
   font-family: Tahoma;
   font-size: 11px;
@@ -8109,7 +8109,7 @@ div.dhxwins_vp_dhx_skyblue.dhxwins_vp_fs {
 div.dhx_popup_dhx_skyblue td.dhx_popup_td div.dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls,
 .dhxwins_vp_dhx_skyblue div.dhxwin_active div.dhx_cell_wins div.dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls,
 .dhxwins_vp_dhx_skyblue div.dhxwin_inactive div.dhx_cell_wins div.dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls {
-  border-bottom: 1px solid #a4bed4;
+  border-bottom: 1px solid #c3c3c3;
 }
 div.dhx_popup_dhx_skyblue td.dhx_popup_td div.dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls div.dhx_carousel_btn.dhx_carousel_btn_prev,
 .dhxwins_vp_dhx_skyblue div.dhxwin_active div.dhx_cell_wins div.dhxcarousel_base_dhx_skyblue div.dhxcarousel_cont div.dhx_carousel_controls div.dhx_carousel_btn.dhx_carousel_btn_prev,

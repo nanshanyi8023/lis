@@ -19,7 +19,7 @@
                     contentType: !!contentType ? contentType : 'application/x-www-form-urlencoded',
                     data: data,
                     error: function (reason) {
-                        reject(COMMON_ERROR+reason);
+                        reject(COMMON_ERROR+":"+reason);
                     },
                     success: function (result) {
                         if (!!result.code && AJAX_SUCCESS_CODE == result.code) {

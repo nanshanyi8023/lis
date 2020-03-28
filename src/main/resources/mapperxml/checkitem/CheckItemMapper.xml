@@ -334,26 +334,28 @@
       join check_item_group_detail cigd on ci.item_id = cigd.item_id
       join check_item_group cig on cig.group_id = cigd.item_group_id and cig.group_id = #{checkItemGroupId}
     </if>
-    where ci.HOSNUM = #{hosNum}
+    where ci.hosnum = #{hosNum}
     <if test="checkItem != null and checkItem != ''">
-      and (ci.ENGLISH_ABBREVIATION = #{checkItem} OR ci.ITEM_NAME = #{checkItem} OR ci.ITEM_ID = #{checkItem})
+      and (ci.english_abbreviation LIKE '%' #{checkItem} '%' OR ci.item_name LIKE '%' #{checkItem} '%' OR ci.item_id LIKE '%' #{checkItem} '%')
     </if>
   </select>
   <delete id="deleteCheckItems">
-    DELETE FROM CHECK_ITEM
-    WHERE HOSNUM = #{hosNum} AND ITEM_ID IN
+    DELETE FROM check_item
+    WHERE hosnum = #{hosNum} and item_id in
     <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
       #{item}
     </foreach>
   </delete>
-  <select id="getAllExamMethod" resultType="java.lang.String">
-    select ITEM_NAME
+  <select id="getAllCheckItemName" resultType="java.lang.String">
+    select item_name
     from check_item
-    where HOSNUM = #{hosNum}
+    where hosnum = #{hosNum}
   </select>
   <select id="getMaxId" resultType="java.lang.String">
-    select IF(max(cast(ITEM_ID as unsigned int)) + 1 = NULL, '100000', max(cast(ITEM_ID as unsigned int))  + 1)
-    FROM check_item
-    WHERE HOSNUM = #{hosNum}
+    select IF(max(cast(item_id as unsigned int)) = '' || max(cast(item_id as unsigned int)) = NULL,
+          '100000',
+           max(cast(item_id as unsigned int)) + 1)
+    from check_item
+    where hosnum = #{hosNum}
   </select>
 </mapper>
