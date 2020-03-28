@@ -137,10 +137,7 @@
                             dhtmlxAlert.alertMsg("请勾选需要退回的样本");
                             return;
                         }
-                        
-                        dhtmlxAlert.confirmWarningMsg("是否确认退回所选样本?", function () {
-                            OperationForm.returnSampleBtnEvent(sampleIdList);
-                        });
+                        returnSampleWindow.createObj();
                         break;
                     default:
                 }
@@ -159,19 +156,8 @@
             }
             ReceivedSampleGrid.loadData();
         },
-        //退回样本按钮功能
-        returnSampleBtnEvent: function (sampleIdList) {
-            ajaxUtils.postBody('sampleRecept/returnSample.json',
-                sampleIdList
-            ).then(function (data) {
-                ReceivedSampleGrid.loadData();
-            }).catch(function (reason) {
-                dhtmlxAlert.alertErrorMsg(reason);
-            }).finally(function () {
-            });
-        }
     };
-
+    
     //已接收样本列表
     var ReceivedSampleGrid = {
         obj: null,
@@ -235,6 +221,116 @@
             });
         }
     };
+
+
+    //样本退回原因窗口
+    var returnSampleWindow = {
+        obj: null,
+        createObj: function () {
+            var windowFactory = new dhtmlXWindows();
+            returnSampleWindow.obj = windowFactory.createWindow("returnSampleWindow", 0, 0, 350, 250);   //(id, left, top, width, height)
+            returnSampleWindow.obj.setText("样本退回原因");  //标题
+            returnSampleWindow.obj.denyResize();  //拒绝调整大小
+            returnSampleWindow.obj.denyPark();
+            returnSampleWindow.obj.setModal(true);
+            returnSampleWindow.obj.centerOnScreen(); //窗口居中显示在屏幕中
+            returnSampleWindow.initWindow();
+        },
+        initWindow: function () {
+            returnSampleWindow.Layout.initObj();
+            returnSampleWindow.Form.initObj();
+            returnSampleWindow.Form.initEvent();
+        }
+    };
+
+    //样本退回原因窗口布局设置
+    returnSampleWindow.Layout = {
+        obj: null,
+        config: {
+            pattern: "1C",
+            offsets: {
+                top: 5,
+                right: 5,
+                bottom: 5,
+                left: 5
+            },
+            cells: [
+                {
+                    id: "a",
+                    text: "Text a",
+                    collapsed_text: "Text a",
+                    header: false,
+                    collapse: false,
+                    fix_size: [true, true]
+                }
+            ]
+        },
+        initObj: function () {
+            returnSampleWindow.Layout.obj = returnSampleWindow.obj.attachLayout(returnSampleWindow.Layout.config);
+        }
+    };
+
+    returnSampleWindow.Form = {
+        obj:null,
+        config:[
+            {type: "settings", position: "label-top", blockOffset: 0, offsetLeft: 70, offsetTop: 12},
+            {type: "label", label: "样本退回原因"},
+            {
+                type: "combo", id: "sampleReturnReason", name: "sampleReturnReason", inputWidth: 180,
+                options: [
+                    {text: "样本污染", value: "样本污染"},
+                    {text: "样本类型不合格", value: "样本类型不合格"},
+                    {text: "样本采集量不合格", value: "样本采集量不合格"},
+                    {text: "样本容器不合格", value: "样本容器不合格"},
+                    {text: "医嘱取消", value: "医嘱取消"}
+                ]
+            },
+            {
+                type: "block", list: [
+                    {type: "button", name: "confirmBtn", value: "确认", offsetLeft: 10, offsetTop: 30},
+                    {type: "newcolumn"},
+                    {type: "button", name: "cancelBtn", value: "取消", offsetLeft: 10, offsetTop: 30}
+                ]
+            }
+        ],
+        initObj: function () {
+            returnSampleWindow.Form.obj = returnSampleWindow.Layout.obj.cells("a").attachForm(returnSampleWindow.Form.config);
+        },
+        initEvent: function () {
+            returnSampleWindow.Form.obj.attachEvent("onButtonClick", function (name) {
+                switch (name) {
+                    case "confirmBtn":
+                        returnSampleWindow.Form.confirmBtnEvent();
+                        break;
+                    case "cancelBtn":
+                        returnSampleWindow.Form.cancelBtnEvent();
+                        break;
+                    default:
+                }
+            });
+        },
+        confirmBtnEvent:function () {
+            var sampleIdList = dhtmlxUtils.getCheckedRowIds(ReceivedSampleGrid.obj,0);
+            var returnReason = returnSampleWindow.Form.obj.getItemValue("sampleReturnReason");
+            var returnDate = {
+                sampleIdList: sampleIdList,
+                returnReason: returnReason
+            };
+            ajaxUtils.postBody('sampleRecept/returnSample.json',
+                returnDate
+            ).then(function (data) {
+                returnSampleWindow.obj.close();
+                ReceivedSampleGrid.loadData();
+            }).catch(function (reason) {
+                dhtmlxAlert.alertErrorMsg(reason);
+            }).finally(function () {
+            });
+        },
+        cancelBtnEvent:function () {
+            returnSampleWindow.obj.close();
+        }
+    };
+
 
     var init = function () {
         Layout.initObj();

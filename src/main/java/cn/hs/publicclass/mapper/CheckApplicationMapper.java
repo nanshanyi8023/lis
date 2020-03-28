@@ -66,5 +66,5 @@ public interface CheckApplicationMapper {
     void receiveSample(@Param("hosNum") String hosNum, @Param("barCodeNumber") String barCodeNumber);
 
     //退回样本
-    int returnSample(@Param("hosNum") String hosNum, @Param("sampleIdList") List<String> sampleIdList);
+    int returnSample(@Param("hosNum") String hosNum, @Param("sampleIdList") List<String> sampleIdList, @Param("returnReason") String returnReason);
 }

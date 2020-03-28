@@ -470,7 +470,7 @@
   </update>
   <update id="returnSample">
     update check_application
-    set sample_reception_statu = '已退回', sample_return_time = sysdate()
+    set sample_reception_statu = '已退回', sample_return_time = sysdate(), sample_return_reason = #{returnReason}
     where hosnum = #{hosNum} and item_id in
     <foreach collection="sampleIdList" item="item" index="index" open="(" separator="," close=")">
       #{item}

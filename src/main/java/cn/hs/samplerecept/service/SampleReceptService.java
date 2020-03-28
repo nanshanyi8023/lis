@@ -6,6 +6,7 @@ import cn.hs.publicclass.method.FormatDate;
 import cn.hs.publicclass.table.checkapplication.CheckApplication;
 import cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail;
 import cn.hs.samplerecept.dto.ReceptedSampleQueryDto;
+import cn.hs.samplerecept.dto.RetrunSampleDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -91,10 +92,10 @@ public class SampleReceptService {
         return "接收样本成功";
     }
 
-    public int returnSample(List<String> sampleIdList) {
-        if (sampleIdList.isEmpty()){
+    public int returnSample(RetrunSampleDto retrunSampleDto) {
+        if (retrunSampleDto.getSampleIdList().isEmpty()){
             return 0;
         }
-        return checkApplicationMapper.returnSample(this.getHosNum(),sampleIdList);
+        return checkApplicationMapper.returnSample(this.getHosNum(),retrunSampleDto.getSampleIdList(),retrunSampleDto.getReturnReason());
     }
 }
