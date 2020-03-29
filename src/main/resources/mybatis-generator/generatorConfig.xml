@@ -46,7 +46,7 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="check_application_3454g"></table>
+        <table tableName="check_application——234sdfsad"></table>
 
         <!-- mybatis插件的搭建 -->
     </context>

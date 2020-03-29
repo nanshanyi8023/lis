@@ -103,7 +103,7 @@
             ReturnedSampleGrid.obj.setColumnIds("ch,barcodeNumber,checkItemGroup,sampleReceptionStatu,sampleReturnReason,sampleReturnTime,sampleReturnDoctor,sampleReceptionTime,billingDoctor,billingTime,itemId");
             ReturnedSampleGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中
             ReturnedSampleGrid.obj.setInitWidths("80,150,*,150,150,150,150,150,150,150,0");          //列宽
-            ReturnedSampleGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ch,ro,ro,ro,ro");
+            ReturnedSampleGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
             ReturnedSampleGrid.obj.init();
             ReturnedSampleGrid.obj.setColumnHidden(10, true);
 

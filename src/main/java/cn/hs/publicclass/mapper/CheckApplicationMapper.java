@@ -4,7 +4,6 @@ import cn.hs.barcodeprint.dto.CheckApplicationSearchDto;
 import cn.hs.publicclass.table.checkapplication.CheckApplication;
 import cn.hs.publicclass.table.checkapplication.CheckApplicationExample;
 import cn.hs.publicclass.table.checkapplication.CheckApplicationKey;
-
 import java.util.List;
 
 import cn.hs.samplerecept.dto.ReceptedSampleQueryDto;
@@ -66,11 +65,12 @@ public interface CheckApplicationMapper {
     void receiveSample(@Param("hosNum") String hosNum, @Param("barCodeNumber") String barCodeNumber);
 
     //退回样本
-    int returnSample(@Param("hosNum") String hosNum, @Param("retrunSampleDto")RetrunSampleDto retrunSampleDto);
+    int returnSample(@Param("hosNum") String hosNum, @Param("retrunSampleDto") RetrunSampleDto retrunSampleDto);
 
     /**
      * 样本退回页面
      */
     //查找对应的已退回样本
     List<CheckApplication> selectReturnedSample(@Param("hosNum") String hosNum, @Param("returnSampleQueryDto") ReceptedSampleQueryDto returnSampleQueryDto);
+
 }
