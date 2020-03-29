@@ -37,4 +37,7 @@ public interface UserInfoMapper {
 
     //修改密码
     void updateLoginPassword(@Param("loginName") String loginName, @Param("newPassword") String newPassword);
+
+    //根据账号查找姓名
+    String selectUserName(@Param("loginName") String loginName);
 }

@@ -447,10 +447,10 @@
       and barcode_number = #{receptedSampleQueryDto.barCodeNumber}
     </if>
     <if test="receptedSampleQueryDto.startDate != null and receptedSampleQueryDto.startDate != ''">
-      and billing_time &gt;= #{receptedSampleQueryDto.startDate}
+      and sample_reception_time &gt;= #{receptedSampleQueryDto.startDate}
     </if>
     <if test="receptedSampleQueryDto.endDate != null and receptedSampleQueryDto.endDate != ''">
-      and billing_time &lt;= #{receptedSampleQueryDto.endDate}
+      and sample_reception_time &lt;= #{receptedSampleQueryDto.endDate}
     </if>
   </select>
   <select id="getCheckApplication" resultMap="BaseResultMap">
@@ -470,11 +470,26 @@
   </update>
   <update id="returnSample">
     update check_application
-    set sample_reception_statu = '已退回', sample_return_time = sysdate(), sample_return_reason = #{returnReason}
+    set sample_reception_statu = '已退回', sample_return_time = sysdate(), sample_return_reason = #{retrunSampleDto.returnReason}, sample_return_doctor = #{retrunSampleDto.returnDoctor}
     where hosnum = #{hosNum} and item_id in
-    <foreach collection="sampleIdList" item="item" index="index" open="(" separator="," close=")">
+    <foreach collection="retrunSampleDto.sampleIdList" item="item" index="index" open="(" separator="," close=")">
       #{item}
     </foreach>
   </update>
 
+  <!--样本退回页面-->
+  <select id="selectReturnedSample" resultMap="BaseResultMap">
+    select *
+    from check_application
+    where hosnum = #{hosNum} and sample_reception_statu = '已退回'
+    <if test="returnSampleQueryDto.barCodeNumber != null and returnSampleQueryDto.barCodeNumber != ''">
+      and barcode_number = #{returnSampleQueryDto.barCodeNumber}
+    </if>
+    <if test="returnSampleQueryDto.startDate != null and returnSampleQueryDto.startDate != ''">
+      and sample_return_time &gt;= #{returnSampleQueryDto.startDate}
+    </if>
+    <if test="returnSampleQueryDto.endDate != null and returnSampleQueryDto.endDate != ''">
+      and sample_return_time &lt;= #{returnSampleQueryDto.endDate}
+    </if>
+  </select>
 </mapper>

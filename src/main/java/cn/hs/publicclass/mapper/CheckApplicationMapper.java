@@ -8,6 +8,7 @@ import cn.hs.publicclass.table.checkapplication.CheckApplicationKey;
 import java.util.List;
 
 import cn.hs.samplerecept.dto.ReceptedSampleQueryDto;
+import cn.hs.samplerecept.dto.RetrunSampleDto;
 import org.apache.ibatis.annotations.Param;
 
 public interface CheckApplicationMapper {
@@ -65,5 +66,11 @@ public interface CheckApplicationMapper {
     void receiveSample(@Param("hosNum") String hosNum, @Param("barCodeNumber") String barCodeNumber);
 
     //退回样本
-    int returnSample(@Param("hosNum") String hosNum, @Param("sampleIdList") List<String> sampleIdList, @Param("returnReason") String returnReason);
+    int returnSample(@Param("hosNum") String hosNum, @Param("retrunSampleDto")RetrunSampleDto retrunSampleDto);
+
+    /**
+     * 样本退回页面
+     */
+    //查找对应的已退回样本
+    List<CheckApplication> selectReturnedSample(@Param("hosNum") String hosNum, @Param("returnSampleQueryDto") ReceptedSampleQueryDto returnSampleQueryDto);
 }

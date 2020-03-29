@@ -32,6 +32,7 @@
     <script type="text/javascript" src="js/checkmanage/barCodePrint.js"></script>
     <script type="text/javascript" src="js/checkmanage/barCodePrintLodop.js"></script>
     <script type="text/javascript" src="js/checkmanage/sampleRecept.js"></script>
+    <script type="text/javascript" src="js/checkmanage/sampleReturn.js"></script>
 
 
     <object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0>
@@ -64,7 +65,7 @@
         .barCodePrint{
             background-image: url(images/systemhome/barCodePrint.png);
         }
-        .userinfoSetting{
+        .userInfoSetting{
             background-image: url(images/systemhome/userInfoSetting.png);
         }
 
@@ -108,6 +109,20 @@
         .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover div.dhxtreeview_item_label {
             border-color: #4c4c4c;
             background-color: #4c4c4c;
+        }
+
+        /*设置按钮颜色*/
+        .dhxform_obj_dhx_skyblue div.dhxform_btn {
+            color: #ffffff;
+            background: -webkit-linear-gradient(#7190d8, #97bdec);
+        }
+        /*鼠标悬停时的背景颜色*/
+        .dhxform_obj_dhx_skyblue div.dhxform_btn.dhxform_btn_over {
+            background: -webkit-linear-gradient(#7190d8, #97bdec);
+        }
+        /*点击按钮时背景颜色*/
+        .dhxform_obj_dhx_skyblue div.dhxform_btn.dhxform_btn_pressed {
+            background: -webkit-linear-gradient(#7190d8, #97bdec);
         }
     </style>
 
