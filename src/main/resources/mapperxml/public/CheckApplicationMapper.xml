@@ -405,19 +405,19 @@
 
 
 
-
+  <!--条码打印页面-->
   <select id="selectByPatientAndTime" resultMap="BaseResultMap">
     select *
     from check_application
     where hosnum = #{hosNum} and patient_id in
-    <foreach collection="patientIdList" item="item" index="index" open="(" separator="," close=")">
+    <foreach collection="checkApplicationSearchDto.patientIdList" item="item" index="index" open="(" separator="," close=")">
       #{item}
     </foreach>
-    <if test="startDate != null and startDate != ''">
-      and billing_time &gt;= #{startDate}
+    <if test="checkApplicationSearchDto.startDate != null and checkApplicationSearchDto.startDate != ''">
+      and billing_time &gt;= #{checkApplicationSearchDto.startDate}
     </if>
-    <if test="endDate != null and endDate != ''">
-      and billing_time &lt;= #{endDate}
+    <if test="checkApplicationSearchDto.endDate != null and checkApplicationSearchDto.endDate != ''">
+      and billing_time &lt;= #{checkApplicationSearchDto.endDate}
     </if>
   </select>
   <select id="selectBarcodeNnumber" resultType="java.lang.String">
@@ -438,23 +438,43 @@
     where item_id = #{checkApplicationId}
   </update>
 
+  <!--样本接收页面-->
   <select id="selectReceptedSample" resultMap="BaseResultMap">
     select *
     from check_application
     where hosnum = #{hosNum} and sample_reception_statu = '已接收'
-    <if test="barCodeNumber != null and barCodeNumber != ''">
-      and barcode_number = #{barCodeNumber}
+    <if test="receptedSampleQueryDto.barCodeNumber != null and receptedSampleQueryDto.barCodeNumber != ''">
+      and barcode_number = #{receptedSampleQueryDto.barCodeNumber}
     </if>
-    <if test="startDate != null and startDate != ''">
-      and billing_time &gt;= #{startDate}
+    <if test="receptedSampleQueryDto.startDate != null and receptedSampleQueryDto.startDate != ''">
+      and billing_time &gt;= #{receptedSampleQueryDto.startDate}
     </if>
-    <if test="endDate != null and endDate != ''">
-      and billing_time &lt;= #{endDate}
+    <if test="receptedSampleQueryDto.endDate != null and receptedSampleQueryDto.endDate != ''">
+      and billing_time &lt;= #{receptedSampleQueryDto.endDate}
     </if>
+  </select>
+  <select id="getCheckApplication" resultMap="BaseResultMap">
+    select *
+    from check_application
+    where hosnum = #{hosNum} and barcode_number = #{barCodeNumber}
+  </select>
+  <select id="getReceptionStatu" resultMap="BaseResultMap">
+    select sample_reception_statu,sample_reception_time,sample_return_time
+    from check_application
+    where  hosnum = #{hosNum} and barcode_number = #{barCodeNumber}
   </select>
   <update id="receiveSample">
     update check_application
     set sample_reception_statu = '已接收', sample_reception_time = sysdate()
     where hosnum = #{hosNum} and barcode_number = #{barCodeNumber}
   </update>
+  <update id="returnSample">
+    update check_application
+    set sample_reception_statu = '已退回', sample_return_time = sysdate(), sample_return_reason = #{returnReason}
+    where hosnum = #{hosNum} and item_id in
+    <foreach collection="sampleIdList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
 </mapper>

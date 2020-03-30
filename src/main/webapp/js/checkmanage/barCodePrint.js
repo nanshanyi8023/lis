@@ -87,7 +87,10 @@
         },
         //查询按钮功能
         searchBtnEvent:function () {
+            //查询患者
             PatientListGrid.loadData();
+            //查找患者对应的检验申请
+            CheckApplicationGrid.loadData();
         },
         //打印条码按钮功能
         printBarCodeBtnEvent:function () {
@@ -136,12 +139,26 @@
             });
         },
         loadData: function () {
+            var oldCheckedIdList = dhtmlxUtils.getCheckedRowIds(PatientListGrid.obj,0);
             var formData = OperationForm.obj.getFormData();
             ajaxUtils.postBody('barCodePrint/getPatientInfo.json',
                 formData
             ).then(function (data) {
                 dhtmlxUtils.clearAndLoadJsonListData(PatientListGrid.obj, data, "patientId");  //删除所有行，加载数据
                 PatientListGrid.obj.sortRows(1,"int","asc");
+
+                if (JSUtils.isEmpty(oldCheckedIdList)) {
+                    return;
+                }
+                var rowsNum = PatientListGrid.obj.getRowsNum();
+                for (var i = 0; i < rowsNum; i++) {
+                    for (var j = 0; j < oldCheckedIdList.length; j++) {
+                        var rowId = PatientListGrid.obj.getRowId(i);
+                        if (rowId == oldCheckedIdList[j]) {
+                            PatientListGrid.obj.cells(rowId,0).setValue("1");
+                        }
+                    }
+                }
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
@@ -160,7 +177,7 @@
                 ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
             CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroup,sampleType,collectionContainer,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu,itemId,patientId,checkItemGroupId");
             CheckApplicationGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中
-            CheckApplicationGrid.obj.setInitWidths("50,100,*,100,100,100,100,80,100,100,0,0,0");          //列宽
+            CheckApplicationGrid.obj.setInitWidths("50,100,*,100,100,100,100,80,100,120,0,0,0");          //列宽
             CheckApplicationGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ch,ro,ro,ro,ro,ro,ro");
             CheckApplicationGrid.obj.init();
             CheckApplicationGrid.obj.setColumnHidden(10, true);

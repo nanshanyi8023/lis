@@ -39,7 +39,7 @@
                         }
                     ]
                 },
-                /*{
+                {
                     id: "inspectSettings",
                     text: "检验设置",
                     open: 1,
@@ -70,7 +70,7 @@
                             icons:{file:""}
                         }
                     ]
-                },*/
+                },
                 {
                     id: "inspectionOrder",
                     text: "检验医嘱",

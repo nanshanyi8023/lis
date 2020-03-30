@@ -275,14 +275,24 @@
   </update>
 
     <select id="getPatientInfo" resultMap="BaseResultMap">
-        select *
-        from patient_info
-        where hosnum = #{hosNum}
-        <if test="patientSearchDto.patientId != null and patientSearchDto.patientId != ''">
-            and (patient_id = #{patientSearchDto.patientId})
+      select pi.*
+      from patient_info pi
+      where pi.hosnum = #{hosNum} and pi.patient_id in (
+        select distinct ca.patient_id
+        from check_application ca
+        where ca.hosnum = #{hosNum}
+        <if test="patientSearchDto.startDate != null and patientSearchDto.startDate != ''">
+          and ca.billing_time &gt;= #{patientSearchDto.startDate}
         </if>
-        <if test="patientSearchDto.patientName != null and patientSearchDto.patientName != ''">
-            and (patient_id = #{patientSearchDto.patientName})
+        <if test="patientSearchDto.endDate != null and patientSearchDto.endDate != ''">
+          and ca.billing_time &lt;= #{patientSearchDto.endDate}
         </if>
+        )
+      <if test="patientSearchDto.patientId != null and patientSearchDto.patientId != ''">
+          and (patient_id = #{patientSearchDto.patientId})
+      </if>
+      <if test="patientSearchDto.patientName != null and patientSearchDto.patientName != ''">
+          and (patient_id = #{patientSearchDto.patientName})
+      </if>
     </select>
 </mapper>

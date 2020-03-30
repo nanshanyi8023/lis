@@ -20,7 +20,7 @@
         dhtmlx.alert({
             type: 'alert-warning',
             text: msg,
-            title: '警告提示',
+            title: '警告',
             ok: '确定',
             callback: typeof f === 'function' ? f : function () {
             }
@@ -34,7 +34,7 @@
         dhtmlx.alert({
             type: 'alert-error',
             text: msg,
-            title: '错误提示',
+            title: '错误',
             ok: '确定',
             callback: typeof f === 'function' ? f : function () {
             }
