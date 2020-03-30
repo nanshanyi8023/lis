@@ -11,6 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>云LIS检验系统主界面</title>
     <link type="text/css" rel="stylesheet" href="toolfile/dhtmlxstand/codebase/dhtmlx.css" />
+    <link type="text/css" rel="stylesheet" href="toolfile/pagination/page.css">
 
     <script type="text/javascript" src="toolfile/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="toolfile/jquery.cookie.js"></script>
@@ -21,6 +22,7 @@
     <script type="text/javascript" src="toolfile/JSUtils.js"></script>
     <script type="text/javascript" src="toolfile/dhtmlxCalendarLanguage.js"></script>
     <script type="text/javascript" src="toolfile/lodopFuncs.js"></script>
+    <script type="text/javascript" src="toolfile/pagination/jquery.pagination.js"></script>
 
     <script type="text/javascript" src="js/systemhome/systemHome.js"></script>
     <script type="text/javascript" src="js/topwelcomebar/topWelcomeBar.js"></script>

@@ -152,6 +152,7 @@
     //检验申请列表
     var CheckApplicationGrid = {
         obj:null,
+        gridData:null,
         initObj: function () {
             CheckApplicationGrid.obj = Layout.obj.cells("c").attachGrid();
             CheckApplicationGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
@@ -165,8 +166,13 @@
             CheckApplicationGrid.obj.setColumnHidden(10, true);
             CheckApplicationGrid.obj.setColumnHidden(11,true);
             CheckApplicationGrid.obj.setColumnHidden(12, true);
-            //CheckApplicationGrid.obj.enableAutoWidth(true);
             CheckApplicationGrid.obj.enableColumnAutoSize(true);
+
+            Layout.obj.cells("c").attachStatusBar({
+                text: '<div style="height:20px; line-height:20px;margin: 7px 0 5px 25px;"><span id="Pagination" ></span></div>',
+                height: 40
+            });
+
         },
         initEvent: function () {
             //全选按钮
@@ -201,21 +207,33 @@
                 startDate : OperationForm.obj.getItemValue("startDate",true),
                 endDate : OperationForm.obj.getItemValue("endDate",true)
             };
-            ajaxUtils.postBody('barCodePrint/getCheckApplication.json',
+            /*ajaxUtils.postBody('barCodePrint/getCheckApplication.json',
                 checkApplicationSearch
             ).then(function (data) {
-                for (var i = 0 ; i < data.length ;i++){
-                    data[i].billingTime = new Date(data[i].billingTime).toLocaleDateString();
-                }
-                dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "itemId");  //删除所有行，加载数据
-                //CheckApplicationGrid.obj.sortRows(1,"int","asc");
-                //将急诊栏禁用
-                CheckApplicationGrid.obj.forEachRow(function (id) {
-                    CheckApplicationGrid.obj.cells(id, 6).setDisabled(true);
+                CheckApplicationGrid.gridData = data;
+                $("#Pagination").pagination(data.length, {
+                    num_edge_entries: $('#pageIndex').val(), //边缘页数
+                    num_display_entries: 10, //主体页数
+                    callback: CheckApplicationGrid.pageselectCallback,
+                    items_per_page: 20, //每页显示个数
+                    prev_text: "前一页",
+                    next_text: "后一页"
                 });
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
+            });*/
+        },
+        pageselectCallback:function () {
+            var data = CheckApplicationGrid.gridData;
+            for (var i = 0 ; i < data.length ;i++){
+                data[i].billingTime = new Date(data[i].billingTime).toLocaleDateString();
+            }
+            dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "itemId");  //删除所有行，加载数据
+            //CheckApplicationGrid.obj.sortRows(1,"int","asc");
+            //将急诊栏禁用
+            CheckApplicationGrid.obj.forEachRow(function (id) {
+                CheckApplicationGrid.obj.cells(id, 6).setDisabled(true);
             });
         }
     };
