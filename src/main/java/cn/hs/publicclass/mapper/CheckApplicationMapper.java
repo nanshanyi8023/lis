@@ -37,6 +37,9 @@ public interface CheckApplicationMapper {
     /**
      * 条码打印页面
      */
+    //根据患者id和开单时间查找对应的检验申请数目
+    int selectCheckApplicationCount(@Param("hosNum") String hosNum, @Param("checkApplicationSearchDto") CheckApplicationSearchDto checkApplicationSearchDto);
+
     //根据患者id和开单时间查找对应的检验申请
     List<CheckApplication> selectByPatientAndTime(@Param("hosNum") String hosNum, @Param("checkApplicationSearchDto") CheckApplicationSearchDto checkApplicationSearchDto);
 

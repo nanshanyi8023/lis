@@ -421,6 +421,20 @@
 
 
   <!--条码打印页面-->
+  <select id="selectCheckApplicationCount" resultType="java.lang.Integer">
+    select count(*)
+    from check_application
+    where hosnum = #{hosNum} and patient_id in
+    <foreach collection="checkApplicationSearchDto.patientIdList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    <if test="checkApplicationSearchDto.startDate != null and checkApplicationSearchDto.startDate != ''">
+      and billing_time &gt;= #{checkApplicationSearchDto.startDate}
+    </if>
+    <if test="checkApplicationSearchDto.endDate != null and checkApplicationSearchDto.endDate != ''">
+      and billing_time &lt;= #{checkApplicationSearchDto.endDate}
+    </if>
+  </select>
   <select id="selectByPatientAndTime" resultMap="BaseResultMap">
     select *
     from check_application
@@ -434,7 +448,9 @@
     <if test="checkApplicationSearchDto.endDate != null and checkApplicationSearchDto.endDate != ''">
       and billing_time &lt;= #{checkApplicationSearchDto.endDate}
     </if>
+    limit #{checkApplicationSearchDto.beginItem} , #{checkApplicationSearchDto.pageSize}
   </select>
+
   <select id="selectBarcodeNnumber" resultType="java.lang.String">
       select barcode_number
       from check_application

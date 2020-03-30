@@ -45,6 +45,20 @@ public class BarCodePrintService {
         return patientInfoMapper.getPatientInfo(getCookie.getHosNum(), patientSearchDto);
     }
 
+    //查询符合条件的检验申请数目
+    public int getCheckApplicationCount(CheckApplicationSearchDto checkApplicationSearchDto) {
+        if (StringUtils.isNotEmpty(checkApplicationSearchDto.getStartDate())) {
+            String startDate = FormatDate.formatstartDate(checkApplicationSearchDto.getStartDate());
+            checkApplicationSearchDto.setStartDate(startDate);
+        }
+        if (StringUtils.isNotEmpty(checkApplicationSearchDto.getEndDate())) {
+            String endDate = FormatDate.formatEndDay(checkApplicationSearchDto.getEndDate());
+            checkApplicationSearchDto.setEndDate(endDate);
+        }
+        return checkApplicationMapper.selectCheckApplicationCount(getCookie.getHosNum(), checkApplicationSearchDto);
+    }
+
+
     //查询符合条件的检验申请
     public List<CheckApplication> getCheckApplication(CheckApplicationSearchDto checkApplicationSearchDto) {
         if (StringUtils.isNotEmpty(checkApplicationSearchDto.getStartDate())){
@@ -55,6 +69,7 @@ public class BarCodePrintService {
             String endDate = FormatDate.formatEndDay(checkApplicationSearchDto.getEndDate());
             checkApplicationSearchDto.setEndDate(endDate);
         }
+        checkApplicationSearchDto.setBeginItem(checkApplicationSearchDto.getPageIndex()*checkApplicationSearchDto.getPageSize());
         List<CheckApplication> checkApplicationList = checkApplicationMapper.selectByPatientAndTime(getCookie.getHosNum(), checkApplicationSearchDto);
 
         //将对应的检验项目组合拼到checkApplicationList中
