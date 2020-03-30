@@ -3,6 +3,7 @@ package cn.hs.checkitemgroup.service;
 import cn.hs.checkitemgroup.mapper.CheckItemGroupMapper;
 import cn.hs.checkitemgroup.pojo.CheckItemGroup;
 import cn.hs.publicclass.method.BusinessException;
+import cn.hs.publicclass.method.GetCookieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -18,22 +19,11 @@ public class CheckItemGroupService {
     private CheckItemGroupMapper checkItemGroupMapper;
 
     @Autowired
-    private HttpServletRequest request;
-
-    //查找医院号
-    private String getHosNum(){
-        Cookie cookies[]=request.getCookies();
-        for(Cookie cookie:cookies){
-            if (cookie.getName().equals("hosNum")){
-                return cookie.getValue();
-            }
-        }
-        return null;
-    }
+    private GetCookieService getCookie;
 
     //查找检验项目组合
     public List<CheckItemGroup> getcheckItemGroups(String workGroupId, String checkItemGroup) {
-        List<CheckItemGroup> checkItemGroups = checkItemGroupMapper.getcheckItemGroups(this.getHosNum(), workGroupId, checkItemGroup);
+        List<CheckItemGroup> checkItemGroups = checkItemGroupMapper.getcheckItemGroups(getCookie.getHosNum(), workGroupId, checkItemGroup);
         return checkItemGroups;
     }
 
@@ -41,12 +31,12 @@ public class CheckItemGroupService {
         if (itemIdList.isEmpty()){
             return 0;
         }
-        return checkItemGroupMapper.deleteCheckItemGroups(this.getHosNum(),itemIdList);
+        return checkItemGroupMapper.deleteCheckItemGroups(getCookie.getHosNum(),itemIdList);
     }
 
     //保存检验项目组合
     public void savecheckItemGroup(CheckItemGroup checkItemGroup) {
-        String hosNum = this.getHosNum();
+        String hosNum = getCookie.getHosNum();
         checkItemGroup.setHosnum(hosNum);
         if (StringUtils.isEmpty(checkItemGroup.getGroupId())){  //新增
             if (this.isRepeat(hosNum,checkItemGroup.getGroupName())){
@@ -72,6 +62,6 @@ public class CheckItemGroupService {
 
     //查找所有样品类型
     public List<String> getAllSampleType() {
-        return checkItemGroupMapper.getAllSampleType(this.getHosNum());
+        return checkItemGroupMapper.getAllSampleType(getCookie.getHosNum());
     }
 }

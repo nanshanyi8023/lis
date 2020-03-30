@@ -2,19 +2,18 @@ package cn.hs.samplerecept.service;
 
 import cn.hs.publicclass.mapper.CheckApplicationDetailMapper;
 import cn.hs.publicclass.mapper.CheckApplicationMapper;
+import cn.hs.publicclass.method.FormatDate;
+import cn.hs.publicclass.method.GetCookieService;
 import cn.hs.publicclass.table.checkapplication.CheckApplication;
 import cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail;
 import cn.hs.samplerecept.dto.ReceptedSampleQueryDto;
+import cn.hs.samplerecept.dto.RetrunSampleDto;
+import cn.hs.userinfo.mapper.UserInfoMapper;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,39 +26,24 @@ public class SampleReceptService {
     private CheckApplicationDetailMapper checkApplicationDetailMapper;
 
     @Autowired
-    private HttpServletRequest request;
+    private UserInfoMapper userInfoMapper;
 
-    //查找医院号
-    private String getHosNum() {
-        Cookie cookies[] = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("hosNum")) {
-                return cookie.getValue();
-            }
-        }
-        return null;
-    }
-
+    @Autowired
+    private GetCookieService getCookie;
+    
 
     //查询符合条件的已接收样本
     public List<CheckApplication> getReceptedSample(ReceptedSampleQueryDto receptedSampleQueryDto) {
-        Date startDate = null;
-        Date endDate = null;
-        try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String stringStartDate = receptedSampleQueryDto.getStartDate() + " 00:00:00";
-            String stringEndDate = receptedSampleQueryDto.getEndDate() + " 23:59:59";
-            if (StringUtils.isNotEmpty(stringStartDate)) {
-                startDate = simpleDateFormat.parse(stringStartDate);
-            }
-            if (StringUtils.isNotEmpty(stringEndDate)) {
-                endDate = simpleDateFormat.parse(stringEndDate);
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (StringUtils.isNotEmpty(receptedSampleQueryDto.getStartDate())) {
+            String startDate = FormatDate.formatstartDate(receptedSampleQueryDto.getStartDate());
+            receptedSampleQueryDto.setStartDate(startDate);
         }
-        List<CheckApplication> checkApplicationList = checkApplicationMapper.selectReceptedSample(this.getHosNum(), receptedSampleQueryDto.getBarCodeNumber(), startDate, endDate);
-        if (checkApplicationList.size() <= 0){
+        if (StringUtils.isNotEmpty(receptedSampleQueryDto.getEndDate())){
+            String endDate = FormatDate.formatEndDay(receptedSampleQueryDto.getEndDate());
+            receptedSampleQueryDto.setEndDate(endDate);
+        }
+        List<CheckApplication> checkApplicationList = checkApplicationMapper.selectReceptedSample(getCookie.getHosNum(), receptedSampleQueryDto);
+        if (checkApplicationList.size() <= 0) {
             return checkApplicationList;
         }
 
@@ -70,7 +54,7 @@ public class SampleReceptService {
             checkApplicationIdList.add(checkApplication.getItemId());
         }
         //查询所有需要的检验申请id对应的检验项目组合
-        List<CheckApplicationDetail> checkApplicationDetailList = checkApplicationDetailMapper.getCheckItemGroup(this.getHosNum(), checkApplicationIdList);
+        List<CheckApplicationDetail> checkApplicationDetailList = checkApplicationDetailMapper.getCheckItemGroup(getCookie.getHosNum(), checkApplicationIdList);
         //将对应的检验项目组合赋值给checkApplicationList
         for (CheckApplication checkApplication : checkApplicationList) {
             String checkItemGroupName = "";
@@ -79,13 +63,40 @@ public class SampleReceptService {
                     checkItemGroupName = checkItemGroupName + checkApplicationDetail.getCheckItemGroupName() + ",";
                 }
             }
-            checkApplication.setCheckItemGroup(checkItemGroupName.substring(0, checkItemGroupName.length() - 1));
+            if (checkItemGroupName.length() > 0){
+                checkApplication.setCheckItemGroup(checkItemGroupName.substring(0, checkItemGroupName.length() - 1));
+            }
         }
         return checkApplicationList;
     }
 
     //根据条码号接收样本
-    public void receiveSample(String barCodeNumber) {
-        checkApplicationMapper.receiveSample(this.getHosNum(),barCodeNumber);
+    public String receiveSample(String barCodeNumber) {
+        //判断样本条码号是否存在
+        CheckApplication checkApplication = checkApplicationMapper.getCheckApplication(getCookie.getHosNum(), barCodeNumber);
+        if (checkApplication == null) {
+            return "未查询到该条码号，请检查输入条码号是否正确";
+        }
+        //判断条码号对应的样本是否已接收
+        checkApplication = checkApplicationMapper.getReceptionStatu(getCookie.getHosNum(), barCodeNumber);
+        if (checkApplication.getSampleReceptionStatu().equals("已接收")) {
+            String receptionDay = FormatDate.formatDay(checkApplication.getSampleReceptionTime());
+            return "该样本已于" + receptionDay + "接收!";
+        } else if (checkApplication.getSampleReceptionStatu().equals("已退回")) {
+            String returnDay = FormatDate.formatDay(checkApplication.getSampleReturnTime());
+            return "该样本已于" + returnDay + "退回!";
+        }
+        //接收样本
+        checkApplicationMapper.receiveSample(getCookie.getHosNum(), barCodeNumber);
+        return "接收样本成功";
+    }
+
+    public int returnSample(RetrunSampleDto retrunSampleDto) {
+        if (retrunSampleDto.getSampleIdList().isEmpty()) {
+            return 0;
+        }
+        String loginName = userInfoMapper.selectUserName(getCookie.getLoginName());
+        retrunSampleDto.setReturnDoctor(loginName);
+        return checkApplicationMapper.returnSample(getCookie.getHosNum(), retrunSampleDto);
     }
 }

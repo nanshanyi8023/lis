@@ -10,67 +10,61 @@
                     id: "inspectManagement",
                     text: "检验管理",
                     open: 1,
-                    // icons: {folder_opened: "inspectManagement", folder_closed: "inspectManagement"},
                     items: [
                         {
                             id: "barCodePrint",
-                            text: "条码打印",
+                            text: "&nbsp;条码打印",
                             icons: {file: "barCodePrint"}
                         },
                         {
                             id: "sampleRecept",
-                            text: "样本接收",
+                            text: "&nbsp;样本接收",
                             icons: {file: "sampleRecept"}
                         },
                         {
                             id: "sampleReturn",
-                            text: "样本退回",
+                            text: "&nbsp;样本退回",
                             icons: {file: "sampleReturn"}
                         },
                         {
                             id: "inspectionOperation",
-                            text: "检验操作",
+                            text: "&nbsp;检验操作",
                             icons: {file: "inspectionOperation"}
                         },
                         {
                             id: "reportQuery",
-                            text: "报告查询",
+                            text: "&nbsp;报告查询",
                             icons: {file: "reportQuery"}
                         }
                     ]
                 },
-                /*{
+                {
                     id: "inspectSettings",
                     text: "检验设置",
                     open: 1,
                     items: [
                         {
                             id: "checkItemSettings",
-                            text: "检验项目设置",
-                            icons:{file:""}
+                            text: "检验项目设置"
                         },
                         {
                             id: "checkItemGroupSettings",
-                            text: "检验项目组合设置",
-                            icons:{file:""}
+                            text: "检验项目组合设置"
                         },
                         {
                             id: "workGroupSettings",
-                            text: "工作组设置",
-                            icons:{file:""}
+                            text: "工作组设置"
                         },
                         {
                             id: "equipmentSettings",
-                            text: "检验设备设置",
-                            icons:{file:""}
+                            text: "检验设备设置"
                         },
                         {
                             id: "equipmentChannelSettings",
-                            text: "检验设备通道设置",
-                            icons:{file:""}
+                            text: "检验设备通道设置"
                         }
                     ]
-                },*/
+                },
                 {
                     id: "inspectionOrder",
                     text: "检验医嘱",
@@ -89,9 +83,9 @@
                     ]
                 },
                 {
-                    id: "userinfoSetting",
-                    text: "个人信息设置",
-                    icons:{file:"userinfoSetting"}
+                    id: "userInfoSetting",
+                    text: "&nbsp;个人信息设置",
+                    icons:{file:"userInfoSetting"}
                 }
             ]
         },
@@ -109,6 +103,9 @@
                     case "sampleRecept":
                         sampleRecept.init();
                         break;
+                    case "sampleReturn":
+                        sampleReturn.init();
+                        break;
                     case "checkItemSettings":
                         checkItemSettings.init();
                         break;
@@ -118,7 +115,7 @@
                     case "workGroupSettings":
                         workGroupSettings.init();
                         break;
-                    case "userinfoSetting":
+                    case "userInfoSetting":
                         UserInfo.init();
                         break;
                 }

@@ -19,6 +19,7 @@
     <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
     <result column="sample_return_time" jdbcType="TIMESTAMP" property="sampleReturnTime" />
     <result column="sample_return_reason" jdbcType="VARCHAR" property="sampleReturnReason" />
+    <result column="sample_return_doctor" jdbcType="VARCHAR" property="sampleReturnDoctor" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -82,7 +83,7 @@
     hosnum, item_id, patient_id, patient_name, collection_container, submit_department, 
     is_emergency, sample_type, billing_doctor, billing_time, barcode_number, print_statu, 
     sample_reception_statu, sample_reception_time, order_number, sample_return_time, 
-    sample_return_reason
+    sample_return_reason, sample_return_doctor
   </sql>
   <select id="selectByExample" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationExample" resultMap="BaseResultMap">
     select
@@ -122,15 +123,15 @@
       is_emergency, sample_type, billing_doctor, 
       billing_time, barcode_number, print_statu, 
       sample_reception_statu, sample_reception_time, 
-      order_number, sample_return_time, sample_return_reason
-      )
+      order_number, sample_return_time, sample_return_reason, 
+      sample_return_doctor)
     values (#{hosnum,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{patientId,jdbcType=VARCHAR}, 
       #{patientName,jdbcType=VARCHAR}, #{collectionContainer,jdbcType=VARCHAR}, #{submitDepartment,jdbcType=VARCHAR}, 
       #{isEmergency,jdbcType=VARCHAR}, #{sampleType,jdbcType=VARCHAR}, #{billingDoctor,jdbcType=VARCHAR}, 
       #{billingTime,jdbcType=TIMESTAMP}, #{barcodeNumber,jdbcType=VARCHAR}, #{printStatu,jdbcType=VARCHAR}, 
       #{sampleReceptionStatu,jdbcType=VARCHAR}, #{sampleReceptionTime,jdbcType=TIMESTAMP}, 
-      #{orderNumber,jdbcType=INTEGER}, #{sampleReturnTime,jdbcType=TIMESTAMP}, #{sampleReturnReason,jdbcType=VARCHAR}
-      )
+      #{orderNumber,jdbcType=INTEGER}, #{sampleReturnTime,jdbcType=TIMESTAMP}, #{sampleReturnReason,jdbcType=VARCHAR}, 
+      #{sampleReturnDoctor,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
     insert into check_application
@@ -186,6 +187,9 @@
       <if test="sampleReturnReason != null">
         sample_return_reason,
       </if>
+      <if test="sampleReturnDoctor != null">
+        sample_return_doctor,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="hosnum != null">
@@ -238,6 +242,9 @@
       </if>
       <if test="sampleReturnReason != null">
         #{sampleReturnReason,jdbcType=VARCHAR},
+      </if>
+      <if test="sampleReturnDoctor != null">
+        #{sampleReturnDoctor,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -301,6 +308,9 @@
       <if test="record.sampleReturnReason != null">
         sample_return_reason = #{record.sampleReturnReason,jdbcType=VARCHAR},
       </if>
+      <if test="record.sampleReturnDoctor != null">
+        sample_return_doctor = #{record.sampleReturnDoctor,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -324,7 +334,8 @@
       sample_reception_time = #{record.sampleReceptionTime,jdbcType=TIMESTAMP},
       order_number = #{record.orderNumber,jdbcType=INTEGER},
       sample_return_time = #{record.sampleReturnTime,jdbcType=TIMESTAMP},
-      sample_return_reason = #{record.sampleReturnReason,jdbcType=VARCHAR}
+      sample_return_reason = #{record.sampleReturnReason,jdbcType=VARCHAR},
+      sample_return_doctor = #{record.sampleReturnDoctor,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -377,6 +388,9 @@
       <if test="sampleReturnReason != null">
         sample_return_reason = #{sampleReturnReason,jdbcType=VARCHAR},
       </if>
+      <if test="sampleReturnDoctor != null">
+        sample_return_doctor = #{sampleReturnDoctor,jdbcType=VARCHAR},
+      </if>
     </set>
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and item_id = #{itemId,jdbcType=VARCHAR}
@@ -397,7 +411,8 @@
       sample_reception_time = #{sampleReceptionTime,jdbcType=TIMESTAMP},
       order_number = #{orderNumber,jdbcType=INTEGER},
       sample_return_time = #{sampleReturnTime,jdbcType=TIMESTAMP},
-      sample_return_reason = #{sampleReturnReason,jdbcType=VARCHAR}
+      sample_return_reason = #{sampleReturnReason,jdbcType=VARCHAR},
+      sample_return_doctor = #{sampleReturnDoctor,jdbcType=VARCHAR}
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and item_id = #{itemId,jdbcType=VARCHAR}
   </update>
@@ -405,19 +420,19 @@
 
 
 
-
+  <!--条码打印页面-->
   <select id="selectByPatientAndTime" resultMap="BaseResultMap">
     select *
     from check_application
     where hosnum = #{hosNum} and patient_id in
-    <foreach collection="patientIdList" item="item" index="index" open="(" separator="," close=")">
+    <foreach collection="checkApplicationSearchDto.patientIdList" item="item" index="index" open="(" separator="," close=")">
       #{item}
     </foreach>
-    <if test="startDate != null and startDate != ''">
-      and billing_time &gt;= #{startDate}
+    <if test="checkApplicationSearchDto.startDate != null and checkApplicationSearchDto.startDate != ''">
+      and billing_time &gt;= #{checkApplicationSearchDto.startDate}
     </if>
-    <if test="endDate != null and endDate != ''">
-      and billing_time &lt;= #{endDate}
+    <if test="checkApplicationSearchDto.endDate != null and checkApplicationSearchDto.endDate != ''">
+      and billing_time &lt;= #{checkApplicationSearchDto.endDate}
     </if>
   </select>
   <select id="selectBarcodeNnumber" resultType="java.lang.String">
@@ -438,23 +453,58 @@
     where item_id = #{checkApplicationId}
   </update>
 
+  <!--样本接收页面-->
   <select id="selectReceptedSample" resultMap="BaseResultMap">
     select *
     from check_application
     where hosnum = #{hosNum} and sample_reception_statu = '已接收'
-    <if test="barCodeNumber != null and barCodeNumber != ''">
-      and barcode_number = #{barCodeNumber}
+    <if test="receptedSampleQueryDto.barCodeNumber != null and receptedSampleQueryDto.barCodeNumber != ''">
+      and barcode_number = #{receptedSampleQueryDto.barCodeNumber}
     </if>
-    <if test="startDate != null and startDate != ''">
-      and billing_time &gt;= #{startDate}
+    <if test="receptedSampleQueryDto.startDate != null and receptedSampleQueryDto.startDate != ''">
+      and sample_reception_time &gt;= #{receptedSampleQueryDto.startDate}
     </if>
-    <if test="endDate != null and endDate != ''">
-      and billing_time &lt;= #{endDate}
+    <if test="receptedSampleQueryDto.endDate != null and receptedSampleQueryDto.endDate != ''">
+      and sample_reception_time &lt;= #{receptedSampleQueryDto.endDate}
     </if>
+  </select>
+  <select id="getCheckApplication" resultMap="BaseResultMap">
+    select *
+    from check_application
+    where hosnum = #{hosNum} and barcode_number = #{barCodeNumber}
+  </select>
+  <select id="getReceptionStatu" resultMap="BaseResultMap">
+    select sample_reception_statu,sample_reception_time,sample_return_time
+    from check_application
+    where  hosnum = #{hosNum} and barcode_number = #{barCodeNumber}
   </select>
   <update id="receiveSample">
     update check_application
     set sample_reception_statu = '已接收', sample_reception_time = sysdate()
     where hosnum = #{hosNum} and barcode_number = #{barCodeNumber}
   </update>
+  <update id="returnSample">
+    update check_application
+    set sample_reception_statu = '已退回', sample_return_time = sysdate(), sample_return_reason = #{retrunSampleDto.returnReason}, sample_return_doctor = #{retrunSampleDto.returnDoctor}
+    where hosnum = #{hosNum} and item_id in
+    <foreach collection="retrunSampleDto.sampleIdList" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+  <!--样本退回页面-->
+  <select id="selectReturnedSample" resultMap="BaseResultMap">
+    select *
+    from check_application
+    where hosnum = #{hosNum} and sample_reception_statu = '已退回'
+    <if test="returnSampleQueryDto.barCodeNumber != null and returnSampleQueryDto.barCodeNumber != ''">
+      and barcode_number = #{returnSampleQueryDto.barCodeNumber}
+    </if>
+    <if test="returnSampleQueryDto.startDate != null and returnSampleQueryDto.startDate != ''">
+      and sample_return_time &gt;= #{returnSampleQueryDto.startDate}
+    </if>
+    <if test="returnSampleQueryDto.endDate != null and returnSampleQueryDto.endDate != ''">
+      and sample_return_time &lt;= #{returnSampleQueryDto.endDate}
+    </if>
+  </select>
 </mapper>
