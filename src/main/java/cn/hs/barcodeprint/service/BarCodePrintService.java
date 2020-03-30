@@ -76,7 +76,9 @@ public class BarCodePrintService {
                     checkItemGroupName = checkItemGroupName + checkApplicationDetail.getCheckItemGroupName() + ",";
                 }
             }
-            checkApplication.setCheckItemGroup(checkItemGroupName.substring(0, checkItemGroupName.length() - 1));
+            if (checkItemGroupName.length() > 0){
+                checkApplication.setCheckItemGroup(checkItemGroupName.substring(0, checkItemGroupName.length() - 1));
+            }
         }
         return checkApplicationList;
     }

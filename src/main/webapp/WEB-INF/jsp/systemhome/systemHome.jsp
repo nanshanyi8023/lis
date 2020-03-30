@@ -111,10 +111,11 @@
             background-color: #4c4c4c;
         }
 
-        /*设置按钮颜色*/
+        /*设置按钮样式*/
         .dhxform_obj_dhx_skyblue div.dhxform_btn {
             color: #ffffff;
             background: -webkit-linear-gradient(#7190d8, #97bdec);
+            border-radius: 5px;
         }
         /*鼠标悬停时的背景颜色*/
         .dhxform_obj_dhx_skyblue div.dhxform_btn.dhxform_btn_over {
@@ -123,6 +124,9 @@
         /*点击按钮时背景颜色*/
         .dhxform_obj_dhx_skyblue div.dhxform_btn.dhxform_btn_pressed {
             background: -webkit-linear-gradient(#7190d8, #97bdec);
+        }
+        .dhxform_obj_dhx_skyblue div.dhxform_btn:focus {
+            outline: 0px dotted #97bdec;
         }
     </style>
 
