@@ -107,6 +107,15 @@
             ReturnedSampleGrid.obj.init();
             ReturnedSampleGrid.obj.setColumnHidden(10, true);
 
+            //底部分页栏
+            Layout.obj.cells("b").attachStatusBar({
+                text: "<div id='exampaging'></div>",
+                height: 30
+            });
+            ReturnedSampleGrid.obj.enablePaging(true,18,5,"exampaging",true);
+            ReturnedSampleGrid.obj.i18n.paging = i18n_paging;
+            ReturnedSampleGrid.obj.setPagingSkin("toolbar");
+
             ReturnedSampleGrid.loadData();
         },
         initEvent: function () {

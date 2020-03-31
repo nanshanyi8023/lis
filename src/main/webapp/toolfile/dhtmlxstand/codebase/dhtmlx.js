@@ -1,11 +1,3 @@
-/*
- Product Name: dhtmlxSuite
- Version: 5.0.8
- Edition: Professional
- License: content of this file is covered by DHTMLX Commercial or Enterprise license. Usage without proper license is prohibited. To obtain it contact sales@dhtmlx.com
- Copyright UAB Dinamenta http://www.dhtmlx.com
- */
-
 if (typeof(window.dhx) == "undefined") {
     window.dhx = window.dhx4 = {
         version: "5.0.8", skin: null, skinDetect: function (a) {

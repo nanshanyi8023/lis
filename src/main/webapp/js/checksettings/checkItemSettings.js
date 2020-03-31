@@ -212,8 +212,17 @@
             ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro,ro,ro,ro");
             ItemGrid.obj.setColumnHidden(8, true);
             ItemGrid.obj.setColumnHidden(9, true);
-            ItemGrid.obj.enableSmartRendering(true);
+            ItemGrid.obj.enableSmartRendering(30);
             ItemGrid.obj.init();
+
+            //底部分页栏
+            Layout.obj.cells("b").attachStatusBar({
+                text: "<div id='exampaging'></div>",
+                height: 30
+            });
+            ItemGrid.obj.enablePaging(true,23,5,"exampaging",true);
+            ItemGrid.obj.i18n.paging = i18n_paging;
+            ItemGrid.obj.setPagingSkin("toolbar");
         },
         initEvent: function () {
             ItemGrid.obj.attachEvent("onRowDblClicked", function () {
