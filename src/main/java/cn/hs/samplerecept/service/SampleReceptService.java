@@ -3,15 +3,16 @@ package cn.hs.samplerecept.service;
 import cn.hs.publicclass.mapper.CheckApplicationDetailMapper;
 import cn.hs.publicclass.mapper.CheckApplicationMapper;
 import cn.hs.publicclass.method.FormatDate;
+import cn.hs.publicclass.method.GetCookieService;
 import cn.hs.publicclass.table.checkapplication.CheckApplication;
 import cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail;
 import cn.hs.samplerecept.dto.ReceptedSampleQueryDto;
 import cn.hs.samplerecept.dto.RetrunSampleDto;
+import cn.hs.userinfo.mapper.UserInfoMapper;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,27 +26,23 @@ public class SampleReceptService {
     private CheckApplicationDetailMapper checkApplicationDetailMapper;
 
     @Autowired
-    private HttpServletRequest request;
+    private UserInfoMapper userInfoMapper;
 
-    //查找医院号
-    private String getHosNum() {
-        Cookie cookies[] = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("hosNum")) {
-                return cookie.getValue();
-            }
-        }
-        return null;
-    }
-
+    @Autowired
+    private GetCookieService getCookie;
+    
 
     //查询符合条件的已接收样本
     public List<CheckApplication> getReceptedSample(ReceptedSampleQueryDto receptedSampleQueryDto) {
-        String startDate = FormatDate.formatstartDate(receptedSampleQueryDto.getStartDate());
-        receptedSampleQueryDto.setStartDate(startDate);
-        String endDate = FormatDate.formatEndDay(receptedSampleQueryDto.getEndDate());
-        receptedSampleQueryDto.setEndDate(endDate);
-        List<CheckApplication> checkApplicationList = checkApplicationMapper.selectReceptedSample(this.getHosNum(), receptedSampleQueryDto);
+        if (StringUtils.isNotEmpty(receptedSampleQueryDto.getStartDate())) {
+            String startDate = FormatDate.formatstartDate(receptedSampleQueryDto.getStartDate());
+            receptedSampleQueryDto.setStartDate(startDate);
+        }
+        if (StringUtils.isNotEmpty(receptedSampleQueryDto.getEndDate())){
+            String endDate = FormatDate.formatEndDay(receptedSampleQueryDto.getEndDate());
+            receptedSampleQueryDto.setEndDate(endDate);
+        }
+        List<CheckApplication> checkApplicationList = checkApplicationMapper.selectReceptedSample(getCookie.getHosNum(), receptedSampleQueryDto);
         if (checkApplicationList.size() <= 0) {
             return checkApplicationList;
         }
@@ -57,7 +54,7 @@ public class SampleReceptService {
             checkApplicationIdList.add(checkApplication.getItemId());
         }
         //查询所有需要的检验申请id对应的检验项目组合
-        List<CheckApplicationDetail> checkApplicationDetailList = checkApplicationDetailMapper.getCheckItemGroup(this.getHosNum(), checkApplicationIdList);
+        List<CheckApplicationDetail> checkApplicationDetailList = checkApplicationDetailMapper.getCheckItemGroup(getCookie.getHosNum(), checkApplicationIdList);
         //将对应的检验项目组合赋值给checkApplicationList
         for (CheckApplication checkApplication : checkApplicationList) {
             String checkItemGroupName = "";
@@ -66,7 +63,9 @@ public class SampleReceptService {
                     checkItemGroupName = checkItemGroupName + checkApplicationDetail.getCheckItemGroupName() + ",";
                 }
             }
-            checkApplication.setCheckItemGroup(checkItemGroupName.substring(0, checkItemGroupName.length() - 1));
+            if (checkItemGroupName.length() > 0){
+                checkApplication.setCheckItemGroup(checkItemGroupName.substring(0, checkItemGroupName.length() - 1));
+            }
         }
         return checkApplicationList;
     }
@@ -74,12 +73,12 @@ public class SampleReceptService {
     //根据条码号接收样本
     public String receiveSample(String barCodeNumber) {
         //判断样本条码号是否存在
-        CheckApplication checkApplication = checkApplicationMapper.getCheckApplication(this.getHosNum(), barCodeNumber);
+        CheckApplication checkApplication = checkApplicationMapper.getCheckApplication(getCookie.getHosNum(), barCodeNumber);
         if (checkApplication == null) {
             return "未查询到该条码号，请检查输入条码号是否正确";
         }
         //判断条码号对应的样本是否已接收
-        checkApplication = checkApplicationMapper.getReceptionStatu(this.getHosNum(), barCodeNumber);
+        checkApplication = checkApplicationMapper.getReceptionStatu(getCookie.getHosNum(), barCodeNumber);
         if (checkApplication.getSampleReceptionStatu().equals("已接收")) {
             String receptionDay = FormatDate.formatDay(checkApplication.getSampleReceptionTime());
             return "该样本已于" + receptionDay + "接收!";
@@ -88,7 +87,7 @@ public class SampleReceptService {
             return "该样本已于" + returnDay + "退回!";
         }
         //接收样本
-        checkApplicationMapper.receiveSample(this.getHosNum(), barCodeNumber);
+        checkApplicationMapper.receiveSample(getCookie.getHosNum(), barCodeNumber);
         return "接收样本成功";
     }
 
@@ -96,6 +95,8 @@ public class SampleReceptService {
         if (retrunSampleDto.getSampleIdList().isEmpty()) {
             return 0;
         }
-        return checkApplicationMapper.returnSample(this.getHosNum(), retrunSampleDto.getSampleIdList(), retrunSampleDto.getReturnReason());
+        String loginName = userInfoMapper.selectUserName(getCookie.getLoginName());
+        retrunSampleDto.setReturnDoctor(loginName);
+        return checkApplicationMapper.returnSample(getCookie.getHosNum(), retrunSampleDto);
     }
 }

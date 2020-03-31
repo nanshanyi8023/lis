@@ -168,8 +168,8 @@
 
     //检验申请列表
     var CheckApplicationGrid = {
-        obj:null,
-        gridData:null,
+        obj: null,
+        checkApplicationSearch: null,
         initObj: function () {
             CheckApplicationGrid.obj = Layout.obj.cells("c").attachGrid();
             CheckApplicationGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
@@ -186,7 +186,7 @@
             CheckApplicationGrid.obj.enableColumnAutoSize(true);
 
             Layout.obj.cells("c").attachStatusBar({
-                text: '<div style="height:20px; line-height:20px;margin: 7px 0 5px 25px;"><span id="Pagination" ></span></div>',
+                text: '<div><span id="Pagination" ></span></div>',
                 height: 40
             });
 
@@ -219,41 +219,51 @@
                 CheckApplicationGrid.obj.clearAll();
                 return;
             }
-            var checkApplicationSearch = {
+            CheckApplicationGrid.checkApplicationSearch = {
                 patientIdList : patientIdList,
                 startDate : OperationForm.obj.getItemValue("startDate",true),
                 endDate : OperationForm.obj.getItemValue("endDate",true)
             };
-            /*ajaxUtils.postBody('barCodePrint/getCheckApplication.json',
-                checkApplicationSearch
+            ajaxUtils.postBody('barCodePrint/getCheckApplicationCount.json',
+                CheckApplicationGrid.checkApplicationSearch
             ).then(function (data) {
-                CheckApplicationGrid.gridData = data;
-                $("#Pagination").pagination(data.length, {
-                    num_edge_entries: $('#pageIndex').val(), //边缘页数
-                    num_display_entries: 10, //主体页数
+                $("#Pagination").pagination(data, {
                     callback: CheckApplicationGrid.pageselectCallback,
-                    items_per_page: 20, //每页显示个数
+                    items_per_page: pageSize, //显示条数
                     prev_text: "前一页",
-                    next_text: "后一页"
+                    next_text: "后一页",
+                    num_display_entries: 10, //连续分页主体部分分页条目数
+                    num_edge_entries: 2 //两侧首尾分页条目数
                 });
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
-            });*/
-        },
-        pageselectCallback:function () {
-            var data = CheckApplicationGrid.gridData;
-            for (var i = 0 ; i < data.length ;i++){
-                data[i].billingTime = new Date(data[i].billingTime).toLocaleDateString();
-            }
-            dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "itemId");  //删除所有行，加载数据
-            //CheckApplicationGrid.obj.sortRows(1,"int","asc");
-            //将急诊栏禁用
-            CheckApplicationGrid.obj.forEachRow(function (id) {
-                CheckApplicationGrid.obj.cells(id, 6).setDisabled(true);
             });
+        },
+        pageselectCallback:function (index) {
+            CheckApplicationGrid.checkApplicationSearch.pageIndex = index;
+            CheckApplicationGrid.checkApplicationSearch.pageSize = pageSize;
+            ajaxUtils.postBody('barCodePrint/getCheckApplication.json',
+                CheckApplicationGrid.checkApplicationSearch
+            ).then(function (data) {
+                 for (var i = 0 ; i < data.length ;i++){
+                     data[i].billingTime = new Date(data[i].billingTime).toLocaleDateString();
+                 }
+                 dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "itemId");  //删除所有行，加载数据
+                 //CheckApplicationGrid.obj.sortRows(1,"int","asc");
+                 //将急诊栏禁用
+                 CheckApplicationGrid.obj.forEachRow(function (id) {
+                     CheckApplicationGrid.obj.cells(id, 6).setDisabled(true);
+                 });
+            }).catch(function (reason) {
+               dhtmlxAlert.alertErrorMsg(reason);
+            }).finally(function () {
+            });
+            return false;
         }
     };
+
+    var pageSize = 18;
 
     var init = function () {
         Layout.initObj();

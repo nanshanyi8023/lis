@@ -155,7 +155,7 @@
                 return;
             }
             ReceivedSampleGrid.loadData();
-        },
+        }
     };
     
     //已接收样本列表

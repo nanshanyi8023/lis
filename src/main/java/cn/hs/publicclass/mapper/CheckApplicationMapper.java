@@ -4,10 +4,10 @@ import cn.hs.barcodeprint.dto.CheckApplicationSearchDto;
 import cn.hs.publicclass.table.checkapplication.CheckApplication;
 import cn.hs.publicclass.table.checkapplication.CheckApplicationExample;
 import cn.hs.publicclass.table.checkapplication.CheckApplicationKey;
-
 import java.util.List;
 
 import cn.hs.samplerecept.dto.ReceptedSampleQueryDto;
+import cn.hs.samplerecept.dto.RetrunSampleDto;
 import org.apache.ibatis.annotations.Param;
 
 public interface CheckApplicationMapper {
@@ -37,6 +37,9 @@ public interface CheckApplicationMapper {
     /**
      * 条码打印页面
      */
+    //根据患者id和开单时间查找对应的检验申请数目
+    int selectCheckApplicationCount(@Param("hosNum") String hosNum, @Param("checkApplicationSearchDto") CheckApplicationSearchDto checkApplicationSearchDto);
+
     //根据患者id和开单时间查找对应的检验申请
     List<CheckApplication> selectByPatientAndTime(@Param("hosNum") String hosNum, @Param("checkApplicationSearchDto") CheckApplicationSearchDto checkApplicationSearchDto);
 
@@ -65,5 +68,12 @@ public interface CheckApplicationMapper {
     void receiveSample(@Param("hosNum") String hosNum, @Param("barCodeNumber") String barCodeNumber);
 
     //退回样本
-    int returnSample(@Param("hosNum") String hosNum, @Param("sampleIdList") List<String> sampleIdList, @Param("returnReason") String returnReason);
+    int returnSample(@Param("hosNum") String hosNum, @Param("retrunSampleDto") RetrunSampleDto retrunSampleDto);
+
+    /**
+     * 样本退回页面
+     */
+    //查找对应的已退回样本
+    List<CheckApplication> selectReturnedSample(@Param("hosNum") String hosNum, @Param("returnSampleQueryDto") ReceptedSampleQueryDto returnSampleQueryDto);
+
 }
