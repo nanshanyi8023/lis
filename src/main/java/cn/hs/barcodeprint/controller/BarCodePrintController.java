@@ -26,16 +26,6 @@ public class BarCodePrintController {
         }
     }
 
-    //查询符合条件的检验申请数目
-    @RequestMapping(value = "/getCheckApplicationCount.json", method = RequestMethod.POST)
-    public ApiResult getCheckApplicationCount(@RequestBody CheckApplicationSearchDto checkApplicationSearchDto){
-        try {
-            return ApiResult.success(barCodePrintService.getCheckApplicationCount(checkApplicationSearchDto));
-        } catch (Exception e){
-            return ApiResult.failed(e.getMessage());
-        }
-    }
-
     //查询符合条件的检验申请
     @RequestMapping(value = "/getCheckApplication.json", method = RequestMethod.POST)
     public ApiResult getCheckApplication(@RequestBody CheckApplicationSearchDto checkApplicationSearchDto){

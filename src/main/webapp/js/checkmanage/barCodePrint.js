@@ -122,6 +122,16 @@
             PatientListGrid.obj.setInitWidths("50,*,80,50,50");          //列宽
             PatientListGrid.obj.setColTypes("ch,ro,ro,ro,ro");
             PatientListGrid.obj.init();
+
+            //底部分页栏
+            Layout.obj.cells("b").attachStatusBar({
+                text: "<div id='exampagingb'></div>",
+                height: 30
+            });
+            PatientListGrid.obj.enablePaging(true,18,5,"exampagingb",true);
+            PatientListGrid.obj.i18n.paging = i18n_paging;
+            PatientListGrid.obj.setPagingSkin("toolbar");
+
             PatientListGrid.loadData();
         },
         initEvent: function () {
@@ -185,11 +195,14 @@
             CheckApplicationGrid.obj.setColumnHidden(12, true);
             CheckApplicationGrid.obj.enableColumnAutoSize(true);
 
+            //底部分页栏
             Layout.obj.cells("c").attachStatusBar({
-                text: '<div><span id="Pagination" ></span></div>',
-                height: 40
+                text: "<div id='exampagingc'></div>",
+                height: 30
             });
-
+            CheckApplicationGrid.obj.enablePaging(true,18,5,"exampagingc",true);
+            CheckApplicationGrid.obj.i18n.paging = i18n_paging;
+            CheckApplicationGrid.obj.setPagingSkin("toolbar");
         },
         initEvent: function () {
             //全选按钮
@@ -224,42 +237,22 @@
                 startDate : OperationForm.obj.getItemValue("startDate",true),
                 endDate : OperationForm.obj.getItemValue("endDate",true)
             };
-            ajaxUtils.postBody('barCodePrint/getCheckApplicationCount.json',
+            ajaxUtils.postBody('barCodePrint/getCheckApplication.json',
                 CheckApplicationGrid.checkApplicationSearch
             ).then(function (data) {
-                $("#Pagination").pagination(data, {
-                    callback: CheckApplicationGrid.pageselectCallback,
-                    items_per_page: pageSize, //显示条数
-                    prev_text: "前一页",
-                    next_text: "后一页",
-                    num_display_entries: 10, //连续分页主体部分分页条目数
-                    num_edge_entries: 2 //两侧首尾分页条目数
+                for (var i = 0 ; i < data.length ;i++){
+                    data[i].billingTime = new Date(data[i].billingTime).toLocaleDateString();
+                }
+                dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "itemId");  //删除所有行，加载数据
+                //CheckApplicationGrid.obj.sortRows(1,"int","asc");
+                //将急诊栏禁用
+                CheckApplicationGrid.obj.forEachRow(function (id) {
+                    CheckApplicationGrid.obj.cells(id, 6).setDisabled(true);
                 });
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
             });
-        },
-        pageselectCallback:function (index) {
-            CheckApplicationGrid.checkApplicationSearch.pageIndex = index;
-            CheckApplicationGrid.checkApplicationSearch.pageSize = pageSize;
-            ajaxUtils.postBody('barCodePrint/getCheckApplication.json',
-                CheckApplicationGrid.checkApplicationSearch
-            ).then(function (data) {
-                 for (var i = 0 ; i < data.length ;i++){
-                     data[i].billingTime = new Date(data[i].billingTime).toLocaleDateString();
-                 }
-                 dhtmlxUtils.clearAndLoadJsonListData(CheckApplicationGrid.obj, data, "itemId");  //删除所有行，加载数据
-                 //CheckApplicationGrid.obj.sortRows(1,"int","asc");
-                 //将急诊栏禁用
-                 CheckApplicationGrid.obj.forEachRow(function (id) {
-                     CheckApplicationGrid.obj.cells(id, 6).setDisabled(true);
-                 });
-            }).catch(function (reason) {
-               dhtmlxAlert.alertErrorMsg(reason);
-            }).finally(function () {
-            });
-            return false;
         }
     };
 
