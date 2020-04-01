@@ -2,6 +2,34 @@
 !function (global) {
     'use strict';
 
+    var Layout = {
+        obj: null,
+
+        config: {
+            parent: "leftHomeObj",
+            pattern: "1C",
+            offsets: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            cells: [
+                {
+                    id: "a",
+                    header: false,      // 隐藏标题
+                    text: "&nbsp&nbsp&nbsp&nbsp功能列表",
+                    collapsed_text: "单击展开功能列表",   // 折叠栏标题
+                    collapse: false,       // 初始是否折叠
+                    fix_size: [true, true]
+                }
+            ]
+        },
+        initObj: function () {
+            Layout.obj = new dhtmlXLayoutObject(Layout.config);
+        }
+    };
+
     var MenuTree = {
         obj: null,
         config: {
@@ -90,12 +118,12 @@
             ]
         },
         initobj: function () {
-            MenuTree.obj = SystemHome.Layout.obj.cells("b").attachTreeView(MenuTree.config);
+            MenuTree.obj = Layout.obj.cells("a").attachTreeView(MenuTree.config);
             MenuTree.obj.setSizes();
         },
         initEvent: function () {
             MenuTree.obj.attachEvent("onSelect", function(id){
-                SystemHome.Layout.obj.cells("c").detachObject();    //清空右边内容
+                SystemHome.Layout.obj.cells("a").detachObject();    //清空右边内容
                 switch (id) {
                     case "barCodePrint":
                         barCodePrint.init();
@@ -124,6 +152,7 @@
     };
 
     var init = function () {
+        Layout.initObj();
         MenuTree.initobj();
         MenuTree.initEvent();
     };

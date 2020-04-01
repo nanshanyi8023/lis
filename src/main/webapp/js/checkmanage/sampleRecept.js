@@ -34,7 +34,7 @@
         },
 
         initObj: function () {
-            Layout.obj = SystemHome.Layout.obj.cells("c").attachLayout(Layout.config);
+            Layout.obj = SystemHome.Layout.obj.cells("a").attachLayout(Layout.config);
         }
     };
 

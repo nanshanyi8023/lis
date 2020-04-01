@@ -13,6 +13,7 @@
     <link type="text/css" rel="stylesheet" href="toolfile/dhtmlxstand/codebase/dhtmlx.css" />
     <link type="text/css" rel="stylesheet" href="toolfile/pagination/page.css" />
     <link type="text/css" rel="stylesheet" href="toolfile/dhtmlxcustomize/dhtmlxInit.css" />
+    <link type="text/css" rel="stylesheet" href="css/topwelcombebar/topInit.css"/>
 
     <script type="text/javascript" src="toolfile/jquery/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="toolfile/jquery/jquery.cookie.js"></script>
@@ -72,7 +73,18 @@
 
 </head>
 <body>
-<div id="SystemHomeObj" style="width: 100%;height:100%"></div>
+<div style="width: 100%;height:100%">
+    <div id="TopObj" style="width: 100%;height:7%" class="topHeader">
+        <div class="topHeader-logo"></div>
+        <div class="topHeader-user"></div>
+        <div class="topHeader-tools"></div>
+    </div>
+    <div id="SystemHomeObj" style="width: 100%;height: 93%;" >
+        <div id="leftHomeObj" style="width: 13%;height: 100%;float:left;"></div>
+        <div id="rightHomeObj" style="width: 87%;height: 100%;float:left;"></div>
+    </div>
+</div>
+
 <script type="text/javascript">
     $(document).ready(function () {
         //设置dhtmlx时钟的语言
