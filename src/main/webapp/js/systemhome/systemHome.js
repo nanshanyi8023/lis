@@ -5,8 +5,8 @@
         obj: null,
 
         config: {
-            parent: "SystemHomeObj",
-            pattern: "3T",
+            parent: "rightHomeObj",
+            pattern: "1C",
             offsets: {
                 top: 0,
                 right: 0,
@@ -20,24 +20,6 @@
                     header: false,      // 隐藏标题
                     collapsed_text: "collapsed_textA",   // 折叠栏标题
                     collapse: false,       // 初始是否折叠
-                    fix_size: [true, true],
-                    height:50
-                },
-                {
-                    id: "b",
-                    header: false,      // 隐藏标题
-                    text: "&nbsp&nbsp&nbsp&nbsp功能列表",
-                    collapsed_text: "单击展开功能列表",   // 折叠栏标题
-                    collapse: false,       // 初始是否折叠
-                    fix_size: [true, true],
-                    width: 200
-                },
-                {
-                    id: "c",
-                    text: "textC",
-                    header: false,      // 隐藏标题
-                    collapsed_text: "collapsed_textC",   // 折叠栏标题
-                    collapse: false,       // 初始是否折叠
                     fix_size: [true, true]
                 }
             ]
@@ -48,7 +30,6 @@
     };
     var init = function () {
         Layout.initObj();
-        TopWelcomeBar.init();
         LeftMenu.init();
     };
 

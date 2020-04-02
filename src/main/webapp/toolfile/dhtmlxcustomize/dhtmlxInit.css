@@ -1,0 +1,79 @@
+/*设置左侧菜单栏样式*/
+/*margin*/
+#leftHomeObj .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item {
+    margin-top: 5px;
+}
+/*整体背景颜色   #02224a*/
+#leftHomeObj .dhxtreeview_dhx_skyblue {
+    background-color: #333333;
+}
+/*字的颜色和背景颜色*/
+#leftHomeObj .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_label {
+    color: #bbb;
+    background-color: #333333;
+    font-size: 13px;
+}
+/*项目高度及项目间边框*/
+#leftHomeObj .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text {
+    border: 1px solid #333333 ;
+    height: 30px;
+}
+/*选中行背景颜色和边框颜色 #4a90e2*/
+#leftHomeObj .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected, .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover {
+    background-color: #333333;
+    border-color: #333333;
+}
+/*选中行字的背景颜色，边框颜色和字的颜色*/
+#leftHomeObj .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected div.dhxtreeview_item_label, .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover div.dhxtreeview_item_label {
+    background-color: #333333;
+    border-color: #333333;
+    color: #ffffff;
+}
+/*鼠标悬停时的背景颜色和边框颜色*/
+#leftHomeObj .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover {
+    background-color: #4c4c4c;
+    border-color: #4c4c4c;
+}
+/*鼠标悬停时字的背景颜色和边框颜色*/
+#leftHomeObj .dhxtreeview_dhx_skyblue div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover div.dhxtreeview_item_label {
+    border-color: #4c4c4c;
+    background-color: #4c4c4c;
+}
+
+
+/*设置按钮样式*/
+.dhxform_obj_dhx_skyblue div.dhxform_btn {
+    color: #ffffff;
+    background: -webkit-linear-gradient(#7190d8, #97bdec);
+    border-radius: 5px;
+}
+/*鼠标悬停时的背景颜色*/
+.dhxform_obj_dhx_skyblue div.dhxform_btn.dhxform_btn_over {
+    background: -webkit-linear-gradient(#7190d8, #97bdec);
+}
+/*点击按钮时背景颜色*/
+.dhxform_obj_dhx_skyblue div.dhxform_btn.dhxform_btn_pressed {
+    background: -webkit-linear-gradient(#7190d8, #97bdec);
+}
+.dhxform_obj_dhx_skyblue div.dhxform_btn:focus {
+    outline: 0px dotted #97bdec;
+}
+
+
+/*取消表格隔行换色*/
+#SystemHomeObj div.gridbox_dhx_skyblue.gridbox table.obj tr.odd_dhx_skyblue {
+    background: #ffffff;
+}
+
+
+/*取消左侧布局边框*/
+#leftHomeObj .dhxlayout_cont div.dhx_cell_layout div.dhx_cell_cont_layout {
+     top: 0px !important;
+     position: absolute;
+     border-left: 0px solid #c3c3c3;
+     border-right: 0px solid #c3c3c3;
+     border-bottom: 0px solid #c3c3c3;
+     border-top: 0px solid #ffffff;
+     overflow: hidden;
+     z-index: 0;
+}

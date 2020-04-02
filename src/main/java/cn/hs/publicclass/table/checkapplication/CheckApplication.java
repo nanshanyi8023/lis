@@ -36,6 +36,8 @@ public class CheckApplication extends CheckApplicationKey {
 
     private String sampleReturnReason;
 
+    private String sampleReturnDoctor;
+
     public String getCheckItemGroup() {
         return checkItemGroup;
     }
@@ -162,5 +164,13 @@ public class CheckApplication extends CheckApplicationKey {
 
     public void setSampleReturnReason(String sampleReturnReason) {
         this.sampleReturnReason = sampleReturnReason == null ? null : sampleReturnReason.trim();
+    }
+
+    public String getSampleReturnDoctor() {
+        return sampleReturnDoctor;
+    }
+
+    public void setSampleReturnDoctor(String sampleReturnDoctor) {
+        this.sampleReturnDoctor = sampleReturnDoctor == null ? null : sampleReturnDoctor.trim();
     }
 }

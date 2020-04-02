@@ -44,7 +44,7 @@
         },
 
         initObj: function () {
-            Layout.obj = SystemHome.Layout.obj.cells("c").attachLayout(Layout.config);
+            Layout.obj = SystemHome.Layout.obj.cells("a").attachLayout(Layout.config);
         }
     };
 
@@ -122,6 +122,16 @@
             PatientListGrid.obj.setInitWidths("50,*,80,50,50");          //列宽
             PatientListGrid.obj.setColTypes("ch,ro,ro,ro,ro");
             PatientListGrid.obj.init();
+
+            //底部分页栏
+            Layout.obj.cells("b").attachStatusBar({
+                text: "<div id='exampagingb'></div>",
+                height: 30
+            });
+            PatientListGrid.obj.enablePaging(true,18,5,"exampagingb",true);
+            PatientListGrid.obj.i18n.paging = i18n_paging;
+            PatientListGrid.obj.setPagingSkin("toolbar");
+
             PatientListGrid.loadData();
         },
         initEvent: function () {
@@ -168,7 +178,8 @@
 
     //检验申请列表
     var CheckApplicationGrid = {
-        obj:null,
+        obj: null,
+        checkApplicationSearch: null,
         initObj: function () {
             CheckApplicationGrid.obj = Layout.obj.cells("c").attachGrid();
             CheckApplicationGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
@@ -182,8 +193,16 @@
             CheckApplicationGrid.obj.setColumnHidden(10, true);
             CheckApplicationGrid.obj.setColumnHidden(11,true);
             CheckApplicationGrid.obj.setColumnHidden(12, true);
-            //CheckApplicationGrid.obj.enableAutoWidth(true);
             CheckApplicationGrid.obj.enableColumnAutoSize(true);
+
+            //底部分页栏
+            Layout.obj.cells("c").attachStatusBar({
+                text: "<div id='exampagingc'></div>",
+                height: 30
+            });
+            CheckApplicationGrid.obj.enablePaging(true,18,5,"exampagingc",true);
+            CheckApplicationGrid.obj.i18n.paging = i18n_paging;
+            CheckApplicationGrid.obj.setPagingSkin("toolbar");
         },
         initEvent: function () {
             //全选按钮
@@ -213,13 +232,13 @@
                 CheckApplicationGrid.obj.clearAll();
                 return;
             }
-            var checkApplicationSearch = {
+            CheckApplicationGrid.checkApplicationSearch = {
                 patientIdList : patientIdList,
                 startDate : OperationForm.obj.getItemValue("startDate",true),
                 endDate : OperationForm.obj.getItemValue("endDate",true)
             };
             ajaxUtils.postBody('barCodePrint/getCheckApplication.json',
-                checkApplicationSearch
+                CheckApplicationGrid.checkApplicationSearch
             ).then(function (data) {
                 for (var i = 0 ; i < data.length ;i++){
                     data[i].billingTime = new Date(data[i].billingTime).toLocaleDateString();
@@ -236,6 +255,8 @@
             });
         }
     };
+
+    var pageSize = 18;
 
     var init = function () {
         Layout.initObj();

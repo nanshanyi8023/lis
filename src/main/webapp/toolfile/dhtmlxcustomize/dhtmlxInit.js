@@ -2,7 +2,7 @@
 !function (global) {
     'use strict';
 
-var setChinese = function () {
+var setCalendarChinese = function () {
     dhtmlXCalendarObject.prototype.lang = "cn";
     dhtmlXCalendarObject.prototype.langData["cn"] = {
         // date format for inputs
@@ -29,7 +29,23 @@ var setChinese = function () {
     };
 };
 
-var dhtmlxCalendarLanage = function(){};
-    dhtmlxCalendarLanage.setChinese = setChinese;
-global.dhtmlxCalendarLanage = dhtmlxCalendarLanage||{};
+    var i18n_paging = {
+        results: '',
+        records: '数据范围:',
+        to: ' ~ ',
+        page: '当前页: ',
+        perpage: '条/页',
+        first: '首页',
+        previous: '上一页',
+        found: 'Found records',
+        next: '下一页',
+        last: '尾页',
+        of: ' of ',
+        notfound: '暂无可展示数据'
+    };
+
+var dhtmlxInit = function(){};
+    dhtmlxInit.setCalendarChinese = setCalendarChinese;
+global.dhtmlxInit = dhtmlxInit||{};
+global.i18n_paging = i18n_paging;
 }(this);

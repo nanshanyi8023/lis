@@ -34,7 +34,7 @@
         },
 
         initObj: function () {
-            Layout.obj = SystemHome.Layout.obj.cells("c").attachLayout(Layout.config);
+            Layout.obj = SystemHome.Layout.obj.cells("a").attachLayout(Layout.config);
         }
     };
 
@@ -155,7 +155,7 @@
                 return;
             }
             ReceivedSampleGrid.loadData();
-        },
+        }
     };
     
     //已接收样本列表
@@ -172,6 +172,15 @@
             ReceivedSampleGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ch,ro,ro,ro,ro");
             ReceivedSampleGrid.obj.init();
             ReceivedSampleGrid.obj.setColumnHidden(10, true);
+
+            //底部分页栏
+            Layout.obj.cells("b").attachStatusBar({
+                text: "<div id='exampaging'></div>",
+                height: 30
+            });
+            ReceivedSampleGrid.obj.enablePaging(true,18,5,"exampaging",true);
+            ReceivedSampleGrid.obj.i18n.paging = i18n_paging;
+            ReceivedSampleGrid.obj.setPagingSkin("toolbar");
 
             ReceivedSampleGrid.loadData();
         },

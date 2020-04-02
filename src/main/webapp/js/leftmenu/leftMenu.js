@@ -2,6 +2,34 @@
 !function (global) {
     'use strict';
 
+    var Layout = {
+        obj: null,
+
+        config: {
+            parent: "leftHomeObj",
+            pattern: "1C",
+            offsets: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            cells: [
+                {
+                    id: "a",
+                    header: false,      // 隐藏标题
+                    text: "&nbsp&nbsp&nbsp&nbsp功能列表",
+                    collapsed_text: "单击展开功能列表",   // 折叠栏标题
+                    collapse: false,       // 初始是否折叠
+                    fix_size: [true, true]
+                }
+            ]
+        },
+        initObj: function () {
+            Layout.obj = new dhtmlXLayoutObject(Layout.config);
+        }
+    };
+
     var MenuTree = {
         obj: null,
         config: {
@@ -10,31 +38,30 @@
                     id: "inspectManagement",
                     text: "检验管理",
                     open: 1,
-                    // icons: {folder_opened: "inspectManagement", folder_closed: "inspectManagement"},
                     items: [
                         {
                             id: "barCodePrint",
-                            text: "条码打印",
+                            text: "&nbsp;条码打印",
                             icons: {file: "barCodePrint"}
                         },
                         {
                             id: "sampleRecept",
-                            text: "样本接收",
+                            text: "&nbsp;样本接收",
                             icons: {file: "sampleRecept"}
                         },
                         {
                             id: "sampleReturn",
-                            text: "样本退回",
+                            text: "&nbsp;样本退回",
                             icons: {file: "sampleReturn"}
                         },
                         {
                             id: "inspectionOperation",
-                            text: "检验操作",
+                            text: "&nbsp;检验操作",
                             icons: {file: "inspectionOperation"}
                         },
                         {
                             id: "reportQuery",
-                            text: "报告查询",
+                            text: "&nbsp;报告查询",
                             icons: {file: "reportQuery"}
                         }
                     ]
@@ -46,28 +73,23 @@
                     items: [
                         {
                             id: "checkItemSettings",
-                            text: "检验项目设置",
-                            icons:{file:""}
+                            text: "检验项目设置"
                         },
                         {
                             id: "checkItemGroupSettings",
-                            text: "检验项目组合设置",
-                            icons:{file:""}
+                            text: "检验项目组合设置"
                         },
                         {
                             id: "workGroupSettings",
-                            text: "工作组设置",
-                            icons:{file:""}
+                            text: "工作组设置"
                         },
                         {
                             id: "equipmentSettings",
-                            text: "检验设备设置",
-                            icons:{file:""}
+                            text: "检验设备设置"
                         },
                         {
                             id: "equipmentChannelSettings",
-                            text: "检验设备通道设置",
-                            icons:{file:""}
+                            text: "检验设备通道设置"
                         }
                     ]
                 },
@@ -89,25 +111,28 @@
                     ]
                 },
                 {
-                    id: "userinfoSetting",
-                    text: "个人信息设置",
-                    icons:{file:"userinfoSetting"}
+                    id: "userInfoSetting",
+                    text: "&nbsp;个人信息设置",
+                    icons:{file:"userInfoSetting"}
                 }
             ]
         },
         initobj: function () {
-            MenuTree.obj = SystemHome.Layout.obj.cells("b").attachTreeView(MenuTree.config);
+            MenuTree.obj = Layout.obj.cells("a").attachTreeView(MenuTree.config);
             MenuTree.obj.setSizes();
         },
         initEvent: function () {
             MenuTree.obj.attachEvent("onSelect", function(id){
-                SystemHome.Layout.obj.cells("c").detachObject();    //清空右边内容
+                SystemHome.Layout.obj.cells("a").detachObject();    //清空右边内容
                 switch (id) {
                     case "barCodePrint":
                         barCodePrint.init();
                         break;
                     case "sampleRecept":
                         sampleRecept.init();
+                        break;
+                    case "sampleReturn":
+                        sampleReturn.init();
                         break;
                     case "checkItemSettings":
                         checkItemSettings.init();
@@ -118,7 +143,7 @@
                     case "workGroupSettings":
                         workGroupSettings.init();
                         break;
-                    case "userinfoSetting":
+                    case "userInfoSetting":
                         UserInfo.init();
                         break;
                 }
@@ -127,6 +152,7 @@
     };
 
     var init = function () {
+        Layout.initObj();
         MenuTree.initobj();
         MenuTree.initEvent();
     };

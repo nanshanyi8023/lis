@@ -1254,6 +1254,76 @@ public class CheckApplicationExample {
             addCriterion("sample_return_reason not between", value1, value2, "sampleReturnReason");
             return (Criteria) this;
         }
+
+        public Criteria andSampleReturnDoctorIsNull() {
+            addCriterion("sample_return_doctor is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorIsNotNull() {
+            addCriterion("sample_return_doctor is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorEqualTo(String value) {
+            addCriterion("sample_return_doctor =", value, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorNotEqualTo(String value) {
+            addCriterion("sample_return_doctor <>", value, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorGreaterThan(String value) {
+            addCriterion("sample_return_doctor >", value, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorGreaterThanOrEqualTo(String value) {
+            addCriterion("sample_return_doctor >=", value, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorLessThan(String value) {
+            addCriterion("sample_return_doctor <", value, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorLessThanOrEqualTo(String value) {
+            addCriterion("sample_return_doctor <=", value, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorLike(String value) {
+            addCriterion("sample_return_doctor like", value, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorNotLike(String value) {
+            addCriterion("sample_return_doctor not like", value, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorIn(List<String> values) {
+            addCriterion("sample_return_doctor in", values, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorNotIn(List<String> values) {
+            addCriterion("sample_return_doctor not in", values, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorBetween(String value1, String value2) {
+            addCriterion("sample_return_doctor between", value1, value2, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andSampleReturnDoctorNotBetween(String value1, String value2) {
+            addCriterion("sample_return_doctor not between", value1, value2, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
