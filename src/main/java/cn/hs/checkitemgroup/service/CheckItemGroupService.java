@@ -1,5 +1,7 @@
 package cn.hs.checkitemgroup.service;
 
+import cn.hs.checkitem.pojo.CheckItem;
+import cn.hs.checkitemgroup.mapper.CheckItemGroupDetailMapper;
 import cn.hs.checkitemgroup.mapper.CheckItemGroupMapper;
 import cn.hs.checkitemgroup.pojo.CheckItemGroup;
 import cn.hs.publicclass.method.BusinessException;
@@ -17,18 +19,27 @@ public class CheckItemGroupService {
     private CheckItemGroupMapper checkItemGroupMapper;
 
     @Autowired
+    private CheckItemGroupDetailMapper checkItemGroupDetailMapper;
+
+    @Autowired
     private GetCookieService getCookie;
 
     //查找检验项目组合
-    public List<CheckItemGroup> getcheckItemGroups(String workGroupId, String checkItemGroup) {
-        List<CheckItemGroup> checkItemGroups = checkItemGroupMapper.getcheckItemGroups(getCookie.getHosNum(), workGroupId, checkItemGroup);
-        return checkItemGroups;
+    public List<CheckItemGroup> getcheckItemGroups(String equipmentId, String checkItemGroup) {
+        List<CheckItemGroup> checkItemGroupList = checkItemGroupMapper.getcheckItemGroups(getCookie.getHosNum(), equipmentId, checkItemGroup);
+        return checkItemGroupList;
+    }
+
+    //查找检验项目组合对应的检验项目
+    public List<CheckItem> getcheckItemNameList(String checkItemGroupId) {
+        return checkItemGroupMapper.getcheckItemNameList(getCookie.getHosNum(),checkItemGroupId);
     }
 
     public int deleteCheckItemGroups(List<String> itemIdList) {
         if (itemIdList.isEmpty()){
             return 0;
         }
+        checkItemGroupDetailMapper.deleteByGroupId(getCookie.getHosNum(),itemIdList);
         return checkItemGroupMapper.deleteCheckItemGroups(getCookie.getHosNum(),itemIdList);
     }
 

@@ -3,14 +3,12 @@ package cn.hs.checkitemgroup.pojo;
 import java.util.Date;
 
 public class CheckItemGroup extends CheckItemGroupKey {
-    //新增工作组名称字段
-    private String workGroup;
+    //新增所属检验设备名称字段
+    private String equipmentName;
 
     private String groupName;
 
-    private String workGroupId;
-
-    private String samplingSite;
+    private String equipmentId;
 
     private String sampleType;
 
@@ -18,12 +16,12 @@ public class CheckItemGroup extends CheckItemGroupKey {
 
     private Date traceLog;
 
-    public String getWorkGroup() {
-        return workGroup;
+    public String getEquipmentName() {
+        return equipmentName;
     }
 
-    public void setWorkGroup(String workGroup) {
-        this.workGroup = workGroup;
+    public void setEquipmentName(String equipmentName) {
+        this.equipmentName = equipmentName;
     }
 
     public String getGroupName() {
@@ -34,20 +32,12 @@ public class CheckItemGroup extends CheckItemGroupKey {
         this.groupName = groupName == null ? null : groupName.trim();
     }
 
-    public String getWorkGroupId() {
-        return workGroupId;
+    public String getEquipmentId() {
+        return equipmentId;
     }
 
-    public void setWorkGroupId(String workGroupId) {
-        this.workGroupId = workGroupId == null ? null : workGroupId.trim();
-    }
-
-    public String getSamplingSite() {
-        return samplingSite;
-    }
-
-    public void setSamplingSite(String samplingSite) {
-        this.samplingSite = samplingSite == null ? null : samplingSite.trim();
+    public void setEquipmentId(String equipmentId) {
+        this.equipmentId = equipmentId == null ? null : equipmentId.trim();
     }
 
     public String getSampleType() {

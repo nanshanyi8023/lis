@@ -47,11 +47,11 @@ public class CheckItemController {
         }
     }
 
-    //查找所有工作组
-    @RequestMapping(value = "/getAllWorkGroup.json", method = RequestMethod.GET)
-    public ApiResult getAllWorkGroup(){
+    //查找所有检验设备
+    @RequestMapping(value = "/getAllEquipment.json", method = RequestMethod.GET)
+    public ApiResult getAllEquipment(){
         try {
-            return ApiResult.success(checkItemService.getAllWorkGroup());
+            return ApiResult.success(checkItemService.getAllEquipment());
         } catch (Exception e){
             return ApiResult.failed(e.getMessage());
         }

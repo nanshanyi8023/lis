@@ -5,8 +5,7 @@
     <id column="hosnum" jdbcType="VARCHAR" property="hosnum" />
     <id column="group_id" jdbcType="VARCHAR" property="groupId" />
     <result column="group_name" jdbcType="VARCHAR" property="groupName" />
-    <result column="work_group_id" jdbcType="VARCHAR" property="workGroupId" />
-    <result column="sampling_site" jdbcType="VARCHAR" property="samplingSite" />
+    <result column="equipment_id" jdbcType="VARCHAR" property="equipmentId" />
     <result column="sample_type" jdbcType="VARCHAR" property="sampleType" />
     <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
     <result column="trace_log" jdbcType="TIMESTAMP" property="traceLog" />
@@ -70,8 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    hosnum, group_id, group_name, work_group_id, sampling_site, sample_type, order_number, 
-    trace_log
+    hosnum, group_id, group_name, equipment_id, sample_type, order_number, trace_log
   </sql>
   <select id="selectByExample" parameterType="cn.hs.checkitemgroup.pojo.CheckItemGroupExample" resultMap="BaseResultMap">
     select
@@ -107,11 +105,11 @@
   </delete>
   <insert id="insert" parameterType="cn.hs.checkitemgroup.pojo.CheckItemGroup">
     insert into check_item_group (hosnum, group_id, group_name, 
-      work_group_id, sampling_site, sample_type, 
-      order_number, trace_log)
+      equipment_id, sample_type, order_number, 
+      trace_log)
     values (#{hosnum,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, 
-      #{workGroupId,jdbcType=VARCHAR}, #{samplingSite,jdbcType=VARCHAR}, #{sampleType,jdbcType=VARCHAR}, 
-      #{orderNumber,jdbcType=INTEGER}, #{traceLog,jdbcType=TIMESTAMP})
+      #{equipmentId,jdbcType=VARCHAR}, #{sampleType,jdbcType=VARCHAR}, #{orderNumber,jdbcType=INTEGER}, 
+      #{traceLog,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.hs.checkitemgroup.pojo.CheckItemGroup">
     insert into check_item_group
@@ -125,11 +123,8 @@
       <if test="groupName != null">
         group_name,
       </if>
-      <if test="workGroupId != null">
-        work_group_id,
-      </if>
-      <if test="samplingSite != null">
-        sampling_site,
+      <if test="equipmentId != null">
+        equipment_id,
       </if>
       <if test="sampleType != null">
         sample_type,
@@ -151,11 +146,8 @@
       <if test="groupName != null">
         #{groupName,jdbcType=VARCHAR},
       </if>
-      <if test="workGroupId != null">
-        #{workGroupId,jdbcType=VARCHAR},
-      </if>
-      <if test="samplingSite != null">
-        #{samplingSite,jdbcType=VARCHAR},
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=VARCHAR},
       </if>
       <if test="sampleType != null">
         #{sampleType,jdbcType=VARCHAR},
@@ -174,7 +166,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-    <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map">
     update check_item_group
     <set>
       <if test="record.hosnum != null">
@@ -186,11 +178,8 @@
       <if test="record.groupName != null">
         group_name = #{record.groupName,jdbcType=VARCHAR},
       </if>
-      <if test="record.workGroupId != null">
-        work_group_id = #{record.workGroupId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.samplingSite != null">
-        sampling_site = #{record.samplingSite,jdbcType=VARCHAR},
+      <if test="record.equipmentId != null">
+        equipment_id = #{record.equipmentId,jdbcType=VARCHAR},
       </if>
       <if test="record.sampleType != null">
         sample_type = #{record.sampleType,jdbcType=VARCHAR},
@@ -211,8 +200,7 @@
     set hosnum = #{record.hosnum,jdbcType=VARCHAR},
       group_id = #{record.groupId,jdbcType=VARCHAR},
       group_name = #{record.groupName,jdbcType=VARCHAR},
-      work_group_id = #{record.workGroupId,jdbcType=VARCHAR},
-      sampling_site = #{record.samplingSite,jdbcType=VARCHAR},
+      equipment_id = #{record.equipmentId,jdbcType=VARCHAR},
       sample_type = #{record.sampleType,jdbcType=VARCHAR},
       order_number = #{record.orderNumber,jdbcType=INTEGER},
       trace_log = #{record.traceLog,jdbcType=TIMESTAMP}
@@ -226,11 +214,8 @@
       <if test="groupName != null">
         group_name = #{groupName,jdbcType=VARCHAR},
       </if>
-      <if test="workGroupId != null">
-        work_group_id = #{workGroupId,jdbcType=VARCHAR},
-      </if>
-      <if test="samplingSite != null">
-        sampling_site = #{samplingSite,jdbcType=VARCHAR},
+      <if test="equipmentId != null">
+        equipment_id = #{equipmentId,jdbcType=VARCHAR},
       </if>
       <if test="sampleType != null">
         sample_type = #{sampleType,jdbcType=VARCHAR},
@@ -248,8 +233,7 @@
   <update id="updateByPrimaryKey" parameterType="cn.hs.checkitemgroup.pojo.CheckItemGroup">
     update check_item_group
     set group_name = #{groupName,jdbcType=VARCHAR},
-      work_group_id = #{workGroupId,jdbcType=VARCHAR},
-      sampling_site = #{samplingSite,jdbcType=VARCHAR},
+      equipment_id = #{equipmentId,jdbcType=VARCHAR},
       sample_type = #{sampleType,jdbcType=VARCHAR},
       order_number = #{orderNumber,jdbcType=INTEGER},
       trace_log = #{traceLog,jdbcType=TIMESTAMP}
@@ -258,18 +242,17 @@
   </update>
 
 
-
   <select id="selectAllCheckItemGroup" resultMap="BaseResultMap">
     select distinct group_id,group_name
     from check_item_group
-    where hosnum = #{hosNum} and work_group_id = #{workGroupId}
+    where hosnum = #{hosNum} and equipment_id = #{equipmentId}
   </select>
   <select id="getcheckItemGroups" resultMap="BaseResultMap">
-    select cig.*, wg2.work_group_name as workGroup
+    select cig.*, em2.item_name as equipmentName
     from check_item_group cig
-    left join work_group wg2 on cig.work_group_id = wg2.work_group_id
-    <if test="workGroupId != null and workGroupId != ''">
-      join work_group wg on cig.work_group_id = wg.work_group_id and cig.work_group_id = #{workGroupId}
+    left join equipment em2 on cig.equipment_id = em2.item_id
+    <if test="equipmentId != null and equipmentId != ''">
+      join equipment em on cig.equipment_id = em.item_id and cig.equipment_id = #{equipmentId}
     </if>
     where cig.hosnum = #{hosNum}
     <if test="checkItemGroup != null and checkItemGroup != ''">
@@ -299,5 +282,11 @@
     select distinct sample_type
     from check_item_group
     where hosnum = #{hosNum}
+  </select>
+  <select id="getcheckItemNameList" resultType="cn.hs.checkitem.pojo.CheckItem">
+    select ci.item_name as itemName,ci.item_id as itemId
+    from check_item ci
+    join check_item_group_detail cigd on ci.item_id = cigd.item_id and cigd.item_group_id = #{checkItemGroupId} and cigd.hosnum = #{hosNum}
+    where ci.hosnum = #{hosNum}
   </select>
 </mapper>

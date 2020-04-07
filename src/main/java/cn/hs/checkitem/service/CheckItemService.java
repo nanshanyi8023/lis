@@ -93,7 +93,7 @@ public class CheckItemService {
     }
 
     //根据医院号查找所有工作组
-    public List<Equipment> getAllWorkGroup() {
+    public List<Equipment> getAllEquipment() {
         List<Equipment> workGroupList = equipmentMapper.selectAllEquipment(getCookie.getHosNum());
         return workGroupList;
     }

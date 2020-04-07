@@ -315,143 +315,73 @@ public class CheckItemGroupExample {
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdIsNull() {
-            addCriterion("work_group_id is null");
+        public Criteria andEquipmentIdIsNull() {
+            addCriterion("equipment_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdIsNotNull() {
-            addCriterion("work_group_id is not null");
+        public Criteria andEquipmentIdIsNotNull() {
+            addCriterion("equipment_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdEqualTo(String value) {
-            addCriterion("work_group_id =", value, "workGroupId");
+        public Criteria andEquipmentIdEqualTo(String value) {
+            addCriterion("equipment_id =", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotEqualTo(String value) {
-            addCriterion("work_group_id <>", value, "workGroupId");
+        public Criteria andEquipmentIdNotEqualTo(String value) {
+            addCriterion("equipment_id <>", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdGreaterThan(String value) {
-            addCriterion("work_group_id >", value, "workGroupId");
+        public Criteria andEquipmentIdGreaterThan(String value) {
+            addCriterion("equipment_id >", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdGreaterThanOrEqualTo(String value) {
-            addCriterion("work_group_id >=", value, "workGroupId");
+        public Criteria andEquipmentIdGreaterThanOrEqualTo(String value) {
+            addCriterion("equipment_id >=", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdLessThan(String value) {
-            addCriterion("work_group_id <", value, "workGroupId");
+        public Criteria andEquipmentIdLessThan(String value) {
+            addCriterion("equipment_id <", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdLessThanOrEqualTo(String value) {
-            addCriterion("work_group_id <=", value, "workGroupId");
+        public Criteria andEquipmentIdLessThanOrEqualTo(String value) {
+            addCriterion("equipment_id <=", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdLike(String value) {
-            addCriterion("work_group_id like", value, "workGroupId");
+        public Criteria andEquipmentIdLike(String value) {
+            addCriterion("equipment_id like", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotLike(String value) {
-            addCriterion("work_group_id not like", value, "workGroupId");
+        public Criteria andEquipmentIdNotLike(String value) {
+            addCriterion("equipment_id not like", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdIn(List<String> values) {
-            addCriterion("work_group_id in", values, "workGroupId");
+        public Criteria andEquipmentIdIn(List<String> values) {
+            addCriterion("equipment_id in", values, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotIn(List<String> values) {
-            addCriterion("work_group_id not in", values, "workGroupId");
+        public Criteria andEquipmentIdNotIn(List<String> values) {
+            addCriterion("equipment_id not in", values, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdBetween(String value1, String value2) {
-            addCriterion("work_group_id between", value1, value2, "workGroupId");
+        public Criteria andEquipmentIdBetween(String value1, String value2) {
+            addCriterion("equipment_id between", value1, value2, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotBetween(String value1, String value2) {
-            addCriterion("work_group_id not between", value1, value2, "workGroupId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteIsNull() {
-            addCriterion("sampling_site is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteIsNotNull() {
-            addCriterion("sampling_site is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteEqualTo(String value) {
-            addCriterion("sampling_site =", value, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteNotEqualTo(String value) {
-            addCriterion("sampling_site <>", value, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteGreaterThan(String value) {
-            addCriterion("sampling_site >", value, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteGreaterThanOrEqualTo(String value) {
-            addCriterion("sampling_site >=", value, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteLessThan(String value) {
-            addCriterion("sampling_site <", value, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteLessThanOrEqualTo(String value) {
-            addCriterion("sampling_site <=", value, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteLike(String value) {
-            addCriterion("sampling_site like", value, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteNotLike(String value) {
-            addCriterion("sampling_site not like", value, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteIn(List<String> values) {
-            addCriterion("sampling_site in", values, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteNotIn(List<String> values) {
-            addCriterion("sampling_site not in", values, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteBetween(String value1, String value2) {
-            addCriterion("sampling_site between", value1, value2, "samplingSite");
-            return (Criteria) this;
-        }
-
-        public Criteria andSamplingSiteNotBetween(String value1, String value2) {
-            addCriterion("sampling_site not between", value1, value2, "samplingSite");
+        public Criteria andEquipmentIdNotBetween(String value1, String value2) {
+            addCriterion("equipment_id not between", value1, value2, "equipmentId");
             return (Criteria) this;
         }
 

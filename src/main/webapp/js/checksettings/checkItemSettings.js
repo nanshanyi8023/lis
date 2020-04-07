@@ -8,10 +8,10 @@
         config: {
             pattern: "2E",
             offsets: {
-                top: 2,
-                right: 2,
-                bottom: 2,
-                left: 2
+                top: 5,
+                right: 5,
+                bottom: 5,
+                left: 5
             },
             cells: [
                 {

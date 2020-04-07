@@ -200,4 +200,11 @@
     from check_item_group_detail
     where hosnum = #{hosNum}
   </select>
+  <delete id="deleteByGroupId">
+    delete from check_item_group_detail
+    where hosnum = #{hosNum} and item_group_id in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
 </mapper>
