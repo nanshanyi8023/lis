@@ -1,17 +1,17 @@
-package cn.hs.workgroup.pojo;
+package cn.hs.equipment.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class WorkGroupExample {
+public class EquipmentExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public WorkGroupExample() {
+    public EquipmentExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -175,283 +175,283 @@ public class WorkGroupExample {
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdIsNull() {
-            addCriterion("work_group_id is null");
+        public Criteria andItemIdIsNull() {
+            addCriterion("item_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdIsNotNull() {
-            addCriterion("work_group_id is not null");
+        public Criteria andItemIdIsNotNull() {
+            addCriterion("item_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdEqualTo(String value) {
-            addCriterion("work_group_id =", value, "workGroupId");
+        public Criteria andItemIdEqualTo(String value) {
+            addCriterion("item_id =", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotEqualTo(String value) {
-            addCriterion("work_group_id <>", value, "workGroupId");
+        public Criteria andItemIdNotEqualTo(String value) {
+            addCriterion("item_id <>", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdGreaterThan(String value) {
-            addCriterion("work_group_id >", value, "workGroupId");
+        public Criteria andItemIdGreaterThan(String value) {
+            addCriterion("item_id >", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdGreaterThanOrEqualTo(String value) {
-            addCriterion("work_group_id >=", value, "workGroupId");
+        public Criteria andItemIdGreaterThanOrEqualTo(String value) {
+            addCriterion("item_id >=", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdLessThan(String value) {
-            addCriterion("work_group_id <", value, "workGroupId");
+        public Criteria andItemIdLessThan(String value) {
+            addCriterion("item_id <", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdLessThanOrEqualTo(String value) {
-            addCriterion("work_group_id <=", value, "workGroupId");
+        public Criteria andItemIdLessThanOrEqualTo(String value) {
+            addCriterion("item_id <=", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdLike(String value) {
-            addCriterion("work_group_id like", value, "workGroupId");
+        public Criteria andItemIdLike(String value) {
+            addCriterion("item_id like", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotLike(String value) {
-            addCriterion("work_group_id not like", value, "workGroupId");
+        public Criteria andItemIdNotLike(String value) {
+            addCriterion("item_id not like", value, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdIn(List<String> values) {
-            addCriterion("work_group_id in", values, "workGroupId");
+        public Criteria andItemIdIn(List<String> values) {
+            addCriterion("item_id in", values, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotIn(List<String> values) {
-            addCriterion("work_group_id not in", values, "workGroupId");
+        public Criteria andItemIdNotIn(List<String> values) {
+            addCriterion("item_id not in", values, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdBetween(String value1, String value2) {
-            addCriterion("work_group_id between", value1, value2, "workGroupId");
+        public Criteria andItemIdBetween(String value1, String value2) {
+            addCriterion("item_id between", value1, value2, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotBetween(String value1, String value2) {
-            addCriterion("work_group_id not between", value1, value2, "workGroupId");
+        public Criteria andItemIdNotBetween(String value1, String value2) {
+            addCriterion("item_id not between", value1, value2, "itemId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameIsNull() {
-            addCriterion("work_group_name is null");
+        public Criteria andItemNameIsNull() {
+            addCriterion("item_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameIsNotNull() {
-            addCriterion("work_group_name is not null");
+        public Criteria andItemNameIsNotNull() {
+            addCriterion("item_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameEqualTo(String value) {
-            addCriterion("work_group_name =", value, "workGroupName");
+        public Criteria andItemNameEqualTo(String value) {
+            addCriterion("item_name =", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameNotEqualTo(String value) {
-            addCriterion("work_group_name <>", value, "workGroupName");
+        public Criteria andItemNameNotEqualTo(String value) {
+            addCriterion("item_name <>", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameGreaterThan(String value) {
-            addCriterion("work_group_name >", value, "workGroupName");
+        public Criteria andItemNameGreaterThan(String value) {
+            addCriterion("item_name >", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameGreaterThanOrEqualTo(String value) {
-            addCriterion("work_group_name >=", value, "workGroupName");
+        public Criteria andItemNameGreaterThanOrEqualTo(String value) {
+            addCriterion("item_name >=", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameLessThan(String value) {
-            addCriterion("work_group_name <", value, "workGroupName");
+        public Criteria andItemNameLessThan(String value) {
+            addCriterion("item_name <", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameLessThanOrEqualTo(String value) {
-            addCriterion("work_group_name <=", value, "workGroupName");
+        public Criteria andItemNameLessThanOrEqualTo(String value) {
+            addCriterion("item_name <=", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameLike(String value) {
-            addCriterion("work_group_name like", value, "workGroupName");
+        public Criteria andItemNameLike(String value) {
+            addCriterion("item_name like", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameNotLike(String value) {
-            addCriterion("work_group_name not like", value, "workGroupName");
+        public Criteria andItemNameNotLike(String value) {
+            addCriterion("item_name not like", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameIn(List<String> values) {
-            addCriterion("work_group_name in", values, "workGroupName");
+        public Criteria andItemNameIn(List<String> values) {
+            addCriterion("item_name in", values, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameNotIn(List<String> values) {
-            addCriterion("work_group_name not in", values, "workGroupName");
+        public Criteria andItemNameNotIn(List<String> values) {
+            addCriterion("item_name not in", values, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameBetween(String value1, String value2) {
-            addCriterion("work_group_name between", value1, value2, "workGroupName");
+        public Criteria andItemNameBetween(String value1, String value2) {
+            addCriterion("item_name between", value1, value2, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupNameNotBetween(String value1, String value2) {
-            addCriterion("work_group_name not between", value1, value2, "workGroupName");
+        public Criteria andItemNameNotBetween(String value1, String value2) {
+            addCriterion("item_name not between", value1, value2, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeIsNull() {
-            addCriterion("group_code is null");
+        public Criteria andModelIsNull() {
+            addCriterion("model is null");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeIsNotNull() {
-            addCriterion("group_code is not null");
+        public Criteria andModelIsNotNull() {
+            addCriterion("model is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeEqualTo(String value) {
-            addCriterion("group_code =", value, "groupCode");
+        public Criteria andModelEqualTo(String value) {
+            addCriterion("model =", value, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeNotEqualTo(String value) {
-            addCriterion("group_code <>", value, "groupCode");
+        public Criteria andModelNotEqualTo(String value) {
+            addCriterion("model <>", value, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeGreaterThan(String value) {
-            addCriterion("group_code >", value, "groupCode");
+        public Criteria andModelGreaterThan(String value) {
+            addCriterion("model >", value, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("group_code >=", value, "groupCode");
+        public Criteria andModelGreaterThanOrEqualTo(String value) {
+            addCriterion("model >=", value, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeLessThan(String value) {
-            addCriterion("group_code <", value, "groupCode");
+        public Criteria andModelLessThan(String value) {
+            addCriterion("model <", value, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeLessThanOrEqualTo(String value) {
-            addCriterion("group_code <=", value, "groupCode");
+        public Criteria andModelLessThanOrEqualTo(String value) {
+            addCriterion("model <=", value, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeLike(String value) {
-            addCriterion("group_code like", value, "groupCode");
+        public Criteria andModelLike(String value) {
+            addCriterion("model like", value, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeNotLike(String value) {
-            addCriterion("group_code not like", value, "groupCode");
+        public Criteria andModelNotLike(String value) {
+            addCriterion("model not like", value, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeIn(List<String> values) {
-            addCriterion("group_code in", values, "groupCode");
+        public Criteria andModelIn(List<String> values) {
+            addCriterion("model in", values, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeNotIn(List<String> values) {
-            addCriterion("group_code not in", values, "groupCode");
+        public Criteria andModelNotIn(List<String> values) {
+            addCriterion("model not in", values, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeBetween(String value1, String value2) {
-            addCriterion("group_code between", value1, value2, "groupCode");
+        public Criteria andModelBetween(String value1, String value2) {
+            addCriterion("model between", value1, value2, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupCodeNotBetween(String value1, String value2) {
-            addCriterion("group_code not between", value1, value2, "groupCode");
+        public Criteria andModelNotBetween(String value1, String value2) {
+            addCriterion("model not between", value1, value2, "model");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeIsNull() {
-            addCriterion("group_type is null");
+        public Criteria andFactoryIsNull() {
+            addCriterion("factory is null");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeIsNotNull() {
-            addCriterion("group_type is not null");
+        public Criteria andFactoryIsNotNull() {
+            addCriterion("factory is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeEqualTo(String value) {
-            addCriterion("group_type =", value, "groupType");
+        public Criteria andFactoryEqualTo(String value) {
+            addCriterion("factory =", value, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeNotEqualTo(String value) {
-            addCriterion("group_type <>", value, "groupType");
+        public Criteria andFactoryNotEqualTo(String value) {
+            addCriterion("factory <>", value, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeGreaterThan(String value) {
-            addCriterion("group_type >", value, "groupType");
+        public Criteria andFactoryGreaterThan(String value) {
+            addCriterion("factory >", value, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("group_type >=", value, "groupType");
+        public Criteria andFactoryGreaterThanOrEqualTo(String value) {
+            addCriterion("factory >=", value, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeLessThan(String value) {
-            addCriterion("group_type <", value, "groupType");
+        public Criteria andFactoryLessThan(String value) {
+            addCriterion("factory <", value, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeLessThanOrEqualTo(String value) {
-            addCriterion("group_type <=", value, "groupType");
+        public Criteria andFactoryLessThanOrEqualTo(String value) {
+            addCriterion("factory <=", value, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeLike(String value) {
-            addCriterion("group_type like", value, "groupType");
+        public Criteria andFactoryLike(String value) {
+            addCriterion("factory like", value, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeNotLike(String value) {
-            addCriterion("group_type not like", value, "groupType");
+        public Criteria andFactoryNotLike(String value) {
+            addCriterion("factory not like", value, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeIn(List<String> values) {
-            addCriterion("group_type in", values, "groupType");
+        public Criteria andFactoryIn(List<String> values) {
+            addCriterion("factory in", values, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeNotIn(List<String> values) {
-            addCriterion("group_type not in", values, "groupType");
+        public Criteria andFactoryNotIn(List<String> values) {
+            addCriterion("factory not in", values, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeBetween(String value1, String value2) {
-            addCriterion("group_type between", value1, value2, "groupType");
+        public Criteria andFactoryBetween(String value1, String value2) {
+            addCriterion("factory between", value1, value2, "factory");
             return (Criteria) this;
         }
 
-        public Criteria andGroupTypeNotBetween(String value1, String value2) {
-            addCriterion("group_type not between", value1, value2, "groupType");
+        public Criteria andFactoryNotBetween(String value1, String value2) {
+            addCriterion("factory not between", value1, value2, "factory");
             return (Criteria) this;
         }
 
@@ -525,73 +525,73 @@ public class WorkGroupExample {
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeIsNull() {
-            addCriterion("sample_type is null");
+        public Criteria andNoteIsNull() {
+            addCriterion("note is null");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeIsNotNull() {
-            addCriterion("sample_type is not null");
+        public Criteria andNoteIsNotNull() {
+            addCriterion("note is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeEqualTo(String value) {
-            addCriterion("sample_type =", value, "sampleType");
+        public Criteria andNoteEqualTo(String value) {
+            addCriterion("note =", value, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeNotEqualTo(String value) {
-            addCriterion("sample_type <>", value, "sampleType");
+        public Criteria andNoteNotEqualTo(String value) {
+            addCriterion("note <>", value, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeGreaterThan(String value) {
-            addCriterion("sample_type >", value, "sampleType");
+        public Criteria andNoteGreaterThan(String value) {
+            addCriterion("note >", value, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("sample_type >=", value, "sampleType");
+        public Criteria andNoteGreaterThanOrEqualTo(String value) {
+            addCriterion("note >=", value, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeLessThan(String value) {
-            addCriterion("sample_type <", value, "sampleType");
+        public Criteria andNoteLessThan(String value) {
+            addCriterion("note <", value, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeLessThanOrEqualTo(String value) {
-            addCriterion("sample_type <=", value, "sampleType");
+        public Criteria andNoteLessThanOrEqualTo(String value) {
+            addCriterion("note <=", value, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeLike(String value) {
-            addCriterion("sample_type like", value, "sampleType");
+        public Criteria andNoteLike(String value) {
+            addCriterion("note like", value, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeNotLike(String value) {
-            addCriterion("sample_type not like", value, "sampleType");
+        public Criteria andNoteNotLike(String value) {
+            addCriterion("note not like", value, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeIn(List<String> values) {
-            addCriterion("sample_type in", values, "sampleType");
+        public Criteria andNoteIn(List<String> values) {
+            addCriterion("note in", values, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeNotIn(List<String> values) {
-            addCriterion("sample_type not in", values, "sampleType");
+        public Criteria andNoteNotIn(List<String> values) {
+            addCriterion("note not in", values, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeBetween(String value1, String value2) {
-            addCriterion("sample_type between", value1, value2, "sampleType");
+        public Criteria andNoteBetween(String value1, String value2) {
+            addCriterion("note between", value1, value2, "note");
             return (Criteria) this;
         }
 
-        public Criteria andSampleTypeNotBetween(String value1, String value2) {
-            addCriterion("sample_type not between", value1, value2, "sampleType");
+        public Criteria andNoteNotBetween(String value1, String value2) {
+            addCriterion("note not between", value1, value2, "note");
             return (Criteria) this;
         }
 

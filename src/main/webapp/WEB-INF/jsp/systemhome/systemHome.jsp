@@ -32,7 +32,7 @@
     <script type="text/javascript" src="js/userinfo/userInfo.js"></script>
     <script type="text/javascript" src="js/checksettings/checkItemSettings.js"></script>
     <script type="text/javascript" src="js/checksettings/checkItemGroupSettings.js"></script>
-    <script type="text/javascript" src="js/checksettings/workGroupSettings.js"></script>
+    <script type="text/javascript" src="js/checksettings/equipmentSettings.js"></script>
     <script type="text/javascript" src="js/checkmanage/barCodePrint.js"></script>
     <script type="text/javascript" src="js/checkmanage/barCodePrintLodop.js"></script>
     <script type="text/javascript" src="js/checkmanage/sampleRecept.js"></script>

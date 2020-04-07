@@ -1,4 +1,4 @@
-// 工作组设置页面
+// 检验仪器设置页面
 !function (global) {
     'use strict';
     //页面总布局
@@ -44,7 +44,7 @@
         obj: null,
 
         config: [
-            {type: "input", name: "workGroup", label: "工作组：", width: 150, offsetLeft: 10, offsetTop: 12, maxLength: 20},
+            {type: "input", name: "equipment", label: "检验仪器：", width: 150, offsetLeft: 10, offsetTop: 12, maxLength: 20},
             {type: "newcolumn"},
             {type: "button", name: "itemSearchBtn", value: "查询", offsetLeft: 20},
             {type: "newcolumn"},
@@ -87,8 +87,8 @@
         },
         //查询功能()
         itemSearchBtnEvent: function () {
-            var workGroup = ItemOperationForm.obj.getItemValue("workGroup");
-            ItemGrid.loadData(workGroup);
+            var equipment = ItemOperationForm.obj.getItemValue("equipment");
+            ItemGrid.loadData(equipment);
         },
         //添加功能
         itemAddBtnEvent:function () {
@@ -96,7 +96,7 @@
         },
         //删除功能
         itemDeleteBtnEvent: function (itemIdList) {
-            ajaxUtils.postBody('workGroupSettings/deleteWorkGroups.json',
+            ajaxUtils.postBody('equipmentSettings/deleteEquipments.json',
                 itemIdList
             ).then(function (data) {
                 //重新加载表格
@@ -114,13 +114,12 @@
         initObj: function () {
             ItemGrid.obj = Layout.obj.cells("b").attachGrid();
             ItemGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            ItemGrid.obj.setHeader("选择,编号,工作组名称,组类型,样本类型,所属科室",null,
-                ["text-align:center;","text-align:center;","text-align:center","text-align:center","text-align:center","text-align:center"]);  //设置标题内容居中
-            ItemGrid.obj.setColumnIds("ch,workGroupId,workGroupName,groupType,sampleType,departmentName");
-            ItemGrid.obj.setColAlign("center,center,center,center,center,center");   //设置列中数据居中
-            ItemGrid.obj.setInitWidths("50,150,*,200,200,200");          //列宽
-            ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro");
-            ItemGrid.obj.enableSmartRendering(true);
+            ItemGrid.obj.setHeader("选择,编号,检验设备名称,型号,生产厂家,所属科室,备注",null,
+                ["text-align:center;","text-align:center;","text-align:center","text-align:center","text-align:center","text-align:center","text-align:center"]);  //设置标题内容居中
+            ItemGrid.obj.setColumnIds("ch,itemId,itemName,model,factory,departmentName,note");
+            ItemGrid.obj.setColAlign("center,center,center,center,center,center,center");   //设置列中数据居中
+            ItemGrid.obj.setInitWidths("50,150,*,200,200,200,200");          //列宽
+            ItemGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro");
             ItemGrid.obj.init();
 
             //底部分页栏
@@ -138,11 +137,11 @@
                 ItemDetailWindow.createObj(rowData);
             });
         },
-        loadData: function (workGroup) {
-            ajaxUtils.get('workGroupSettings/getworkGroups.json', {
-                workGroup:workGroup
+        loadData: function (equipment) {
+            ajaxUtils.get('equipmentSettings/getEquipments.json', {
+                equipment:equipment
             }).then(function (data) {
-                dhtmlxUtils.clearAndLoadJsonListData(ItemGrid.obj, data, "workGroupId");  //删除所有行，加载数据
+                dhtmlxUtils.clearAndLoadJsonListData(ItemGrid.obj, data, "itemId");  //删除所有行，加载数据
                 ItemGrid.obj.sortRows(1,"int","asc");
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
@@ -156,7 +155,7 @@
         obj: null,
         createObj: function (rowData) {
             var windowFactory = new dhtmlXWindows();
-            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 700, 320);   //(id, left, top, width, height)
+            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 700, 450);   //(id, left, top, width, height)
             ItemDetailWindow.obj.setText("项目详情");  //标题
             ItemDetailWindow.obj.denyResize();  //拒绝调整大小
             ItemDetailWindow.obj.denyPark();
@@ -205,53 +204,32 @@
     ItemDetailWindow.Form = {
         obj: null,
         config: [
-            {type: "settings", position: "label-left", blockOffset: 0, offsetLeft: 30, offsetTop: 10},
+            {type: "settings", position: "label-left", blockOffset: 0, offsetLeft: 30, offsetTop: 13},
             {
                 type: "block", list: [
-                    {type: "input", name: "workGroupName", label: "工&nbsp&nbsp作&nbsp组", value: "", inputWidth: 180,maxLength:15},
+                    {type: "input", name: "itemName", label: "检验设备", value: "", inputWidth: 180,maxLength:15},
                     {type: "newcolumn"},
-                    {type: "input", name: "workGroupId", label: "工作组编号", value: "",inputWidth: 180,readonly: true,style:"background:#eaeaea"}
+                    {type: "input", name: "itemId", label: "检验设备编号", value: "",inputWidth: 180,readonly: true,style:"background:#eaeaea"}
                 ]
             },
             {
                 type: "block", list: [
-                    {type: "combo", name:"groupType",label: "组&nbsp&nbsp类&nbsp型", inputWidth: 180,maxLength:15,
+                    {type: "combo", name:"model",label: "型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号", inputWidth: 180,maxLength:15,
                         options:[
                             {text: "生化仪", value: "生化仪"},
                             {text: "血球仪", value: "血球仪"},
                             {text: "尿分仪", value: "尿分仪"},
-                            {text: "微生物组", value: "微生物组"},
-                            {text: "自定义报告", value: "自定义报告"},
                             {text: "血凝仪", value: "血凝仪"},
-                            {text: "免疫组", value: "免疫组"},
-                            {text: "基蛋白组", value: "基蛋白组"},
-                            {text:"血气仪", value:"血气仪"}
+                            {text:"血气仪", value:"血气仪"},
+                            {text: "免疫定量分析仪", value: "免疫定量分析仪"}
                         ]},
                     {type: "newcolumn"},
-                    {type: "input", name:"groupCode",label: "组&nbsp&nbsp&nbsp代&nbsp&nbsp&nbsp码", inputWidth: 180,readonly: true,style:"background:#eaeaea"}
-
-
+                    {type: "input", name:"factory",label: "生&nbsp;&nbsp;产&nbsp;&nbsp;厂&nbsp;&nbsp;家", inputWidth: 180}
                 ]
             },
             {
                 type: "block", list: [
-                    {type: "combo", name:"sampleType",label: "样本类型", inputWidth: 180,maxLength:15,
-                        options:[
-                            {text: "未知", value: "未知"},
-                            {text: "血清", value: "血清"},
-                            {text: "静脉血", value: "静脉血"},
-                            {text: "尿液", value: "尿液"},
-                            {text: "手术切除组织", value: "手术切除组织"},
-                            {text: "全血", value: "全血"},
-                            {text: "中段尿", value: "中段尿"},
-                            {text: "抗凝血", value: "抗凝血"},
-                            {text:"胃液", value:"胃液"},
-                            {text:"关节腔积液", value:"关节腔积液"},
-                            {text:"专用肝素钠抗凝管", value:"专用肝素钠抗凝管"},
-                            {text:"其他", value:"其他"}
-                        ]},
-                    {type: "newcolumn"},
-                    {type: "combo", name:"departmentName",label: "所&nbsp属&nbsp科&nbsp室", inputWidth: 180,maxLength:10,
+                    {type: "combo", name:"departmentName",label: "所属科室", inputWidth: 180,maxLength:10,
                         options:[
                             {text: "检验科", value: "检验科"},
                             {text: "血库", value: "血库"},
@@ -266,6 +244,11 @@
                             {text:"康复科", value:"康复科"},
                             {text:"抢救科室", value:"抢救科室"}
                         ]}
+                ]
+            },
+            {
+                type: "block", list: [
+                    {type: "input", rows:3,name:"note",label: "备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注", inputWidth: 480}
                 ]
             },
             {
@@ -291,30 +274,15 @@
                     default:
                 }
             });
-            //组类型变化时，自动更改组代码
-            ItemDetailWindow.Form.obj.getCombo("groupType").attachEvent("onChange", function(value, text){
-                if (value == "" || value == null) {
-                    ItemDetailWindow.Form.obj.setItemValue("groupCode","");
-                    return;
-                }
-                ajaxUtils.get('workGroupSettings/getGroupCode.json', {
-                    groupType:value
-                }).then(function (groupCode) {
-                    ItemDetailWindow.Form.obj.setItemValue("groupCode",groupCode);
-                }).catch(function (reason) {
-                    dhtmlxAlert.alertErrorMsg(reason);
-                }).finally(function () {
-                });
-            });
         },
         //保存按钮
         itemDetailSaveBtnEvent: function () {
             var formData = ItemDetailWindow.Form.obj.getFormData();
-            if (!formData.workGroupName) {
-                dhtmlxAlert.alertWarningMsg("工作组名称不可为空");
+            if (!formData.itemName) {
+                dhtmlxAlert.alertWarningMsg("检验设备名称不可为空");
                 return;
             }
-            ajaxUtils.postBody('workGroupSettings/saveWorkGroup.json',
+            ajaxUtils.postBody('equipmentSettings/saveEquipment.json',
                 formData
             ).then(function (data) {
                 ItemDetailWindow.obj.close();
@@ -345,7 +313,7 @@
     ItemGrid.initEvent();
     };
 
-    var workGroupSettings = function(){};
-    workGroupSettings.init = init;
-    global.workGroupSettings = workGroupSettings||{};
+    var equipmentSettings = function(){};
+    equipmentSettings.init = init;
+    global.equipmentSettings = equipmentSettings||{};
 }(this);

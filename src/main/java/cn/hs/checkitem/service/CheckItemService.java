@@ -4,10 +4,10 @@ import cn.hs.checkitem.mapper.CheckItemMapper;
 import cn.hs.checkitem.pojo.CheckItem;
 import cn.hs.checkitemgroup.mapper.CheckItemGroupMapper;
 import cn.hs.checkitemgroup.pojo.CheckItemGroup;
+import cn.hs.equipment.mapper.EquipmentMapper;
+import cn.hs.equipment.pojo.Equipment;
 import cn.hs.publicclass.method.BusinessException;
 import cn.hs.publicclass.method.GetCookieService;
-import cn.hs.workgroup.mapper.WorkGroupMapper;
-import cn.hs.workgroup.pojo.WorkGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -20,7 +20,7 @@ public class CheckItemService {
     private CheckItemMapper checkItemMapper;
 
     @Autowired
-    private WorkGroupMapper workGroupMapper;
+    private EquipmentMapper equipmentMapper;
 
     @Autowired
     private CheckItemGroupMapper checkItemGroupMapper;
@@ -93,8 +93,8 @@ public class CheckItemService {
     }
 
     //根据医院号查找所有工作组
-    public List<WorkGroup> getAllWorkGroup() {
-        List<WorkGroup> workGroupList = workGroupMapper.selectAllWorkGroup(getCookie.getHosNum());
+    public List<Equipment> getAllWorkGroup() {
+        List<Equipment> workGroupList = equipmentMapper.selectAllEquipment(getCookie.getHosNum());
         return workGroupList;
     }
 

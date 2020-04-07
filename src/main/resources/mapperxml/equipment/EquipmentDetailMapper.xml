@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hs.workgroup.mapper.WorkGroupDetailMapper">
-  <resultMap id="BaseResultMap" type="cn.hs.workgroup.pojo.WorkGroupDetail">
+<mapper namespace="cn.hs.equipment.mapper.EquipmentDetailMapper">
+  <resultMap id="BaseResultMap" type="cn.hs.equipment.pojo.EquipmentDetail">
     <id column="hosnum" jdbcType="VARCHAR" property="hosnum" />
-    <id column="work_group_id" jdbcType="VARCHAR" property="workGroupId" />
-    <id column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <id column="equipment_id" jdbcType="VARCHAR" property="equipmentId" />
+    <id column="check_item_id" jdbcType="VARCHAR" property="checkItemId" />
     <result column="trace_log" jdbcType="TIMESTAMP" property="traceLog" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -66,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    hosnum, work_group_id, item_id, trace_log
+    hosnum, equipment_id, check_item_id, trace_log
   </sql>
-  <select id="selectByExample" parameterType="cn.hs.workgroup.pojo.WorkGroupDetailExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.hs.equipment.pojo.EquipmentDetailExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from work_group_detail
+    from equipment_detail
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,43 +82,43 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="cn.hs.workgroup.pojo.WorkGroupDetailKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="cn.hs.equipment.pojo.EquipmentDetailKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from work_group_detail
+    from equipment_detail
     where hosnum = #{hosnum,jdbcType=VARCHAR}
-      and work_group_id = #{workGroupId,jdbcType=VARCHAR}
-      and item_id = #{itemId,jdbcType=VARCHAR}
+      and equipment_id = #{equipmentId,jdbcType=VARCHAR}
+      and check_item_id = #{checkItemId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="cn.hs.workgroup.pojo.WorkGroupDetailKey">
-    delete from work_group_detail
+  <delete id="deleteByPrimaryKey" parameterType="cn.hs.equipment.pojo.EquipmentDetailKey">
+    delete from equipment_detail
     where hosnum = #{hosnum,jdbcType=VARCHAR}
-      and work_group_id = #{workGroupId,jdbcType=VARCHAR}
-      and item_id = #{itemId,jdbcType=VARCHAR}
+      and equipment_id = #{equipmentId,jdbcType=VARCHAR}
+      and check_item_id = #{checkItemId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.hs.workgroup.pojo.WorkGroupDetailExample">
-    delete from work_group_detail
+  <delete id="deleteByExample" parameterType="cn.hs.equipment.pojo.EquipmentDetailExample">
+    delete from equipment_detail
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.hs.workgroup.pojo.WorkGroupDetail">
-    insert into work_group_detail (hosnum, work_group_id, item_id, 
+  <insert id="insert" parameterType="cn.hs.equipment.pojo.EquipmentDetail">
+    insert into equipment_detail (hosnum, equipment_id, check_item_id, 
       trace_log)
-    values (#{hosnum,jdbcType=VARCHAR}, #{workGroupId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, 
+    values (#{hosnum,jdbcType=VARCHAR}, #{equipmentId,jdbcType=VARCHAR}, #{checkItemId,jdbcType=VARCHAR}, 
       #{traceLog,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.hs.workgroup.pojo.WorkGroupDetail">
-    insert into work_group_detail
+  <insert id="insertSelective" parameterType="cn.hs.equipment.pojo.EquipmentDetail">
+    insert into equipment_detail
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="hosnum != null">
         hosnum,
       </if>
-      <if test="workGroupId != null">
-        work_group_id,
+      <if test="equipmentId != null">
+        equipment_id,
       </if>
-      <if test="itemId != null">
-        item_id,
+      <if test="checkItemId != null">
+        check_item_id,
       </if>
       <if test="traceLog != null">
         trace_log,
@@ -128,34 +128,34 @@
       <if test="hosnum != null">
         #{hosnum,jdbcType=VARCHAR},
       </if>
-      <if test="workGroupId != null">
-        #{workGroupId,jdbcType=VARCHAR},
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=VARCHAR},
       </if>
-      <if test="itemId != null">
-        #{itemId,jdbcType=VARCHAR},
+      <if test="checkItemId != null">
+        #{checkItemId,jdbcType=VARCHAR},
       </if>
       <if test="traceLog != null">
         #{traceLog,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.hs.workgroup.pojo.WorkGroupDetailExample" resultType="java.lang.Long">
-    select count(*) from work_group_detail
+  <select id="countByExample" parameterType="cn.hs.equipment.pojo.EquipmentDetailExample" resultType="java.lang.Long">
+    select count(*) from equipment_detail
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update work_group_detail
+    update equipment_detail
     <set>
       <if test="record.hosnum != null">
         hosnum = #{record.hosnum,jdbcType=VARCHAR},
       </if>
-      <if test="record.workGroupId != null">
-        work_group_id = #{record.workGroupId,jdbcType=VARCHAR},
+      <if test="record.equipmentId != null">
+        equipment_id = #{record.equipmentId,jdbcType=VARCHAR},
       </if>
-      <if test="record.itemId != null">
-        item_id = #{record.itemId,jdbcType=VARCHAR},
+      <if test="record.checkItemId != null">
+        check_item_id = #{record.checkItemId,jdbcType=VARCHAR},
       </if>
       <if test="record.traceLog != null">
         trace_log = #{record.traceLog,jdbcType=TIMESTAMP},
@@ -166,39 +166,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update work_group_detail
+    update equipment_detail
     set hosnum = #{record.hosnum,jdbcType=VARCHAR},
-      work_group_id = #{record.workGroupId,jdbcType=VARCHAR},
-      item_id = #{record.itemId,jdbcType=VARCHAR},
+      equipment_id = #{record.equipmentId,jdbcType=VARCHAR},
+      check_item_id = #{record.checkItemId,jdbcType=VARCHAR},
       trace_log = #{record.traceLog,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.hs.workgroup.pojo.WorkGroupDetail">
-    update work_group_detail
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hs.equipment.pojo.EquipmentDetail">
+    update equipment_detail
     <set>
       <if test="traceLog != null">
         trace_log = #{traceLog,jdbcType=TIMESTAMP},
       </if>
     </set>
     where hosnum = #{hosnum,jdbcType=VARCHAR}
-      and work_group_id = #{workGroupId,jdbcType=VARCHAR}
-      and item_id = #{itemId,jdbcType=VARCHAR}
+      and equipment_id = #{equipmentId,jdbcType=VARCHAR}
+      and check_item_id = #{checkItemId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.hs.workgroup.pojo.WorkGroupDetail">
-    update work_group_detail
+  <update id="updateByPrimaryKey" parameterType="cn.hs.equipment.pojo.EquipmentDetail">
+    update equipment_detail
     set trace_log = #{traceLog,jdbcType=TIMESTAMP}
     where hosnum = #{hosnum,jdbcType=VARCHAR}
-      and work_group_id = #{workGroupId,jdbcType=VARCHAR}
-      and item_id = #{itemId,jdbcType=VARCHAR}
+      and equipment_id = #{equipmentId,jdbcType=VARCHAR}
+      and check_item_id = #{checkItemId,jdbcType=VARCHAR}
   </update>
 
 
 
-  <select id="getWorkGroupIdAndCheckItemId"  resultMap="BaseResultMap">
-    select work_group_id,item_id
-    from work_group_detail
+
+  <select id="getEquipmentIdAndCheckItemId"  resultMap="BaseResultMap">
+    select equipment_id,check_item_id
+    from equipment_detail
     where hosnum = #{hosNum}
   </select>
 </mapper>
