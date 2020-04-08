@@ -52,7 +52,7 @@
         }
         var rowBindingDatas = [];
         rowIds.forEach(function (e, index) {
-            rowBindingDatas.push(dhxUtil.xGrid.getRowBindingData(dhtmlxGridObj, e))
+            rowBindingDatas.push(getRowBindingData(dhtmlxGridObj, e))
         });
         return rowBindingDatas;
     };

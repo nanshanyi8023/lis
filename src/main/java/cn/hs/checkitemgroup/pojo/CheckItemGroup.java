@@ -1,10 +1,14 @@
 package cn.hs.checkitemgroup.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class CheckItemGroup extends CheckItemGroupKey {
     //新增所属检验设备名称字段
     private String equipmentName;
+
+    //新增所含检验项目id字段
+    private List<String> checkItemIdList;
 
     private String groupName;
 
@@ -22,6 +26,14 @@ public class CheckItemGroup extends CheckItemGroupKey {
 
     public void setEquipmentName(String equipmentName) {
         this.equipmentName = equipmentName;
+    }
+
+    public List<String> getCheckItemIdList() {
+        return checkItemIdList;
+    }
+
+    public void setCheckItemIdList(List<String> checkItemIdList) {
+        this.checkItemIdList = checkItemIdList;
     }
 
     public String getGroupName() {

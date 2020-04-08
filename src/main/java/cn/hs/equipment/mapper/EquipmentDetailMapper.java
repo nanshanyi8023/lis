@@ -31,4 +31,7 @@ public interface EquipmentDetailMapper {
 
     //查找所有检验设备id和检验项目id
     List<EquipmentDetail> getEquipmentIdAndCheckItemId(@Param("hosNum") String hosNum);
+
+    //删除选中检验设备与对应的检验项目之前的关系
+    int deleteByEquipmentId(@Param("hosNum") String hosNum, @Param("list") List<String> itemIdList);
 }

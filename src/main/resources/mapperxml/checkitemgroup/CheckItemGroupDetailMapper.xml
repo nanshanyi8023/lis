@@ -207,4 +207,12 @@
       #{item}
     </foreach>
   </delete>
+  <insert id="insertByGroupIdAndItemId">
+    insert into
+    check_item_group_detail (hosnum, item_group_id, item_id)
+    values
+    <foreach collection="checkItemIdList" item="item" index="index" separator=",">
+     (#{hosNum},#{groupId},#{item})
+    </foreach>
+  </insert>
 </mapper>

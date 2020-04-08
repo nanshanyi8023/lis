@@ -124,7 +124,7 @@
                             dhtmlxAlert.alertMsg("需至少选中一个要删除的项目");
                             return;
                         }
-                        dhtmlxAlert.confirmWarningMsg("是否确认删除?", function () {
+                        dhtmlxAlert.confirmWarningMsg("删除检验项目组合时，同时会删除检验项目组合——检验项目之间的关联，请确认是否删除?", function () {
                             ItemOperationForm.itemDeleteBtnEvent(itemIdList);
                         });
                         break;
@@ -192,7 +192,8 @@
             });
 
             ItemGrid.obj.attachEvent("onRowDblClicked", function () {
-                ItemDetailWindow.createObj();
+                var rowData = dhtmlxUtils.getSelectedRowBindingData(ItemGrid.obj);
+                ItemDetailWindow.createObj(rowData);
             });
         },
         loadData: function (equipmentId, checkItemGroup) {
@@ -238,20 +239,25 @@
     //新增以及查看详细信息窗口
     var ItemDetailWindow = {
         obj: null,
-        createObj: function () {
+        createObj: function (rowData) {
             var windowFactory = new dhtmlXWindows();
-            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 700, 350);   //(id, left, top, width, height)
-            ItemDetailWindow.obj.setText("项目详情");  //标题
+            ItemDetailWindow.obj = windowFactory.createWindow("ItemDetailWindow", 0, 0, 950, 650);   //(id, left, top, width, height)
+            ItemDetailWindow.obj.setText("检验项目组合详细信息设置");  //标题
             ItemDetailWindow.obj.denyResize();  //拒绝调整大小
             ItemDetailWindow.obj.denyPark();
             ItemDetailWindow.obj.setModal(true);
             ItemDetailWindow.obj.centerOnScreen(); //窗口居中显示在屏幕中
-            ItemDetailWindow.initWindow();
+            ItemDetailWindow.initWindow(rowData);
         },
-        initWindow: function () {
+        initWindow: function (rowData) {
             ItemDetailWindow.Layout.initObj();
-            ItemDetailWindow.Form.initObj();
+            ItemDetailWindow.Form.initObj(rowData);
             ItemDetailWindow.Form.initEvent();
+            ItemDetailWindow.SearchToolbar.initobj();
+            ItemDetailWindow.SearchToolbar.initEvent();
+            ItemDetailWindow.CheckItemGrid.initObj();
+            ItemDetailWindow.CheckItemGrid.initEvent();
+            ItemDetailWindow.CheckItemGrid.loadData();
         }
     };
 
@@ -260,7 +266,7 @@
         obj: null,
 
         config: {
-            pattern: "1C",
+            pattern: "2U",
             offsets: {
                 top: 5,
                 right: 5,
@@ -270,11 +276,20 @@
             cells: [
                 {
                     id: "a",
-                    text: "Text a",
-                    collapsed_text: "Text a",
+                    text: "检验项目组合详细信息",
+                    collapsed_text: "检验项目组合详细信息",
                     header: false,
                     collapse: false,
                     fix_size: [true, true]
+                },
+                {
+                    id: "b",
+                    text: "所含检验项目",
+                    collapsed_text: "所含检验项目",
+                    header: false,
+                    collapse: false,
+                    fix_size: [true, true],
+                    width: 500
                 }
             ]
         },
@@ -284,11 +299,11 @@
         }
     };
 
-    //详细信息窗口表单设置
+    //详细信息窗口左侧表单设置
     ItemDetailWindow.Form = {
         obj: null,
         config: [
-            {type: "settings", position: "label-left", blockOffset: 0, offsetLeft: 30, offsetTop: 13},
+            {type: "settings", position: "label-left", blockOffset: 0, offsetLeft: 25, offsetTop: 12},
             {
                 type: "block", list: [
                     {
@@ -296,16 +311,19 @@
                         name: "groupName",
                         label: "检验项目组合",
                         value: "",
-                        inputWidth: 180,
+                        inputWidth: 230,
                         maxLength: 15
-                    },
-                    {type: "newcolumn"},
+                    }
+                ]
+            },
+            {
+                type: "block", list: [
                     {
                         type: "input",
                         name: "groupId",
-                        label: "编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号",
+                        label: "编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号",
                         value: "",
-                        inputWidth: 180,
+                        inputWidth: 230,
                         readonly: true,
                         style: "background:#eaeaea"
                     }
@@ -316,60 +334,53 @@
                     {
                         type: "combo",
                         name: "sampleType",
-                        label: "样&nbsp;&nbsp;品&nbsp;&nbsp;类&nbsp;&nbsp;&nbsp;型",
-                        inputWidth: 180,
+                        label: "样&nbsp;&nbsp;本&nbsp;&nbsp;类&nbsp;&nbsp;型",
+                        inputWidth: 230,
                         maxLength: 15
-                    },
-                    {type: "newcolumn"},
-                    {
-                        type: "combo", name: "samplingSite", label: "采样部位", inputWidth: 180, maxLength: 10,
-                        options: [
-                            {text: "体液", value: "体液"},
-                            {text: "静脉血", value: "静脉血"},
-                            {text: "抗凝血", value: "抗凝血"},
-                            {text: "临检项目", value: "临检项目"},
-                            {text: "血凝项目", value: "血凝项目"},
-                            {text: "血库项目", value: "血库项目"},
-                            {text: "免疫项目", value: "免疫项目"},
-                            {text: "细菌", value: "细菌"},
-                            {text: "未知", value: "未知"}]
                     }
                 ]
             },
             {
-                type: "block",
-                list: [{type: "combo", name: "equipmentId", label: "所&nbsp;属&nbsp;工&nbsp;作&nbsp;组", inputWidth: 180}]
+                type: "block", list: [
+                    {type: "combo", name: "equipmentId", label: "所属检验设备", inputWidth: 230}
+                ]
             },
             {
                 type: "block", list: [
-                    {type: "button", name: "itemDetailSaveBtn", value: "保存", offsetLeft: 200, offsetTop: 15},
+                    {type: "input", rows:8,name: "checkItemNameList", label: "所含检验项目", inputWidth: 230,readonly: true,
+                        style: "background:#eaeaea"}
+                ]
+            },
+            {
+                type: "block", list: [
+                    {type: "button", name: "itemDetailSaveBtn", value: "保存", offsetLeft: 80, offsetTop: 30},
                     {type: "newcolumn"},
-                    {type: "button", name: "itemDetailCancelBtn", value: "取消", offsetLeft: 20, offsetTop: 15}
+                    {type: "button", name: "itemDetailCancelBtn", value: "取消", offsetLeft: 40, offsetTop: 30}
                 ]
             }
         ],
-        initObj: function () {
+        initObj: function (rowData) {
             ItemDetailWindow.Form.obj = ItemDetailWindow.Layout.obj.cells("a").attachForm(ItemDetailWindow.Form.config);
-            ItemDetailWindow.Form.getAllequipment();
+            ItemDetailWindow.Form.getAllequipment(rowData);
         },
-        //查找所有工作组
-        getAllequipment: function () {
-            ajaxUtils.get('checkItemSettings/getAllequipment.json'
+        //查找所有检验设备
+        getAllequipment: function (rowData) {
+            ajaxUtils.get('checkItemSettings/getAllEquipment.json'
             ).then(function (data) {
-                //初始化工作组下拉框
+                //初始化检验设备下拉框
                 var equipmentCombo = ItemDetailWindow.Form.obj.getCombo("equipmentId");
                 var options = data.map(function (e, index, array) {
-                    return [e.equipmentId, e.equipmentName];
+                    return [e.itemId, e.itemName];
                 });
                 equipmentCombo.addOption(options);
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
-                ItemDetailWindow.Form.getAllSampleType();
+                ItemDetailWindow.Form.getAllSampleType(rowData);
             });
         },
         //查找所有样品类型
-        getAllSampleType: function () {
+        getAllSampleType: function (rowData) {
             ajaxUtils.get('checkItemGroupSettings/getAllSampleType.json'
             ).then(function (data) {
                 //初始化样品类型下拉框
@@ -382,7 +393,6 @@
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
                 //加载详细信息窗口表单数据
-                var rowData = dhtmlxUtils.getSelectedRowBindingData(ItemGrid.obj);
                 ItemDetailWindow.Form.loadData(rowData);
             });
         },
@@ -406,11 +416,18 @@
                 dhtmlxAlert.alertWarningMsg("检验项目组合名称不可为空");
                 return;
             }
+            if (!formData.equipmentId) {
+                dhtmlxAlert.alertWarningMsg("所属检验设备不可为空");
+                return;
+            }
+            var checkItemIdList = dhtmlxUtils.getCheckedRowIds(ItemDetailWindow.CheckItemGrid.obj);
+            formData.checkItemIdList = checkItemIdList;
             ajaxUtils.postBody('checkItemGroupSettings/savecheckItemGroup.json',
                 formData
             ).then(function (data) {
                 ItemDetailWindow.obj.close();
                 ItemOperationForm.itemSearchBtnEvent();
+                RightCheckItemGrid.obj.clearAll();
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
@@ -426,6 +443,128 @@
                 return;
             }
             ItemDetailWindow.Form.obj.setFormData(rowData);
+            ItemDetailWindow.CheckItemGrid.selectCheckItem();
+        }
+    };
+
+    //详细信息窗口快速查询检验项目
+    ItemDetailWindow.SearchToolbar = {
+        obj: null,
+        config: {
+            align: "left",
+            icon_path: "images/",
+            items: [
+                {id: "inputValue", type: "buttonInput", text: "",width:150},
+                {id: "sep1", type: "separator"},
+                {
+                    id: "searchButton",
+                    type: "button",
+                    text: "<span style=\"font-weight: bold;font-size: 12px\">快速定位</span>",
+                    img: "search.png"
+                }
+            ]
+        },
+        initobj: function () {
+            ItemDetailWindow.SearchToolbar.obj = ItemDetailWindow.Layout.obj.cells("b").attachToolbar(ItemDetailWindow.SearchToolbar.config);
+        },
+        initEvent: function () {
+            //按回车时快速查询
+            ItemDetailWindow.SearchToolbar.obj.attachEvent("onEnter", function () {
+                ItemDetailWindow.SearchToolbar.searchButtonEvent();
+            });
+            ItemDetailWindow.SearchToolbar.obj.attachEvent("onClick", function (name) {
+                switch (name) {
+                    case "searchButton":
+                        ItemDetailWindow.SearchToolbar.searchButtonEvent();
+                        break;
+                    default:
+                }
+            });
+        },
+        //快速查询对应的检验项目
+        searchButtonEvent: function () {
+            var inputValue = ItemDetailWindow.SearchToolbar.obj.getValue("inputValue");
+            if (JSUtils.isEmpty(inputValue)) {
+                dhtmlxAlert.alertMsg("请输入检验项目编号或者名称或者英文缩写");
+                return;
+            }
+            ajaxUtils.get('checkItemGroupSettings/getCheckItemId.json', {
+                inputValue:inputValue
+            }).then(function (data) {
+                if (JSUtils.isEmpty(data)){
+                    dhtmlxAlert.alertMsg("未查询到相应的检验项目，请检查后重新查询");
+                    return;
+                }
+                if(JSUtils.isNotNum(data)){
+                    dhtmlxAlert.alertWarningMsg("查询到结果值类型不对，请联系系统管理员维护");
+                    return;
+                }
+                ItemDetailWindow.CheckItemGrid.obj.selectRowById(data);
+            }).catch(function (reason) {
+                dhtmlxAlert.alertErrorMsg(reason);
+            }).finally(function () {
+            });
+        }
+    };
+
+    //详细信息窗口右侧检验项目组合所包含的检验项目展示表格
+    ItemDetailWindow.CheckItemGrid = {
+        obj:null,
+        initObj: function () {
+            ItemDetailWindow.CheckItemGrid.obj = ItemDetailWindow.Layout.obj.cells("b").attachGrid();
+            ItemDetailWindow.CheckItemGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
+            ItemDetailWindow.CheckItemGrid.obj.setHeader("选择,编号,所含检验项目", null,
+                ["text-align:center;","text-align:center;", "text-align:center;"]);  //设置标题内容居中
+            ItemDetailWindow.CheckItemGrid.obj.setColumnIds("ch,itemId,itemName");
+            ItemDetailWindow.CheckItemGrid.obj.setColAlign("center,center,center");   //设置列中数据居中
+            ItemDetailWindow.CheckItemGrid.obj.setInitWidths("50,150,*");          //列宽
+            ItemDetailWindow.CheckItemGrid.obj.setColTypes("ch,ro,ro");
+            ItemDetailWindow.CheckItemGrid.obj.init();
+        },
+        initEvent:function(){
+            ItemDetailWindow.CheckItemGrid.obj.attachEvent("onRowSelect", function (id, ind) {
+                //自动勾选上本行或取消勾选
+                var flag = ItemDetailWindow.CheckItemGrid.obj.cells(id, 0).getValue() == '1' ? 0 : 1;
+                ItemDetailWindow.CheckItemGrid.obj.cells(id, 0).setValue(flag);
+                ItemDetailWindow.CheckItemGrid.setCheckItemNameList();
+            });
+            ItemDetailWindow.CheckItemGrid.obj.attachEvent("onCheck", function (rId, cInd, state) {
+                ItemDetailWindow.CheckItemGrid.obj.selectRowById(rId, true, true, false);
+                ItemDetailWindow.CheckItemGrid.setCheckItemNameList();
+            });
+        },
+        //设置左侧表单所含检验项目
+        setCheckItemNameList:function(){
+            var rowDataList = dhtmlxUtils.getCheckedRowBindingDatas(ItemDetailWindow.CheckItemGrid.obj);
+            var checkItemName = "";
+            for (var i = 0; i < rowDataList.length; i++) {
+                if (i === rowDataList.length -1 ){
+                    checkItemName = checkItemName + rowDataList[i].itemName
+                } else {
+                    checkItemName = checkItemName + rowDataList[i].itemName + ', '
+                }
+            }
+            ItemDetailWindow.Form.obj.setItemValue("checkItemNameList",checkItemName);
+        },
+        loadData: function () {
+            //查找所有的检验项目
+            ajaxUtils.get('checkItemSettings/getCheckItems.json', {
+            }).then(function (data) {
+                dhtmlxUtils.clearAndLoadJsonListData(ItemDetailWindow.CheckItemGrid.obj, data, "itemId");  //删除所有行，加载数据
+            }).catch(function (reason) {
+                dhtmlxAlert.alertErrorMsg(reason);
+            }).finally(function () {
+            });
+        },
+        //更新检验项目组合时勾选上所有初始时的检验项目
+        selectCheckItem:function () {
+            var allRowIds = RightCheckItemGrid.obj.getAllRowIds();
+            var allRowIdArr = new Array();
+            allRowIdArr = allRowIds.split(",");
+            for (var i = 0; i < allRowIdArr.length; i++) {
+                ItemDetailWindow.CheckItemGrid.obj.cells(allRowIdArr[i],0).setValue(1);
+            }
+            ItemDetailWindow.CheckItemGrid.setCheckItemNameList();
         }
     };
 

@@ -77,7 +77,7 @@
                             dhtmlxAlert.alertMsg("需至少选中一个要删除的项目");
                             return;
                         }
-                        dhtmlxAlert.confirmWarningMsg("是否确认删除?", function () {
+                        dhtmlxAlert.confirmWarningMsg("删除检验仪器时，同时会删除检验仪器——检验项目之间的关联，请确认是否删除?", function () {
                             ItemOperationForm.itemDeleteBtnEvent(itemIdList);
                         });
                         break;
@@ -216,6 +216,7 @@
                 type: "block", list: [
                     {type: "combo", name:"model",label: "型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号", inputWidth: 180,maxLength:15,
                         options:[
+                            {text: "", value: ""},
                             {text: "生化仪", value: "生化仪"},
                             {text: "血球仪", value: "血球仪"},
                             {text: "尿分仪", value: "尿分仪"},
@@ -231,6 +232,7 @@
                 type: "block", list: [
                     {type: "combo", name:"departmentName",label: "所属科室", inputWidth: 180,maxLength:10,
                         options:[
+                            {text: "", value: ""},
                             {text: "检验科", value: "检验科"},
                             {text: "血库", value: "血库"},
                             {text: "重症康复病区", value: "重症康复病区"},

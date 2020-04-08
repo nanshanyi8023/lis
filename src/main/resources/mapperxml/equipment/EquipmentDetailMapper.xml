@@ -202,4 +202,11 @@
     from equipment_detail
     where hosnum = #{hosNum}
   </select>
+  <delete id="deleteByEquipmentId">
+    delete from equipment_detail
+    where hosnum = #{hosNum} AND equipment_id IN
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
 </mapper>

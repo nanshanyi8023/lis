@@ -358,4 +358,9 @@
     from check_item
     where hosnum = #{hosNum}
   </select>
+  <select id="getCheckItemId" resultType="java.lang.String">
+    select item_id
+    from check_item
+    where hosnum = #{hosNum} and (item_id = #{inputValue} || item_name = #{inputValue} || english_abbreviation = #{inputValue})
+  </select>
 </mapper>

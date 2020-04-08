@@ -46,4 +46,7 @@ public interface CheckItemMapper {
 
     //获取最大的检验项目id值
     String getMaxId(@Param("hosNum")String hosNum);
+
+    //判断输入值是否有相对应的检验项目id,名称，英文缩写，如果存在返回检验项目id
+    String getCheckItemId(@Param("hosNum") String hosNum, @Param("inputValue") String inputValue);
 }

@@ -33,6 +33,9 @@ public interface CheckItemGroupDetailMapper {
     //根据医院号查找所有检验项目组合id和检验项目id
     List<CheckItemGroupDetail> getItemGroupIdAndItemId(@Param("hosNum") String hosNum);
 
-    //根据检验项目组合id删除对应的项目
+    //删除选中检验项目组合与对应的项目之间的关系
     int deleteByGroupId(@Param("hosNum") String hosNum, @Param("list") List<String> itemIdList);
+
+    //插入检验项目组合与检验项目之间的关系
+    int insertByGroupIdAndItemId(@Param("hosNum") String hosNum, @Param("groupId") String groupId, @Param("checkItemIdList") List<String> checkItemIdList);
 }

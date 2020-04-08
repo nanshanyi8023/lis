@@ -65,4 +65,14 @@ public class CheckItemGroupController {
             return ApiResult.failed(e.getMessage());
         }
     }
+
+    //详细信息窗口根据输入框查找对应的检验项目id
+    @RequestMapping(value = "/getCheckItemId.json", method = RequestMethod.GET)
+    public ApiResult getCheckItemId(@RequestParam(required = true) String inputValue){
+        try {
+            return ApiResult.success(checkItemGroupService.getCheckItemId(inputValue));
+        } catch (Exception e){
+            return ApiResult.failed(e.getMessage());
+        }
+    }
 }

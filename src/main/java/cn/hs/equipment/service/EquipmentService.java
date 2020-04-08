@@ -1,5 +1,6 @@
 package cn.hs.equipment.service;
 
+import cn.hs.equipment.mapper.EquipmentDetailMapper;
 import cn.hs.publicclass.method.BusinessException;
 import cn.hs.publicclass.method.GetCookieService;
 import cn.hs.equipment.mapper.EquipmentMapper;
@@ -17,6 +18,9 @@ public class EquipmentService {
     private EquipmentMapper equipmentMapper;
 
     @Autowired
+    private EquipmentDetailMapper equipmentDetailMapper;
+
+    @Autowired
     private GetCookieService getCookie;
 
     //查找检验仪器
@@ -29,6 +33,8 @@ public class EquipmentService {
         if (itemIdList.isEmpty()){
             return 0;
         }
+        //删除选中检验设备与对应的检验项目之间的关系
+        equipmentDetailMapper.deleteByEquipmentId(getCookie.getHosNum(),itemIdList);
         return equipmentMapper.deleteEquipments(getCookie.getHosNum(),itemIdList);
     }
 
