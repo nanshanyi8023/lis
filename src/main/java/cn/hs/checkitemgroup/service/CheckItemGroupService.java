@@ -37,8 +37,7 @@ public class CheckItemGroupService {
 
     //查找检验项目组合
     public List<CheckItemGroup> getcheckItemGroups(String equipmentId, String checkItemGroup) {
-        List<CheckItemGroup> checkItemGroupList = checkItemGroupMapper.getcheckItemGroups(getCookie.getHosNum(), equipmentId, checkItemGroup);
-        return checkItemGroupList;
+        return checkItemGroupMapper.getcheckItemGroups(getCookie.getHosNum(), equipmentId, checkItemGroup);
     }
 
     //查找检验项目组合对应的检验项目

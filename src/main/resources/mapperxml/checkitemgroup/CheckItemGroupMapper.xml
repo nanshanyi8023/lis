@@ -245,7 +245,10 @@
   <select id="selectAllCheckItemGroup" resultMap="BaseResultMap">
     select distinct group_id,group_name
     from check_item_group
-    where hosnum = #{hosNum} and equipment_id = #{equipmentId}
+    where hosnum = #{hosNum}
+    <if test="equipmentId != null and equipmentId != ''">
+      and equipment_id = #{equipmentId}
+    </if>
   </select>
   <select id="getcheckItemGroups" resultMap="BaseResultMap">
     select cig.*, em2.item_name as equipmentName
@@ -295,5 +298,10 @@
     join check_item_group_detail cigd on cigd.item_group_id = cig.group_id and cigd.hosnum = #{hosNum}
     join check_item ci on cigd.item_id = ci.item_id and ci.item_id = #{checkItemId} and ci.hosnum = #{hosNum}
     where cig.hosnum = #{hosNum}
+  </select>
+  <select id="getCheckItemGroupId" resultType="java.lang.String">
+    select group_id
+    from check_item_group
+    where hosnum = #{hosNum} and (group_id = #{inputValue} || group_name = #{inputValue})
   </select>
 </mapper>

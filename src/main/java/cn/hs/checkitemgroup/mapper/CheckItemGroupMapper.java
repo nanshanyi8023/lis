@@ -56,4 +56,7 @@ public interface CheckItemGroupMapper {
 
     //查找检验项目对应的检验项目组合
     List<CheckItemGroup> getAssociatedCheckItemGroup(@Param("hosNum") String hosNum, @Param("checkItemId") String checkItemId);
+
+    //判断输入值是否有相对应的检验项目组合id和名称,如果存在返回检验项目组合id
+    String getCheckItemGroupId(@Param("hosNum") String hosNum, @Param("inputValue") String inputValue);
 }

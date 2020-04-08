@@ -33,9 +33,9 @@
                 },
                 {
                     id: "c",
-                    text: "&nbsp;&nbsp所含检验项目",
+                    text: "&nbsp;&nbsp已关联检验项目",
                     header: true,
-                    collapsed_text: "所含检验项目",   // 折叠栏标题
+                    collapsed_text: "已关联检验项目",   // 折叠栏标题
                     collapse: false,       // 初始是否折叠
                     fix_size: [true, true],
                     width:450
@@ -217,7 +217,7 @@
         initObj: function () {
             RightCheckItemGrid.obj = Layout.obj.cells("c").attachGrid();
             RightCheckItemGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            RightCheckItemGrid.obj.setHeader("编号,所含检验项目", null,
+            RightCheckItemGrid.obj.setHeader("编号,已关联检验项目", null,
                 ["text-align:center;", "text-align:center;"]);  //设置标题内容居中
             RightCheckItemGrid.obj.setColumnIds("itemId,itemName");
             RightCheckItemGrid.obj.setColAlign("center,center");   //设置列中数据居中
@@ -258,7 +258,7 @@
             ItemDetailWindow.SearchToolbar.initEvent();
             ItemDetailWindow.CheckItemGrid.initObj();
             ItemDetailWindow.CheckItemGrid.initEvent();
-            ItemDetailWindow.CheckItemGrid.loadData();
+            ItemDetailWindow.CheckItemGrid.loadData(rowData);
         }
     };
 
@@ -285,8 +285,8 @@
                 },
                 {
                     id: "b",
-                    text: "所含检验项目",
-                    collapsed_text: "所含检验项目",
+                    text: "关联检验项目",
+                    collapsed_text: "关联检验项目",
                     header: false,
                     collapse: false,
                     fix_size: [true, true],
@@ -348,8 +348,16 @@
             },
             {
                 type: "block", list: [
-                    {type: "input", rows:8,name: "checkItemNameList", label: "所含检验项目", inputWidth: 230,readonly: true,
-                        style: "background:#eaeaea"}
+                    {
+                        type: "input",
+                        rows: 8,
+                        name: "checkItemNameList",
+                        label: "已关联检验项目",
+                        position: "label-top",
+                        inputWidth: 320,
+                        readonly: true,
+                        style: "background:#eaeaea"
+                    }
                 ]
             },
             {
@@ -444,7 +452,6 @@
                 return;
             }
             ItemDetailWindow.Form.obj.setFormData(rowData);
-            ItemDetailWindow.CheckItemGrid.selectCheckItem();
         }
     };
 
@@ -514,7 +521,7 @@
         initObj: function () {
             ItemDetailWindow.CheckItemGrid.obj = ItemDetailWindow.Layout.obj.cells("b").attachGrid();
             ItemDetailWindow.CheckItemGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            ItemDetailWindow.CheckItemGrid.obj.setHeader("选择,编号,所含检验项目", null,
+            ItemDetailWindow.CheckItemGrid.obj.setHeader("选择,编号,检验项目", null,
                 ["text-align:center;","text-align:center;", "text-align:center;"]);  //设置标题内容居中
             ItemDetailWindow.CheckItemGrid.obj.setColumnIds("ch,itemId,itemName");
             ItemDetailWindow.CheckItemGrid.obj.setColAlign("center,center,center");   //设置列中数据居中
@@ -534,7 +541,7 @@
                 ItemDetailWindow.CheckItemGrid.setCheckItemNameList();
             });
         },
-        //设置左侧表单所含检验项目
+        //设置左侧表单已关联检验项目
         setCheckItemNameList:function(){
             var rowDataList = dhtmlxUtils.getCheckedRowBindingDatas(ItemDetailWindow.CheckItemGrid.obj);
             var checkItemName = "";
@@ -547,11 +554,14 @@
             }
             ItemDetailWindow.Form.obj.setItemValue("checkItemNameList",checkItemName);
         },
-        loadData: function () {
+        loadData: function (rowData) {
             //查找所有的检验项目
             ajaxUtils.get('checkItemSettings/getCheckItems.json', {
             }).then(function (data) {
                 dhtmlxUtils.clearAndLoadJsonListData(ItemDetailWindow.CheckItemGrid.obj, data, "itemId");  //删除所有行，加载数据
+                if (JSUtils.isNotEmpty(rowData)){
+                    ItemDetailWindow.CheckItemGrid.selectCheckItem();
+                }
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {

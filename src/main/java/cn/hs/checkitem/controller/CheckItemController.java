@@ -59,7 +59,7 @@ public class CheckItemController {
 
     //查找所有检验项目组合
     @RequestMapping(value = "/getAllCheckItemGroup.json", method = RequestMethod.GET)
-    public ApiResult getAllCheckItemGroup(@RequestParam(required = true) String equipmentId){
+    public ApiResult getAllCheckItemGroup(@RequestParam(required = false) String equipmentId){
         try {
             return ApiResult.success(checkItemService.getAllCheckItemGroup(equipmentId));
         } catch (Exception e){
@@ -82,6 +82,16 @@ public class CheckItemController {
     public ApiResult getAssociatedCheckItemGroup(@RequestParam(required = true) String checkItemId){
         try {
             return ApiResult.success(checkItemService.getAssociatedCheckItemGroup(checkItemId));
+        } catch (Exception e){
+            return ApiResult.failed(e.getMessage());
+        }
+    }
+
+    //详细信息窗口根据输入框查找对应的检验项目组合id
+    @RequestMapping(value = "/getCheckItemGroupId.json", method = RequestMethod.GET)
+    public ApiResult getCheckItemGroupId(@RequestParam(required = true) String inputValue){
+        try {
+            return ApiResult.success(checkItemService.getCheckItemGroupId(inputValue));
         } catch (Exception e){
             return ApiResult.failed(e.getMessage());
         }

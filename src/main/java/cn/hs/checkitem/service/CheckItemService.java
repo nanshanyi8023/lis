@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -66,6 +67,21 @@ public class CheckItemService {
             checkItemMapper.insertSelective(checkItem);
         }else {  //更新
             checkItemMapper.updateByPrimaryKeySelective(checkItem);
+
+            //删除该检验项目与检验设备之间的关系
+            List<String> checkItemIdList = new ArrayList<String>();
+            checkItemIdList.add(checkItem.getItemId());
+            equipmentDetailMapper.deleteByCheckItemId(hosNum,checkItemIdList);
+            //删除该检验项目与检验项目组合之间的关系
+            checkItemGroupDetailMapper.deleteByCheckItemId(hosNum,checkItemIdList);
+        }
+        //插入检验项目与检验设备之间的关系
+        if ( (checkItem.getEquipmentIdList() != null) && (checkItem.getEquipmentIdList().size() > 0) ){
+            equipmentDetailMapper.insertByItemIdAndEquipmentId(hosNum,checkItem.getItemId(),checkItem.getEquipmentIdList());
+        }
+        //插入检验项目与检验项目组合之间的关系
+        if ( (checkItem.getCheckItemGroupIdList() != null) && (checkItem.getCheckItemGroupIdList().size() > 0) ){
+            checkItemGroupDetailMapper.insertByItemIdAndItemGroupId(hosNum,checkItem.getItemId(),checkItem.getCheckItemGroupIdList());
         }
     }
 
@@ -98,5 +114,13 @@ public class CheckItemService {
     //查找选中的检验项目对应的检验项目组合
     public List<CheckItemGroup> getAssociatedCheckItemGroup(String checkItemId) {
         return checkItemGroupMapper.getAssociatedCheckItemGroup(getCookie.getHosNum(),checkItemId);
+    }
+
+    //详细信息窗口根据输入框查找对应的检验项目组合id
+    public String getCheckItemGroupId(String inputValue) {
+        if (StringUtils.isEmpty(inputValue)){
+            return null;
+        }
+        return checkItemGroupMapper.getCheckItemGroupId(getCookie.getHosNum(),inputValue);
     }
 }

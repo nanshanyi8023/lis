@@ -216,4 +216,12 @@
       #{item}
     </foreach>
   </delete>
+  <insert id="insertByItemIdAndEquipmentId">
+    insert into
+    equipment_detail (hosnum, check_item_id, equipment_id)
+    values
+    <foreach collection="equipmentIdList" item="item" index="index" separator=",">
+      (#{hosNum},#{CheckItemId},#{item})
+    </foreach>
+  </insert>
 </mapper>

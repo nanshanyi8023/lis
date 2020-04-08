@@ -1,8 +1,15 @@
 package cn.hs.checkitem.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class CheckItem extends CheckItemKey {
+
+    //新增对应的检验设备id字段
+    private List<String> equipmentIdList;
+
+    //新增对应的检验项目组合id字段
+    private List<String> checkItemGroupIdList;
 
     private String itemName;
 
@@ -23,6 +30,22 @@ public class CheckItem extends CheckItemKey {
     private Integer orderNumber;
 
     private Date traceLog;
+
+    public List<String> getEquipmentIdList() {
+        return equipmentIdList;
+    }
+
+    public void setEquipmentIdList(List<String> equipmentIdList) {
+        this.equipmentIdList = equipmentIdList;
+    }
+
+    public List<String> getCheckItemGroupIdList() {
+        return checkItemGroupIdList;
+    }
+
+    public void setCheckItemGroupIdList(List<String> checkItemGroupIdList) {
+        this.checkItemGroupIdList = checkItemGroupIdList;
+    }
 
     public String getItemName() {
         return itemName;
