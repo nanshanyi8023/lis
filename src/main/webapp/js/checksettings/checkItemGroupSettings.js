@@ -155,6 +155,7 @@
             ).then(function (data) {
                 //重新加载表格
                 ItemOperationForm.itemSearchBtnEvent();
+                RightCheckItemGrid.obj.clearAll();
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {

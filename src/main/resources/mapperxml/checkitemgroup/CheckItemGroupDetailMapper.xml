@@ -215,4 +215,11 @@
      (#{hosNum},#{groupId},#{item})
     </foreach>
   </insert>
+  <delete id="deleteByCheckItemId">
+    delete from check_item_group_detail
+    where hosnum = #{hosNum} and item_id in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
 </mapper>

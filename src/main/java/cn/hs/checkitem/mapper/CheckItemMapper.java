@@ -35,7 +35,7 @@ public interface CheckItemMapper {
      * 自定义方法
      */
     //根据id,名称或英文缩写模糊搜索检验项目
-    List<CheckItem> getCheckItems(@Param("hosNum") String hosNum, @Param("workGroupId") String workGroupId,
+    List<CheckItem> getCheckItems(@Param("hosNum") String hosNum, @Param("equipmentId") String equipmentId,
                                   @Param("checkItemGroupId") String checkItemGroupId,@Param("checkItem") String checkItem);
 
     //删除选中检验项目

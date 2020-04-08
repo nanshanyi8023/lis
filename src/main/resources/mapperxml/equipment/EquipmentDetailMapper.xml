@@ -209,4 +209,11 @@
       #{item}
     </foreach>
   </delete>
+  <delete id="deleteByCheckItemId">
+    delete from equipment_detail
+    where hosnum = #{hosNum} AND check_item_id IN
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
 </mapper>

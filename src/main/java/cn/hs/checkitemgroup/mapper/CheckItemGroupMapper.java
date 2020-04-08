@@ -53,4 +53,7 @@ public interface CheckItemGroupMapper {
 
     //查找检验项目组合对应的检验项目
     List<CheckItem> getcheckItemNameList(@Param("hosNum") String hosNum, @Param("checkItemGroupId") String checkItemGroupId);
+
+    //查找检验项目对应的检验项目组合
+    List<CheckItemGroup> getAssociatedCheckItemGroup(@Param("hosNum") String hosNum, @Param("checkItemId") String checkItemId);
 }

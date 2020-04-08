@@ -34,4 +34,7 @@ public interface EquipmentDetailMapper {
 
     //删除选中检验设备与对应的检验项目之前的关系
     int deleteByEquipmentId(@Param("hosNum") String hosNum, @Param("list") List<String> itemIdList);
+
+    //删除选中检验项目与对应的检验设备之前的关系
+    int deleteByCheckItemId(@Param("hosNum") String hosNum, @Param("list") List<String> itemIdList);
 }

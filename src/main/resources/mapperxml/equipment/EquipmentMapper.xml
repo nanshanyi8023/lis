@@ -308,4 +308,11 @@
     from equipment
     where hosnum = #{hosNum}
   </select>
+  <select id="getAssociatedEquipment" resultMap="BaseResultMap">
+    select em.item_id,em.item_name
+    from equipment em
+    join equipment_detail emd on emd.equipment_id = em.item_id and emd.hosnum = #{hosNum}
+    join check_item ci on emd.check_item_id = ci.item_id and ci.item_id = #{checkItemId} and ci.hosnum = #{hosNum}
+    where em.hosnum = #{hosNum}
+  </select>
 </mapper>

@@ -46,4 +46,7 @@ public interface EquipmentMapper {
 
     //查找最大的检验设备id
     String getMaxId(@Param("hosNum") String hosNum);
+
+    //查找检验项目对应的检验设备
+    List<Equipment> getAssociatedEquipment(@Param("hosNum") String hosNum, @Param("checkItemId") String checkItemId);
 }

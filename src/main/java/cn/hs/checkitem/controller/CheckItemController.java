@@ -16,11 +16,11 @@ public class CheckItemController {
 
     //查找检验项目
     @RequestMapping(value = "/getCheckItems.json", method = RequestMethod.GET)
-    public ApiResult getCheckItems(@RequestParam(required = false) String workGroupId,
+    public ApiResult getCheckItems(@RequestParam(required = false) String equipmentId,
                                    @RequestParam(required = false) String checkItemGroupId,
                                    @RequestParam(required = false) String checkItem){
         try {
-            return ApiResult.success(checkItemService.getCheckItems(workGroupId,checkItemGroupId,checkItem));
+            return ApiResult.success(checkItemService.getCheckItems(equipmentId,checkItemGroupId,checkItem));
         } catch (Exception e){
             return ApiResult.failed(e.getMessage());
         }
@@ -59,9 +59,29 @@ public class CheckItemController {
 
     //查找所有检验项目组合
     @RequestMapping(value = "/getAllCheckItemGroup.json", method = RequestMethod.GET)
-    public ApiResult getAllCheckItemGroup(@RequestParam(required = true) String workGroupId){
+    public ApiResult getAllCheckItemGroup(@RequestParam(required = true) String equipmentId){
         try {
-            return ApiResult.success(checkItemService.getAllCheckItemGroup(workGroupId));
+            return ApiResult.success(checkItemService.getAllCheckItemGroup(equipmentId));
+        } catch (Exception e){
+            return ApiResult.failed(e.getMessage());
+        }
+    }
+
+    //查找选中的检验项目对应的检验设备
+    @RequestMapping(value = "/getAssociatedEquipment.json", method = RequestMethod.GET)
+    public ApiResult getAssociatedEquipment(@RequestParam(required = true) String checkItemId){
+        try {
+            return ApiResult.success(checkItemService.getAssociatedEquipment(checkItemId));
+        } catch (Exception e){
+            return ApiResult.failed(e.getMessage());
+        }
+    }
+
+    //查找选中的检验项目对应的检验项目组合
+    @RequestMapping(value = "/getAssociatedCheckItemGroup.json", method = RequestMethod.GET)
+    public ApiResult getAssociatedCheckItemGroup(@RequestParam(required = true) String checkItemId){
+        try {
+            return ApiResult.success(checkItemService.getAssociatedCheckItemGroup(checkItemId));
         } catch (Exception e){
             return ApiResult.failed(e.getMessage());
         }

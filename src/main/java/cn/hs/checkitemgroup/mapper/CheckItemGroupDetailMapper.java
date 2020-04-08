@@ -38,4 +38,7 @@ public interface CheckItemGroupDetailMapper {
 
     //插入检验项目组合与检验项目之间的关系
     int insertByGroupIdAndItemId(@Param("hosNum") String hosNum, @Param("groupId") String groupId, @Param("checkItemIdList") List<String> checkItemIdList);
+
+    //删除选中的检验项目与对应的检验项目组合之间的关联
+    int deleteByCheckItemId(@Param("hosNum") String hosNum, @Param("list") List<String> itemIdList);
 }

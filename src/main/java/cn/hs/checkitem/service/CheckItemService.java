@@ -2,8 +2,10 @@ package cn.hs.checkitem.service;
 
 import cn.hs.checkitem.mapper.CheckItemMapper;
 import cn.hs.checkitem.pojo.CheckItem;
+import cn.hs.checkitemgroup.mapper.CheckItemGroupDetailMapper;
 import cn.hs.checkitemgroup.mapper.CheckItemGroupMapper;
 import cn.hs.checkitemgroup.pojo.CheckItemGroup;
+import cn.hs.equipment.mapper.EquipmentDetailMapper;
 import cn.hs.equipment.mapper.EquipmentMapper;
 import cn.hs.equipment.pojo.Equipment;
 import cn.hs.publicclass.method.BusinessException;
@@ -26,36 +28,17 @@ public class CheckItemService {
     private CheckItemGroupMapper checkItemGroupMapper;
 
     @Autowired
-    private GetCookieService getCookie;
-
-    /*@Autowired
-    private WorkGroupDetailMapper workGroupDetailMapper;
+    private EquipmentDetailMapper equipmentDetailMapper;
 
     @Autowired
-    private CheckItemGroupDetailMapper checkItemGroupDetailMapper;*/
+    private CheckItemGroupDetailMapper checkItemGroupDetailMapper;
+
+    @Autowired
+    private GetCookieService getCookie;
 
     //查找检验项目
-    public List<CheckItem> getCheckItems(String workGroupId, String checkItemGroupId, String checkItem) {
-        List<CheckItem> checkItemList = checkItemMapper.getCheckItems(getCookie.getHosNum(), workGroupId,checkItemGroupId,checkItem);
-        /*//查找工作组并将id赋给checkItem
-        List<WorkGroupDetail> workGroupIdAndCheckItemIdList = workGroupDetailMapper.getWorkGroupIdAndCheckItemId(getCookie.getHosNum());
-        //查找检验项目组合并将id赋给checkItem
-        List<CheckItemGroupDetail> checkItemGroupDetailList = checkItemGroupDetailMapper.getItemGroupIdAndItemId(getCookie.getHosNum());
-        for (int i = 0; i < checkItemList.size(); i++) {
-            for (int j = 0; j < workGroupIdAndCheckItemIdList.size(); j++) {
-                if (checkItemList.get(i).getItemId().equals(workGroupIdAndCheckItemIdList.get(j).getItemId())){
-                    checkItemList.get(i).setWorkGroup(workGroupIdAndCheckItemIdList.get(j).getWorkGroupId());
-                    continue;
-                }
-            }
-            for (int j = 0; j < checkItemGroupDetailList.size(); j++) {
-                if (checkItemList.get(i).getItemId().equals(checkItemGroupDetailList.get(j).getItemId())){
-                    checkItemList.get(i).setCheckItemGroup(checkItemGroupDetailList.get(j).getItemGroupId());
-                    continue;
-                }
-            }
-        }*/
-        return checkItemList;
+    public List<CheckItem> getCheckItems(String equipmentId, String checkItemGroupId, String checkItem) {
+        return checkItemMapper.getCheckItems(getCookie.getHosNum(), equipmentId,checkItemGroupId,checkItem);
     }
 
     //删除检验项目
@@ -63,6 +46,11 @@ public class CheckItemService {
         if (itemIdList.isEmpty()){
             return 0;
         }
+        //删除检验项目——检验仪器之间的关联
+        equipmentDetailMapper.deleteByCheckItemId(getCookie.getHosNum(),itemIdList);
+        //删除检验项目——检验项目组合之间的关联
+        checkItemGroupDetailMapper.deleteByCheckItemId(getCookie.getHosNum(),itemIdList);
+
         return checkItemMapper.deleteCheckItems(getCookie.getHosNum(), itemIdList);
     }
 
@@ -92,15 +80,23 @@ public class CheckItemService {
         return false;
     }
 
-    //根据医院号查找所有工作组
+    //根据医院号查找所有检验设备
     public List<Equipment> getAllEquipment() {
-        List<Equipment> workGroupList = equipmentMapper.selectAllEquipment(getCookie.getHosNum());
-        return workGroupList;
+        return equipmentMapper.selectAllEquipment(getCookie.getHosNum());
     }
 
     //根据医院号和工作组id查找所有检验项目组合
-    public List<CheckItemGroup> getAllCheckItemGroup(String workGroupId) {
-        List<CheckItemGroup> checkItemGroupList = checkItemGroupMapper.selectAllCheckItemGroup(getCookie.getHosNum(),workGroupId);
-        return checkItemGroupList;
+    public List<CheckItemGroup> getAllCheckItemGroup(String equipmentId) {
+        return checkItemGroupMapper.selectAllCheckItemGroup(getCookie.getHosNum(),equipmentId);
+    }
+
+    //查找选中的检验项目对应的检验设备
+    public List<Equipment> getAssociatedEquipment(String checkItemId) {
+        return equipmentMapper.getAssociatedEquipment(getCookie.getHosNum(),checkItemId);
+    }
+
+    //查找选中的检验项目对应的检验项目组合
+    public List<CheckItemGroup> getAssociatedCheckItemGroup(String checkItemId) {
+        return checkItemGroupMapper.getAssociatedCheckItemGroup(getCookie.getHosNum(),checkItemId);
     }
 }

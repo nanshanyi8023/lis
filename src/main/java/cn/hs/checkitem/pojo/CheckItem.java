@@ -3,10 +3,6 @@ package cn.hs.checkitem.pojo;
 import java.util.Date;
 
 public class CheckItem extends CheckItemKey {
-    //新增workGorup和checkItemGroup字段
-    private String workGroup;
-
-    private String checkItemGroup;
 
     private String itemName;
 
@@ -27,22 +23,6 @@ public class CheckItem extends CheckItemKey {
     private Integer orderNumber;
 
     private Date traceLog;
-
-    public String getWorkGroup() {
-        return workGroup;
-    }
-
-    public void setWorkGroup(String workGroup) {
-        this.workGroup = workGroup;
-    }
-
-    public String getCheckItemGroup() {
-        return checkItemGroup;
-    }
-
-    public void setCheckItemGroup(String checkItemGroup) {
-        this.checkItemGroup = checkItemGroup;
-    }
 
     public String getItemName() {
         return itemName;

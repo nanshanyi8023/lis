@@ -289,4 +289,11 @@
     join check_item_group_detail cigd on ci.item_id = cigd.item_id and cigd.item_group_id = #{checkItemGroupId} and cigd.hosnum = #{hosNum}
     where ci.hosnum = #{hosNum}
   </select>
+  <select id="getAssociatedCheckItemGroup" resultMap="BaseResultMap">
+    select cig.group_id,cig.group_name
+    from check_item_group cig
+    join check_item_group_detail cigd on cigd.item_group_id = cig.group_id and cigd.hosnum = #{hosNum}
+    join check_item ci on cigd.item_id = ci.item_id and ci.item_id = #{checkItemId} and ci.hosnum = #{hosNum}
+    where cig.hosnum = #{hosNum}
+  </select>
 </mapper>
