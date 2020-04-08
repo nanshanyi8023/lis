@@ -7,10 +7,10 @@
         config: {
             pattern: "2E",
             offsets: {
-                top: 1,
-                right: 1,
-                bottom: 1,
-                left: 1
+                top: 5,
+                right: 5,
+                bottom: 5,
+                left: 5
             },
             cells: [
                 {

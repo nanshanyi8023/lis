@@ -1,17 +1,17 @@
-package cn.hs.workgroup.pojo;
+package cn.hs.equipment.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class WorkGroupDetailExample {
+public class EquipmentDetailExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public WorkGroupDetailExample() {
+    public EquipmentDetailExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -175,143 +175,143 @@ public class WorkGroupDetailExample {
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdIsNull() {
-            addCriterion("work_group_id is null");
+        public Criteria andEquipmentIdIsNull() {
+            addCriterion("equipment_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdIsNotNull() {
-            addCriterion("work_group_id is not null");
+        public Criteria andEquipmentIdIsNotNull() {
+            addCriterion("equipment_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdEqualTo(String value) {
-            addCriterion("work_group_id =", value, "workGroupId");
+        public Criteria andEquipmentIdEqualTo(String value) {
+            addCriterion("equipment_id =", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotEqualTo(String value) {
-            addCriterion("work_group_id <>", value, "workGroupId");
+        public Criteria andEquipmentIdNotEqualTo(String value) {
+            addCriterion("equipment_id <>", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdGreaterThan(String value) {
-            addCriterion("work_group_id >", value, "workGroupId");
+        public Criteria andEquipmentIdGreaterThan(String value) {
+            addCriterion("equipment_id >", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdGreaterThanOrEqualTo(String value) {
-            addCriterion("work_group_id >=", value, "workGroupId");
+        public Criteria andEquipmentIdGreaterThanOrEqualTo(String value) {
+            addCriterion("equipment_id >=", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdLessThan(String value) {
-            addCriterion("work_group_id <", value, "workGroupId");
+        public Criteria andEquipmentIdLessThan(String value) {
+            addCriterion("equipment_id <", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdLessThanOrEqualTo(String value) {
-            addCriterion("work_group_id <=", value, "workGroupId");
+        public Criteria andEquipmentIdLessThanOrEqualTo(String value) {
+            addCriterion("equipment_id <=", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdLike(String value) {
-            addCriterion("work_group_id like", value, "workGroupId");
+        public Criteria andEquipmentIdLike(String value) {
+            addCriterion("equipment_id like", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotLike(String value) {
-            addCriterion("work_group_id not like", value, "workGroupId");
+        public Criteria andEquipmentIdNotLike(String value) {
+            addCriterion("equipment_id not like", value, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdIn(List<String> values) {
-            addCriterion("work_group_id in", values, "workGroupId");
+        public Criteria andEquipmentIdIn(List<String> values) {
+            addCriterion("equipment_id in", values, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotIn(List<String> values) {
-            addCriterion("work_group_id not in", values, "workGroupId");
+        public Criteria andEquipmentIdNotIn(List<String> values) {
+            addCriterion("equipment_id not in", values, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdBetween(String value1, String value2) {
-            addCriterion("work_group_id between", value1, value2, "workGroupId");
+        public Criteria andEquipmentIdBetween(String value1, String value2) {
+            addCriterion("equipment_id between", value1, value2, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andWorkGroupIdNotBetween(String value1, String value2) {
-            addCriterion("work_group_id not between", value1, value2, "workGroupId");
+        public Criteria andEquipmentIdNotBetween(String value1, String value2) {
+            addCriterion("equipment_id not between", value1, value2, "equipmentId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdIsNull() {
-            addCriterion("item_id is null");
+        public Criteria andCheckItemIdIsNull() {
+            addCriterion("check_item_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdIsNotNull() {
-            addCriterion("item_id is not null");
+        public Criteria andCheckItemIdIsNotNull() {
+            addCriterion("check_item_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdEqualTo(String value) {
-            addCriterion("item_id =", value, "itemId");
+        public Criteria andCheckItemIdEqualTo(String value) {
+            addCriterion("check_item_id =", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotEqualTo(String value) {
-            addCriterion("item_id <>", value, "itemId");
+        public Criteria andCheckItemIdNotEqualTo(String value) {
+            addCriterion("check_item_id <>", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdGreaterThan(String value) {
-            addCriterion("item_id >", value, "itemId");
+        public Criteria andCheckItemIdGreaterThan(String value) {
+            addCriterion("check_item_id >", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdGreaterThanOrEqualTo(String value) {
-            addCriterion("item_id >=", value, "itemId");
+        public Criteria andCheckItemIdGreaterThanOrEqualTo(String value) {
+            addCriterion("check_item_id >=", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdLessThan(String value) {
-            addCriterion("item_id <", value, "itemId");
+        public Criteria andCheckItemIdLessThan(String value) {
+            addCriterion("check_item_id <", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdLessThanOrEqualTo(String value) {
-            addCriterion("item_id <=", value, "itemId");
+        public Criteria andCheckItemIdLessThanOrEqualTo(String value) {
+            addCriterion("check_item_id <=", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdLike(String value) {
-            addCriterion("item_id like", value, "itemId");
+        public Criteria andCheckItemIdLike(String value) {
+            addCriterion("check_item_id like", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotLike(String value) {
-            addCriterion("item_id not like", value, "itemId");
+        public Criteria andCheckItemIdNotLike(String value) {
+            addCriterion("check_item_id not like", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdIn(List<String> values) {
-            addCriterion("item_id in", values, "itemId");
+        public Criteria andCheckItemIdIn(List<String> values) {
+            addCriterion("check_item_id in", values, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotIn(List<String> values) {
-            addCriterion("item_id not in", values, "itemId");
+        public Criteria andCheckItemIdNotIn(List<String> values) {
+            addCriterion("check_item_id not in", values, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdBetween(String value1, String value2) {
-            addCriterion("item_id between", value1, value2, "itemId");
+        public Criteria andCheckItemIdBetween(String value1, String value2) {
+            addCriterion("check_item_id between", value1, value2, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andItemIdNotBetween(String value1, String value2) {
-            addCriterion("item_id not between", value1, value2, "itemId");
+        public Criteria andCheckItemIdNotBetween(String value1, String value2) {
+            addCriterion("check_item_id not between", value1, value2, "checkItemId");
             return (Criteria) this;
         }
 

@@ -1,9 +1,7 @@
-package cn.hs.workgroup.pojo;
+package cn.hs.equipment.pojo;
 
-public class WorkGroupDetailKey {
+public class EquipmentKey {
     private String hosnum;
-
-    private String workGroupId;
 
     private String itemId;
 
@@ -13,14 +11,6 @@ public class WorkGroupDetailKey {
 
     public void setHosnum(String hosnum) {
         this.hosnum = hosnum == null ? null : hosnum.trim();
-    }
-
-    public String getWorkGroupId() {
-        return workGroupId;
-    }
-
-    public void setWorkGroupId(String workGroupId) {
-        this.workGroupId = workGroupId == null ? null : workGroupId.trim();
     }
 
     public String getItemId() {

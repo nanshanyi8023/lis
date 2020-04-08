@@ -200,4 +200,34 @@
     from check_item_group_detail
     where hosnum = #{hosNum}
   </select>
+  <delete id="deleteByGroupId">
+    delete from check_item_group_detail
+    where hosnum = #{hosNum} and item_group_id in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+  <insert id="insertByGroupIdAndItemId">
+    insert into
+    check_item_group_detail (hosnum, item_group_id, item_id)
+    values
+    <foreach collection="checkItemIdList" item="item" index="index" separator=",">
+     (#{hosNum},#{groupId},#{item})
+    </foreach>
+  </insert>
+  <delete id="deleteByCheckItemId">
+    delete from check_item_group_detail
+    where hosnum = #{hosNum} and item_id in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+  <insert id="insertByItemIdAndItemGroupId">
+    insert into
+    check_item_group_detail (hosnum, item_id, item_group_id)
+    values
+    <foreach collection="checkItemGroupIdList" item="item" index="index" separator=",">
+      (#{hosNum},#{checkItemId},#{item})
+    </foreach>
+  </insert>
 </mapper>

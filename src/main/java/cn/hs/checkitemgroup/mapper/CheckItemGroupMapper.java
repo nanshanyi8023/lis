@@ -1,5 +1,6 @@
 package cn.hs.checkitemgroup.mapper;
 
+import cn.hs.checkitem.pojo.CheckItem;
 import cn.hs.checkitemgroup.pojo.CheckItemGroup;
 import cn.hs.checkitemgroup.pojo.CheckItemGroupExample;
 import cn.hs.checkitemgroup.pojo.CheckItemGroupKey;
@@ -29,15 +30,14 @@ public interface CheckItemGroupMapper {
 
     int updateByPrimaryKey(CheckItemGroup record);
 
-
     /**
      * 自定义方法
      */
-    //根据医院号和工作组id查找所有的检验项目组合id和名称
-    List<CheckItemGroup> selectAllCheckItemGroup(@Param("hosNum") String hosNum, @Param("workGroupId") String workGroupId);
+    //根据医院号和检验设备id查找所有的检验项目组合id和名称
+    List<CheckItemGroup> selectAllCheckItemGroup(@Param("hosNum") String hosNum, @Param("equipmentId") String equipmentId);
 
     //查找检验项目组合
-    List<CheckItemGroup> getcheckItemGroups(@Param("hosNum") String hosNum, @Param("workGroupId") String workGroupId, @Param("checkItemGroup") String checkItemGroup);
+    List<CheckItemGroup> getcheckItemGroups(@Param("hosNum") String hosNum, @Param("equipmentId") String equipmentId, @Param("checkItemGroup") String checkItemGroup);
 
     //根据检验项目组合id删除对应的检验项目组合
     int deleteCheckItemGroups(@Param("hosNum") String hosNum, @Param("list") List<String> itemIdList);
@@ -50,4 +50,13 @@ public interface CheckItemGroupMapper {
 
     //查找所有样品类型
     List<String> getAllSampleType(@Param("hosNum") String hosNum);
+
+    //查找检验项目组合对应的检验项目
+    List<CheckItem> getcheckItemNameList(@Param("hosNum") String hosNum, @Param("checkItemGroupId") String checkItemGroupId);
+
+    //查找检验项目对应的检验项目组合
+    List<CheckItemGroup> getAssociatedCheckItemGroup(@Param("hosNum") String hosNum, @Param("checkItemId") String checkItemId);
+
+    //判断输入值是否有相对应的检验项目组合id和名称,如果存在返回检验项目组合id
+    String getCheckItemGroupId(@Param("hosNum") String hosNum, @Param("inputValue") String inputValue);
 }

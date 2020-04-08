@@ -326,9 +326,9 @@
   <select id="getCheckItems" resultMap="BaseResultMap">
     select ci.*
     from check_item ci
-    <if test="workGroupId != null and workGroupId != ''">
-      join work_group_detail wgd on ci.item_id = wgd.item_id
-      join work_group wg on wg.work_group_id = wgd.work_group_id and wg.work_group_id = #{workGroupId}
+    <if test="equipmentId != null and equipmentId != ''">
+      join equipment_detail emd on ci.item_id = emd.check_item_id
+      join equipment em on em.item_id = emd.equipment_id and em.item_id = #{equipmentId}
     </if>
     <if test="checkItemGroupId != null and checkItemGroupId != ''">
       join check_item_group_detail cigd on ci.item_id = cigd.item_id
@@ -357,5 +357,10 @@
            max(cast(item_id as unsigned int)) + 1)
     from check_item
     where hosnum = #{hosNum}
+  </select>
+  <select id="getCheckItemId" resultType="java.lang.String">
+    select item_id
+    from check_item
+    where hosnum = #{hosNum} and (item_id = #{inputValue} || item_name = #{inputValue} || english_abbreviation = #{inputValue})
   </select>
 </mapper>

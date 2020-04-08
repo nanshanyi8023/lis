@@ -80,10 +80,6 @@
                             text: "检验项目组合设置"
                         },
                         {
-                            id: "workGroupSettings",
-                            text: "工作组设置"
-                        },
-                        {
                             id: "equipmentSettings",
                             text: "检验设备设置"
                         },
@@ -134,15 +130,17 @@
                     case "sampleReturn":
                         sampleReturn.init();
                         break;
+
                     case "checkItemSettings":
                         checkItemSettings.init();
                         break;
                     case "checkItemGroupSettings":
                         checkItemGroupSettings.init();
                         break;
-                    case "workGroupSettings":
-                        workGroupSettings.init();
+                    case "equipmentSettings":
+                        equipmentSettings.init();
                         break;
+
                     case "userInfoSetting":
                         UserInfo.init();
                         break;

@@ -26,13 +26,13 @@
         </javaTypeResolver>
 
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="cn.hs.publicclass.table.checkapplication"
+        <javaModelGenerator targetPackage="cn.hs.checkitemgroup.pojo"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--生成映射文件.xml存放位置-->
-        <sqlMapGenerator targetPackage="mapperxml.public" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapperxml.checkitemgroup" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
@@ -41,12 +41,12 @@
                 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.hs.publicclass.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.hs.checkitemgroup.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="check_application——234sdfsad"></table>
+        <table tableName="check_item_group_ogdfasdgf"></table>
 
         <!-- mybatis插件的搭建 -->
     </context>
