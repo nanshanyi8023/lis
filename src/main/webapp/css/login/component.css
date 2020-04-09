@@ -10,7 +10,7 @@
 }
 
 .demo-1 .large-header {
-	background-image: url('../img/demo-1-bg.jpg');
+	background-image: url('../../images/login/loginBackground.jpg');
 }
 .logo_box{
 	width: 400px;
@@ -52,7 +52,7 @@
 .u_user{
 	width: 25px;
 	height: 25px;
-	background: url(../img/login_ico.png);
+	background: url(../../images/login/login_ico.png);
 	background-position:  -125px 0;
 	position: absolute;
 	margin: 10px 13px;
@@ -60,7 +60,7 @@
 .us_uer{
 	width: 25px;
 	height: 25px;
-	background-image: url(../img/login_ico.png);
+	background-image: url(../../images/login/login_ico.png);
 	background-position: -125px -34px;
 	position: absolute;
 	margin: 10px 13px;

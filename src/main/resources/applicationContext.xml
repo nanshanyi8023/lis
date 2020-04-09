@@ -23,19 +23,23 @@
     <!--配置连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql:///lis"/>
+        <property name="jdbcUrl" value="jdbc:mysql://cdb-dorxc5wq.cd.tencentcdb.com:10114/lis"/>        <!-- jdbc:mysql:///lis (本地) -->
         <property name="user" value="root"/>
-        <property name="password" value="root"/>
+        <property name="password" value="hs1558270476"/>     <!-- 123 (本地) -->
+        <!--每隔1分钟自动检测数据库连接情况，如果断开则自动重连。-->
+        <property name="idleConnectionTestPeriod" value="60"></property>
+        <property name="testConnectionOnCheckout" value="true"></property>
     </bean>
 
-    <!--配置SqlSessionFactory工厂-->
+    <!--配置SqlSessionFactory工厂（Mapper.xml）-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
+        <property name="mapperLocations" value="classpath:mapperxml/**/*.xml" />
     </bean>
 
-    <!--配置AccountDao接口所在包-->
+    <!--配置Mapper.java接口所在包-->
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.hs.dao"/>
+        <property name="basePackage" value="cn.hs"/>
     </bean>
 
     <!--配置Spring框架声明式事务管理-->
@@ -54,7 +58,7 @@
 
     <!--配置AOP增强-->
     <aop:config>
-        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.hs.service.impl.*ServiceImpl.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.hs.*Service.*(..))"/>
     </aop:config>
 
 </beans>
