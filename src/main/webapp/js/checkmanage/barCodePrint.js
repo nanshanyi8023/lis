@@ -66,6 +66,7 @@
         ],
         initObj: function () {
             OperationForm.obj = Layout.obj.cells("a").attachForm(OperationForm.config);
+            OperationForm.obj.setItemValue('endDate',JSUtils.getToday());
         },
         initEvent:function () {
             //关联按钮

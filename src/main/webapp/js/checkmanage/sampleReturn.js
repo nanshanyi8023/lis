@@ -57,12 +57,11 @@
             {type: "newcolumn"},
             {type: "calendar", name: "endDate", label: "~", inputWidth: 100, offsetTop: 12},
             {type: "newcolumn"},
-            {type: "button", name: "searchBtn", value: "查询", offsetLeft: 20},
-            // {type: "newcolumn"},
-            // {type: "button", name: "returnSampleBtn", value: "退回样本", offsetLeft: 10}
+            {type: "button", name: "searchBtn", value: "查询", offsetLeft: 20}
         ],
         initObj: function () {
             OperationForm.obj = Layout.obj.cells("a").attachForm(OperationForm.config);
+            OperationForm.obj.setItemValue('endDate',JSUtils.getToday());
         },
         initEvent: function () {
             //关联按钮
@@ -71,8 +70,6 @@
                     case "searchBtn":
                         OperationForm.searchBtnEvent();
                         break;
-                    // case "returnSampleBtn":
-                    //     break;
                     default:
                 }
             });

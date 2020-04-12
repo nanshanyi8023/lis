@@ -241,6 +241,17 @@
         }
     };
 
+    //手写签名照设置表单
+    var SignaturePhotoForm = {
+        obj:null,
+        config:[
+            
+        ],
+        initobj:function () {
+            
+        }
+    };
+
     var init = function () {
         Layout.initObj();
         BasicSettingsForm.initobj();
