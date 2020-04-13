@@ -138,6 +138,8 @@
         },
         loadData: function () {
             var formData = OperationForm.obj.getFormData();
+            formData.startDate = OperationForm.obj.getInput("startDate").value;
+            formData.endDate = OperationForm.obj.getInput("endDate").value;
             ajaxUtils.postBody('sampleReturn/getReturnedSample.json',
                 formData
             ).then(function (data) {

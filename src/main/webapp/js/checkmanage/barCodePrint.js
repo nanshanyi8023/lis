@@ -152,6 +152,8 @@
         loadData: function () {
             var oldCheckedIdList = dhtmlxUtils.getCheckedRowIds(PatientListGrid.obj,0);
             var formData = OperationForm.obj.getFormData();
+            formData.startDate = OperationForm.obj.getInput("startDate").value;
+            formData.endDate = OperationForm.obj.getInput("endDate").value;
             ajaxUtils.postBody('barCodePrint/getPatientInfo.json',
                 formData
             ).then(function (data) {
