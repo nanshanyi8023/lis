@@ -95,14 +95,15 @@
         initObj: function () {
             ReturnedSampleGrid.obj = Layout.obj.cells("b").attachGrid();
             ReturnedSampleGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            ReturnedSampleGrid.obj.setHeader("<input id='allSelect' type='checkbox' value='0' /><label for='allSelect'>全选</label>,条码号,检验项目,样本状态,退回原因,退回时间,退回医生,接收时间,开单医生,开单时间,检验申请id", null,
-                ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
-            ReturnedSampleGrid.obj.setColumnIds("ch,barcodeNumber,checkItemGroup,sampleReceptionStatu,sampleReturnReason,sampleReturnTime,sampleReturnDoctor,sampleReceptionTime,billingDoctor,billingTime,itemId");
-            ReturnedSampleGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中
-            ReturnedSampleGrid.obj.setInitWidths("80,150,*,150,150,150,150,150,150,150,0");          //列宽
-            ReturnedSampleGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
+            ReturnedSampleGrid.obj.setHeader("<input id='allSelect' type='checkbox' value='0' /><label for='allSelect'>全选</label>," +
+                "就诊卡号,患者姓名,条码号,检验项目,样本状态,退回原因,退回时间,退回医生,接收时间,开单医生,开单时间,检验申请id", null,
+                ["text-align:center;", "text-align:center;","text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
+            ReturnedSampleGrid.obj.setColumnIds("ch,patientId,patientName,barcodeNumber,checkItemGroup,sampleReceptionStatu,sampleReturnReason,sampleReturnTime,sampleReturnDoctor,sampleReceptionTime,billingDoctor,billingTime,itemId");
+            ReturnedSampleGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中
+            ReturnedSampleGrid.obj.setInitWidths("80,100,100,150,*,150,150,100,100,100,100,100,0");          //列宽
+            ReturnedSampleGrid.obj.setColTypes("ch,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
             ReturnedSampleGrid.obj.init();
-            ReturnedSampleGrid.obj.setColumnHidden(10, true);
+            ReturnedSampleGrid.obj.setColumnHidden(12, true);
 
             //底部分页栏
             Layout.obj.cells("b").attachStatusBar({
