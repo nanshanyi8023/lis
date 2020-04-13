@@ -128,7 +128,7 @@
             //加载表格
             ItemOperationForm.itemSearchBtnEvent();
         },
-        //查找所有工作组
+        //查找所有检验设备
         getAllEquipment: function () {
             ajaxUtils.get('checkItemSettings/getAllEquipment.json'
             ).then(function (data) {
@@ -165,7 +165,7 @@
         initEvent: function () {
             //初始化检验项目组合下拉框
             ItemOperationForm.obj.attachEvent("onChange", function (name, value, state) {
-                //当工作组下拉框变化时，检验项目组合下拉框也变
+                //当检验设备下拉框变化时，检验项目组合下拉框也变
                 if (name == 'equipment') {
                     var equipmentId = ItemOperationForm.obj.getCombo("equipment").getSelectedValue();
                     if (equipmentId !== null && equipmentId !== "") {

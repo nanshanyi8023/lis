@@ -74,4 +74,8 @@ public interface CheckApplicationMapper {
     //查找对应的已退回样本
     List<CheckApplication> selectReturnedSample(@Param("hosNum") String hosNum, @Param("returnSampleQueryDto") ReceptedSampleQueryDto returnSampleQueryDto);
 
+    /**
+     * 报告录入页面
+     */
+
 }

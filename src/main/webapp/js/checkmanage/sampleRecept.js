@@ -166,7 +166,7 @@
             ReceivedSampleGrid.obj = Layout.obj.cells("b").attachGrid();
             ReceivedSampleGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
             ReceivedSampleGrid.obj.setHeader("<input id='allSelect' type='checkbox' value='0' /><label for='allSelect'>全选</label>," +
-                "就诊卡号,患者姓名,条码号,检验项目,样本状态,样本类型,采集容器,急诊,样本接收时间,开单医生,开单时间,检验申请id", null,
+                "就诊卡号,患者姓名,条码号,检验项目组合,样本状态,样本类型,采集容器,急诊,样本接收时间,开单医生,开单时间,检验申请id", null,
                 ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
             ReceivedSampleGrid.obj.setColumnIds("ch,patientId,patientName,barcodeNumber,checkItemGroup,sampleReceptionStatu,sampleType,collectionContainer,isEmergency,sampleReceptionTime,billingDoctor,billingTime,itemId");
             ReceivedSampleGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中

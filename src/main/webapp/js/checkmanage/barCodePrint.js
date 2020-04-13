@@ -186,7 +186,7 @@
         initObj: function () {
             CheckApplicationGrid.obj = Layout.obj.cells("c").attachGrid();
             CheckApplicationGrid.obj.setImagePath("toolfile/dhtmlxstand/skins/skyblue/imgs/");     //选择框图片
-            CheckApplicationGrid.obj.setHeader("<input id='allSelect' type='checkbox' value='0' style='padding-left: 15px' />,姓名,检验项目,样本类型,采集容器,送检科室,急诊,开单医生,开单时间,条码打印状态,检验申请id,病人id,检验项目组合id", null,  //
+            CheckApplicationGrid.obj.setHeader("<input id='allSelect' type='checkbox' value='0' style='padding-left: 15px' />,姓名,检验项目组合,样本类型,采集容器,送检科室,急诊,开单医生,开单时间,条码打印状态,检验申请id,病人id,检验项目组合id", null,  //
                 ["text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;", "text-align:center;"]);  //设置标题内容居中
             CheckApplicationGrid.obj.setColumnIds("ch,patientName,checkItemGroup,sampleType,collectionContainer,submitDepartment,isEmergency,billingDoctor,billingTime,printStatu,itemId,patientId,checkItemGroupId");
             CheckApplicationGrid.obj.setColAlign("center,center,center,center,center,center,center,center,center,center");   //设置列中数据居中

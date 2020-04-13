@@ -55,9 +55,9 @@
                             icons: {file: "sampleReturn"}
                         },
                         {
-                            id: "inspectionOperation",
-                            text: "&nbsp;检验操作",
-                            icons: {file: "inspectionOperation"}
+                            id: "reportEntry",
+                            text: "&nbsp;报告录入",
+                            icons: {file: "reportEntry"}
                         },
                         {
                             id: "reportQuery",
@@ -129,6 +129,9 @@
                         break;
                     case "sampleReturn":
                         sampleReturn.init();
+                        break;
+                    case "reportEntry":
+                        reportEntry.init();
                         break;
 
                     case "checkItemSettings":

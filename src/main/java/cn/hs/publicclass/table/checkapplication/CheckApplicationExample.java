@@ -245,6 +245,76 @@ public class CheckApplicationExample {
             return (Criteria) this;
         }
 
+        public Criteria andDoctorAdviceIdIsNull() {
+            addCriterion("doctor_advice_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdIsNotNull() {
+            addCriterion("doctor_advice_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdEqualTo(String value) {
+            addCriterion("doctor_advice_id =", value, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdNotEqualTo(String value) {
+            addCriterion("doctor_advice_id <>", value, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdGreaterThan(String value) {
+            addCriterion("doctor_advice_id >", value, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdGreaterThanOrEqualTo(String value) {
+            addCriterion("doctor_advice_id >=", value, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdLessThan(String value) {
+            addCriterion("doctor_advice_id <", value, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdLessThanOrEqualTo(String value) {
+            addCriterion("doctor_advice_id <=", value, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdLike(String value) {
+            addCriterion("doctor_advice_id like", value, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdNotLike(String value) {
+            addCriterion("doctor_advice_id not like", value, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdIn(List<String> values) {
+            addCriterion("doctor_advice_id in", values, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdNotIn(List<String> values) {
+            addCriterion("doctor_advice_id not in", values, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdBetween(String value1, String value2) {
+            addCriterion("doctor_advice_id between", value1, value2, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDoctorAdviceIdNotBetween(String value1, String value2) {
+            addCriterion("doctor_advice_id not between", value1, value2, "doctorAdviceId");
+            return (Criteria) this;
+        }
+
         public Criteria andPatientIdIsNull() {
             addCriterion("patient_id is null");
             return (Criteria) this;
@@ -1065,66 +1135,6 @@ public class CheckApplicationExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderNumberIsNull() {
-            addCriterion("order_number is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberIsNotNull() {
-            addCriterion("order_number is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberEqualTo(Integer value) {
-            addCriterion("order_number =", value, "orderNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberNotEqualTo(Integer value) {
-            addCriterion("order_number <>", value, "orderNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberGreaterThan(Integer value) {
-            addCriterion("order_number >", value, "orderNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberGreaterThanOrEqualTo(Integer value) {
-            addCriterion("order_number >=", value, "orderNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberLessThan(Integer value) {
-            addCriterion("order_number <", value, "orderNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberLessThanOrEqualTo(Integer value) {
-            addCriterion("order_number <=", value, "orderNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberIn(List<Integer> values) {
-            addCriterion("order_number in", values, "orderNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberNotIn(List<Integer> values) {
-            addCriterion("order_number not in", values, "orderNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberBetween(Integer value1, Integer value2) {
-            addCriterion("order_number between", value1, value2, "orderNumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andOrderNumberNotBetween(Integer value1, Integer value2) {
-            addCriterion("order_number not between", value1, value2, "orderNumber");
-            return (Criteria) this;
-        }
-
         public Criteria andSampleReturnTimeIsNull() {
             addCriterion("sample_return_time is null");
             return (Criteria) this;
@@ -1322,6 +1332,466 @@ public class CheckApplicationExample {
 
         public Criteria andSampleReturnDoctorNotBetween(String value1, String value2) {
             addCriterion("sample_return_doctor not between", value1, value2, "sampleReturnDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberIsNull() {
+            addCriterion("order_number is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberIsNotNull() {
+            addCriterion("order_number is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberEqualTo(Integer value) {
+            addCriterion("order_number =", value, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberNotEqualTo(Integer value) {
+            addCriterion("order_number <>", value, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberGreaterThan(Integer value) {
+            addCriterion("order_number >", value, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("order_number >=", value, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberLessThan(Integer value) {
+            addCriterion("order_number <", value, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("order_number <=", value, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberIn(List<Integer> values) {
+            addCriterion("order_number in", values, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberNotIn(List<Integer> values) {
+            addCriterion("order_number not in", values, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberBetween(Integer value1, Integer value2) {
+            addCriterion("order_number between", value1, value2, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("order_number not between", value1, value2, "orderNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuIsNull() {
+            addCriterion("result_entry_statu is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuIsNotNull() {
+            addCriterion("result_entry_statu is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuEqualTo(String value) {
+            addCriterion("result_entry_statu =", value, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuNotEqualTo(String value) {
+            addCriterion("result_entry_statu <>", value, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuGreaterThan(String value) {
+            addCriterion("result_entry_statu >", value, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuGreaterThanOrEqualTo(String value) {
+            addCriterion("result_entry_statu >=", value, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuLessThan(String value) {
+            addCriterion("result_entry_statu <", value, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuLessThanOrEqualTo(String value) {
+            addCriterion("result_entry_statu <=", value, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuLike(String value) {
+            addCriterion("result_entry_statu like", value, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuNotLike(String value) {
+            addCriterion("result_entry_statu not like", value, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuIn(List<String> values) {
+            addCriterion("result_entry_statu in", values, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuNotIn(List<String> values) {
+            addCriterion("result_entry_statu not in", values, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuBetween(String value1, String value2) {
+            addCriterion("result_entry_statu between", value1, value2, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryStatuNotBetween(String value1, String value2) {
+            addCriterion("result_entry_statu not between", value1, value2, "resultEntryStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeIsNull() {
+            addCriterion("result_entry_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeIsNotNull() {
+            addCriterion("result_entry_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeEqualTo(Date value) {
+            addCriterion("result_entry_time =", value, "resultEntryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeNotEqualTo(Date value) {
+            addCriterion("result_entry_time <>", value, "resultEntryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeGreaterThan(Date value) {
+            addCriterion("result_entry_time >", value, "resultEntryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("result_entry_time >=", value, "resultEntryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeLessThan(Date value) {
+            addCriterion("result_entry_time <", value, "resultEntryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeLessThanOrEqualTo(Date value) {
+            addCriterion("result_entry_time <=", value, "resultEntryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeIn(List<Date> values) {
+            addCriterion("result_entry_time in", values, "resultEntryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeNotIn(List<Date> values) {
+            addCriterion("result_entry_time not in", values, "resultEntryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeBetween(Date value1, Date value2) {
+            addCriterion("result_entry_time between", value1, value2, "resultEntryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryTimeNotBetween(Date value1, Date value2) {
+            addCriterion("result_entry_time not between", value1, value2, "resultEntryTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorIsNull() {
+            addCriterion("result_entry_doctor is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorIsNotNull() {
+            addCriterion("result_entry_doctor is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorEqualTo(String value) {
+            addCriterion("result_entry_doctor =", value, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorNotEqualTo(String value) {
+            addCriterion("result_entry_doctor <>", value, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorGreaterThan(String value) {
+            addCriterion("result_entry_doctor >", value, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorGreaterThanOrEqualTo(String value) {
+            addCriterion("result_entry_doctor >=", value, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorLessThan(String value) {
+            addCriterion("result_entry_doctor <", value, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorLessThanOrEqualTo(String value) {
+            addCriterion("result_entry_doctor <=", value, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorLike(String value) {
+            addCriterion("result_entry_doctor like", value, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorNotLike(String value) {
+            addCriterion("result_entry_doctor not like", value, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorIn(List<String> values) {
+            addCriterion("result_entry_doctor in", values, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorNotIn(List<String> values) {
+            addCriterion("result_entry_doctor not in", values, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorBetween(String value1, String value2) {
+            addCriterion("result_entry_doctor between", value1, value2, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEntryDoctorNotBetween(String value1, String value2) {
+            addCriterion("result_entry_doctor not between", value1, value2, "resultEntryDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuIsNull() {
+            addCriterion("result_audit_statu is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuIsNotNull() {
+            addCriterion("result_audit_statu is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuEqualTo(String value) {
+            addCriterion("result_audit_statu =", value, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuNotEqualTo(String value) {
+            addCriterion("result_audit_statu <>", value, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuGreaterThan(String value) {
+            addCriterion("result_audit_statu >", value, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuGreaterThanOrEqualTo(String value) {
+            addCriterion("result_audit_statu >=", value, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuLessThan(String value) {
+            addCriterion("result_audit_statu <", value, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuLessThanOrEqualTo(String value) {
+            addCriterion("result_audit_statu <=", value, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuLike(String value) {
+            addCriterion("result_audit_statu like", value, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuNotLike(String value) {
+            addCriterion("result_audit_statu not like", value, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuIn(List<String> values) {
+            addCriterion("result_audit_statu in", values, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuNotIn(List<String> values) {
+            addCriterion("result_audit_statu not in", values, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuBetween(String value1, String value2) {
+            addCriterion("result_audit_statu between", value1, value2, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditStatuNotBetween(String value1, String value2) {
+            addCriterion("result_audit_statu not between", value1, value2, "resultAuditStatu");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeIsNull() {
+            addCriterion("result_audit_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeIsNotNull() {
+            addCriterion("result_audit_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeEqualTo(Date value) {
+            addCriterion("result_audit_time =", value, "resultAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeNotEqualTo(Date value) {
+            addCriterion("result_audit_time <>", value, "resultAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeGreaterThan(Date value) {
+            addCriterion("result_audit_time >", value, "resultAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("result_audit_time >=", value, "resultAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeLessThan(Date value) {
+            addCriterion("result_audit_time <", value, "resultAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeLessThanOrEqualTo(Date value) {
+            addCriterion("result_audit_time <=", value, "resultAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeIn(List<Date> values) {
+            addCriterion("result_audit_time in", values, "resultAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeNotIn(List<Date> values) {
+            addCriterion("result_audit_time not in", values, "resultAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeBetween(Date value1, Date value2) {
+            addCriterion("result_audit_time between", value1, value2, "resultAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditTimeNotBetween(Date value1, Date value2) {
+            addCriterion("result_audit_time not between", value1, value2, "resultAuditTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorIsNull() {
+            addCriterion("result_audit_doctor is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorIsNotNull() {
+            addCriterion("result_audit_doctor is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorEqualTo(String value) {
+            addCriterion("result_audit_doctor =", value, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorNotEqualTo(String value) {
+            addCriterion("result_audit_doctor <>", value, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorGreaterThan(String value) {
+            addCriterion("result_audit_doctor >", value, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorGreaterThanOrEqualTo(String value) {
+            addCriterion("result_audit_doctor >=", value, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorLessThan(String value) {
+            addCriterion("result_audit_doctor <", value, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorLessThanOrEqualTo(String value) {
+            addCriterion("result_audit_doctor <=", value, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorLike(String value) {
+            addCriterion("result_audit_doctor like", value, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorNotLike(String value) {
+            addCriterion("result_audit_doctor not like", value, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorIn(List<String> values) {
+            addCriterion("result_audit_doctor in", values, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorNotIn(List<String> values) {
+            addCriterion("result_audit_doctor not in", values, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorBetween(String value1, String value2) {
+            addCriterion("result_audit_doctor between", value1, value2, "resultAuditDoctor");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultAuditDoctorNotBetween(String value1, String value2) {
+            addCriterion("result_audit_doctor not between", value1, value2, "resultAuditDoctor");
             return (Criteria) this;
         }
     }

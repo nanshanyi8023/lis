@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="cn.hs.publicclass.table.checkapplication.CheckApplication">
     <id column="hosnum" jdbcType="VARCHAR" property="hosnum" />
     <id column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="doctor_advice_id" jdbcType="VARCHAR" property="doctorAdviceId" />
     <result column="patient_id" jdbcType="VARCHAR" property="patientId" />
     <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
     <result column="collection_container" jdbcType="VARCHAR" property="collectionContainer" />
@@ -16,10 +17,16 @@
     <result column="print_statu" jdbcType="VARCHAR" property="printStatu" />
     <result column="sample_reception_statu" jdbcType="VARCHAR" property="sampleReceptionStatu" />
     <result column="sample_reception_time" jdbcType="TIMESTAMP" property="sampleReceptionTime" />
-    <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
     <result column="sample_return_time" jdbcType="TIMESTAMP" property="sampleReturnTime" />
     <result column="sample_return_reason" jdbcType="VARCHAR" property="sampleReturnReason" />
     <result column="sample_return_doctor" jdbcType="VARCHAR" property="sampleReturnDoctor" />
+    <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
+    <result column="result_entry_statu" jdbcType="VARCHAR" property="resultEntryStatu" />
+    <result column="result_entry_time" jdbcType="TIMESTAMP" property="resultEntryTime" />
+    <result column="result_entry_doctor" jdbcType="VARCHAR" property="resultEntryDoctor" />
+    <result column="result_audit_statu" jdbcType="VARCHAR" property="resultAuditStatu" />
+    <result column="result_audit_time" jdbcType="TIMESTAMP" property="resultAuditTime" />
+    <result column="result_audit_doctor" jdbcType="VARCHAR" property="resultAuditDoctor" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -80,10 +87,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    hosnum, item_id, patient_id, patient_name, collection_container, submit_department, 
-    is_emergency, sample_type, billing_doctor, billing_time, barcode_number, print_statu, 
-    sample_reception_statu, sample_reception_time, order_number, sample_return_time, 
-    sample_return_reason, sample_return_doctor
+    hosnum, item_id, doctor_advice_id, patient_id, patient_name, collection_container, 
+    submit_department, is_emergency, sample_type, billing_doctor, billing_time, barcode_number, 
+    print_statu, sample_reception_statu, sample_reception_time, sample_return_time, sample_return_reason, 
+    sample_return_doctor, order_number, result_entry_statu, result_entry_time, result_entry_doctor, 
+    result_audit_statu, result_audit_time, result_audit_doctor
   </sql>
   <select id="selectByExample" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplicationExample" resultMap="BaseResultMap">
     select
@@ -118,20 +126,24 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
-    insert into check_application (hosnum, item_id, patient_id, 
-      patient_name, collection_container, submit_department, 
-      is_emergency, sample_type, billing_doctor, 
-      billing_time, barcode_number, print_statu, 
-      sample_reception_statu, sample_reception_time, 
-      order_number, sample_return_time, sample_return_reason, 
-      sample_return_doctor)
-    values (#{hosnum,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{patientId,jdbcType=VARCHAR}, 
-      #{patientName,jdbcType=VARCHAR}, #{collectionContainer,jdbcType=VARCHAR}, #{submitDepartment,jdbcType=VARCHAR}, 
-      #{isEmergency,jdbcType=VARCHAR}, #{sampleType,jdbcType=VARCHAR}, #{billingDoctor,jdbcType=VARCHAR}, 
-      #{billingTime,jdbcType=TIMESTAMP}, #{barcodeNumber,jdbcType=VARCHAR}, #{printStatu,jdbcType=VARCHAR}, 
-      #{sampleReceptionStatu,jdbcType=VARCHAR}, #{sampleReceptionTime,jdbcType=TIMESTAMP}, 
-      #{orderNumber,jdbcType=INTEGER}, #{sampleReturnTime,jdbcType=TIMESTAMP}, #{sampleReturnReason,jdbcType=VARCHAR}, 
-      #{sampleReturnDoctor,jdbcType=VARCHAR})
+    insert into check_application (hosnum, item_id, doctor_advice_id, 
+      patient_id, patient_name, collection_container, 
+      submit_department, is_emergency, sample_type, 
+      billing_doctor, billing_time, barcode_number, 
+      print_statu, sample_reception_statu, sample_reception_time, 
+      sample_return_time, sample_return_reason, 
+      sample_return_doctor, order_number, result_entry_statu, 
+      result_entry_time, result_entry_doctor, result_audit_statu, 
+      result_audit_time, result_audit_doctor)
+    values (#{hosnum,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{doctorAdviceId,jdbcType=VARCHAR}, 
+      #{patientId,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, #{collectionContainer,jdbcType=VARCHAR}, 
+      #{submitDepartment,jdbcType=VARCHAR}, #{isEmergency,jdbcType=VARCHAR}, #{sampleType,jdbcType=VARCHAR}, 
+      #{billingDoctor,jdbcType=VARCHAR}, #{billingTime,jdbcType=TIMESTAMP}, #{barcodeNumber,jdbcType=VARCHAR}, 
+      #{printStatu,jdbcType=VARCHAR}, #{sampleReceptionStatu,jdbcType=VARCHAR}, #{sampleReceptionTime,jdbcType=TIMESTAMP}, 
+      #{sampleReturnTime,jdbcType=TIMESTAMP}, #{sampleReturnReason,jdbcType=VARCHAR}, 
+      #{sampleReturnDoctor,jdbcType=VARCHAR}, #{orderNumber,jdbcType=INTEGER}, #{resultEntryStatu,jdbcType=VARCHAR}, 
+      #{resultEntryTime,jdbcType=TIMESTAMP}, #{resultEntryDoctor,jdbcType=VARCHAR}, #{resultAuditStatu,jdbcType=VARCHAR}, 
+      #{resultAuditTime,jdbcType=TIMESTAMP}, #{resultAuditDoctor,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
     insert into check_application
@@ -141,6 +153,9 @@
       </if>
       <if test="itemId != null">
         item_id,
+      </if>
+      <if test="doctorAdviceId != null">
+        doctor_advice_id,
       </if>
       <if test="patientId != null">
         patient_id,
@@ -178,9 +193,6 @@
       <if test="sampleReceptionTime != null">
         sample_reception_time,
       </if>
-      <if test="orderNumber != null">
-        order_number,
-      </if>
       <if test="sampleReturnTime != null">
         sample_return_time,
       </if>
@@ -190,6 +202,27 @@
       <if test="sampleReturnDoctor != null">
         sample_return_doctor,
       </if>
+      <if test="orderNumber != null">
+        order_number,
+      </if>
+      <if test="resultEntryStatu != null">
+        result_entry_statu,
+      </if>
+      <if test="resultEntryTime != null">
+        result_entry_time,
+      </if>
+      <if test="resultEntryDoctor != null">
+        result_entry_doctor,
+      </if>
+      <if test="resultAuditStatu != null">
+        result_audit_statu,
+      </if>
+      <if test="resultAuditTime != null">
+        result_audit_time,
+      </if>
+      <if test="resultAuditDoctor != null">
+        result_audit_doctor,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="hosnum != null">
@@ -197,6 +230,9 @@
       </if>
       <if test="itemId != null">
         #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorAdviceId != null">
+        #{doctorAdviceId,jdbcType=VARCHAR},
       </if>
       <if test="patientId != null">
         #{patientId,jdbcType=VARCHAR},
@@ -234,9 +270,6 @@
       <if test="sampleReceptionTime != null">
         #{sampleReceptionTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="orderNumber != null">
-        #{orderNumber,jdbcType=INTEGER},
-      </if>
       <if test="sampleReturnTime != null">
         #{sampleReturnTime,jdbcType=TIMESTAMP},
       </if>
@@ -245,6 +278,27 @@
       </if>
       <if test="sampleReturnDoctor != null">
         #{sampleReturnDoctor,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null">
+        #{orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="resultEntryStatu != null">
+        #{resultEntryStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="resultEntryTime != null">
+        #{resultEntryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultEntryDoctor != null">
+        #{resultEntryDoctor,jdbcType=VARCHAR},
+      </if>
+      <if test="resultAuditStatu != null">
+        #{resultAuditStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="resultAuditTime != null">
+        #{resultAuditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultAuditDoctor != null">
+        #{resultAuditDoctor,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -262,6 +316,9 @@
       </if>
       <if test="record.itemId != null">
         item_id = #{record.itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorAdviceId != null">
+        doctor_advice_id = #{record.doctorAdviceId,jdbcType=VARCHAR},
       </if>
       <if test="record.patientId != null">
         patient_id = #{record.patientId,jdbcType=VARCHAR},
@@ -299,9 +356,6 @@
       <if test="record.sampleReceptionTime != null">
         sample_reception_time = #{record.sampleReceptionTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.orderNumber != null">
-        order_number = #{record.orderNumber,jdbcType=INTEGER},
-      </if>
       <if test="record.sampleReturnTime != null">
         sample_return_time = #{record.sampleReturnTime,jdbcType=TIMESTAMP},
       </if>
@@ -310,6 +364,27 @@
       </if>
       <if test="record.sampleReturnDoctor != null">
         sample_return_doctor = #{record.sampleReturnDoctor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderNumber != null">
+        order_number = #{record.orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.resultEntryStatu != null">
+        result_entry_statu = #{record.resultEntryStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resultEntryTime != null">
+        result_entry_time = #{record.resultEntryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.resultEntryDoctor != null">
+        result_entry_doctor = #{record.resultEntryDoctor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resultAuditStatu != null">
+        result_audit_statu = #{record.resultAuditStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resultAuditTime != null">
+        result_audit_time = #{record.resultAuditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.resultAuditDoctor != null">
+        result_audit_doctor = #{record.resultAuditDoctor,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -320,6 +395,7 @@
     update check_application
     set hosnum = #{record.hosnum,jdbcType=VARCHAR},
       item_id = #{record.itemId,jdbcType=VARCHAR},
+      doctor_advice_id = #{record.doctorAdviceId,jdbcType=VARCHAR},
       patient_id = #{record.patientId,jdbcType=VARCHAR},
       patient_name = #{record.patientName,jdbcType=VARCHAR},
       collection_container = #{record.collectionContainer,jdbcType=VARCHAR},
@@ -332,10 +408,16 @@
       print_statu = #{record.printStatu,jdbcType=VARCHAR},
       sample_reception_statu = #{record.sampleReceptionStatu,jdbcType=VARCHAR},
       sample_reception_time = #{record.sampleReceptionTime,jdbcType=TIMESTAMP},
-      order_number = #{record.orderNumber,jdbcType=INTEGER},
       sample_return_time = #{record.sampleReturnTime,jdbcType=TIMESTAMP},
       sample_return_reason = #{record.sampleReturnReason,jdbcType=VARCHAR},
-      sample_return_doctor = #{record.sampleReturnDoctor,jdbcType=VARCHAR}
+      sample_return_doctor = #{record.sampleReturnDoctor,jdbcType=VARCHAR},
+      order_number = #{record.orderNumber,jdbcType=INTEGER},
+      result_entry_statu = #{record.resultEntryStatu,jdbcType=VARCHAR},
+      result_entry_time = #{record.resultEntryTime,jdbcType=TIMESTAMP},
+      result_entry_doctor = #{record.resultEntryDoctor,jdbcType=VARCHAR},
+      result_audit_statu = #{record.resultAuditStatu,jdbcType=VARCHAR},
+      result_audit_time = #{record.resultAuditTime,jdbcType=TIMESTAMP},
+      result_audit_doctor = #{record.resultAuditDoctor,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -343,6 +425,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
     update check_application
     <set>
+      <if test="doctorAdviceId != null">
+        doctor_advice_id = #{doctorAdviceId,jdbcType=VARCHAR},
+      </if>
       <if test="patientId != null">
         patient_id = #{patientId,jdbcType=VARCHAR},
       </if>
@@ -379,9 +464,6 @@
       <if test="sampleReceptionTime != null">
         sample_reception_time = #{sampleReceptionTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="orderNumber != null">
-        order_number = #{orderNumber,jdbcType=INTEGER},
-      </if>
       <if test="sampleReturnTime != null">
         sample_return_time = #{sampleReturnTime,jdbcType=TIMESTAMP},
       </if>
@@ -391,13 +473,35 @@
       <if test="sampleReturnDoctor != null">
         sample_return_doctor = #{sampleReturnDoctor,jdbcType=VARCHAR},
       </if>
+      <if test="orderNumber != null">
+        order_number = #{orderNumber,jdbcType=INTEGER},
+      </if>
+      <if test="resultEntryStatu != null">
+        result_entry_statu = #{resultEntryStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="resultEntryTime != null">
+        result_entry_time = #{resultEntryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultEntryDoctor != null">
+        result_entry_doctor = #{resultEntryDoctor,jdbcType=VARCHAR},
+      </if>
+      <if test="resultAuditStatu != null">
+        result_audit_statu = #{resultAuditStatu,jdbcType=VARCHAR},
+      </if>
+      <if test="resultAuditTime != null">
+        result_audit_time = #{resultAuditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultAuditDoctor != null">
+        result_audit_doctor = #{resultAuditDoctor,jdbcType=VARCHAR},
+      </if>
     </set>
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and item_id = #{itemId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplication.CheckApplication">
     update check_application
-    set patient_id = #{patientId,jdbcType=VARCHAR},
+    set doctor_advice_id = #{doctorAdviceId,jdbcType=VARCHAR},
+      patient_id = #{patientId,jdbcType=VARCHAR},
       patient_name = #{patientName,jdbcType=VARCHAR},
       collection_container = #{collectionContainer,jdbcType=VARCHAR},
       submit_department = #{submitDepartment,jdbcType=VARCHAR},
@@ -409,10 +513,16 @@
       print_statu = #{printStatu,jdbcType=VARCHAR},
       sample_reception_statu = #{sampleReceptionStatu,jdbcType=VARCHAR},
       sample_reception_time = #{sampleReceptionTime,jdbcType=TIMESTAMP},
-      order_number = #{orderNumber,jdbcType=INTEGER},
       sample_return_time = #{sampleReturnTime,jdbcType=TIMESTAMP},
       sample_return_reason = #{sampleReturnReason,jdbcType=VARCHAR},
-      sample_return_doctor = #{sampleReturnDoctor,jdbcType=VARCHAR}
+      sample_return_doctor = #{sampleReturnDoctor,jdbcType=VARCHAR},
+      order_number = #{orderNumber,jdbcType=INTEGER},
+      result_entry_statu = #{resultEntryStatu,jdbcType=VARCHAR},
+      result_entry_time = #{resultEntryTime,jdbcType=TIMESTAMP},
+      result_entry_doctor = #{resultEntryDoctor,jdbcType=VARCHAR},
+      result_audit_statu = #{resultAuditStatu,jdbcType=VARCHAR},
+      result_audit_time = #{resultAuditTime,jdbcType=TIMESTAMP},
+      result_audit_doctor = #{resultAuditDoctor,jdbcType=VARCHAR}
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and item_id = #{itemId,jdbcType=VARCHAR}
   </update>
@@ -455,6 +565,7 @@
   </update>
 
   <!--样本接收页面-->
+  <!--录入状态和审核状态为报告录入页面-->
   <select id="selectReceptedSample" resultMap="BaseResultMap">
     select *
     from check_application
@@ -467,6 +578,12 @@
     </if>
     <if test="receptedSampleQueryDto.endDate != null and receptedSampleQueryDto.endDate != ''">
       and sample_reception_time &lt;= #{receptedSampleQueryDto.endDate}
+    </if>
+    <if test="receptedSampleQueryDto.resultEntryStatu != null and receptedSampleQueryDto.resultEntryStatu != ''">
+      and result_entry_statu = #{receptedSampleQueryDto.resultEntryStatu}
+    </if>
+    <if test="receptedSampleQueryDto.resultAuditStatu != null and receptedSampleQueryDto.resultAuditStatu != ''">
+      and result_audit_statu = #{receptedSampleQueryDto.resultAuditStatu}
     </if>
   </select>
   <select id="getCheckApplication" resultMap="BaseResultMap">
