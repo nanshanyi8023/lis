@@ -4,7 +4,7 @@
     var Layout = {
         obj: null,
         config: {
-            pattern: "3J",
+            pattern: "2U",
             offsets: {
                 top: 5,
                 right: 5,
@@ -17,21 +17,13 @@
                     text: "基础信息设置",
                     collapsed_text: "单击展开基础信息设置",   // 折叠栏标题
                     collapse: false,       // 初始是否折叠
-                    height: 420,
                     width: 900,
-                    fix_size: [true, true],
+                    fix_size: [true, true]
                 },
                 {
                     id: "b",
                     text: "密码设置",
                     collapsed_text: "单击展开密码设置",
-                    collapse: false,
-                    fix_size: [true, true]
-                },
-                {
-                    id: "c",
-                    text: "手写签名照设置",
-                    collapsed_text: "单击展开手写签名照设置",
                     collapse: false,
                     fix_size: [true, true]
                 }
@@ -46,7 +38,7 @@
     var BasicSettingsForm = {
         obj: null,
         config: [
-            {type: "settings", position: "label-left", offsetLeft: 80, offsetTop: 10},
+            {type: "settings", position: "label-left", offsetLeft: 80, offsetTop: 15},
             {
                 type: "block", list: [
                     {
@@ -55,10 +47,10 @@
                         label: '姓&nbsp&nbsp&nbsp名:',
                         inputWidth: 150,
                         maxLength: 8,
-                        offsetTop: 30
+                        offsetTop: 60
                     },
                     {type: "newcolumn"},
-                    {type: "input", name: 'jobNumber', label: '工号:', inputWidth: 180, maxLength: 12, offsetTop: 30}
+                    {type: "input", name: 'jobNumber', label: '工号:', inputWidth: 180, maxLength: 12, offsetTop: 60}
                 ]
             },
             {
@@ -103,13 +95,13 @@
             },
             {
                 type: "block", list: [
-                    {type: "button", name: "saveButton", value: "保存", offsetLeft: 200, offsetTop: 15},
+                    {type: "button", name: "saveButton", value: "保存", offsetLeft: 200, offsetTop: 30},
                     {type: "newcolumn"},
-                    {type: "button", name: "resetButton", value: "重置", offsetLeft: 100, offsetTop: 15}
+                    {type: "button", name: "resetButton", value: "重置", offsetLeft: 100, offsetTop: 30}
                 ]
             }
         ],
-        initobj: function () {
+        initObj: function () {
             BasicSettingsForm.obj = Layout.obj.cells("a").attachForm(BasicSettingsForm.config);
             BasicSettingsForm.writeBackForm();     //初始化时填写表单
         },
@@ -152,7 +144,7 @@
     var PasswordSettingsForm = {
         obj: null,
         config: [
-            {type: "settings", position: "label-top", offsetLeft: 55, offsetTop: 10},
+            {type: "settings", position: "label-top", offsetLeft: 80, offsetTop: 15},
             {
                 type: "block", list: [
                     {
@@ -162,22 +154,23 @@
                         inputWidth: 180,
                         maxLength: 12,
                         readonly: true,
-                        style: "background:#eaeaea"
+                        style: "background:#eaeaea",
+                        offsetTop: 45
                     },
                     {type: "input", name: 'oldPassword', label: '原密码:', inputWidth: 180, maxLength: 12},
                     {type: "password", name: 'newPassword', label: '新密码:', inputWidth: 180, maxLength: 12},
-                    {type: "password", name: 'confirmNewPassword', label: '确认新密码:', inputWidth: 180, maxLength: 12},
+                    {type: "password", name: 'confirmNewPassword', label: '确认新密码:', inputWidth: 180, maxLength: 12}
                 ]
             },
             {
                 type: "block", list: [
-                    {type: "button", name: "saveButton", value: "保存", offsetLeft: 53, offsetTop: 15},
+                    {type: "button", name: "saveButton", value: "保存",  offsetTop: 25},
                     {type: "newcolumn"},
-                    {type: "button", name: "cancelButton", value: "取消", offsetLeft: 35, offsetTop: 15}
+                    {type: "button", name: "cancelButton", value: "取消", offsetLeft: 35, offsetTop: 25}
                 ]
             }
         ],
-        initobj: function () {
+        initObj: function () {
             PasswordSettingsForm.obj = Layout.obj.cells("b").attachForm(PasswordSettingsForm.config);
             PasswordSettingsForm.obj.setItemValue("name", $.cookie("loginName"));
         },
@@ -243,9 +236,9 @@
 
     var init = function () {
         Layout.initObj();
-        BasicSettingsForm.initobj();
+        BasicSettingsForm.initObj();
         BasicSettingsForm.initEvent();
-        PasswordSettingsForm.initobj();
+        PasswordSettingsForm.initObj();
         PasswordSettingsForm.initEvent();
     };
 

@@ -66,6 +66,7 @@
         ],
         initObj: function () {
             OperationForm.obj = Layout.obj.cells("a").attachForm(OperationForm.config);
+            OperationForm.obj.setItemValue('endDate',JSUtils.getToday());
         },
         initEvent:function () {
             //关联按钮
@@ -151,6 +152,8 @@
         loadData: function () {
             var oldCheckedIdList = dhtmlxUtils.getCheckedRowIds(PatientListGrid.obj,0);
             var formData = OperationForm.obj.getFormData();
+            formData.startDate = OperationForm.obj.getInput("startDate").value;
+            formData.endDate = OperationForm.obj.getInput("endDate").value;
             ajaxUtils.postBody('barCodePrint/getPatientInfo.json',
                 formData
             ).then(function (data) {
