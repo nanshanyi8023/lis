@@ -1,6 +1,7 @@
 package cn.hs.publicclass.table.checkapplicationdetail;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CheckApplicationDetailExample {
@@ -314,73 +315,63 @@ public class CheckApplicationDetailExample {
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameIsNull() {
-            addCriterion("check_item_group_name is null");
+        public Criteria andTraceLogIsNull() {
+            addCriterion("trace_log is null");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameIsNotNull() {
-            addCriterion("check_item_group_name is not null");
+        public Criteria andTraceLogIsNotNull() {
+            addCriterion("trace_log is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameEqualTo(String value) {
-            addCriterion("check_item_group_name =", value, "checkItemGroupName");
+        public Criteria andTraceLogEqualTo(Date value) {
+            addCriterion("trace_log =", value, "traceLog");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameNotEqualTo(String value) {
-            addCriterion("check_item_group_name <>", value, "checkItemGroupName");
+        public Criteria andTraceLogNotEqualTo(Date value) {
+            addCriterion("trace_log <>", value, "traceLog");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameGreaterThan(String value) {
-            addCriterion("check_item_group_name >", value, "checkItemGroupName");
+        public Criteria andTraceLogGreaterThan(Date value) {
+            addCriterion("trace_log >", value, "traceLog");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameGreaterThanOrEqualTo(String value) {
-            addCriterion("check_item_group_name >=", value, "checkItemGroupName");
+        public Criteria andTraceLogGreaterThanOrEqualTo(Date value) {
+            addCriterion("trace_log >=", value, "traceLog");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameLessThan(String value) {
-            addCriterion("check_item_group_name <", value, "checkItemGroupName");
+        public Criteria andTraceLogLessThan(Date value) {
+            addCriterion("trace_log <", value, "traceLog");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameLessThanOrEqualTo(String value) {
-            addCriterion("check_item_group_name <=", value, "checkItemGroupName");
+        public Criteria andTraceLogLessThanOrEqualTo(Date value) {
+            addCriterion("trace_log <=", value, "traceLog");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameLike(String value) {
-            addCriterion("check_item_group_name like", value, "checkItemGroupName");
+        public Criteria andTraceLogIn(List<Date> values) {
+            addCriterion("trace_log in", values, "traceLog");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameNotLike(String value) {
-            addCriterion("check_item_group_name not like", value, "checkItemGroupName");
+        public Criteria andTraceLogNotIn(List<Date> values) {
+            addCriterion("trace_log not in", values, "traceLog");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameIn(List<String> values) {
-            addCriterion("check_item_group_name in", values, "checkItemGroupName");
+        public Criteria andTraceLogBetween(Date value1, Date value2) {
+            addCriterion("trace_log between", value1, value2, "traceLog");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupNameNotIn(List<String> values) {
-            addCriterion("check_item_group_name not in", values, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameBetween(String value1, String value2) {
-            addCriterion("check_item_group_name between", value1, value2, "checkItemGroupName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCheckItemGroupNameNotBetween(String value1, String value2) {
-            addCriterion("check_item_group_name not between", value1, value2, "checkItemGroupName");
+        public Criteria andTraceLogNotBetween(Date value1, Date value2) {
+            addCriterion("trace_log not between", value1, value2, "traceLog");
             return (Criteria) this;
         }
     }
