@@ -610,7 +610,8 @@
     </foreach>
   </update>
 
-  <!--样本退回页面-->
+
+    <!--样本退回页面-->
   <select id="selectReturnedSample" resultMap="BaseResultMap">
     select *
     from check_application
@@ -625,4 +626,62 @@
       and sample_return_time &lt;= #{returnSampleQueryDto.endDate}
     </if>
   </select>
+
+
+  <!--报告录入页面-->
+  <select id="getSampleDetailedInfo" resultMap="SampleDetailedInfoMap">
+    select ca.item_id, ca.is_emergency, ca.barcode_number, ca.patient_name, ca.patient_id, pi.sex, pi.age, ca.submit_department, ca.sample_type,ca.sample_reception_time,
+           ca.result_entry_statu, ca.result_entry_time, ca.result_entry_doctor, ca.result_audit_statu, ca.result_audit_time, ca.result_audit_doctor
+    from check_application ca
+    join patient_info pi on pi.patient_id = ca.patient_id and pi.hosnum = #{hosNum}
+    where ca.item_id = #{checkApplicationId} and ca.hosNum = #{hosNum}
+  </select>
+    <resultMap id="SampleDetailedInfoMap" type="cn.hs.reportentry.dto.SampleDetailedInfoDto">
+    <result column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="patient_id" jdbcType="VARCHAR" property="patientId" />
+    <result column="patient_name" jdbcType="VARCHAR" property="patientName" />
+    <result column="submit_department" jdbcType="VARCHAR" property="submitDepartment" />
+    <result column="is_emergency" jdbcType="VARCHAR" property="isEmergency" />
+    <result column="sample_type" jdbcType="VARCHAR" property="sampleType" />
+    <result column="barcode_number" jdbcType="VARCHAR" property="barcodeNumber" />
+    <result column="sample_reception_time" jdbcType="TIMESTAMP" property="sampleReceptionTime" />
+    <result column="result_entry_statu" jdbcType="VARCHAR" property="resultEntryStatu" />
+    <result column="result_entry_time" jdbcType="TIMESTAMP" property="resultEntryTime" />
+    <result column="result_entry_doctor" jdbcType="VARCHAR" property="resultEntryDoctor" />
+    <result column="result_audit_statu" jdbcType="VARCHAR" property="resultAuditStatu" />
+    <result column="result_audit_time" jdbcType="TIMESTAMP" property="resultAuditTime" />
+    <result column="result_audit_doctor" jdbcType="VARCHAR" property="resultAuditDoctor" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+  </resultMap>
+  <update id="changeEntry">
+    update check_application ca
+    set ca.result_entry_statu = '已录入',
+        ca.result_entry_time = sysdate(),
+        ca.result_entry_doctor = (select ui.name
+                                  from user_info ui
+                                  where ui.hosnum = #{hosNum} and ui.login_name = #{loginName})
+    where ca.hosnum = #{hosNum} and ca.item_id = #{checkApplicationId}
+  </update>
+  <select id="getEntryStatu" resultType="java.lang.String">
+    select result_entry_statu
+    from check_application
+    where hosnum = #{hosNum} and item_id = #{checkApplicationId}
+  </select>
+  <update id="changeAudit">
+    update check_application ca
+    set ca.result_audit_statu = '已审核',
+        ca.result_audit_time = sysdate(),
+        ca.result_audit_doctor = (select ui.name
+                                  from user_info ui
+                                  where ui.hosnum = #{hosNum} and ui.login_name = #{loginName})
+    where ca.hosnum = #{hosNum} and ca.item_id = #{checkApplicationId}
+  </update>
+  <update id="changeCancelAudit">
+    update check_application
+    set result_audit_statu = '未审核',
+        result_audit_time = null,
+        result_audit_doctor = null
+    where hosnum = #{hosNum} and item_id = #{checkApplicationId}
+  </update>
 </mapper>

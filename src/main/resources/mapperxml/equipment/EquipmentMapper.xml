@@ -315,4 +315,11 @@
     join check_item ci on emd.check_item_id = ci.item_id and ci.item_id = #{checkItemId} and ci.hosnum = #{hosNum}
     where em.hosnum = #{hosNum}
   </select>
+  <select id="getEquipmentByBarCodeNumber" resultType="java.lang.String">
+    select distinct eq.item_name
+    from equipment eq
+    join check_item_group cig on cig.hosnum = #{hosNum} and cig.equipment_id = eq.item_id
+    join check_application_detail cad on cad.hosnum = #{hosNum} and cad.check_item_group_id = cig.group_id and cad.check_application_id = #{checkApplicationId}
+    where eq.hosnum = #{hosNum}
+  </select>
 </mapper>

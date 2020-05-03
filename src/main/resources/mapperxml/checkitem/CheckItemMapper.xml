@@ -8,8 +8,8 @@
     <result column="english_abbreviation" jdbcType="VARCHAR" property="englishAbbreviation" />
     <result column="unit" jdbcType="VARCHAR" property="unit" />
     <result column="item_type" jdbcType="VARCHAR" property="itemType" />
-    <result column="upper_reference_value" jdbcType="INTEGER" property="upperReferenceValue" />
-    <result column="lower_reference_value" jdbcType="INTEGER" property="lowerReferenceValue" />
+    <result column="lower_reference_value" jdbcType="DOUBLE" property="lowerReferenceValue" />
+    <result column="upper_reference_value" jdbcType="DOUBLE" property="upperReferenceValue" />
     <result column="reference_value" jdbcType="VARCHAR" property="referenceValue" />
     <result column="default_value" jdbcType="VARCHAR" property="defaultValue" />
     <result column="order_number" jdbcType="INTEGER" property="orderNumber" />
@@ -74,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    hosnum, item_id, item_name, english_abbreviation, unit, item_type, upper_reference_value, 
-    lower_reference_value, reference_value, default_value, order_number, trace_log
+    hosnum, item_id, item_name, english_abbreviation, unit, item_type, lower_reference_value, 
+    upper_reference_value, reference_value, default_value, order_number, trace_log
   </sql>
   <select id="selectByExample" parameterType="cn.hs.checkitem.pojo.CheckItemExample" resultMap="BaseResultMap">
     select
@@ -112,12 +112,12 @@
   <insert id="insert" parameterType="cn.hs.checkitem.pojo.CheckItem">
     insert into check_item (hosnum, item_id, item_name, 
       english_abbreviation, unit, item_type, 
-      upper_reference_value, lower_reference_value, 
+      lower_reference_value, upper_reference_value, 
       reference_value, default_value, order_number, 
       trace_log)
     values (#{hosnum,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
       #{englishAbbreviation,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{itemType,jdbcType=VARCHAR}, 
-      #{upperReferenceValue,jdbcType=INTEGER}, #{lowerReferenceValue,jdbcType=INTEGER}, 
+      #{lowerReferenceValue,jdbcType=DOUBLE}, #{upperReferenceValue,jdbcType=DOUBLE}, 
       #{referenceValue,jdbcType=VARCHAR}, #{defaultValue,jdbcType=VARCHAR}, #{orderNumber,jdbcType=INTEGER}, 
       #{traceLog,jdbcType=TIMESTAMP})
   </insert>
@@ -142,11 +142,11 @@
       <if test="itemType != null">
         item_type,
       </if>
-      <if test="upperReferenceValue != null">
-        upper_reference_value,
-      </if>
       <if test="lowerReferenceValue != null">
         lower_reference_value,
+      </if>
+      <if test="upperReferenceValue != null">
+        upper_reference_value,
       </if>
       <if test="referenceValue != null">
         reference_value,
@@ -180,11 +180,11 @@
       <if test="itemType != null">
         #{itemType,jdbcType=VARCHAR},
       </if>
-      <if test="upperReferenceValue != null">
-        #{upperReferenceValue,jdbcType=INTEGER},
-      </if>
       <if test="lowerReferenceValue != null">
-        #{lowerReferenceValue,jdbcType=INTEGER},
+        #{lowerReferenceValue,jdbcType=DOUBLE},
+      </if>
+      <if test="upperReferenceValue != null">
+        #{upperReferenceValue,jdbcType=DOUBLE},
       </if>
       <if test="referenceValue != null">
         #{referenceValue,jdbcType=VARCHAR},
@@ -227,11 +227,11 @@
       <if test="record.itemType != null">
         item_type = #{record.itemType,jdbcType=VARCHAR},
       </if>
-      <if test="record.upperReferenceValue != null">
-        upper_reference_value = #{record.upperReferenceValue,jdbcType=INTEGER},
-      </if>
       <if test="record.lowerReferenceValue != null">
-        lower_reference_value = #{record.lowerReferenceValue,jdbcType=INTEGER},
+        lower_reference_value = #{record.lowerReferenceValue,jdbcType=DOUBLE},
+      </if>
+      <if test="record.upperReferenceValue != null">
+        upper_reference_value = #{record.upperReferenceValue,jdbcType=DOUBLE},
       </if>
       <if test="record.referenceValue != null">
         reference_value = #{record.referenceValue,jdbcType=VARCHAR},
@@ -258,8 +258,8 @@
       english_abbreviation = #{record.englishAbbreviation,jdbcType=VARCHAR},
       unit = #{record.unit,jdbcType=VARCHAR},
       item_type = #{record.itemType,jdbcType=VARCHAR},
-      upper_reference_value = #{record.upperReferenceValue,jdbcType=INTEGER},
-      lower_reference_value = #{record.lowerReferenceValue,jdbcType=INTEGER},
+      lower_reference_value = #{record.lowerReferenceValue,jdbcType=DOUBLE},
+      upper_reference_value = #{record.upperReferenceValue,jdbcType=DOUBLE},
       reference_value = #{record.referenceValue,jdbcType=VARCHAR},
       default_value = #{record.defaultValue,jdbcType=VARCHAR},
       order_number = #{record.orderNumber,jdbcType=INTEGER},
@@ -283,11 +283,11 @@
       <if test="itemType != null">
         item_type = #{itemType,jdbcType=VARCHAR},
       </if>
-      <if test="upperReferenceValue != null">
-        upper_reference_value = #{upperReferenceValue,jdbcType=INTEGER},
-      </if>
       <if test="lowerReferenceValue != null">
-        lower_reference_value = #{lowerReferenceValue,jdbcType=INTEGER},
+        lower_reference_value = #{lowerReferenceValue,jdbcType=DOUBLE},
+      </if>
+      <if test="upperReferenceValue != null">
+        upper_reference_value = #{upperReferenceValue,jdbcType=DOUBLE},
       </if>
       <if test="referenceValue != null">
         reference_value = #{referenceValue,jdbcType=VARCHAR},
@@ -311,8 +311,8 @@
       english_abbreviation = #{englishAbbreviation,jdbcType=VARCHAR},
       unit = #{unit,jdbcType=VARCHAR},
       item_type = #{itemType,jdbcType=VARCHAR},
-      upper_reference_value = #{upperReferenceValue,jdbcType=INTEGER},
-      lower_reference_value = #{lowerReferenceValue,jdbcType=INTEGER},
+      lower_reference_value = #{lowerReferenceValue,jdbcType=DOUBLE},
+      upper_reference_value = #{upperReferenceValue,jdbcType=DOUBLE},
       reference_value = #{referenceValue,jdbcType=VARCHAR},
       default_value = #{defaultValue,jdbcType=VARCHAR},
       order_number = #{orderNumber,jdbcType=INTEGER},
@@ -320,6 +320,7 @@
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and item_id = #{itemId,jdbcType=VARCHAR}
   </update>
+
 
 
 
@@ -362,5 +363,12 @@
     select item_id
     from check_item
     where hosnum = #{hosNum} and (item_id = #{inputValue} || item_name = #{inputValue} || english_abbreviation = #{inputValue})
+  </select>
+  <select id="getCheckItemAndDefaultValue" resultMap="BaseResultMap">
+    select ci.item_id,ci.item_name,ci.default_value,ci.reference_value,ci.unit
+    from check_item ci
+    join check_item_group_detail cigd on cigd.hosnum = #{hosNum} and cigd.item_id = ci.item_id
+    join check_application_detail cad on cad.hosnum = #{hosNum} and cad.check_item_group_id = cigd.item_group_id and cad.check_application_id = #{checkApplicationId}
+    where ci.hosnum = #{hosNum}
   </select>
 </mapper>

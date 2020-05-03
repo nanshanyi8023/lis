@@ -6,6 +6,7 @@ import cn.hs.publicclass.table.checkapplication.CheckApplicationExample;
 import cn.hs.publicclass.table.checkapplication.CheckApplicationKey;
 import java.util.List;
 
+import cn.hs.reportentry.dto.SampleDetailedInfoDto;
 import cn.hs.samplerecept.dto.ReceptedSampleQueryDto;
 import cn.hs.samplerecept.dto.RetrunSampleDto;
 import org.apache.ibatis.annotations.Param;
@@ -74,8 +75,22 @@ public interface CheckApplicationMapper {
     //查找对应的已退回样本
     List<CheckApplication> selectReturnedSample(@Param("hosNum") String hosNum, @Param("returnSampleQueryDto") ReceptedSampleQueryDto returnSampleQueryDto);
 
+
     /**
      * 报告录入页面
      */
+    //根据检验申请Id查找对应的样本详细信息
+    SampleDetailedInfoDto getSampleDetailedInfo(@Param("hosNum") String hosNum, @Param("checkApplicationId") String checkApplicationId);
 
+    //点击保存按钮更改录入状态、录入时间、录入医生
+    void changeEntry(@Param("hosNum") String hosNum,@Param("loginName") String loginName,@Param("checkApplicationId") String checkApplicationId);
+
+    //查找录入状态
+    String getEntryStatu(@Param("hosNum") String hosNum, @Param("checkApplicationId") String checkApplicationId);
+
+    //点击审核按钮更改审核状态、审核时间、审核医生
+    void changeAudit(@Param("hosNum") String hosNum,@Param("loginName") String loginName, @Param("checkApplicationId") String checkApplicationId);
+
+    //点击取消审核按钮更改审核状态、审核时间、审核医生
+    void changeCancelAudit(@Param("hosNum") String hosNum, @Param("checkApplicationId") String checkApplicationId);
 }

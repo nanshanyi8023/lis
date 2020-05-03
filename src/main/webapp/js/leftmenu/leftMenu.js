@@ -82,14 +82,15 @@
                         {
                             id: "equipmentSettings",
                             text: "检验设备设置"
-                        },
+                        }
+                       /* ,
                         {
                             id: "equipmentChannelSettings",
                             text: "检验设备通道设置"
-                        }
+                        }*/
                     ]
                 },
-                {
+                /*{
                     id: "inspectionOrder",
                     text: "检验医嘱",
                     open: 0,
@@ -105,7 +106,7 @@
                             icons:{file:""}
                         }
                     ]
-                },
+                },*/
                 {
                     id: "userInfoSetting",
                     text: "&nbsp;个人信息设置",

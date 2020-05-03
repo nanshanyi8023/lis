@@ -35,4 +35,5 @@ public interface CheckApplicationDetailMapper {
     //根据检验申请id查询对应的检验项目组合
     List<CheckApplicationDetail> getCheckItemGroup(@Param("hosnum") String hosnum, @Param("checkApplicationIdList") List<String> checkApplicationIdList);
 
+    List<String> getCheckItemGroupByApplicationId(@Param("hosnum") String hosnum, @Param("applicationId") String applicationId);
 }

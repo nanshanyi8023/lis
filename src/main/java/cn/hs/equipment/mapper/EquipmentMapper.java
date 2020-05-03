@@ -49,4 +49,7 @@ public interface EquipmentMapper {
 
     //查找检验项目对应的检验设备
     List<Equipment> getAssociatedEquipment(@Param("hosNum") String hosNum, @Param("checkItemId") String checkItemId);
+
+    //根据检验申请id查找对应的检验设备
+    List<String> getEquipmentByBarCodeNumber(@Param("hosNum") String hosNum,@Param("checkApplicationId") String checkApplicationId);
 }
