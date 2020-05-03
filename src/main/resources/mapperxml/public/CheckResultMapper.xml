@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hs.publicclass.mapper.CheckApplicationDetailMapper">
-  <resultMap id="BaseResultMap" type="cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail">
+<mapper namespace="cn.hs.publicclass.mapper.CheckResultMapper">
+  <resultMap id="BaseResultMap" type="cn.hs.publicclass.table.checkresult.CheckResult">
     <id column="hosnum" jdbcType="VARCHAR" property="hosnum" />
     <id column="check_application_id" jdbcType="VARCHAR" property="checkApplicationId" />
-    <id column="check_item_group_id" jdbcType="VARCHAR" property="checkItemGroupId" />
+    <id column="check_item_id" jdbcType="VARCHAR" property="checkItemId" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
     <result column="trace_log" jdbcType="TIMESTAMP" property="traceLog" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -66,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    hosnum, check_application_id, check_item_group_id, trace_log
+    hosnum, check_application_id, check_item_id, result, trace_log
   </sql>
-  <select id="selectByExample" parameterType="cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetailExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.hs.publicclass.table.checkresult.CheckResultExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from check_application_detail
+    from check_result
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,34 +83,34 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetailKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="cn.hs.publicclass.table.checkresult.CheckResultKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from check_application_detail
+    from check_result
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and check_application_id = #{checkApplicationId,jdbcType=VARCHAR}
-      and check_item_group_id = #{checkItemGroupId,jdbcType=VARCHAR}
+      and check_item_id = #{checkItemId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetailKey">
-    delete from check_application_detail
+  <delete id="deleteByPrimaryKey" parameterType="cn.hs.publicclass.table.checkresult.CheckResultKey">
+    delete from check_result
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and check_application_id = #{checkApplicationId,jdbcType=VARCHAR}
-      and check_item_group_id = #{checkItemGroupId,jdbcType=VARCHAR}
+      and check_item_id = #{checkItemId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetailExample">
-    delete from check_application_detail
+  <delete id="deleteByExample" parameterType="cn.hs.publicclass.table.checkresult.CheckResultExample">
+    delete from check_result
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail">
-    insert into check_application_detail (hosnum, check_application_id, check_item_group_id, 
-      trace_log)
-    values (#{hosnum,jdbcType=VARCHAR}, #{checkApplicationId,jdbcType=VARCHAR}, #{checkItemGroupId,jdbcType=VARCHAR}, 
-      #{traceLog,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="cn.hs.publicclass.table.checkresult.CheckResult">
+    insert into check_result (hosnum, check_application_id, check_item_id, 
+      result, trace_log)
+    values (#{hosnum,jdbcType=VARCHAR}, #{checkApplicationId,jdbcType=VARCHAR}, #{checkItemId,jdbcType=VARCHAR}, 
+      #{result,jdbcType=VARCHAR}, #{traceLog,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail">
-    insert into check_application_detail
+  <insert id="insertSelective" parameterType="cn.hs.publicclass.table.checkresult.CheckResult">
+    insert into check_result
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="hosnum != null">
         hosnum,
@@ -117,8 +118,11 @@
       <if test="checkApplicationId != null">
         check_application_id,
       </if>
-      <if test="checkItemGroupId != null">
-        check_item_group_id,
+      <if test="checkItemId != null">
+        check_item_id,
+      </if>
+      <if test="result != null">
+        result,
       </if>
       <if test="traceLog != null">
         trace_log,
@@ -131,22 +135,25 @@
       <if test="checkApplicationId != null">
         #{checkApplicationId,jdbcType=VARCHAR},
       </if>
-      <if test="checkItemGroupId != null">
-        #{checkItemGroupId,jdbcType=VARCHAR},
+      <if test="checkItemId != null">
+        #{checkItemId,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
       </if>
       <if test="traceLog != null">
         #{traceLog,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetailExample" resultType="java.lang.Long">
-    select count(*) from check_application_detail
+  <select id="countByExample" parameterType="cn.hs.publicclass.table.checkresult.CheckResultExample" resultType="java.lang.Long">
+    select count(*) from check_result
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update check_application_detail
+    <update id="updateByExampleSelective" parameterType="map">
+    update check_result
     <set>
       <if test="record.hosnum != null">
         hosnum = #{record.hosnum,jdbcType=VARCHAR},
@@ -154,8 +161,11 @@
       <if test="record.checkApplicationId != null">
         check_application_id = #{record.checkApplicationId,jdbcType=VARCHAR},
       </if>
-      <if test="record.checkItemGroupId != null">
-        check_item_group_id = #{record.checkItemGroupId,jdbcType=VARCHAR},
+      <if test="record.checkItemId != null">
+        check_item_id = #{record.checkItemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.result != null">
+        result = #{record.result,jdbcType=VARCHAR},
       </if>
       <if test="record.traceLog != null">
         trace_log = #{record.traceLog,jdbcType=TIMESTAMP},
@@ -166,50 +176,44 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update check_application_detail
+    update check_result
     set hosnum = #{record.hosnum,jdbcType=VARCHAR},
       check_application_id = #{record.checkApplicationId,jdbcType=VARCHAR},
-      check_item_group_id = #{record.checkItemGroupId,jdbcType=VARCHAR},
+      check_item_id = #{record.checkItemId,jdbcType=VARCHAR},
+      result = #{record.result,jdbcType=VARCHAR},
       trace_log = #{record.traceLog,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail">
-    update check_application_detail
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hs.publicclass.table.checkresult.CheckResult">
+    update check_result
     <set>
+      <if test="result != null">
+        result = #{result,jdbcType=VARCHAR},
+      </if>
       <if test="traceLog != null">
         trace_log = #{traceLog,jdbcType=TIMESTAMP},
       </if>
     </set>
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and check_application_id = #{checkApplicationId,jdbcType=VARCHAR}
-      and check_item_group_id = #{checkItemGroupId,jdbcType=VARCHAR}
+      and check_item_id = #{checkItemId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.hs.publicclass.table.checkapplicationdetail.CheckApplicationDetail">
-    update check_application_detail
-    set trace_log = #{traceLog,jdbcType=TIMESTAMP}
+  <update id="updateByPrimaryKey" parameterType="cn.hs.publicclass.table.checkresult.CheckResult">
+    update check_result
+    set result = #{result,jdbcType=VARCHAR},
+      trace_log = #{traceLog,jdbcType=TIMESTAMP}
     where hosnum = #{hosnum,jdbcType=VARCHAR}
       and check_application_id = #{checkApplicationId,jdbcType=VARCHAR}
-      and check_item_group_id = #{checkItemGroupId,jdbcType=VARCHAR}
+      and check_item_id = #{checkItemId,jdbcType=VARCHAR}
   </update>
 
 
 
-  <select id="getCheckItemGroup" resultMap="BaseResultMap">
-    select cad.*,cig.group_name as checkItemGroupName
-    from check_application_detail cad
-    join check_item_group cig on cig.group_id = cad.check_item_group_id and cig.hosnum = #{hosnum}
-    where cad.hosnum = #{hosnum} and cad.check_application_id in
-    <foreach collection="checkApplicationIdList" item="item" index="index" open="(" separator="," close=")">
-      #{item}
-    </foreach>
+  <select id="getCheckResult"  resultMap="BaseResultMap">
+    select check_item_id,result
+    from check_result
+    where hosnum = #{hosNum} and check_application_id = #{checkApplicationId}
   </select>
-  <select id="getCheckItemGroupByApplicationId" resultType="java.lang.String">
-    select cig.group_name as checkItemGroupNameList
-    from check_application_detail cad
-    join check_item_group cig on cig.group_id = cad.check_item_group_id and cig.hosnum = #{hosnum}
-    where cad.hosnum = #{hosnum} and cad.check_application_id = #{applicationId}
-  </select>
-
 </mapper>

@@ -4,7 +4,6 @@ import cn.hs.checkitem.pojo.CheckItem;
 import cn.hs.checkitem.pojo.CheckItemExample;
 import cn.hs.checkitem.pojo.CheckItemKey;
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface CheckItemMapper {
@@ -30,7 +29,6 @@ public interface CheckItemMapper {
 
     int updateByPrimaryKey(CheckItem record);
 
-
     /**
      * 自定义方法
      */
@@ -49,4 +47,7 @@ public interface CheckItemMapper {
 
     //判断输入值是否有相对应的检验项目id,名称，英文缩写，如果存在返回检验项目id
     String getCheckItemId(@Param("hosNum") String hosNum, @Param("inputValue") String inputValue);
+
+    //根据检验申请Id查找对应的检验项目及默认结果
+    List<CheckItem> getCheckItemAndDefaultValue(@Param("hosNum") String hosNum, @Param("checkApplicationId") String checkApplicationId);
 }

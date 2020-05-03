@@ -37,6 +37,8 @@
     <script type="text/javascript" src="js/checkmanage/barCodePrintLodop.js"></script>
     <script type="text/javascript" src="js/checkmanage/sampleRecept.js"></script>
     <script type="text/javascript" src="js/checkmanage/sampleReturn.js"></script>
+    <script type="text/javascript" src="js/checkmanage/reportEntry.js"></script>
+
 
 
     <object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0>
@@ -57,8 +59,8 @@
         .sampleReturn{
             background-image: url(images/systemhome/sampleReturn.png);
         }
-        .inspectionOperation{
-            background-image: url(images/systemhome/inspectionOperation.png);
+        .reportEntry{
+            background-image: url(images/systemhome/reportEntry.png);
         }
         .reportQuery{
             background-image: url(images/systemhome/reportQuery.png);

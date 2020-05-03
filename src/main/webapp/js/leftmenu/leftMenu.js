@@ -55,9 +55,9 @@
                             icons: {file: "sampleReturn"}
                         },
                         {
-                            id: "inspectionOperation",
-                            text: "&nbsp;检验操作",
-                            icons: {file: "inspectionOperation"}
+                            id: "reportEntry",
+                            text: "&nbsp;报告录入",
+                            icons: {file: "reportEntry"}
                         },
                         {
                             id: "reportQuery",
@@ -82,14 +82,15 @@
                         {
                             id: "equipmentSettings",
                             text: "检验设备设置"
-                        },
+                        }
+                       /* ,
                         {
                             id: "equipmentChannelSettings",
                             text: "检验设备通道设置"
-                        }
+                        }*/
                     ]
                 },
-                {
+                /*{
                     id: "inspectionOrder",
                     text: "检验医嘱",
                     open: 0,
@@ -105,7 +106,7 @@
                             icons:{file:""}
                         }
                     ]
-                },
+                },*/
                 {
                     id: "userInfoSetting",
                     text: "&nbsp;个人信息设置",
@@ -129,6 +130,9 @@
                         break;
                     case "sampleReturn":
                         sampleReturn.init();
+                        break;
+                    case "reportEntry":
+                        reportEntry.init();
                         break;
 
                     case "checkItemSettings":

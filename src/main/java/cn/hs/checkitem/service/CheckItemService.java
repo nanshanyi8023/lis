@@ -101,7 +101,7 @@ public class CheckItemService {
         return equipmentMapper.selectAllEquipment(getCookie.getHosNum());
     }
 
-    //根据医院号和工作组id查找所有检验项目组合
+    //根据医院号和检验设备id查找所有检验项目组合
     public List<CheckItemGroup> getAllCheckItemGroup(String equipmentId) {
         return checkItemGroupMapper.selectAllCheckItemGroup(getCookie.getHosNum(),equipmentId);
     }

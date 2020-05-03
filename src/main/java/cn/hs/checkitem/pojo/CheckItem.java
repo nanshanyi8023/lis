@@ -19,9 +19,9 @@ public class CheckItem extends CheckItemKey {
 
     private String itemType;
 
-    private Integer upperReferenceValue;
+    private Double lowerReferenceValue;
 
-    private Integer lowerReferenceValue;
+    private Double upperReferenceValue;
 
     private String referenceValue;
 
@@ -79,20 +79,20 @@ public class CheckItem extends CheckItemKey {
         this.itemType = itemType == null ? null : itemType.trim();
     }
 
-    public Integer getUpperReferenceValue() {
-        return upperReferenceValue;
-    }
-
-    public void setUpperReferenceValue(Integer upperReferenceValue) {
-        this.upperReferenceValue = upperReferenceValue;
-    }
-
-    public Integer getLowerReferenceValue() {
+    public Double getLowerReferenceValue() {
         return lowerReferenceValue;
     }
 
-    public void setLowerReferenceValue(Integer lowerReferenceValue) {
+    public void setLowerReferenceValue(Double lowerReferenceValue) {
         this.lowerReferenceValue = lowerReferenceValue;
+    }
+
+    public Double getUpperReferenceValue() {
+        return upperReferenceValue;
+    }
+
+    public void setUpperReferenceValue(Double upperReferenceValue) {
+        this.upperReferenceValue = upperReferenceValue;
     }
 
     public String getReferenceValue() {

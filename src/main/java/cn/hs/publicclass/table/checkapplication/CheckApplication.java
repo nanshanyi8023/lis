@@ -6,6 +6,8 @@ public class CheckApplication extends CheckApplicationKey {
     //新增检验项目组合字段（用","隔开检验项目组合）
     private String checkItemGroup;
 
+    private String doctorAdviceId;
+
     private String patientId;
 
     private String patientName;
@@ -30,13 +32,25 @@ public class CheckApplication extends CheckApplicationKey {
 
     private Date sampleReceptionTime;
 
-    private Integer orderNumber;
-
     private Date sampleReturnTime;
 
     private String sampleReturnReason;
 
     private String sampleReturnDoctor;
+
+    private Integer orderNumber;
+
+    private String resultEntryStatu;
+
+    private Date resultEntryTime;
+
+    private String resultEntryDoctor;
+
+    private String resultAuditStatu;
+
+    private Date resultAuditTime;
+
+    private String resultAuditDoctor;
 
     public String getCheckItemGroup() {
         return checkItemGroup;
@@ -44,6 +58,14 @@ public class CheckApplication extends CheckApplicationKey {
 
     public void setCheckItemGroup(String checkItemGroup) {
         this.checkItemGroup = checkItemGroup;
+    }
+
+    public String getDoctorAdviceId() {
+        return doctorAdviceId;
+    }
+
+    public void setDoctorAdviceId(String doctorAdviceId) {
+        this.doctorAdviceId = doctorAdviceId == null ? null : doctorAdviceId.trim();
     }
 
     public String getPatientId() {
@@ -142,14 +164,6 @@ public class CheckApplication extends CheckApplicationKey {
         this.sampleReceptionTime = sampleReceptionTime;
     }
 
-    public Integer getOrderNumber() {
-        return orderNumber;
-    }
-
-    public void setOrderNumber(Integer orderNumber) {
-        this.orderNumber = orderNumber;
-    }
-
     public Date getSampleReturnTime() {
         return sampleReturnTime;
     }
@@ -172,5 +186,61 @@ public class CheckApplication extends CheckApplicationKey {
 
     public void setSampleReturnDoctor(String sampleReturnDoctor) {
         this.sampleReturnDoctor = sampleReturnDoctor == null ? null : sampleReturnDoctor.trim();
+    }
+
+    public Integer getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(Integer orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public String getResultEntryStatu() {
+        return resultEntryStatu;
+    }
+
+    public void setResultEntryStatu(String resultEntryStatu) {
+        this.resultEntryStatu = resultEntryStatu == null ? null : resultEntryStatu.trim();
+    }
+
+    public Date getResultEntryTime() {
+        return resultEntryTime;
+    }
+
+    public void setResultEntryTime(Date resultEntryTime) {
+        this.resultEntryTime = resultEntryTime;
+    }
+
+    public String getResultEntryDoctor() {
+        return resultEntryDoctor;
+    }
+
+    public void setResultEntryDoctor(String resultEntryDoctor) {
+        this.resultEntryDoctor = resultEntryDoctor == null ? null : resultEntryDoctor.trim();
+    }
+
+    public String getResultAuditStatu() {
+        return resultAuditStatu;
+    }
+
+    public void setResultAuditStatu(String resultAuditStatu) {
+        this.resultAuditStatu = resultAuditStatu == null ? null : resultAuditStatu.trim();
+    }
+
+    public Date getResultAuditTime() {
+        return resultAuditTime;
+    }
+
+    public void setResultAuditTime(Date resultAuditTime) {
+        this.resultAuditTime = resultAuditTime;
+    }
+
+    public String getResultAuditDoctor() {
+        return resultAuditDoctor;
+    }
+
+    public void setResultAuditDoctor(String resultAuditDoctor) {
+        this.resultAuditDoctor = resultAuditDoctor == null ? null : resultAuditDoctor.trim();
     }
 }

@@ -1,17 +1,17 @@
-package cn.hs.publicclass.table.checkapplicationdetail;
+package cn.hs.publicclass.table.checkresult;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CheckApplicationDetailExample {
+public class CheckResultExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public CheckApplicationDetailExample() {
+    public CheckResultExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -245,73 +245,143 @@ public class CheckApplicationDetailExample {
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdIsNull() {
-            addCriterion("check_item_group_id is null");
+        public Criteria andCheckItemIdIsNull() {
+            addCriterion("check_item_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdIsNotNull() {
-            addCriterion("check_item_group_id is not null");
+        public Criteria andCheckItemIdIsNotNull() {
+            addCriterion("check_item_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdEqualTo(String value) {
-            addCriterion("check_item_group_id =", value, "checkItemGroupId");
+        public Criteria andCheckItemIdEqualTo(String value) {
+            addCriterion("check_item_id =", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdNotEqualTo(String value) {
-            addCriterion("check_item_group_id <>", value, "checkItemGroupId");
+        public Criteria andCheckItemIdNotEqualTo(String value) {
+            addCriterion("check_item_id <>", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdGreaterThan(String value) {
-            addCriterion("check_item_group_id >", value, "checkItemGroupId");
+        public Criteria andCheckItemIdGreaterThan(String value) {
+            addCriterion("check_item_id >", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdGreaterThanOrEqualTo(String value) {
-            addCriterion("check_item_group_id >=", value, "checkItemGroupId");
+        public Criteria andCheckItemIdGreaterThanOrEqualTo(String value) {
+            addCriterion("check_item_id >=", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdLessThan(String value) {
-            addCriterion("check_item_group_id <", value, "checkItemGroupId");
+        public Criteria andCheckItemIdLessThan(String value) {
+            addCriterion("check_item_id <", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdLessThanOrEqualTo(String value) {
-            addCriterion("check_item_group_id <=", value, "checkItemGroupId");
+        public Criteria andCheckItemIdLessThanOrEqualTo(String value) {
+            addCriterion("check_item_id <=", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdLike(String value) {
-            addCriterion("check_item_group_id like", value, "checkItemGroupId");
+        public Criteria andCheckItemIdLike(String value) {
+            addCriterion("check_item_id like", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdNotLike(String value) {
-            addCriterion("check_item_group_id not like", value, "checkItemGroupId");
+        public Criteria andCheckItemIdNotLike(String value) {
+            addCriterion("check_item_id not like", value, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdIn(List<String> values) {
-            addCriterion("check_item_group_id in", values, "checkItemGroupId");
+        public Criteria andCheckItemIdIn(List<String> values) {
+            addCriterion("check_item_id in", values, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdNotIn(List<String> values) {
-            addCriterion("check_item_group_id not in", values, "checkItemGroupId");
+        public Criteria andCheckItemIdNotIn(List<String> values) {
+            addCriterion("check_item_id not in", values, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdBetween(String value1, String value2) {
-            addCriterion("check_item_group_id between", value1, value2, "checkItemGroupId");
+        public Criteria andCheckItemIdBetween(String value1, String value2) {
+            addCriterion("check_item_id between", value1, value2, "checkItemId");
             return (Criteria) this;
         }
 
-        public Criteria andCheckItemGroupIdNotBetween(String value1, String value2) {
-            addCriterion("check_item_group_id not between", value1, value2, "checkItemGroupId");
+        public Criteria andCheckItemIdNotBetween(String value1, String value2) {
+            addCriterion("check_item_id not between", value1, value2, "checkItemId");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultIsNull() {
+            addCriterion("result is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultIsNotNull() {
+            addCriterion("result is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultEqualTo(String value) {
+            addCriterion("result =", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultNotEqualTo(String value) {
+            addCriterion("result <>", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultGreaterThan(String value) {
+            addCriterion("result >", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultGreaterThanOrEqualTo(String value) {
+            addCriterion("result >=", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultLessThan(String value) {
+            addCriterion("result <", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultLessThanOrEqualTo(String value) {
+            addCriterion("result <=", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultLike(String value) {
+            addCriterion("result like", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultNotLike(String value) {
+            addCriterion("result not like", value, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultIn(List<String> values) {
+            addCriterion("result in", values, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultNotIn(List<String> values) {
+            addCriterion("result not in", values, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultBetween(String value1, String value2) {
+            addCriterion("result between", value1, value2, "result");
+            return (Criteria) this;
+        }
+
+        public Criteria andResultNotBetween(String value1, String value2) {
+            addCriterion("result not between", value1, value2, "result");
             return (Criteria) this;
         }
 

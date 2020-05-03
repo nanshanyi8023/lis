@@ -1,4 +1,4 @@
-// 系统总页面分成三个部分
+
 !function (global) {
     'use strict';
     var Layout = {

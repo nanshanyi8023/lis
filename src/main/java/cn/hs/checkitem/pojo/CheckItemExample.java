@@ -525,66 +525,6 @@ public class CheckItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpperReferenceValueIsNull() {
-            addCriterion("upper_reference_value is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueIsNotNull() {
-            addCriterion("upper_reference_value is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueEqualTo(Integer value) {
-            addCriterion("upper_reference_value =", value, "upperReferenceValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueNotEqualTo(Integer value) {
-            addCriterion("upper_reference_value <>", value, "upperReferenceValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueGreaterThan(Integer value) {
-            addCriterion("upper_reference_value >", value, "upperReferenceValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueGreaterThanOrEqualTo(Integer value) {
-            addCriterion("upper_reference_value >=", value, "upperReferenceValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueLessThan(Integer value) {
-            addCriterion("upper_reference_value <", value, "upperReferenceValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueLessThanOrEqualTo(Integer value) {
-            addCriterion("upper_reference_value <=", value, "upperReferenceValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueIn(List<Integer> values) {
-            addCriterion("upper_reference_value in", values, "upperReferenceValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueNotIn(List<Integer> values) {
-            addCriterion("upper_reference_value not in", values, "upperReferenceValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueBetween(Integer value1, Integer value2) {
-            addCriterion("upper_reference_value between", value1, value2, "upperReferenceValue");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpperReferenceValueNotBetween(Integer value1, Integer value2) {
-            addCriterion("upper_reference_value not between", value1, value2, "upperReferenceValue");
-            return (Criteria) this;
-        }
-
         public Criteria andLowerReferenceValueIsNull() {
             addCriterion("lower_reference_value is null");
             return (Criteria) this;
@@ -595,53 +535,113 @@ public class CheckItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andLowerReferenceValueEqualTo(Integer value) {
+        public Criteria andLowerReferenceValueEqualTo(Double value) {
             addCriterion("lower_reference_value =", value, "lowerReferenceValue");
             return (Criteria) this;
         }
 
-        public Criteria andLowerReferenceValueNotEqualTo(Integer value) {
+        public Criteria andLowerReferenceValueNotEqualTo(Double value) {
             addCriterion("lower_reference_value <>", value, "lowerReferenceValue");
             return (Criteria) this;
         }
 
-        public Criteria andLowerReferenceValueGreaterThan(Integer value) {
+        public Criteria andLowerReferenceValueGreaterThan(Double value) {
             addCriterion("lower_reference_value >", value, "lowerReferenceValue");
             return (Criteria) this;
         }
 
-        public Criteria andLowerReferenceValueGreaterThanOrEqualTo(Integer value) {
+        public Criteria andLowerReferenceValueGreaterThanOrEqualTo(Double value) {
             addCriterion("lower_reference_value >=", value, "lowerReferenceValue");
             return (Criteria) this;
         }
 
-        public Criteria andLowerReferenceValueLessThan(Integer value) {
+        public Criteria andLowerReferenceValueLessThan(Double value) {
             addCriterion("lower_reference_value <", value, "lowerReferenceValue");
             return (Criteria) this;
         }
 
-        public Criteria andLowerReferenceValueLessThanOrEqualTo(Integer value) {
+        public Criteria andLowerReferenceValueLessThanOrEqualTo(Double value) {
             addCriterion("lower_reference_value <=", value, "lowerReferenceValue");
             return (Criteria) this;
         }
 
-        public Criteria andLowerReferenceValueIn(List<Integer> values) {
+        public Criteria andLowerReferenceValueIn(List<Double> values) {
             addCriterion("lower_reference_value in", values, "lowerReferenceValue");
             return (Criteria) this;
         }
 
-        public Criteria andLowerReferenceValueNotIn(List<Integer> values) {
+        public Criteria andLowerReferenceValueNotIn(List<Double> values) {
             addCriterion("lower_reference_value not in", values, "lowerReferenceValue");
             return (Criteria) this;
         }
 
-        public Criteria andLowerReferenceValueBetween(Integer value1, Integer value2) {
+        public Criteria andLowerReferenceValueBetween(Double value1, Double value2) {
             addCriterion("lower_reference_value between", value1, value2, "lowerReferenceValue");
             return (Criteria) this;
         }
 
-        public Criteria andLowerReferenceValueNotBetween(Integer value1, Integer value2) {
+        public Criteria andLowerReferenceValueNotBetween(Double value1, Double value2) {
             addCriterion("lower_reference_value not between", value1, value2, "lowerReferenceValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueIsNull() {
+            addCriterion("upper_reference_value is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueIsNotNull() {
+            addCriterion("upper_reference_value is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueEqualTo(Double value) {
+            addCriterion("upper_reference_value =", value, "upperReferenceValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueNotEqualTo(Double value) {
+            addCriterion("upper_reference_value <>", value, "upperReferenceValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueGreaterThan(Double value) {
+            addCriterion("upper_reference_value >", value, "upperReferenceValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueGreaterThanOrEqualTo(Double value) {
+            addCriterion("upper_reference_value >=", value, "upperReferenceValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueLessThan(Double value) {
+            addCriterion("upper_reference_value <", value, "upperReferenceValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueLessThanOrEqualTo(Double value) {
+            addCriterion("upper_reference_value <=", value, "upperReferenceValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueIn(List<Double> values) {
+            addCriterion("upper_reference_value in", values, "upperReferenceValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueNotIn(List<Double> values) {
+            addCriterion("upper_reference_value not in", values, "upperReferenceValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueBetween(Double value1, Double value2) {
+            addCriterion("upper_reference_value between", value1, value2, "upperReferenceValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andUpperReferenceValueNotBetween(Double value1, Double value2) {
+            addCriterion("upper_reference_value not between", value1, value2, "upperReferenceValue");
             return (Criteria) this;
         }
 
