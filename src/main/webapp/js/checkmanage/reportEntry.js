@@ -336,7 +336,6 @@
                 checkApplicationId:checkApplicationId
             }).then(function (data) {
                 SampleDetailedInfoForm.obj.setFormData(data);
-                // SampleDetailedInfoForm.obj.setItemLabel("isEmergency", data.isEmergency, "<span style=\"font-weight: bold;font-size: 12px\">急诊</span>"); // for radio button
 
                 if (data.resultEntryStatu === "未录入" && data.resultAuditStatu === "未审核"){
                     CheckResultEntryToolbar.obj.enableItem("saveButton");
@@ -389,8 +388,6 @@
                 dhtmlxUtils.clearAndLoadJsonListData(CheckResultEntryGrid.obj, data, "itemId");  //删除所有行,加载数据
                 //ReceivedSampleGrid.obj.sortRows(1,"int","asc");
                 changeFlag.storeValue();
-                //使保存按钮可用
-                CheckResultEntryToolbar.obj.enableItem("saveButton");
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
