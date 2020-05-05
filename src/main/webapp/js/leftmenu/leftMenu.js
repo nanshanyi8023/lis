@@ -60,9 +60,9 @@
                             icons: {file: "reportEntry"}
                         },
                         {
-                            id: "reportQuery",
+                            id: "reportSearch",
                             text: "&nbsp;报告查询",
-                            icons: {file: "reportQuery"}
+                            icons: {file: "reportSearch"}
                         }
                     ]
                 },
@@ -133,6 +133,9 @@
                         break;
                     case "reportEntry":
                         reportEntry.init();
+                        break;
+                    case "reportSearch":
+                        reportSearch.init();
                         break;
 
                     case "checkItemSettings":
