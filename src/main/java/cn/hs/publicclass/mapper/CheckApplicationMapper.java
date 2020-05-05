@@ -7,6 +7,7 @@ import cn.hs.publicclass.table.checkapplication.CheckApplicationKey;
 import java.util.List;
 
 import cn.hs.reportentry.dto.SampleDetailedInfoDto;
+import cn.hs.reportsearch.dto.AuditedSampleQueryDto;
 import cn.hs.samplerecept.dto.ReceptedSampleQueryDto;
 import cn.hs.samplerecept.dto.RetrunSampleDto;
 import org.apache.ibatis.annotations.Param;
@@ -93,4 +94,11 @@ public interface CheckApplicationMapper {
 
     //点击取消审核按钮更改审核状态、审核时间、审核医生
     void changeCancelAudit(@Param("hosNum") String hosNum, @Param("checkApplicationId") String checkApplicationId);
+
+
+    /**
+     *报告查询页面
+     */
+    //查找对应的已审核样本
+    List<CheckApplication> selectAuditedSample(@Param("hosNum") String hosNum, @Param("auditedSampleQueryDto") AuditedSampleQueryDto auditedSampleQueryDto);
 }

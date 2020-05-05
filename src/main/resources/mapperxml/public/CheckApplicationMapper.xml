@@ -684,4 +684,33 @@
         result_audit_doctor = null
     where hosnum = #{hosNum} and item_id = #{checkApplicationId}
   </update>
+
+
+  <!--报告查询页面-->
+  <select id="selectAuditedSample" resultMap="BaseResultMap">
+    select *
+    from check_application
+    where hosnum = #{hosNum} and result_audit_statu = '已审核'
+    <if test="auditedSampleQueryDto.patientId != null and auditedSampleQueryDto.patientId != ''">
+      and patient_id = #{auditedSampleQueryDto.patientId}
+    </if>
+    <if test="auditedSampleQueryDto.patientName != null and auditedSampleQueryDto.patientName != ''">
+    and patient_name = #{auditedSampleQueryDto.patientName}
+    </if>
+    <if test="auditedSampleQueryDto.barCodeNumber != null and auditedSampleQueryDto.barCodeNumber != ''">
+      and barcode_number = #{auditedSampleQueryDto.barCodeNumber}
+    </if>
+    <if test="auditedSampleQueryDto.checkStartDate != null and auditedSampleQueryDto.checkStartDate != ''">
+      and result_entry_time &gt;= #{auditedSampleQueryDto.checkStartDate}
+    </if>
+    <if test="auditedSampleQueryDto.checkEndDate != null and auditedSampleQueryDto.checkEndDate != ''">
+      and result_entry_time &lt;= #{auditedSampleQueryDto.checkEndDate}
+    </if>
+    <if test="auditedSampleQueryDto.auditStartDate != null and auditedSampleQueryDto.auditStartDate != ''">
+      and result_audit_time &gt;= #{auditedSampleQueryDto.auditStartDate}
+    </if>
+    <if test="auditedSampleQueryDto.auditEndDate != null and auditedSampleQueryDto.auditEndDate != ''">
+      and result_audit_time &lt;= #{auditedSampleQueryDto.auditEndDate}
+    </if>
+  </select>
 </mapper>

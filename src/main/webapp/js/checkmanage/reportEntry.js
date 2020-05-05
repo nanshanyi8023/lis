@@ -335,6 +335,15 @@
             ajaxUtils.get('reportEntry/getSampleDetailedInfo.json',{
                 checkApplicationId:checkApplicationId
             }).then(function (data) {
+                if (JSUtils.isNotEmpty(data.sampleReceptionTime)) {
+                    data.sampleReceptionTime = data.sampleReceptionTime.substring(0,16)
+                }
+                if (JSUtils.isNotEmpty(data.resultEntryTime)) {
+                    data.resultEntryTime = data.resultEntryTime.substring(0,16)
+                }
+                if (JSUtils.isNotEmpty(data.resultAuditTime)) {
+                    data.resultAuditTime = data.resultAuditTime.substring(0,16)
+                }
                 SampleDetailedInfoForm.obj.setFormData(data);
 
                 if (data.resultEntryStatu === "未录入" && data.resultAuditStatu === "未审核"){
@@ -374,9 +383,6 @@
             CheckResultEntryGrid.obj.init();
             CheckResultEntryGrid.obj.setColumnHidden(5,true);
         },
-        initEvent: function () {
-            
-        },
         //加载检验项目及默认结果
         loadData: function (checkApplicationId) {
             ajaxUtils.get('reportEntry/getCheckItemAndDefaultValue.json', {
@@ -388,6 +394,12 @@
                 dhtmlxUtils.clearAndLoadJsonListData(CheckResultEntryGrid.obj, data, "itemId");  //删除所有行,加载数据
                 //ReceivedSampleGrid.obj.sortRows(1,"int","asc");
                 changeFlag.storeValue();
+                if (SampleDetailedInfoForm.obj.getItemValue("resultEntryStatu") === "已录入" &&
+                    SampleDetailedInfoForm.obj.getItemValue("resultAuditStatu") === "已审核"){
+                    CheckResultEntryGrid.obj.setColTypes("ro,ro,ro,ro,ro,ro");
+                }else {
+                    CheckResultEntryGrid.obj.setColTypes("ro,ro,ed,ro,ro,ro");
+                }
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {
@@ -563,7 +575,6 @@
         ReceivedSampleGrid.initEvent();
         SampleDetailedInfoForm.initObj();
         CheckResultEntryGrid.initObj();
-        CheckResultEntryGrid.initEvent();
         CheckResultEntryToolbar.initobj();
         CheckResultEntryToolbar.initEvent();
     };
