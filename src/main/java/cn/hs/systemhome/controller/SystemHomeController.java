@@ -14,4 +14,8 @@ public class SystemHomeController {
     }
 
 
+    @RequestMapping(value = "/signOut.htm",method = RequestMethod.GET)
+    public ModelAndView getViewSignOut(ModelMap modelMap){
+        return new ModelAndView("login/login.jsp",modelMap);
+    }
 }

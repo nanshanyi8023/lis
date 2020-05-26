@@ -78,9 +78,11 @@
 <body>
 <div style="width: 100%;height:100%">
     <div id="TopObj" style="width: 100%;height:7%" class="topHeader">
-        <div class="topHeader-logo"></div>
-        <div class="topHeader-user"></div>
-        <div class="topHeader-tools"></div>
+        <div class="topHeader-logo">云LIS检验系统</div>
+        <div class="topHeader-today" id="topHeader-today"></div>
+        <div class="topHeader-signOut" title="退出登录">
+            <img src="images/topwelcome/signOut.png" alt="退出登录" class="topHeader-signOut-img" onclick="signOut()" />
+        </div>
     </div>
     <div id="SystemHomeObj" style="width: 100%;height: 93%;" >
         <div id="leftHomeObj" style="width: 13%;height: 100%;float:left;"></div>
@@ -90,6 +92,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        //getToday();
         //设置dhtmlx时钟的语言
         dhtmlxInit.setCalendarChinese();
         //初始化页面

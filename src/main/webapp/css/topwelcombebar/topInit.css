@@ -1,3 +1,30 @@
 .topHeader{
     background-color: #262F3E;
 }
+
+.topHeader-logo{
+    color: #ffffff;
+    float: left;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 30px;
+    padding-top: 10px;
+}
+
+.topHeader-today{
+    color: #ffffff;
+    float: left;
+    margin-left: 150px;
+    padding-top: 15px;
+}
+
+.topHeader-signOut{
+    float:right;
+}
+
+.topHeader-signOut-img{
+    width: 20px;
+    height: 20px;
+    padding-top: 20px;
+    padding-right: 30px;
+}
