@@ -52,6 +52,9 @@ public interface CheckApplicationMapper {
     //更新条码号
     void updateBarcodeNnumber(@Param("hosNum") String hosNum, @Param("checkApplicationId") String checkApplicationId, @Param("barcodeNnumber") String barcodeNnumber);
 
+    //将条码打印状态变为已打印
+    void changePrintState(@Param("hosNum") String hosNum, @Param("checkApplicationId") String checkApplicationId);
+
     /**
      * 样本接收页面
      */

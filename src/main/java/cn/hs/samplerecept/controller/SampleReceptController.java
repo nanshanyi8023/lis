@@ -24,7 +24,7 @@ public class SampleReceptController {
     }
 
     //根据条码号接收样本
-    @RequestMapping(value = "/returnSample.json", method = RequestMethod.GET)
+    @RequestMapping(value = "/receiveSample.json", method = RequestMethod.GET)
     public ApiResult receiveSample(@RequestParam(required = true) String barCodeNumber) {
         try {
             return ApiResult.success(sampleReceptService.receiveSample(barCodeNumber));

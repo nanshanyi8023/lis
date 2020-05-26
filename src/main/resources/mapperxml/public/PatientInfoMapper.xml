@@ -292,7 +292,7 @@
           and (patient_id = #{patientSearchDto.patientId})
       </if>
       <if test="patientSearchDto.patientName != null and patientSearchDto.patientName != ''">
-          and (patient_id = #{patientSearchDto.patientName})
+          and (patient_name = #{patientSearchDto.patientName})
       </if>
     </select>
 </mapper>

@@ -104,6 +104,10 @@
                     return;
                 }
                 printBarCode(barCodeData);
+                var checkApplicationIdList = dhtmlxUtils.getCheckedRowIds(CheckApplicationGrid.obj);
+                for (var i = 0; i < checkApplicationIdList.length; i++) {
+                    CheckApplicationGrid.obj.cells(checkApplicationIdList[i],9).setValue("已打印");
+                }
             }).catch(function (reason) {
                 dhtmlxAlert.alertErrorMsg(reason);
             }).finally(function () {

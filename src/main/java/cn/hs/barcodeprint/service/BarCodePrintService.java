@@ -103,6 +103,8 @@ public class BarCodePrintService {
                 item.setBarcodeNumber(barcodeNnumber);
             }
             barcodeNnumberList.add(item);
+            //将条码打印状态变为已打印
+            checkApplicationMapper.changePrintState(getCookie.getHosNum(),checkApplicationIdList.get(i));
         }
         return barcodeNnumberList;
     }

@@ -545,7 +545,6 @@
       and billing_time &lt;= #{checkApplicationSearchDto.endDate}
     </if>
   </select>
-
   <select id="selectBarcodeNnumber" resultType="java.lang.String">
       select barcode_number
       from check_application
@@ -561,8 +560,14 @@
   <update id="updateBarcodeNnumber">
     update check_application
     set barcode_number = #{barcodeNnumber}
-    where item_id = #{checkApplicationId}
+    where item_id = #{checkApplicationId} and hosnum = #{hosNum}
   </update>
+  <update id="changePrintState">
+    update check_application
+    set print_statu = '已打印'
+    where item_id = #{checkApplicationId} and hosnum = #{hosNum}
+  </update>
+
 
   <!--样本接收页面-->
   <!--录入状态和审核状态为报告录入页面-->
