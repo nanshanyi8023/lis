@@ -89,7 +89,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        getToday();
+        //getToday();
         //设置dhtmlx时钟的语言
         dhtmlxInit.setCalendarChinese();
         //初始化页面
